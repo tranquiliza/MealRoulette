@@ -1,28 +1,29 @@
-﻿using System;
+﻿using MealRoulette.Domain.Exceptions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Core.Models
+namespace MealRoulette.Domain.Models
 {
-    public class Meal
+    public class Meal : BaseEntity
     {
         public string Name { get; private set; }
         public string Country { get; private set; } //Better name for "Italian Food"?
         public bool IsFastFood { get; private set; }
-        public IEnumerable<string> Ingredients { get; private set; }
+        public bool IsVegetarianFriendly { get; private set; }
         public string HardwareCategory { get; private set; }
-        public string Season { get; private set; }
+        public Season Season { get; private set; } //Could one dish potentially be more Seasons?
         public string Holiday { get; private set; }
         public string Recipe { get; private set; }
 
         public MealCategory MealCategory { get; private set; }
 
-        private List<Meat> _Meats { get; set; } //need a better way of "Adding Meats"
-        public IEnumerable<Meat> GetMeats
+        private List<Ingredient> _Ingredients { get; set; }
+        public List<Ingredient> GetIngredients
         {
             get
             {
-                return _Meats;
+                return _Ingredients;
             }
         }
 
@@ -34,24 +35,20 @@ namespace Core.Models
         /// <param name="name">Name of the dish</param>
         /// <param name="mealCategory">Breakfast, Lunch, Dinner</param>
         /// <param name="meat">Per Default we cannot have a meal without a Meat / NoMeat involved</param>
-        public Meal(string name, MealCategory mealCategory, Meat meat)
+        public Meal(string name, MealCategory mealCategory)
         {
-            _Meats = new List<Meat>();
+            if (MealCategory == null) throw new ArgumentNullException(nameof(mealCategory));
+
+            _Ingredients = new List<Ingredient>();
             Name = name;
             MealCategory = mealCategory;
-            _Meats.Add(meat);
         }
 
-        public void AddMeat(Meat meat)
+        public void AddIngredient(Ingredient ingredient)
         {
-            if (_Meats.Select(m => m.Name == meat.Name).Count() != 0) throw new Exception();
+            if (_Ingredients.Select(m => m.Name == ingredient.Name).Count() > 0) throw new DomainException($"This meal already contains {ingredient.Name}");
 
-            _Meats.Add(meat);
-        }
-
-        public void AddIngredient(string ingredient)
-        {
-
+            _Ingredients.Add(ingredient);
         }
     }
 }
