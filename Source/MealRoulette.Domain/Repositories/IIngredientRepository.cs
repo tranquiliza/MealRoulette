@@ -6,9 +6,7 @@ namespace MealRoulette.Domain.Repositories
     public interface IIngredientRepository
     {
         IEnumerable<Ingredient> GetAll();
-
         Ingredient Get(string name);
-
         Ingredient Get(int id);
     }
 }

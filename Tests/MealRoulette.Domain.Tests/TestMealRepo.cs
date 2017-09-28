@@ -30,5 +30,10 @@ namespace MealRoulette.Domain.Tests
         {
             throw new NotImplementedException();
         }
+
+        public IEnumerable<Meal> GetAll()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

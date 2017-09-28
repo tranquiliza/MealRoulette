@@ -1,30 +1,25 @@
 ﻿using MealRoulette.Domain.Models;
+using System.Collections.Generic;
 
 namespace MealRoulette.Domain.Factories
 {
-    public class MealFactory
+    class MealFactory
     {
-        private Meal _Meal;
-        //Implement this sort of like how the ServiceFactory in the Test project works?
-        private MealFactory(string nameOfMeal, MealCategory mealCategory)
+        public Meal Create(string name, MealCategory mealCategory)
         {
-            _Meal = new Meal(nameOfMeal, mealCategory);
+            var meal = new Meal(name, mealCategory);
+            return meal;
         }
 
-        public static MealFactory Create(string nameOfMeal, MealCategory mealCategory)
+        public Meal CreateWithIngredients(string name, MealCategory mealCategory, IEnumerable<Ingredient> ingredients)
         {
-            return new MealFactory(nameOfMeal, mealCategory);
-        }
+            var meal = new Meal(name, mealCategory);
+            foreach (Ingredient ingredient in ingredients)
+            {
+                meal.AddIngredient(ingredient);
+            }
 
-        public void AddIngredient(string name, string nameOfUnit, int amountInGrams)
-        {
-            var ingredient = new Ingredient(name, nameOfUnit, amountInGrams);
-            _Meal.AddIngredient(ingredient);
-        }
-
-        public Meal CreateMeal()
-        {
-            return _Meal;
+            return meal;
         }
     }
 }

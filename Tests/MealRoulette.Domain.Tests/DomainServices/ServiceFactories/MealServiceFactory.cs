@@ -1,44 +1,48 @@
 ﻿using MealRoulette.Domain.DomainServices;
 using MealRoulette.Domain.Repositories;
+using Moq;
 
 namespace MealRoulette.Domain.Tests.DomainServices.ServiceFactories
 {
     public class MealServiceFactory
     {
-        private IIngredientRepository _ingredientRepository;
-        private IMealCategoryRepository _mealCategoryRepository;
-        private IMealRepository _mealRepository;
-
+        private IIngredientRepository _IngredientRepository;
+        private IMealCategoryRepository _MealCategoryRepository;
+        private IMealRepository _MealRepository;
 
         public MealServiceFactory Create()
         {
-            _ingredientRepository = null;
-            _mealCategoryRepository = null;
-            _mealRepository = null;
+            _IngredientRepository = null;
+            _MealCategoryRepository = null;
+            _MealRepository = null;
             return this;
         }
 
         public MealServiceFactory WithIngredientRepo(IIngredientRepository ingredientRepository)
         {
-            _ingredientRepository = ingredientRepository;
+            _IngredientRepository = ingredientRepository;
             return this;
         }
 
         public MealServiceFactory WithMealCategoryRepo(IMealCategoryRepository mealCategoryRepository)
         {
-            _mealCategoryRepository = mealCategoryRepository;
+            _MealCategoryRepository = mealCategoryRepository;
             return this;
         }
 
         public MealServiceFactory WithMealRepo(IMealRepository mealRepository)
         {
-            _mealRepository = mealRepository;
+            _MealRepository = mealRepository;
             return this;
         }
 
         public MealService Build()
         {
-            var mealService = new MealService(_mealRepository, _mealCategoryRepository, _ingredientRepository);
+            var mock = new Mock<IUnitOfWork>();
+            mock.Setup(m => m.IngredientRepository).Returns(_IngredientRepository);
+            mock.Setup(m => m.MealCategoryRepository).Returns(_MealCategoryRepository);
+            mock.Setup(m => m.MealRepository).Returns(_MealRepository);
+            var mealService = new MealService(mock.Object);
             return mealService;
         }
     }

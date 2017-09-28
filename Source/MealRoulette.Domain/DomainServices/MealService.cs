@@ -1,6 +1,8 @@
-﻿using MealRoulette.Domain.DomainServices.Interfaces;
+﻿using MealRoulette.Domain.DomainServices.DataContracts;
+using MealRoulette.Domain.DomainServices.Interfaces;
 using MealRoulette.Domain.Exceptions;
 using MealRoulette.Domain.Factories;
+using MealRoulette.Domain.Models;
 using MealRoulette.Domain.Repositories;
 using System.Collections.Generic;
 
@@ -8,29 +10,47 @@ namespace MealRoulette.Domain.DomainServices
 {
     public class MealService : IMealService
     {
-        private readonly IMealRepository _MealRepository;
-        private readonly IMealCategoryRepository _mealCategoryRepository;
-        private readonly IIngredientRepository _ingredientRepository;
+        private readonly MealFactory _MealFactory;
+        private readonly IngredientFactory _IngredientFactory;
+        private readonly IUnitOfWork _UnitOfWork;
 
-        public MealService(IMealRepository mealRepository, IMealCategoryRepository mealCategoryRepository, IIngredientRepository ingredientRepository)
+        public MealService(IUnitOfWork unitOfWork)
         {
-            _MealRepository = mealRepository;
-            _mealCategoryRepository = mealCategoryRepository;
-            _ingredientRepository = ingredientRepository;
+            _MealFactory = new MealFactory();
+            _IngredientFactory = new IngredientFactory();
+            _UnitOfWork = unitOfWork;
         }
 
-        public void CreateMeal(string name, int mealCategory, List<int> ingredients)
+        public void CreateMeal(string name, int mealCategory)
         {
-            var duplicateCheck = _MealRepository.Get(name);
-            if (duplicateCheck != null) throw new DomainException("Meal with given name already exists");
+            if (MealAlreadyExists(name)) throw new DomainException($"Meal with given name: {name}, already exists");
 
-            var category = _mealCategoryRepository.Get(mealCategory);
+            var category = _UnitOfWork.MealCategoryRepository.Get(mealCategory);
+            var meal = _MealFactory.Create(name, category);
 
-            var factory = MealFactory.Create(name, category);
+            _UnitOfWork.MealRepository.Add(meal);
+        }
 
-            var meal = factory.CreateMeal();
+        public void CreateMeal(string name, int mealCategory, List<IngredientType> ingredientDtos)
+        {
+            if (MealAlreadyExists(name)) throw new DomainException($"Meal with given name: {name}, already exists");
 
-            _MealRepository.Add(meal);
+            var category = _UnitOfWork.MealCategoryRepository.Get(mealCategory);
+            var ingredients = _IngredientFactory.CreateMany(ingredientDtos);
+
+            var meal = _MealFactory.CreateWithIngredients(name, category, ingredients);
+
+            _UnitOfWork.MealRepository.Add(meal);
+        }
+
+        private bool MealAlreadyExists(string name)
+        {
+            return _UnitOfWork.MealRepository.Get(name) != null;
+        }
+
+        public IEnumerable<Meal> GetAll()
+        {
+            return _UnitOfWork.MealRepository.GetAll();
         }
     }
 }

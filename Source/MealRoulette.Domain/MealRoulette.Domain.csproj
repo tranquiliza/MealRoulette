@@ -40,9 +40,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DomainServices\DataContracts\IngredientType.cs" />
     <Compile Include="DomainServices\Interfaces\IMealService.cs" />
     <Compile Include="DomainServices\MealService.cs" />
     <Compile Include="Exceptions\DomainException.cs" />
+    <Compile Include="Factories\IngredientFactory.cs" />
     <Compile Include="Factories\MealFactory.cs" />
     <Compile Include="Models\BaseEntity.cs" />
     <Compile Include="Models\Meal.cs" />
@@ -53,7 +55,10 @@
     <Compile Include="Repositories\IIngredientRepository.cs" />
     <Compile Include="Repositories\IMealCategoryRepository.cs" />
     <Compile Include="Repositories\IMealRepository.cs" />
+    <Compile Include="Repositories\IUnitOfWork.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Events\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
