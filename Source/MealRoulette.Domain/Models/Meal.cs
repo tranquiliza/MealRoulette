@@ -1,14 +1,13 @@
 ﻿using MealRoulette.Domain.Exceptions;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace MealRoulette.Domain.Models
 {
     public class Meal : BaseEntity
     {
-        private const string EmptyHardwareCategoryName = "None";
-        private const string EmptyHolidayName = "Any";
+        private const string DefaultHardwareCategory = "None";
+        private const string DefaultHolidayValue = "Any";
 
         public string Name { get; private set; }
         public string Country { get; private set; } //Better name for "Italian Food"?
@@ -22,15 +21,13 @@ namespace MealRoulette.Domain.Models
         public MealCategory MealCategory { get; private set; }
 
         private List<Ingredient> _Ingredients { get; set; }
-        public IEnumerable<Ingredient> GetIngredients
+        public List<Ingredient> Ingredients
         {
             get
             {
                 return _Ingredients;
             }
         }
-
-        private Meal() { }
 
         /// <summary>
         /// 
@@ -45,11 +42,13 @@ namespace MealRoulette.Domain.Models
             _Ingredients = new List<Ingredient>();
             Name = name;
             MealCategory = mealCategory;
-            HardwareCategory = EmptyHardwareCategoryName;
+            HardwareCategory = DefaultHardwareCategory;
+            Holiday = DefaultHolidayValue;
         }
 
         public void AddIngredient(Ingredient ingredient)
         {
+            if (ingredient == null) throw new ArgumentNullException(nameof(ingredient));
             if (MealAlreadyHas(ingredient)) throw new DomainException($"This meal already contains {ingredient.Name}");
 
             _Ingredients.Add(ingredient);
@@ -71,7 +70,7 @@ namespace MealRoulette.Domain.Models
         {
             if (string.IsNullOrWhiteSpace(holiday))
             {
-                Holiday = EmptyHolidayName;
+                Holiday = DefaultHolidayValue;
             }
             else
             {
@@ -83,7 +82,7 @@ namespace MealRoulette.Domain.Models
         {
             if (string.IsNullOrWhiteSpace(hardwareCategory))
             {
-                HardwareCategory = EmptyHardwareCategoryName;
+                HardwareCategory = DefaultHardwareCategory;
             }
             else
             {

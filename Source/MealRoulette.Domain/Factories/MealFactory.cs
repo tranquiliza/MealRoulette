@@ -11,7 +11,7 @@ namespace MealRoulette.Domain.Factories
             return meal;
         }
 
-        public Meal CreateWithIngredients(string name, MealCategory mealCategory, IEnumerable<Ingredient> ingredients)
+        public Meal Create(string name, MealCategory mealCategory, IEnumerable<Ingredient> ingredients)
         {
             var meal = new Meal(name, mealCategory);
             foreach (Ingredient ingredient in ingredients)

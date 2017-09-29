@@ -38,7 +38,7 @@ namespace MealRoulette.Domain.DomainServices
             var category = _UnitOfWork.MealCategoryRepository.Get(mealCategory);
             var ingredients = _IngredientFactory.CreateMany(ingredientDtos);
 
-            var meal = _MealFactory.CreateWithIngredients(name, category, ingredients);
+            var meal = _MealFactory.Create(name, category, ingredients);
 
             _UnitOfWork.MealRepository.Add(meal);
         }

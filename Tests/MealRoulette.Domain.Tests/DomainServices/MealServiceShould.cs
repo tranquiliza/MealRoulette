@@ -12,7 +12,7 @@ namespace MealRoulette.Domain.Tests.DomainServices
     public class MealServiceShould
     {
         [Test]
-        public void CreateMealWithIngredients()
+        public void CreateWithIngredients()
         {
             //Arrange
             var mealRepo = CreateMealRepo();
@@ -64,7 +64,7 @@ namespace MealRoulette.Domain.Tests.DomainServices
         }
 
         [Test]
-        public void CreateMeal()
+        public void Create()
         {
             //Arrange
             var mealRepo = CreateMealRepo();

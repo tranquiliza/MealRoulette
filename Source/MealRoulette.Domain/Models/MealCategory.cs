@@ -1,4 +1,6 @@
-﻿namespace MealRoulette.Domain.Models
+﻿using System;
+
+namespace MealRoulette.Domain.Models
 {
     public class MealCategory : BaseEntity
     {
@@ -6,6 +8,8 @@
 
         public MealCategory(string name)
         {
+            if (string.IsNullOrWhiteSpace(name)) throw new ArgumentException("Name must be given", nameof(name));
+
             Name = name;
         }
     }
