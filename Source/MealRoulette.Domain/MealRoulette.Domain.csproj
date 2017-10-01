@@ -53,6 +53,8 @@
     <Compile Include="Models\MealCategory.cs" />
     <Compile Include="Models\Season.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\DataStructures\IPage.cs" />
+    <Compile Include="Repositories\IBaseRepository.cs" />
     <Compile Include="Repositories\IIngredientRepository.cs" />
     <Compile Include="Repositories\IMealCategoryRepository.cs" />
     <Compile Include="Repositories\IMealRepository.cs" />

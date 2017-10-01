@@ -41,6 +41,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\DataStructures\Page.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MealRoulette.Domain\MealRoulette.Domain.csproj">
+      <Project>{2d848935-d1f0-4a80-af9e-4d9b5d560e5d}</Project>
+      <Name>MealRoulette.Domain</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
