@@ -7,7 +7,6 @@ namespace MealRoulette.Domain.Models
     public class Meal : BaseEntity
     {
         private const string DefaultHardwareCategory = "None";
-        private const string DefaultHolidayValue = "Any";
 
         public string Name { get; private set; }
         public string Country { get; private set; } //Better name for "Italian Food"?
@@ -15,7 +14,7 @@ namespace MealRoulette.Domain.Models
         public bool IsVegetarianFriendly { get; private set; } //How do we check ?
         public string HardwareCategory { get; private set; }
         public Season Season { get; private set; } //Could one dish potentially be more Seasons?
-        public string Holiday { get; private set; }
+        public Holiday Holiday { get; private set; }
         public string Recipe { get; private set; }
 
         public MealCategory MealCategory { get; private set; }
@@ -43,7 +42,6 @@ namespace MealRoulette.Domain.Models
             Name = name;
             MealCategory = mealCategory;
             HardwareCategory = DefaultHardwareCategory;
-            Holiday = DefaultHolidayValue;
         }
 
         public void AddIngredient(Ingredient ingredient)
@@ -66,16 +64,11 @@ namespace MealRoulette.Domain.Models
             Recipe = recipe;
         }
 
-        public void SetHoliday(string holiday)
+        public void SetHoliday(Holiday holiday)
         {
-            if (string.IsNullOrWhiteSpace(holiday))
-            {
-                Holiday = DefaultHolidayValue;
-            }
-            else
-            {
-                Holiday = holiday;
-            }
+            if (holiday == null) throw new ArgumentNullException(nameof(holiday));
+
+            Holiday = holiday;
         }
 
         public void SetHardwareCategory(string hardwareCategory)

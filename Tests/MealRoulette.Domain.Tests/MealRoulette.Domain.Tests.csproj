@@ -53,6 +53,7 @@
   <ItemGroup>
     <Compile Include="DomainServices\ServiceFactories\MealServiceFactory.cs" />
     <Compile Include="DomainServices\MealServiceShould.cs" />
+    <Compile Include="Models\HolidayShould.cs" />
     <Compile Include="Models\IngredientShould.cs" />
     <Compile Include="Models\MealCategoryShould.cs" />
     <Compile Include="Models\MealShould.cs" />

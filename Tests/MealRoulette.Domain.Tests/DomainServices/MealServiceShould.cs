@@ -63,6 +63,12 @@ namespace MealRoulette.Domain.Tests.DomainServices
             return ingredients;
         }
 
+        private IIngredientRepository CreateIngredientRepo()
+        {
+            var mock = new Mock<IIngredientRepository>();
+            return mock.Object;
+        }
+
         [Test]
         public void Create()
         {
@@ -83,12 +89,6 @@ namespace MealRoulette.Domain.Tests.DomainServices
 
             //Assert
             Assert.IsNotNull(mealRepo.Get(mealName));
-        }
-
-        private IIngredientRepository CreateIngredientRepo()
-        {
-            var mock = new Mock<IIngredientRepository>();
-            return mock.Object;
         }
 
         private IMealCategoryRepository CreateMealCategoryRepo()

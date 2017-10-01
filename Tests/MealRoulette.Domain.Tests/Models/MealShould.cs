@@ -9,7 +9,6 @@ namespace MealRoulette.Domain.Tests.Models
     public class MealShould
     {
         private const string DefaultHardwareCategory = "None";
-        private const string DefaultHolidayValue = "Any";
 
         [Test]
         public void CreateWithDefaultValues()
@@ -22,7 +21,6 @@ namespace MealRoulette.Domain.Tests.Models
 
             //Assert
             Assert.AreEqual(mealName, sut.Name);
-            Assert.AreEqual(DefaultHolidayValue, sut.Holiday);
             Assert.AreEqual(DefaultHardwareCategory, sut.HardwareCategory);
         }
 
@@ -102,7 +100,7 @@ namespace MealRoulette.Domain.Tests.Models
         {
             //Arrange
             var sut = CreateMealWithoutIngredients();
-            const string holiday = "Christmas";
+            var holiday = new Holiday("Christmas");
 
             //Act
             sut.SetHoliday(holiday);
@@ -112,16 +110,16 @@ namespace MealRoulette.Domain.Tests.Models
         }
 
         [Test]
-        public void SetHolidayToDefaultIfEmptyHolidayIsGiven()
+        public void ThrowArgumentNullExceptionIfEmptyHolidayIsGiven()
         {
             //Arrange
-            var sut = CreateMealWithoutIngredients();
+            var meal = CreateMealWithoutIngredients();
 
             //Act
-            sut.SetHoliday("");
+            TestDelegate sut = new TestDelegate(() => meal.SetHoliday(null));
 
             //Assert
-            Assert.AreEqual(DefaultHolidayValue, sut.Holiday);
+            Assert.Throws<ArgumentNullException>(sut);
         }
 
         [Test]

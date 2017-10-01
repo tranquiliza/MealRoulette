@@ -47,6 +47,7 @@
     <Compile Include="Factories\IngredientFactory.cs" />
     <Compile Include="Factories\MealFactory.cs" />
     <Compile Include="Models\BaseEntity.cs" />
+    <Compile Include="Models\Holiday.cs" />
     <Compile Include="Models\Meal.cs" />
     <Compile Include="Models\Ingredient.cs" />
     <Compile Include="Models\MealCategory.cs" />
