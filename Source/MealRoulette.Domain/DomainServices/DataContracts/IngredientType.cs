@@ -3,7 +3,7 @@
     public class IngredientType
     {
         public string Name { get; set; }
-        public string NameOfUnit { get; set; }
+        public string UnitOfMeasurement { get; set; }
         public int Amount { get; set; }
     }
 }

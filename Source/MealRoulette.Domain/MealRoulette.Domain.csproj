@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DomainServices\DataContracts\IngredientType.cs" />
+    <Compile Include="DomainServices\Interfaces\IIngredientService.cs" />
     <Compile Include="DomainServices\Interfaces\IMealService.cs" />
     <Compile Include="DomainServices\MealService.cs" />
     <Compile Include="Exceptions\DomainException.cs" />

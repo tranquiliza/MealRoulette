@@ -43,19 +43,19 @@ namespace MealRoulette.Domain.Tests.DomainServices
                 new IngredientType()
                 {
                     Name = "Pepperoni",
-                    NameOfUnit = "gram",
+                    UnitOfMeasurement = "gram",
                     Amount = 100
                 },
                 new IngredientType()
                 {
                     Name = "Mozzarella Cheese",
-                    NameOfUnit = "gram",
+                    UnitOfMeasurement = "gram",
                     Amount = 200
                 },
                 new IngredientType()
                 {
                     Name = "Tomato Sauce",
-                    NameOfUnit = "decilitres",
+                    UnitOfMeasurement = "decilitres",
                     Amount = 2
                 }
             };

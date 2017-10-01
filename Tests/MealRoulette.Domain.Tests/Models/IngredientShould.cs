@@ -12,11 +12,11 @@ namespace MealRoulette.Domain.Tests.Models
         {
             //Arrange
             const string Name = "Chicken";
-            const string NameOfUnit = "Gram";
+            const string unitOfMeasurement = "Gram";
             const int Amount = 400;
 
             //Act
-            var sut = new Ingredient(Name, NameOfUnit, Amount);
+            var sut = new Ingredient(Name, unitOfMeasurement, Amount);
 
             //Assert
             Assert.IsNotNull(sut);
@@ -27,26 +27,26 @@ namespace MealRoulette.Domain.Tests.Models
         {
             //Arrange
             const string Name = "";
-            const string NameOfUnit = "Gram";
+            const string unitOfMeasurement = "Gram";
             const int Amount = 400;
 
             //Act
-            TestDelegate sut = new TestDelegate(() => new Ingredient(Name, NameOfUnit, Amount));
+            TestDelegate sut = new TestDelegate(() => new Ingredient(Name, unitOfMeasurement, Amount));
 
             //Assert
             Assert.Throws<ArgumentException>(sut);
         }
 
         [Test]
-        public void ThrowArgumentExceptionOnMissingNameOfUnit()
+        public void ThrowArgumentExceptionOnMissingUnitOfMeasurement()
         {
             //Arrange
             const string Name = "Chicken";
-            const string NameOfUnit = "";
+            const string unitOfMeasurement = "";
             const int Amount = 400;
 
             //Act
-            TestDelegate sut = new TestDelegate(() => new Ingredient(Name, NameOfUnit, Amount));
+            TestDelegate sut = new TestDelegate(() => new Ingredient(Name, unitOfMeasurement, Amount));
 
             //Assert
             Assert.Throws<ArgumentException>(sut);
@@ -57,11 +57,11 @@ namespace MealRoulette.Domain.Tests.Models
         {
             //Arrange
             const string Name = "Chicken";
-            const string NameOfUnit = "Gram";
+            const string unitOfMeasurement = "Gram";
             const int Amount = 0;
 
             //Act
-            TestDelegate sut = new TestDelegate(() => new Ingredient(Name, NameOfUnit, Amount));
+            TestDelegate sut = new TestDelegate(() => new Ingredient(Name, unitOfMeasurement, Amount));
 
             //Assert
             Assert.Throws<ArgumentOutOfRangeException>(sut);

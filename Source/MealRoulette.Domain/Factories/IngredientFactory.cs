@@ -7,9 +7,9 @@ namespace MealRoulette.Domain.Factories
 {
     class IngredientFactory
     {
-        public Ingredient Create(string name, string nameOfUnit, int amount)
+        public Ingredient Create(string name, string unitOfMeasurement, int amount)
         {
-            var ingredient = new Ingredient(name, nameOfUnit, amount);
+            var ingredient = new Ingredient(name, unitOfMeasurement, amount);
             return ingredient;
         }
 
@@ -21,7 +21,7 @@ namespace MealRoulette.Domain.Factories
 
             foreach (var ingredient in ingredientDtos)
             {
-                ingredients.Add(Create(ingredient.Name, ingredient.NameOfUnit, ingredient.Amount));
+                ingredients.Add(Create(ingredient.Name, ingredient.UnitOfMeasurement, ingredient.Amount));
             }
             return ingredients;
         }

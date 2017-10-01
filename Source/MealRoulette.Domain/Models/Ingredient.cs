@@ -5,17 +5,17 @@ namespace MealRoulette.Domain.Models
     public class Ingredient : BaseEntity
     {
         public string Name { get; private set; }
-        public string NameOfUnit { get; private set; }
+        public string UnitOfMeasurement { get; private set; }
         public int Amount { get; private set; }
 
-        public Ingredient(string name, string nameOfUnit, int amount)
+        public Ingredient(string name, string unitOfMeasurement, int amount)
         {
             if (string.IsNullOrWhiteSpace(name)) throw new ArgumentException("Name must be given", nameof(name));
-            if (string.IsNullOrWhiteSpace(nameOfUnit)) throw new ArgumentException("Unit name must be given", nameof(name));
+            if (string.IsNullOrWhiteSpace(unitOfMeasurement)) throw new ArgumentException("Unit name must be given", nameof(name));
             if (amount <= 0) throw new ArgumentOutOfRangeException(nameof(amount), amount, "Amount given must be higher than 0");
 
             Name = name;
-            NameOfUnit = nameOfUnit;
+            UnitOfMeasurement = unitOfMeasurement;
             Amount = amount;
         }
 
@@ -26,9 +26,9 @@ namespace MealRoulette.Domain.Models
             Amount = amount;
         }
 
-        public void SetNameOfUnit(string nameOfUnit)
+        public void SetUnitOfMeasurement(string unitOfMeasurement)
         {
-            if (string.IsNullOrWhiteSpace(nameOfUnit)) throw new ArgumentException("Name of the Unit must be given", nameof(nameOfUnit));
+            if (string.IsNullOrWhiteSpace(unitOfMeasurement)) throw new ArgumentException("Unit of Measurement must be given", nameof(unitOfMeasurement));
         }
     }
 }
