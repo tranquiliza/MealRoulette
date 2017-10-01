@@ -2,9 +2,7 @@
 
 namespace MealRoulette.Domain.Repositories
 {
-    public interface IMealCategoryRepository
+    public interface IMealCategoryRepository : IBaseRepository<MealCategory>
     {
-        MealCategory Get(string name);
-        MealCategory Get(int id);
     }
 }
