@@ -1,5 +1,4 @@
-﻿using MealRoulette.Domain.DomainServices.DataContracts;
-using MealRoulette.Domain.Models;
+﻿using MealRoulette.Domain.Models;
 using MealRoulette.Domain.Repositories;
 using MealRoulette.Domain.Tests.DomainServices.ServiceFactories;
 using Moq;
@@ -36,28 +35,13 @@ namespace MealRoulette.Domain.Tests.DomainServices
             Assert.IsNotNull(mealRepo.Get(mealName));
         }
 
-        private List<IngredientType> CreateIngredientsList()
+        private List<Ingredient> CreateIngredientsList()
         {
-            var ingredients = new List<IngredientType>()
+            var ingredients = new List<Ingredient>()
             {
-                new IngredientType()
-                {
-                    Name = "Pepperoni",
-                    UnitOfMeasurement = "gram",
-                    Amount = 100
-                },
-                new IngredientType()
-                {
-                    Name = "Mozzarella Cheese",
-                    UnitOfMeasurement = "gram",
-                    Amount = 200
-                },
-                new IngredientType()
-                {
-                    Name = "Tomato Sauce",
-                    UnitOfMeasurement = "decilitres",
-                    Amount = 2
-                }
+                new Ingredient("Pepperoni", "gram", 100),
+                new Ingredient("Mozzarella Cheese", "gram", 200),
+                new Ingredient("Tomato Sauce","decilitres",2)
             };
 
             return ingredients;

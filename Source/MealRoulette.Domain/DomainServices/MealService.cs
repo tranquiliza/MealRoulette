@@ -1,5 +1,4 @@
-﻿using MealRoulette.Domain.DomainServices.DataContracts;
-using MealRoulette.Domain.DomainServices.Interfaces;
+﻿using MealRoulette.Domain.DomainServices.Interfaces;
 using MealRoulette.Domain.Exceptions;
 using MealRoulette.Domain.Factories;
 using MealRoulette.Domain.Models;
@@ -31,12 +30,11 @@ namespace MealRoulette.Domain.DomainServices
             _UnitOfWork.MealRepository.Add(meal);
         }
 
-        public void CreateMeal(string name, int mealCategory, List<IngredientType> ingredientDtos)
+        public void CreateMeal(string name, int mealCategory, List<Ingredient> ingredients)
         {
             if (MealAlreadyExists(name)) throw new DomainException($"Meal with given name: {name}, already exists");
 
             var category = _UnitOfWork.MealCategoryRepository.Get(mealCategory);
-            var ingredients = _IngredientFactory.CreateMany(ingredientDtos);
 
             var meal = _MealFactory.Create(name, category, ingredients);
 
