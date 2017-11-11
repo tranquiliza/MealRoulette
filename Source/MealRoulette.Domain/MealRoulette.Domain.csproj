@@ -62,7 +62,6 @@
     <Compile Include="Repositories\IUnitOfWork.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="DomainServices\DataContracts\" />
     <Folder Include="Events\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
