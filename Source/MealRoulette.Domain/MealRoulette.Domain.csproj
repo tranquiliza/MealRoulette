@@ -40,8 +40,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DomainServices\Interfaces\IIngredientService.cs" />
-    <Compile Include="DomainServices\Interfaces\IMealService.cs" />
+    <Compile Include="DataContracts\HolidayDto.cs" />
+    <Compile Include="DataContracts\IngredientDto.cs" />
+    <Compile Include="DataContracts\MealCategoryDto.cs" />
+    <Compile Include="DataContracts\MealDto.cs" />
+    <Compile Include="DataContracts\SeasonDto.cs" />
+    <Compile Include="DomainServices\Abstractions\IIngredientService.cs" />
+    <Compile Include="DomainServices\Abstractions\IMealService.cs" />
     <Compile Include="DomainServices\MealService.cs" />
     <Compile Include="Exceptions\DomainException.cs" />
     <Compile Include="Factories\IngredientFactory.cs" />
@@ -53,13 +58,13 @@
     <Compile Include="Models\MealCategory.cs" />
     <Compile Include="Models\Season.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repositories\DataStructures\IPage.cs" />
-    <Compile Include="Repositories\DataStructures\Page.cs" />
-    <Compile Include="Repositories\IBaseRepository.cs" />
-    <Compile Include="Repositories\IIngredientRepository.cs" />
-    <Compile Include="Repositories\IMealCategoryRepository.cs" />
-    <Compile Include="Repositories\IMealRepository.cs" />
-    <Compile Include="Repositories\IUnitOfWork.cs" />
+    <Compile Include="DataStructures\IPage.cs" />
+    <Compile Include="DataStructures\Page.cs" />
+    <Compile Include="Repositories\Abstractions\IBaseRepository.cs" />
+    <Compile Include="Repositories\Abstractions\IIngredientRepository.cs" />
+    <Compile Include="Repositories\Abstractions\IMealCategoryRepository.cs" />
+    <Compile Include="Repositories\Abstractions\IMealRepository.cs" />
+    <Compile Include="Repositories\Abstractions\IUnitOfWork.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Events\" />

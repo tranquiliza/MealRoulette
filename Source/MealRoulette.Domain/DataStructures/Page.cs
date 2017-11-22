@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace MealRoulette.Domain.Repositories.DataStructures
+namespace MealRoulette.Domain.DataStructures
 {
     public class Page<T> : List<T>, IPage<T>
     {

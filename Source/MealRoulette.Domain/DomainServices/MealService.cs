@@ -1,8 +1,8 @@
-﻿using MealRoulette.Domain.DomainServices.Interfaces;
+﻿using MealRoulette.Domain.DomainServices.Abstractions;
 using MealRoulette.Domain.Exceptions;
 using MealRoulette.Domain.Factories;
 using MealRoulette.Domain.Models;
-using MealRoulette.Domain.Repositories;
+using MealRoulette.Domain.Repositories.Abstractions;
 using System.Collections.Generic;
 
 namespace MealRoulette.Domain.DomainServices
@@ -15,9 +15,9 @@ namespace MealRoulette.Domain.DomainServices
 
         public MealService(IUnitOfWork unitOfWork)
         {
+            _UnitOfWork = unitOfWork ?? throw new System.ArgumentNullException(nameof(unitOfWork));
             _MealFactory = new MealFactory();
             _IngredientFactory = new IngredientFactory();
-            _UnitOfWork = unitOfWork;
         }
 
         public void CreateMeal(string name, int mealCategory)
@@ -49,6 +49,11 @@ namespace MealRoulette.Domain.DomainServices
         public IEnumerable<Meal> GetAll()
         {
             return _UnitOfWork.MealRepository.GetAll();
+        }
+
+        public Meal Get(int id)
+        {
+            return _UnitOfWork.MealRepository.Get(id);
         }
     }
 }

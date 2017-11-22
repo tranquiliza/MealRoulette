@@ -5,7 +5,9 @@ namespace MealRoulette.Domain.Models
     public class Ingredient : BaseEntity
     {
         public string Name { get; private set; }
+
         public string UnitOfMeasurement { get; private set; }
+
         public int Amount { get; private set; }
 
         public Ingredient(string name, string unitOfMeasurement, int amount)

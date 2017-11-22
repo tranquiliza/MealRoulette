@@ -1,4 +1,4 @@
-﻿namespace MealRoulette.Domain.Repositories
+﻿namespace MealRoulette.Domain.Repositories.Abstractions
 {
     public interface IUnitOfWork
     {

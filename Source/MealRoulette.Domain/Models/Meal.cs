@@ -9,17 +9,25 @@ namespace MealRoulette.Domain.Models
         private const string DefaultHardwareCategory = "None";
 
         public string Name { get; private set; }
+
         public string Country { get; private set; } //Better name for "Italian Food"?
+
         public bool IsFastFood { get; set; }
+
         public bool IsVegetarianFriendly { get; private set; } //How do we check ?
+
         public string HardwareCategory { get; private set; }
+
         public Season Season { get; private set; } //Could one dish potentially be more Seasons?
+
         public Holiday Holiday { get; private set; }
+
         public string Recipe { get; private set; }
 
         public MealCategory MealCategory { get; private set; }
 
         private List<Ingredient> _Ingredients { get; set; }
+
         public List<Ingredient> Ingredients
         {
             get

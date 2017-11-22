@@ -1,6 +1,6 @@
 ﻿using MealRoulette.Domain.Models;
 
-namespace MealRoulette.Domain.DomainServices.Interfaces
+namespace MealRoulette.Domain.DomainServices.Abstractions
 {
     public interface IIngredientService
     {

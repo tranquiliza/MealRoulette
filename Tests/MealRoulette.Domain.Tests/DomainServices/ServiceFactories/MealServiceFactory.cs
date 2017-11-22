@@ -1,5 +1,5 @@
 ﻿using MealRoulette.Domain.DomainServices;
-using MealRoulette.Domain.Repositories;
+using MealRoulette.Domain.Repositories.Abstractions;
 using Moq;
 
 namespace MealRoulette.Domain.Tests.DomainServices.ServiceFactories

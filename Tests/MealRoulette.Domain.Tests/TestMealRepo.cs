@@ -1,9 +1,9 @@
 ﻿using MealRoulette.Domain.Models;
-using MealRoulette.Domain.Repositories;
+using MealRoulette.Domain.Repositories.Abstractions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using MealRoulette.Domain.Repositories.DataStructures;
+using MealRoulette.Domain.DataStructures;
 
 namespace MealRoulette.Domain.Tests
 {
