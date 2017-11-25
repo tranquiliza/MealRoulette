@@ -159,6 +159,7 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\IngredientController.cs" />
     <Compile Include="Controllers\MealController.cs" />
     <Compile Include="DependencyInjection\SimpleInjectorDependencyResolver.cs" />
     <Compile Include="Global.asax.cs">
@@ -170,6 +171,7 @@
   <ItemGroup>
     <Content Include="Areas\HelpPage\HelpPage.css" />
     <Content Include="Content\css\materialize.css" />
+    <Content Include="Content\js\InitializeMaterializeComponents.js" />
     <Content Include="Content\js\jquery-3.2.1.js" />
     <Content Include="Content\js\materialize.js" />
     <Content Include="favicon.ico" />

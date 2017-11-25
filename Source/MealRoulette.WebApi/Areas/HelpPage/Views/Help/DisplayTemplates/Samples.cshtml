@@ -4,27 +4,22 @@
 @{
     // Group the samples into a single tab if they are the same.
     Dictionary<string, object> samples = Model.GroupBy(pair => pair.Value).ToDictionary(
-        pair => String.Join(", ", pair.Select(m => m.Key.ToString()).ToArray()), 
+        pair => String.Join(", ", pair.Select(m => m.Key.ToString()).ToArray()),
         pair => pair.Key);
     var mediaTypes = samples.Keys;
 }
-<div>
-    @foreach (var mediaType in mediaTypes)
+@foreach (var mediaType in mediaTypes)
+{
+    <p class="flow-text">@mediaType</p>
+    <b>Sample:</b>
+
+    var sample = samples[mediaType];
+    if (sample == null)
     {
-        <h4 class="sample-header">@mediaType</h4>
-        <div class="sample-content">
-            <span><b>Sample:</b></span>
-            @{
-                var sample = samples[mediaType];
-                if (sample == null)
-                {
-                    <p>Sample not available.</p>
-                }
-                else
-                {
-                    @Html.DisplayFor(s => sample);
-                }
-            }
-        </div>
+        <p>Sample not available.</p>
     }
-</div>
+    else
+    {
+        @Html.DisplayFor(s => sample)
+    }
+}

@@ -5,6 +5,7 @@ using MealRoulette.Domain.Repositories.Abstractions;
 using MealRoulette.WebApi.DependencyInjection;
 using SimpleInjector;
 using System.Web.Http;
+using MealRoulette.Domain.Models;
 
 namespace MealRoulette.WebApi
 {
@@ -29,6 +30,7 @@ namespace MealRoulette.WebApi
         {
             var container = new Container();
             container.Register<IMealService, MealService>();
+            container.Register<IIngredientService, IngredientService>();
             container.Register<IUnitOfWork, UnitOfWork>();
 
             var services = GlobalConfiguration.Configuration.Services;
@@ -40,19 +42,45 @@ namespace MealRoulette.WebApi
 
             GlobalConfiguration.Configuration.DependencyResolver = new SimpleInjectorDependencyResolver(container);
         }
+    }
 
-        internal class UnitOfWork : IUnitOfWork
+
+    #region .Temporary Test Implementations PLEASE DELETE BEFORE PRODUCTION!.
+    internal class UnitOfWork : IUnitOfWork
+    {
+        public IIngredientRepository IngredientRepository => throw new System.NotImplementedException();
+
+        public IMealRepository MealRepository => throw new System.NotImplementedException();
+
+        public IMealCategoryRepository MealCategoryRepository => throw new System.NotImplementedException();
+
+        public void SaveChanges()
         {
-            public IIngredientRepository IngredientRepository => throw new System.NotImplementedException();
-
-            public IMealRepository MealRepository => throw new System.NotImplementedException();
-
-            public IMealCategoryRepository MealCategoryRepository => throw new System.NotImplementedException();
-
-            public void SaveChanges()
-            {
-                throw new System.NotImplementedException();
-            }
+            throw new System.NotImplementedException();
         }
     }
+
+    internal class IngredientService : IIngredientService
+    {
+        public void CreateIngredient(string name, string unitOfMeasurement, int amount)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public Ingredient Get(int id)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void SetAmount(int amount, Ingredient ingredient)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void SetUnitOfMeasurement(string unitOfMeasurement, Ingredient ingredient)
+        {
+            throw new System.NotImplementedException();
+        }
+    }
+    #endregion
 }

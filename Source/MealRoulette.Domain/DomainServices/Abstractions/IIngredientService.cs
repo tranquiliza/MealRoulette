@@ -9,5 +9,7 @@ namespace MealRoulette.Domain.DomainServices.Abstractions
         void SetUnitOfMeasurement(string unitOfMeasurement, Ingredient ingredient);
 
         void SetAmount(int amount, Ingredient ingredient);
+
+        Ingredient Get(int id);
     }
 }
