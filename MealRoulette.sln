@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26730.16
+VisualStudioVersion = 15.0.27004.2009
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Source", "Source", "{33DCB945-6BAE-4D13-9220-386B8D0D5843}"
 EndProject
@@ -12,6 +12,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MealRoulette.Domain.Tests", "Tests\MealRoulette.Domain.Tests\MealRoulette.Domain.Tests.csproj", "{83D61684-FE97-4065-A069-3CDC281E095D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MealRoulette.WebApi", "Source\MealRoulette.WebApi\MealRoulette.WebApi.csproj", "{5A22553F-F75E-4E40-8126-84B608CFD8B1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MealRoulette.WebApi.Tests", "Tests\MealRoulette.WebApi.Tests\MealRoulette.WebApi.Tests.csproj", "{9372C540-AC79-45C3-83FE-D4FC0857A9CE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,6 +33,10 @@ Global
 		{5A22553F-F75E-4E40-8126-84B608CFD8B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5A22553F-F75E-4E40-8126-84B608CFD8B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5A22553F-F75E-4E40-8126-84B608CFD8B1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9372C540-AC79-45C3-83FE-D4FC0857A9CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9372C540-AC79-45C3-83FE-D4FC0857A9CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9372C540-AC79-45C3-83FE-D4FC0857A9CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9372C540-AC79-45C3-83FE-D4FC0857A9CE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -39,6 +45,7 @@ Global
 		{2D848935-D1F0-4A80-AF9E-4D9B5D560E5D} = {33DCB945-6BAE-4D13-9220-386B8D0D5843}
 		{83D61684-FE97-4065-A069-3CDC281E095D} = {BEC26925-750A-4C0D-8D4A-FE3857C823FB}
 		{5A22553F-F75E-4E40-8126-84B608CFD8B1} = {33DCB945-6BAE-4D13-9220-386B8D0D5843}
+		{9372C540-AC79-45C3-83FE-D4FC0857A9CE} = {BEC26925-750A-4C0D-8D4A-FE3857C823FB}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {77C6F451-1FD9-4508-A540-3CA9AF259E79}

@@ -1,12 +1,18 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
+    <link type="text/css" href="~/Content/css/materialize.css" rel="stylesheet" />
+    <link type="text/css" href="~/Content/css/Site.css" rel="stylesheet" />
+
     @RenderSection("scripts", required: false)
 </head>
 <body>
     @RenderBody()
+
+    <script src="~/Content/js/jquery-3.2.1.js"></script>
+    <script src="~/Content/js/materialize.js"></script>
 </body>
 </html>

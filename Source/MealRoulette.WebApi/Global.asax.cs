@@ -17,10 +17,5 @@ namespace MealRoulette.WebApi
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
-
-        private void Container()
-        {
-            var container = new Container();
-        }
     }
 }
