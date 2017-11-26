@@ -21,9 +21,10 @@ namespace MealRoulette.Domain.Tests
             meals.Add(meal);
         }
 
-        public void Delete(Meal entity)
+        public void Delete(int Id)
         {
-            throw new NotImplementedException();
+            var mealToRemove = meals.Single(x => x.Id == Id);
+            meals.Remove(mealToRemove);
         }
 
         public Meal Get(string name)
@@ -34,17 +35,19 @@ namespace MealRoulette.Domain.Tests
 
         public Meal Get(int id)
         {
-            throw new NotImplementedException();
+            var meal = meals.Single(m => m.Id == id);
+            return meal;
         }
 
         public IEnumerable<Meal> GetAll()
         {
-            throw new NotImplementedException();
+            return meals;
         }
 
         public IPage<Meal> GetPage(int index, int size)
         {
-            throw new NotImplementedException();
+            var page = new Page<Meal>(meals, index, size, meals.Count);
+            return page;
         }
     }
 }

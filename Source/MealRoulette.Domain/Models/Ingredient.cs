@@ -6,31 +6,18 @@ namespace MealRoulette.Domain.Models
     {
         public string Name { get; private set; }
 
-        public string UnitOfMeasurement { get; private set; }
-
-        public int Amount { get; private set; }
-
-        public Ingredient(string name, string unitOfMeasurement, int amount)
+        internal Ingredient(string name)
         {
             if (string.IsNullOrWhiteSpace(name)) throw new ArgumentException("Name must be given", nameof(name));
-            if (string.IsNullOrWhiteSpace(unitOfMeasurement)) throw new ArgumentException("Unit name must be given", nameof(name));
-            if (amount <= 0) throw new ArgumentOutOfRangeException(nameof(amount), amount, "Amount given must be higher than 0");
 
             Name = name;
-            UnitOfMeasurement = unitOfMeasurement;
-            Amount = amount;
         }
 
-        public void SetAmount(int amount)
+        internal void SetName(string name)
         {
-            if (amount <= 0) throw new ArgumentOutOfRangeException(nameof(amount), amount, "Amount given must be higher than 0");
+            if (string.IsNullOrWhiteSpace(name)) throw new ArgumentNullException(nameof(name));
 
-            Amount = amount;
-        }
-
-        public void SetUnitOfMeasurement(string unitOfMeasurement)
-        {
-            if (string.IsNullOrWhiteSpace(unitOfMeasurement)) throw new ArgumentException("Unit of Measurement must be given", nameof(unitOfMeasurement));
+            Name = name;
         }
     }
 }

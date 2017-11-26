@@ -26,25 +26,35 @@ namespace MealRoulette.Domain.Tests.DomainServices
             var mealService = mealServiceFactory.Build();
 
             var mealName = "Pepperoni Pizza";
+            var mealCategory = new MealCategory("Lunch");
             var ingredients = CreateIngredientsList();
 
             //Act
-            mealService.CreateMeal(mealName, 1, ingredients);
+            mealService.CreateMeal(mealName, mealCategory, ingredients);
 
             //Assert
             Assert.IsNotNull(mealRepo.Get(mealName));
         }
 
-        private List<Ingredient> CreateIngredientsList()
+        private List<MealIngredient> CreateIngredientsList()
         {
             var ingredients = new List<Ingredient>()
             {
-                new Ingredient("Pepperoni", "gram", 100),
-                new Ingredient("Mozzarella Cheese", "gram", 200),
-                new Ingredient("Tomato Sauce","decilitres",2)
+                new Ingredient("Pepperoni"),
+                new Ingredient("Mozzarella Cheese"),
+                new Ingredient("Tomato Sauce")
             };
 
-            return ingredients;
+            var mealIngredients = new List<MealIngredient>();
+            var idCounter = 0;
+            foreach (var ingredient in ingredients)
+            {
+                typeof(BaseEntity).GetProperty("Id").SetValue(ingredient, idCounter);
+                mealIngredients.Add(new MealIngredient(ingredient, 10, "Grams"));
+                idCounter++;
+            }
+
+            return mealIngredients;
         }
 
         private IIngredientRepository CreateIngredientRepo()
@@ -67,9 +77,10 @@ namespace MealRoulette.Domain.Tests.DomainServices
             var mealService = mealServiceFactory.Build();
 
             var mealName = "Pepperoni Pizza";
+            var mealCategory = new MealCategory("Dinner");
 
             //Act
-            mealService.CreateMeal(mealName, 1);
+            mealService.CreateMeal(mealName, mealCategory);
 
             //Assert
             Assert.IsNotNull(mealRepo.Get(mealName));

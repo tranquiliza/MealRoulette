@@ -1,10 +1,10 @@
-﻿using MealRoulette.Domain.DomainServices;
+﻿using MealRoulette.Domain.Services;
 using MealRoulette.Domain.Repositories.Abstractions;
 using Moq;
 
 namespace MealRoulette.Domain.Tests.DomainServices.ServiceFactories
 {
-    public class MealServiceFactory
+    internal class MealServiceFactory
     {
         private IIngredientRepository _IngredientRepository;
         private IMealCategoryRepository _MealCategoryRepository;

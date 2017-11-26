@@ -6,7 +6,7 @@ namespace MealRoulette.Domain.Models
     {
         public string Name { get; private set; }
 
-        public MealCategory(string name)
+        internal MealCategory(string name)
         {
             if (string.IsNullOrWhiteSpace(name)) throw new ArgumentException("Name must be given", nameof(name));
 

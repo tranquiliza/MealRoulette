@@ -1,4 +1,4 @@
-﻿using MealRoulette.Domain.DomainServices.Abstractions;
+﻿using MealRoulette.Domain.Services.Abstractions;
 using MealRoulette.Domain.Models;
 using MealRoulette.WebApi.Models.Meal;
 using System;
@@ -17,13 +17,11 @@ namespace MealRoulette.WebApi.Controllers
 
         public Meal Get(int id)
         {
-            
             return mealService.Get(id);
         }
-        
+
         public void Post([FromBody]MealCreateApiModel meal)
         {
-            mealService.CreateMeal(meal.Name, meal.CategoryId);
         }
     }
 }

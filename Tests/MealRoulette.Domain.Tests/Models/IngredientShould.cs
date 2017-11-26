@@ -12,11 +12,9 @@ namespace MealRoulette.Domain.Tests.Models
         {
             //Arrange
             const string Name = "Chicken";
-            const string unitOfMeasurement = "Gram";
-            const int Amount = 400;
 
             //Act
-            var sut = new Ingredient(Name, unitOfMeasurement, Amount);
+            var sut = new Ingredient(Name);
 
             //Assert
             Assert.IsNotNull(sut);
@@ -27,44 +25,12 @@ namespace MealRoulette.Domain.Tests.Models
         {
             //Arrange
             const string Name = "";
-            const string unitOfMeasurement = "Gram";
-            const int Amount = 400;
 
             //Act
-            TestDelegate sut = new TestDelegate(() => new Ingredient(Name, unitOfMeasurement, Amount));
+            TestDelegate sut = new TestDelegate(() => new Ingredient(Name));
 
             //Assert
             Assert.Throws<ArgumentException>(sut);
-        }
-
-        [Test]
-        public void ThrowArgumentExceptionOnMissingUnitOfMeasurement()
-        {
-            //Arrange
-            const string Name = "Chicken";
-            const string unitOfMeasurement = "";
-            const int Amount = 400;
-
-            //Act
-            TestDelegate sut = new TestDelegate(() => new Ingredient(Name, unitOfMeasurement, Amount));
-
-            //Assert
-            Assert.Throws<ArgumentException>(sut);
-        }
-
-        [Test]
-        public void ThrowArgumentOutOfRangeExceptionOnAmountLessThanOrEqualToZero()
-        {
-            //Arrange
-            const string Name = "Chicken";
-            const string unitOfMeasurement = "Gram";
-            const int Amount = 0;
-
-            //Act
-            TestDelegate sut = new TestDelegate(() => new Ingredient(Name, unitOfMeasurement, Amount));
-
-            //Assert
-            Assert.Throws<ArgumentOutOfRangeException>(sut);
         }
     }
 }

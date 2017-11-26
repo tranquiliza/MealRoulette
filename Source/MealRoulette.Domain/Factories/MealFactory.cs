@@ -3,18 +3,19 @@ using System.Collections.Generic;
 
 namespace MealRoulette.Domain.Factories
 {
-    class MealFactory
+    static class MealFactory
     {
-        public Meal Create(string name, MealCategory mealCategory)
+        public static Meal Create(string name, MealCategory mealCategory)
         {
             var meal = new Meal(name, mealCategory);
             return meal;
         }
 
-        public Meal Create(string name, MealCategory mealCategory, IEnumerable<Ingredient> ingredients)
+
+        public static Meal Create(string name, MealCategory mealCategory, IEnumerable<MealIngredient> mealIngredients)
         {
             var meal = new Meal(name, mealCategory);
-            foreach (Ingredient ingredient in ingredients)
+            foreach (MealIngredient ingredient in mealIngredients)
             {
                 meal.AddIngredient(ingredient);
             }

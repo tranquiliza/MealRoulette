@@ -29,10 +29,11 @@ namespace MealRoulette.Domain.Tests.Models
         {
             //Arrange
             var sut = CreateMealWithoutIngredients();
-            var ingredient = new Ingredient("Chicken", "Grams", 400);
+            var ingredient = new Ingredient("Chicken");
+            var mealIngredient = new MealIngredient(ingredient, 10, "Grams");
 
             //Act
-            sut.AddIngredient(ingredient);
+            sut.AddIngredient(mealIngredient);
 
             //Assert
             Assert.AreEqual(1, sut.Ingredients.Count);
@@ -49,10 +50,11 @@ namespace MealRoulette.Domain.Tests.Models
         {
             //Arrange
             var meal = CreateMealWithChicken();
-            var duplicateIngredient = new Ingredient("Chicken", "gram", 500);
+            var duplicateIngredient = new Ingredient("Chicken");
+            var mealIngredient = new MealIngredient(duplicateIngredient, 10, "Gram");
 
             //Act
-            TestDelegate sut = delegate { meal.AddIngredient(duplicateIngredient); };
+            TestDelegate sut = delegate { meal.AddIngredient(mealIngredient); };
 
             //Assert
             Assert.Throws<DomainException>(sut);
@@ -60,10 +62,11 @@ namespace MealRoulette.Domain.Tests.Models
 
         private Meal CreateMealWithChicken()
         {
-            var ingredient = new Ingredient("Chicken", "gram", 500);
-
+            var ingredient = new Ingredient("Chicken");
+            var mealIngredient = new MealIngredient(ingredient, 10, "Gram");
             var meal = new Meal("ThisHasChicken", new MealCategory("Dinner"));
-            meal.AddIngredient(ingredient);
+
+            meal.AddIngredient(mealIngredient);
 
             return meal;
         }

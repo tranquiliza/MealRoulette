@@ -26,9 +26,9 @@ namespace MealRoulette.Domain.Models
 
         public MealCategory MealCategory { get; private set; }
 
-        private List<Ingredient> _Ingredients { get; set; }
+        private List<MealIngredient> _Ingredients { get; set; }
 
-        public List<Ingredient> Ingredients
+        public List<MealIngredient> Ingredients
         {
             get
             {
@@ -41,45 +41,45 @@ namespace MealRoulette.Domain.Models
         /// </summary>
         /// <param name="name">Cannot be NullOrEmpty</param>
         /// <param name="mealCategory">Cannot be Null</param>
-        public Meal(string name, MealCategory mealCategory)
+        internal Meal(string name, MealCategory mealCategory)
         {
             if (mealCategory == null) throw new ArgumentNullException(nameof(mealCategory));
             if (string.IsNullOrEmpty(name)) throw new ArgumentException(nameof(name));
 
-            _Ingredients = new List<Ingredient>();
+            _Ingredients = new List<MealIngredient>();
             Name = name;
             MealCategory = mealCategory;
             HardwareCategory = DefaultHardwareCategory;
         }
 
-        public void AddIngredient(Ingredient ingredient)
+        internal void AddIngredient(MealIngredient mealIngredient)
         {
-            if (ingredient == null) throw new ArgumentNullException(nameof(ingredient));
-            if (MealAlreadyHas(ingredient)) throw new DomainException($"This meal already contains {ingredient.Name}");
+            if (mealIngredient == null) throw new ArgumentNullException(nameof(mealIngredient));
+            if (MealAlreadyHas(mealIngredient)) throw new DomainException($"This meal already contains {mealIngredient.Ingredient.Name}");
 
-            _Ingredients.Add(ingredient);
+            _Ingredients.Add(mealIngredient);
         }
 
-        private bool MealAlreadyHas(Ingredient ingredient)
+        private bool MealAlreadyHas(MealIngredient mealIngredient)
         {
-            return _Ingredients.FindAll(m => m.Name.ToLower() == ingredient.Name.ToLower()).Count > 0;
+            return _Ingredients.FindAll(m => m.Ingredient.Id == mealIngredient.Ingredient.Id).Count > 0;
         }
 
-        public void SetRecipe(string recipe)
+        internal void SetRecipe(string recipe)
         {
             if (string.IsNullOrWhiteSpace(recipe)) throw new ArgumentException(nameof(recipe));
 
             Recipe = recipe;
         }
 
-        public void SetHoliday(Holiday holiday)
+        internal void SetHoliday(Holiday holiday)
         {
             if (holiday == null) throw new ArgumentNullException(nameof(holiday));
 
             Holiday = holiday;
         }
 
-        public void SetHardwareCategory(string hardwareCategory)
+        internal void SetHardwareCategory(string hardwareCategory)
         {
             if (string.IsNullOrWhiteSpace(hardwareCategory))
             {
