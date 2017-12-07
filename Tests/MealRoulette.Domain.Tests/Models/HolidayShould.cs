@@ -25,7 +25,7 @@ namespace MealRoulette.Domain.Tests.Models
         }
 
         [Test]
-        public void ThrowExceptionWhenNameGivenIsNullOrWhiteSpace()
+        public void Throw_Exception_When_Name_Given_IsNullOrWhiteSpace()
         {
             //Arrange
 

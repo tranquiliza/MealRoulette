@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http.Dependencies;
 
-namespace MealRoulette.Boostrapper.DependencyInjection
+namespace MealRoulette.WebApi.App_Start.DependencyInjection
 {
     public class SimpleInjectorDependencyResolver : IDependencyResolver
     {
@@ -14,7 +14,7 @@ namespace MealRoulette.Boostrapper.DependencyInjection
         {
             this.container = container ?? throw new ArgumentNullException(nameof(container));
         }
-        
+
         public IDependencyScope BeginScope()
         {
             return this;

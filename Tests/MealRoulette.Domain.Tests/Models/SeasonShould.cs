@@ -21,7 +21,7 @@ namespace MealRoulette.Domain.Tests.Models
         }
 
         [Test]
-        public void ThrowArgumentExceptionWhenEmptyNameIsGiven()
+        public void Throw_Argument_Exception_When_Empty_Name_Is_Given()
         {
             //Arrange
 

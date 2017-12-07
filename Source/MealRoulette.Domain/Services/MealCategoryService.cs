@@ -1,12 +1,10 @@
-﻿using MealRoulette.Domain.Services.Abstractions;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MealRoulette.Domain.DataStructures;
+using MealRoulette.Domain.Exceptions;
 using MealRoulette.Domain.Models;
 using MealRoulette.Domain.Repositories.Abstractions;
-using MealRoulette.Domain.DataStructures;
+using MealRoulette.Domain.Services.Abstractions;
+using System;
+using System.Collections.Generic;
 
 namespace MealRoulette.Domain.Services
 {
@@ -23,7 +21,11 @@ namespace MealRoulette.Domain.Services
 
         public void Create(string name)
         {
-            var mealCategory = new MealCategory(name);
+            var mealCategory = mealCategoryRepository.Find(name);
+            if (mealCategory != null) throw new DomainException($"Mealcategory named {name} already exists");
+
+            mealCategory = new MealCategory(name);
+
             mealCategoryRepository.Add(mealCategory);
         }
 

@@ -10,8 +10,7 @@ namespace MealRoulette.Domain.Factories
             var meal = new Meal(name, mealCategory);
             return meal;
         }
-
-
+        
         public static Meal Create(string name, MealCategory mealCategory, IEnumerable<MealIngredient> mealIngredients)
         {
             var meal = new Meal(name, mealCategory);

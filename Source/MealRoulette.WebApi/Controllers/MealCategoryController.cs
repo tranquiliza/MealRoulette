@@ -1,5 +1,9 @@
-﻿using MealRoulette.Domain.Services.Abstractions;
+﻿using MealRoulette.Domain.DataStructures;
+using MealRoulette.Domain.Exceptions;
+using MealRoulette.Domain.Models;
+using MealRoulette.Domain.Services.Abstractions;
 using MealRoulette.WebApi.Models.MealCategory;
+using System.Collections.Generic;
 using System.Web.Http;
 
 namespace MealRoulette.WebApi.Controllers
@@ -13,9 +17,33 @@ namespace MealRoulette.WebApi.Controllers
             this.mealCategoryService = mealCategoryService;
         }
 
-        public void Put([FromBody]CreateMealCategoryApiModel createMealCategoryRequest)
+        public MealCategory Get(int id)
         {
-            mealCategoryService.Create(createMealCategoryRequest.Name);
+            return mealCategoryService.Get(id);
+        }
+
+        public IEnumerable<MealCategory> Get()
+        {
+            return mealCategoryService.GetAll();
+        }
+
+        public IPage<MealCategory> GetPage(int index, int pageSize)
+        {
+            return mealCategoryService.GetPage(index, pageSize);
+        }
+
+        public IHttpActionResult Post([FromBody]CreateMealCategoryApiRequest createMealCategoryRequest)
+        {
+            try
+            {
+                mealCategoryService.Create(createMealCategoryRequest.Name);
+            }
+            catch (DomainException error)
+            {
+                return BadRequest(error.Message);
+            }
+            
+            return Ok();
         }
     }
 }

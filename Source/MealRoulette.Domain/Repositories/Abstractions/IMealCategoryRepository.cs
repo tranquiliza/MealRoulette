@@ -4,5 +4,6 @@ namespace MealRoulette.Domain.Repositories.Abstractions
 {
     public interface IMealCategoryRepository : IBaseRepository<MealCategory>
     {
+        MealCategory Find(string name);
     }
 }

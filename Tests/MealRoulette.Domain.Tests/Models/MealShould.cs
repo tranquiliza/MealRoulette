@@ -11,7 +11,7 @@ namespace MealRoulette.Domain.Tests.Models
         private const string DefaultHardwareCategory = "None";
 
         [Test]
-        public void CreateWithDefaultValues()
+        public void Create_With_Default_Values()
         {
             //Arrange
             const string mealName = "MyFirstMeal";
@@ -25,7 +25,7 @@ namespace MealRoulette.Domain.Tests.Models
         }
 
         [Test]
-        public void AddIngredient()
+        public void Add_Ingredient()
         {
             //Arrange
             var sut = CreateMealWithoutIngredients();
@@ -46,7 +46,7 @@ namespace MealRoulette.Domain.Tests.Models
         }
 
         [Test]
-        public void ThrowExceptionIfAddingSameIngredientTwice()
+        public void Throw_Exception_If_Adding_Same_Ingredient_Twice()
         {
             //Arrange
             var meal = CreateMealWithChicken();
@@ -72,7 +72,7 @@ namespace MealRoulette.Domain.Tests.Models
         }
 
         [Test]
-        public void SetRecipe()
+        public void Set_Recipe()
         {
             //Arrange
             var meal = CreateMealWithoutIngredients();
@@ -86,7 +86,7 @@ namespace MealRoulette.Domain.Tests.Models
         }
 
         [Test]
-        public void ThrowsArgumentExceptionIfSettingEmptyRecipe()
+        public void Throws_ArgumentException_If_Setting_Empty_Recipe()
         {
             //Arrange
             var meal = CreateMealWithoutIngredients();
@@ -99,7 +99,7 @@ namespace MealRoulette.Domain.Tests.Models
         }
 
         [Test]
-        public void SetHoliday()
+        public void Set_Holiday()
         {
             //Arrange
             var sut = CreateMealWithoutIngredients();
@@ -113,7 +113,7 @@ namespace MealRoulette.Domain.Tests.Models
         }
 
         [Test]
-        public void ThrowArgumentNullExceptionIfEmptyHolidayIsGiven()
+        public void Throw_ArgumentNullException_If_Empty_Holiday_Is_Given()
         {
             //Arrange
             var meal = CreateMealWithoutIngredients();
@@ -126,7 +126,7 @@ namespace MealRoulette.Domain.Tests.Models
         }
 
         [Test]
-        public void SetHardwareCategory()
+        public void Set_Hardware_Category()
         {
             //Arrange
             var sut = CreateMealWithoutIngredients();
@@ -140,7 +140,7 @@ namespace MealRoulette.Domain.Tests.Models
         }
 
         [Test]
-        public void SetHardwareCategoryToDefaultIfEmptyStringIsGiven()
+        public void Set_Hardware_Category_To_Default_If_Empty_String_Is_Given()
         {
             //Arrange
             var sut = CreateMealWithoutIngredients();

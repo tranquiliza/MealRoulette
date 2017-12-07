@@ -1,18 +1,17 @@
-﻿using MealRoulette.Domain.Models;
+﻿using MealRoulette.Domain.DataContracts;
+using MealRoulette.Domain.Models;
 using System.Collections.Generic;
 
 namespace MealRoulette.Domain.Services.Abstractions
 {
     public interface IMealService : IBaseService<Meal>
     {
-        void CreateMeal(string name);
+        void CreateMeal(string mealName, MealCategoryDto mealCategoryDto, IEnumerable<MealIngredientDto> enumerable);
 
-        void CreateMeal(string name, MealCategory mealCategory);
+        void CreateMeal(string mealName, MealCategoryDto mealCategory);
+        
+        void AddIngredient(int mealId, MealIngredientDto ingredientDto);
 
-        void CreateMeal(string name, MealCategory mealCategory, IEnumerable<MealIngredient> ingredient);
-
-        void AddIngredient(int id, MealIngredient ingredient);
-
-        void AddIngredients(int id, IEnumerable<MealIngredient> ingredient);
+        void AddIngredients(int mealId, IEnumerable<MealIngredientDto> ingredientDtos);
     }
 }

@@ -21,7 +21,7 @@ namespace MealRoulette.Domain.Tests.Models
         }
 
         [Test]
-        public void ThrowArgumentExceptionOnMissingName()
+        public void Throw_ArgumentException_On_Missing_Name()
         {
             //Arrange
             const string Name = "";

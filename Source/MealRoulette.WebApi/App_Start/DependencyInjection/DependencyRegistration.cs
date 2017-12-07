@@ -1,12 +1,14 @@
 ﻿using System.Collections.Generic;
+using AutoMapper;
 using MealRoulette.Domain.DataStructures;
 using MealRoulette.Domain.Models;
 using MealRoulette.Domain.Repositories.Abstractions;
 using MealRoulette.Domain.Services;
 using MealRoulette.Domain.Services.Abstractions;
+using MealRoulette.WebApi.App_Start.MappingConfig;
 using SimpleInjector;
 
-namespace MealRoulette.WebApi.DependencyInjection
+namespace MealRoulette.WebApi.App_Start.DependencyInjection
 {
     public static class DependencyRegistration
     {
@@ -17,7 +19,6 @@ namespace MealRoulette.WebApi.DependencyInjection
             container.Register<IMealRepository, TestMealRepository>();
             container.Register<IMealCategoryRepository, TestMealCategoryRepository>();
             container.Register<IMealCategoryService, MealCategoryService>();
-
             container.Register<IMealService, MealService>();
         }
     }
@@ -56,6 +57,11 @@ namespace MealRoulette.WebApi.DependencyInjection
         }
 
         public void Delete(int id)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public MealCategory Find(string name)
         {
             throw new System.NotImplementedException();
         }

@@ -40,6 +40,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataContracts\IngredientDto.cs" />
+    <Compile Include="DataContracts\MealCategoryDto.cs" />
+    <Compile Include="DataContracts\MealIngredientDto.cs" />
+    <Compile Include="Factories\MealIngredientFactory.cs" />
     <Compile Include="Services\Abstractions\IBaseService.cs" />
     <Compile Include="Services\Abstractions\IIngredientService.cs" />
     <Compile Include="Services\Abstractions\IMealCategoryService.cs" />
@@ -67,6 +71,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Events\" />
+    <Folder Include="Extensions\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

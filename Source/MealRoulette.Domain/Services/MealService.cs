@@ -5,50 +5,80 @@ using MealRoulette.Domain.Models;
 using MealRoulette.Domain.Repositories.Abstractions;
 using System.Collections.Generic;
 using MealRoulette.Domain.DataStructures;
+using MealRoulette.Domain.DataContracts;
+using System;
 
 namespace MealRoulette.Domain.Services
 {
     public class MealService : IMealService
     {
         private readonly IMealRepository mealRepository;
+        private readonly IMealCategoryRepository mealCategoryRepository;
+        private readonly IIngredientRepository ingredientRepository;
 
         public MealService(IUnitOfWork unitOfWork)
         {
-            if (unitOfWork == null) throw new System.ArgumentNullException(nameof(unitOfWork));
+            if (unitOfWork == null) throw new ArgumentNullException(nameof(unitOfWork));
 
             mealRepository = unitOfWork.MealRepository;
+            mealCategoryRepository = unitOfWork.MealCategoryRepository;
+            ingredientRepository = unitOfWork.IngredientRepository;
         }
 
-        public void CreateMeal(string name)
+        public void CreateMeal(string mealName, MealCategoryDto mealCategoryDto)
         {
-            throw new System.NotImplementedException();
-        }
+            if (string.IsNullOrWhiteSpace(mealName)) throw new ArgumentException("Meal name cannot be empty", nameof(mealName));
+            if (mealCategoryDto == null) throw new ArgumentNullException(nameof(mealCategoryDto));
 
-        public void CreateMeal(string name, MealCategory mealCategory)
-        {
-            var meal = MealFactory.Create(name, mealCategory);
+            var mealCategory = mealCategoryRepository.Get(mealCategoryDto.Id);
+
+            var meal = MealFactory.Create(mealName, mealCategory);
             mealRepository.Add(meal);
         }
 
-        public void CreateMeal(string name, MealCategory mealCategory, IEnumerable<MealIngredient> mealIngredients)
+        public void CreateMeal(string mealName, MealCategoryDto mealCategoryDto, IEnumerable<MealIngredientDto> mealIngredientDtos)
         {
-            var meal = MealFactory.Create(name, mealCategory, mealIngredients);
+            if (string.IsNullOrEmpty(mealName)) throw new ArgumentException("Meal name cannot be empty", nameof(mealName));
+            if (mealCategoryDto == null) throw new ArgumentNullException(nameof(mealCategoryDto));
+            if (mealIngredientDtos == null) throw new ArgumentNullException(nameof(mealIngredientDtos));
+
+            var mealCategory = mealCategoryRepository.Get(mealCategoryDto.Id);
+            var mealIngredients = RetrieveMealIngredients(mealIngredientDtos);
+
+            var meal = MealFactory.Create(mealName, mealCategory, mealIngredients);
             mealRepository.Add(meal);
         }
 
-        public void AddIngredient(int id, MealIngredient mealIngredient)
+        private IEnumerable<MealIngredient> RetrieveMealIngredients(IEnumerable<MealIngredientDto> mealIngredientDtos)
         {
-            var meal = mealRepository.Get(id);
-            meal.AddIngredient(mealIngredient);
-        }
-
-        public void AddIngredients(int id, IEnumerable<MealIngredient> mealIngredients)
-        {
-            var meal = mealRepository.Get(id);
-
-            foreach (var mealIngredient in mealIngredients)
+            var mealIngredients = new List<MealIngredient>();
+            foreach (var mealIngredientDto in mealIngredientDtos)
             {
-                meal.AddIngredient(mealIngredient);
+                var ingredient = ingredientRepository.Get(mealIngredientDto.IngredientId);
+
+                mealIngredients.Add(MealIngredientFactory.Create(ingredient, mealIngredientDto.Amount, mealIngredientDto.UnitOfMeasurement));
+            }
+
+            return mealIngredients;
+        }
+
+        public void AddIngredient(int mealId, MealIngredientDto mealIngredientDto)
+        {
+            var meal = mealRepository.Get(mealId);
+            var ingredient = ingredientRepository.Get(mealIngredientDto.IngredientId);
+
+            meal.AddIngredient(MealIngredientFactory.Create(ingredient, mealIngredientDto.Amount, mealIngredientDto.UnitOfMeasurement));
+        }
+
+        public void AddIngredients(int mealId, IEnumerable<MealIngredientDto> mealIngredientDtos)
+        {
+            var meal = mealRepository.Get(mealId);
+
+            foreach (var mealIngredientdto in mealIngredientDtos)
+            {
+                var ingredient = ingredientRepository.Get(mealIngredientdto.IngredientId);
+
+                meal.AddIngredient(MealIngredientFactory.Create(ingredient, mealIngredientdto.Amount, mealIngredientdto.UnitOfMeasurement));
             }
         }
 

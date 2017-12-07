@@ -52,6 +52,8 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DomainServices\ServiceFactories\MealCategoryServiceFactory.cs" />
+    <Compile Include="DomainServices\MealCategoryServiceShould.cs" />
     <Compile Include="DomainServices\ServiceFactories\MealServiceFactory.cs" />
     <Compile Include="DomainServices\MealServiceShould.cs" />
     <Compile Include="Models\HolidayShould.cs" />
@@ -68,9 +70,7 @@
       <Name>MealRoulette.Domain</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Factories\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
