@@ -18,19 +18,19 @@ namespace MealRoulette.Domain.Tests.Services.ServiceFactories
             _MealRepository = null;
         }
 
-        internal MealServiceFactory WithIngredientRepo(IIngredientRepository ingredientRepository)
+        internal MealServiceFactory WithIngredientRepository(IIngredientRepository ingredientRepository)
         {
             _IngredientRepository = ingredientRepository;
             return this;
         }
 
-        internal MealServiceFactory WithMealCategoryRepo(IMealCategoryRepository mealCategoryRepository)
+        internal MealServiceFactory WithMealCategoryRepository(IMealCategoryRepository mealCategoryRepository)
         {
             _MealCategoryRepository = mealCategoryRepository;
             return this;
         }
 
-        internal MealServiceFactory WithMealRepo(IMealRepository mealRepository)
+        internal MealServiceFactory WithMealRepository(IMealRepository mealRepository)
         {
             _MealRepository = mealRepository;
             return this;

@@ -19,46 +19,55 @@ namespace MealRoulette.Domain.Tests.Services
             var mealCategoryRepo = CreateMealCategoryRepo();
             var ingredientRepo = CreateIngredientRepo();
 
-            var mealServiceFactory = new MealServiceFactory()
-                .WithIngredientRepo(ingredientRepo)
-                .WithMealCategoryRepo(mealCategoryRepo)
-                .WithMealRepo(mealRepo);
-
-            var mealService = mealServiceFactory.Build();
-
+            var mealService = new MealServiceFactory()
+                .WithIngredientRepository(ingredientRepo)
+                .WithMealCategoryRepository(mealCategoryRepo)
+                .WithMealRepository(mealRepo)
+                .Build();
+                        
             var mealName = "Pepperoni Pizza";
             var mealCategory = new MealCategoryDto()
             {
                 Id = 1,
                 Name = "Lunch"
             };
-            var ingredients = CreateIngredientsList();
+            var ingredientDtos = CreateMealIngredientDtos();
 
             //Act
-            mealService.Create(mealName, mealCategory, ingredients);
+            var sut = new TestDelegate(() => mealService.Create(mealName, mealCategory, ingredientDtos));
 
             //Assert
-            Assert.IsNotNull(mealRepo.Get(mealName));
+            Assert.DoesNotThrow(sut);
         }
-        
-        private List<MealIngredientDto> CreateIngredientsList()
+
+        private IEnumerable<MealIngredientDto> CreateMealIngredientDtos()
         {
-            var ingredients = CreateListOfIngredients();
-            var mealIngredients = new List<MealIngredientDto>();
-            foreach (var ingredient in ingredients)
+            var ingredients = new List<MealIngredientDto>()
             {
-                mealIngredients.Add(new MealIngredientDto()
+                new MealIngredientDto()
                 {
-                    IngredientId = ingredient.Id,
-                    Amount = 10,
-                    UnitOfMeasurement = "Grams"
-                });
-            }
+                    IngredientId = 1,
+                    Amount = 100,
+                    UnitOfMeasurement = "Gram"
+                },
+                new MealIngredientDto()
+                {
+                    IngredientId = 2,
+                    Amount = 500,
+                    UnitOfMeasurement = "Gram"
+                },
+                new MealIngredientDto()
+                {
+                    IngredientId = 3,
+                    Amount = 500,
+                    UnitOfMeasurement = "Gram"
+                }
+            };
 
-            return mealIngredients;
+            return ingredients;
         }
-
-        private List<Ingredient> CreateListOfIngredients()
+                      
+        private IIngredientRepository CreateIngredientRepo()
         {
             var ingredients = new List<Ingredient>()
             {
@@ -73,13 +82,7 @@ namespace MealRoulette.Domain.Tests.Services
                 typeof(BaseEntity).GetProperty("Id").SetValue(ingredient, idCounter);
                 idCounter++;
             }
-
-            return ingredients;
-        }
-
-        private IIngredientRepository CreateIngredientRepo()
-        {
-            var ingredients = CreateListOfIngredients();
+            
             var mock = new Mock<IIngredientRepository>();
             mock.Setup(x => x.Get(1)).Returns(ingredients.Find(x => x.Id == 1));
             mock.Setup(x => x.Get(2)).Returns(ingredients.Find(x => x.Id == 2));
@@ -95,8 +98,8 @@ namespace MealRoulette.Domain.Tests.Services
             var mealCategoryRepo = CreateMealCategoryRepo();
 
             var mealServiceFactory = new MealServiceFactory()
-                .WithMealCategoryRepo(mealCategoryRepo)
-                .WithMealRepo(mealRepo);
+                .WithMealCategoryRepository(mealCategoryRepo)
+                .WithMealRepository(mealRepo);
 
             var mealService = mealServiceFactory.Build();
 
@@ -108,10 +111,10 @@ namespace MealRoulette.Domain.Tests.Services
             };
 
             //Act
-            mealService.Create(mealName, mealCategory);
+            var sut = new TestDelegate(() => mealService.Create(mealName, mealCategory));
 
             //Assert
-            Assert.IsNotNull(mealRepo.Get(mealName));
+            Assert.DoesNotThrow(sut);
         }
 
         private IMealCategoryRepository CreateMealCategoryRepo()
@@ -124,9 +127,8 @@ namespace MealRoulette.Domain.Tests.Services
 
         private IMealRepository CreateMealRepo()
         {
-            //var mock = new Mock<IMealRepository>();
-            //return mock.Object;
-            return new TestMealRepo();
+            var mock = new Mock<IMealRepository>();
+            return mock.Object;
         }
     }
 }

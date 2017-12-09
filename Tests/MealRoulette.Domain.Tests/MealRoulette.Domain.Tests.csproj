@@ -68,7 +68,6 @@
     <Compile Include="Models\MealShould.cs" />
     <Compile Include="Models\SeasonShould.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TestMealRepo.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Source\MealRoulette.Domain\MealRoulette.Domain.csproj">
