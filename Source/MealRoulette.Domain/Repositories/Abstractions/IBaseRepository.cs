@@ -9,10 +9,10 @@ namespace MealRoulette.Domain.Repositories.Abstractions
 
         T Get(int id);
 
+        IEnumerable<T> Get();
+
         void Add(T entity);
-
-        IEnumerable<T> GetAll();
-
+        
         IPage<T> GetPage(int pageIndex, int pageSize);
 
         void Delete(int id);

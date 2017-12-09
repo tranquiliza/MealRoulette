@@ -43,6 +43,10 @@ namespace MealRoulette.WebApi.App_Start.DependencyInjection
 
         public IMealCategoryRepository MealCategoryRepository => mealCategoryRepository;
 
+        public IHolidayRepository HolidayRepository => throw new System.NotImplementedException();
+
+        public ISeasonRepository SeasonRepository => throw new System.NotImplementedException();
+
         public void SaveChanges()
         {
             throw new System.NotImplementedException();
@@ -76,7 +80,7 @@ namespace MealRoulette.WebApi.App_Start.DependencyInjection
             throw new System.NotImplementedException();
         }
 
-        public IEnumerable<MealCategory> GetAll()
+        public IEnumerable<MealCategory> Get()
         {
             throw new System.NotImplementedException();
         }
@@ -109,7 +113,7 @@ namespace MealRoulette.WebApi.App_Start.DependencyInjection
             throw new System.NotImplementedException();
         }
 
-        public IEnumerable<Meal> GetAll()
+        public IEnumerable<Meal> Get()
         {
             throw new System.NotImplementedException();
         }
@@ -142,7 +146,7 @@ namespace MealRoulette.WebApi.App_Start.DependencyInjection
             throw new System.NotImplementedException();
         }
 
-        public IEnumerable<Ingredient> GetAll()
+        public IEnumerable<Ingredient> Get()
         {
             throw new System.NotImplementedException();
         }

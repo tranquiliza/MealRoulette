@@ -7,7 +7,7 @@ namespace MealRoulette.Domain.Services.Abstractions
     {
         T Get(int id);
 
-        IEnumerable<T> GetAll();
+        IEnumerable<T> Get();
 
         IPage<T> GetPage(int pageIndex, int pageSize);
 

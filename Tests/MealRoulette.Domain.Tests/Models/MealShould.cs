@@ -33,7 +33,7 @@ namespace MealRoulette.Domain.Tests.Models
             var mealIngredient = new MealIngredient(ingredient, 10, "Grams");
 
             //Act
-            sut.AddIngredient(mealIngredient);
+            sut.AddMealIngredient(mealIngredient);
 
             //Assert
             Assert.AreEqual(1, sut.Ingredients.Count);
@@ -54,7 +54,7 @@ namespace MealRoulette.Domain.Tests.Models
             var mealIngredient = new MealIngredient(duplicateIngredient, 10, "Gram");
 
             //Act
-            TestDelegate sut = delegate { meal.AddIngredient(mealIngredient); };
+            TestDelegate sut = delegate { meal.AddMealIngredient(mealIngredient); };
 
             //Assert
             Assert.Throws<DomainException>(sut);
@@ -66,7 +66,7 @@ namespace MealRoulette.Domain.Tests.Models
             var mealIngredient = new MealIngredient(ingredient, 10, "Gram");
             var meal = new Meal("ThisHasChicken", new MealCategory("Dinner"));
 
-            meal.AddIngredient(mealIngredient);
+            meal.AddMealIngredient(mealIngredient);
 
             return meal;
         }

@@ -24,7 +24,7 @@ namespace MealRoulette.WebApi.Controllers
 
         public IEnumerable<MealCategory> Get()
         {
-            return mealCategoryService.GetAll();
+            return mealCategoryService.Get();
         }
 
         public IPage<MealCategory> GetPage(int index, int pageSize)

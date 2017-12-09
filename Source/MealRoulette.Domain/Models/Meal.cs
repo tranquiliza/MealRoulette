@@ -52,7 +52,7 @@ namespace MealRoulette.Domain.Models
             HardwareCategory = DefaultHardwareCategory;
         }
 
-        internal void AddIngredient(MealIngredient mealIngredient)
+        internal void AddMealIngredient(MealIngredient mealIngredient)
         {
             if (mealIngredient == null) throw new ArgumentNullException(nameof(mealIngredient));
             if (MealAlreadyHas(mealIngredient)) throw new DomainException($"This meal already contains {mealIngredient.Ingredient.Name}");

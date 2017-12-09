@@ -1,11 +1,11 @@
 ﻿using MealRoulette.Domain.Exceptions;
 using MealRoulette.Domain.Models;
 using MealRoulette.Domain.Repositories.Abstractions;
-using MealRoulette.Domain.Tests.DomainServices.Helpers;
+using MealRoulette.Domain.Tests.Services.Helpers;
 using Moq;
 using NUnit.Framework;
 
-namespace MealRoulette.Domain.Tests.DomainServices
+namespace MealRoulette.Domain.Tests.Services
 {
     [TestFixture]
     public class MealCategoryServiceShould

@@ -3,7 +3,7 @@ using MealRoulette.Domain.Services;
 using MealRoulette.Domain.Services.Abstractions;
 using Moq;
 
-namespace MealRoulette.Domain.Tests.DomainServices.ServiceFactories
+namespace MealRoulette.Domain.Tests.Services.ServiceFactories
 {
     internal class MealServiceFactory
     {

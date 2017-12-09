@@ -16,6 +16,7 @@ namespace MealRoulette.Domain.Services
         public MealCategoryService(IUnitOfWork unitOfWork)
         {
             this.unitOfWork = unitOfWork ?? throw new ArgumentNullException(nameof(unitOfWork));
+
             mealCategoryRepository = unitOfWork.MealCategoryRepository;
         }
 
@@ -40,9 +41,9 @@ namespace MealRoulette.Domain.Services
             return category;
         }
 
-        public IEnumerable<MealCategory> GetAll()
+        public IEnumerable<MealCategory> Get()
         {
-            var categories = mealCategoryRepository.GetAll();
+            var categories = mealCategoryRepository.Get();
             return categories;
         }
 

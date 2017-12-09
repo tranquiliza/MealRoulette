@@ -1,10 +1,9 @@
-﻿using MealRoulette.Domain.Models;
-using MealRoulette.Domain.Repositories.Abstractions;
+﻿using MealRoulette.Domain.Repositories.Abstractions;
 using MealRoulette.Domain.Services;
 using MealRoulette.Domain.Services.Abstractions;
 using Moq;
 
-namespace MealRoulette.Domain.Tests.DomainServices.Helpers
+namespace MealRoulette.Domain.Tests.Services.Helpers
 {
     internal class MealCategoryServiceFactory
     {

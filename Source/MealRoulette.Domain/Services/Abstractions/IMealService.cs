@@ -6,12 +6,12 @@ namespace MealRoulette.Domain.Services.Abstractions
 {
     public interface IMealService : IBaseService<Meal>
     {
-        void CreateMeal(string mealName, MealCategoryDto mealCategoryDto, IEnumerable<MealIngredientDto> enumerable);
+        void Create(string mealName, MealCategoryDto mealCategory);
 
-        void CreateMeal(string mealName, MealCategoryDto mealCategory);
+        void Create(string mealName, MealCategoryDto mealCategoryDto, IEnumerable<MealIngredientDto> mealIngredientDtos);
         
-        void AddIngredient(int mealId, MealIngredientDto ingredientDto);
+        void AddMealIngredient(int mealId, MealIngredientDto ingredientDto);
 
-        void AddIngredients(int mealId, IEnumerable<MealIngredientDto> ingredientDtos);
+        void AddMealIngredients(int mealId, IEnumerable<MealIngredientDto> ingredientDtos);
     }
 }

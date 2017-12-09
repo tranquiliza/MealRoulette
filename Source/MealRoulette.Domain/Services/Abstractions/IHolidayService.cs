@@ -2,7 +2,7 @@
 
 namespace MealRoulette.Domain.Services.Abstractions
 {
-    public interface IIngredientService : IBaseService<Ingredient>
+    public interface IHolidayService : IBaseService<Holiday>
     {
         void Create(string name);
     }

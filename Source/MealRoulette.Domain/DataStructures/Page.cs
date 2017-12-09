@@ -14,7 +14,7 @@ namespace MealRoulette.Domain.DataStructures
         {
             get
             {
-                return (PageIndex > 1);
+                return (PageIndex > 0);
             }
         }
 

@@ -1,12 +1,12 @@
 ﻿using MealRoulette.Domain.DataContracts;
 using MealRoulette.Domain.Models;
 using MealRoulette.Domain.Repositories.Abstractions;
-using MealRoulette.Domain.Tests.DomainServices.ServiceFactories;
+using MealRoulette.Domain.Tests.Services.ServiceFactories;
 using Moq;
 using NUnit.Framework;
 using System.Collections.Generic;
 
-namespace MealRoulette.Domain.Tests.DomainServices
+namespace MealRoulette.Domain.Tests.Services
 {
     [TestFixture]
     public class MealServiceShould
@@ -35,7 +35,7 @@ namespace MealRoulette.Domain.Tests.DomainServices
             var ingredients = CreateIngredientsList();
 
             //Act
-            mealService.CreateMeal(mealName, mealCategory, ingredients);
+            mealService.Create(mealName, mealCategory, ingredients);
 
             //Assert
             Assert.IsNotNull(mealRepo.Get(mealName));
@@ -108,7 +108,7 @@ namespace MealRoulette.Domain.Tests.DomainServices
             };
 
             //Act
-            mealService.CreateMeal(mealName, mealCategory);
+            mealService.Create(mealName, mealCategory);
 
             //Assert
             Assert.IsNotNull(mealRepo.Get(mealName));

@@ -3,7 +3,6 @@ using MealRoulette.Domain.DataContracts;
 using MealRoulette.WebApi.Models.MealCategory;
 using MealRoulette.WebApi.Models.MealIngredient;
 using System.Collections.Generic;
-using System.Web.Http;
 
 namespace MealRoulette.WebApi.Extensions
 {

@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using MealRoulette.Domain.DataStructures;
 using MealRoulette.Domain.Models;
 using MealRoulette.Domain.Repositories.Abstractions;
+using MealRoulette.Domain.Exceptions;
 
 namespace MealRoulette.Domain.Services
 {
@@ -18,33 +19,37 @@ namespace MealRoulette.Domain.Services
         public IngredientService(IUnitOfWork unitOfWork)
         {
             this.unitOfWork = unitOfWork ?? throw new ArgumentNullException(nameof(unitOfWork));
+
             ingredientRepository = unitOfWork.IngredientRepository;
         }
 
-        public void CreateIngredient(string name)
+        void IIngredientService.Create(string name)
         {
+            var duplicateCheck = ingredientRepository.Get(name);
+            if (duplicateCheck != null) throw new DomainException($"Ingredient with {name}, already exists");
+
             var ingredient = new Ingredient(name);
             ingredientRepository.Add(ingredient);
         }
 
-        public void Delete(int id)
+        void IBaseService<Ingredient>.Delete(int id)
         {
             ingredientRepository.Delete(id);
         }
 
-        public Ingredient Get(int id)
+        Ingredient IBaseService<Ingredient>.Get(int id)
         {
             var ingredient = ingredientRepository.Get(id);
             return ingredient;
         }
 
-        public IEnumerable<Ingredient> GetAll()
+        IEnumerable<Ingredient> IBaseService<Ingredient>.Get()
         {
-            var ingredients = ingredientRepository.GetAll();
+            var ingredients = ingredientRepository.Get();
             return ingredients;
         }
 
-        public IPage<Ingredient> GetPage(int pageIndex, int pageSize)
+        IPage<Ingredient> IBaseService<Ingredient>.GetPage(int pageIndex, int pageSize)
         {
             var page = ingredientRepository.GetPage(pageIndex, pageSize);
             return page;

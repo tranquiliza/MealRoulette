@@ -39,7 +39,7 @@ namespace MealRoulette.Domain.Tests
             return meal;
         }
 
-        public IEnumerable<Meal> GetAll()
+        public IEnumerable<Meal> Get()
         {
             return meals;
         }

@@ -12,22 +12,22 @@ namespace MealRoulette.Domain.Services
 {
     public class MealService : IMealService
     {
+        private readonly IUnitOfWork unitOfWork;
         private readonly IMealRepository mealRepository;
         private readonly IMealCategoryRepository mealCategoryRepository;
         private readonly IIngredientRepository ingredientRepository;
 
         public MealService(IUnitOfWork unitOfWork)
         {
-            if (unitOfWork == null) throw new ArgumentNullException(nameof(unitOfWork));
+            this.unitOfWork = unitOfWork ?? throw new ArgumentNullException(nameof(unitOfWork));
 
             mealRepository = unitOfWork.MealRepository;
             mealCategoryRepository = unitOfWork.MealCategoryRepository;
             ingredientRepository = unitOfWork.IngredientRepository;
         }
 
-        public void CreateMeal(string mealName, MealCategoryDto mealCategoryDto)
+        public void Create(string mealName, MealCategoryDto mealCategoryDto)
         {
-            if (string.IsNullOrWhiteSpace(mealName)) throw new ArgumentException("Meal name cannot be empty", nameof(mealName));
             if (mealCategoryDto == null) throw new ArgumentNullException(nameof(mealCategoryDto));
 
             var mealCategory = mealCategoryRepository.Get(mealCategoryDto.Id);
@@ -36,9 +36,8 @@ namespace MealRoulette.Domain.Services
             mealRepository.Add(meal);
         }
 
-        public void CreateMeal(string mealName, MealCategoryDto mealCategoryDto, IEnumerable<MealIngredientDto> mealIngredientDtos)
+        public void Create(string mealName, MealCategoryDto mealCategoryDto, IEnumerable<MealIngredientDto> mealIngredientDtos)
         {
-            if (string.IsNullOrEmpty(mealName)) throw new ArgumentException("Meal name cannot be empty", nameof(mealName));
             if (mealCategoryDto == null) throw new ArgumentNullException(nameof(mealCategoryDto));
             if (mealIngredientDtos == null) throw new ArgumentNullException(nameof(mealIngredientDtos));
 
@@ -62,15 +61,18 @@ namespace MealRoulette.Domain.Services
             return mealIngredients;
         }
 
-        public void AddIngredient(int mealId, MealIngredientDto mealIngredientDto)
+        public void AddMealIngredient(int mealId, MealIngredientDto mealIngredientDto)
         {
             var meal = mealRepository.Get(mealId);
-            var ingredient = ingredientRepository.Get(mealIngredientDto.IngredientId);
+            if (meal == null) throw new DomainException($"Meal with id {mealId}, does not exist");
 
-            meal.AddIngredient(MealIngredientFactory.Create(ingredient, mealIngredientDto.Amount, mealIngredientDto.UnitOfMeasurement));
+            var ingredient = ingredientRepository.Get(mealIngredientDto.IngredientId);
+            if (ingredient == null) throw new DomainException($"ingredient with id {mealIngredientDto.IngredientId}, does not exist");
+
+            meal.AddMealIngredient(MealIngredientFactory.Create(ingredient, mealIngredientDto.Amount, mealIngredientDto.UnitOfMeasurement));
         }
 
-        public void AddIngredients(int mealId, IEnumerable<MealIngredientDto> mealIngredientDtos)
+        public void AddMealIngredients(int mealId, IEnumerable<MealIngredientDto> mealIngredientDtos)
         {
             var meal = mealRepository.Get(mealId);
 
@@ -78,7 +80,7 @@ namespace MealRoulette.Domain.Services
             {
                 var ingredient = ingredientRepository.Get(mealIngredientdto.IngredientId);
 
-                meal.AddIngredient(MealIngredientFactory.Create(ingredient, mealIngredientdto.Amount, mealIngredientdto.UnitOfMeasurement));
+                meal.AddMealIngredient(MealIngredientFactory.Create(ingredient, mealIngredientdto.Amount, mealIngredientdto.UnitOfMeasurement));
             }
         }
 
@@ -87,9 +89,9 @@ namespace MealRoulette.Domain.Services
             return mealRepository.Get(name) != null;
         }
 
-        public IEnumerable<Meal> GetAll()
+        public IEnumerable<Meal> Get()
         {
-            return mealRepository.GetAll();
+            return mealRepository.Get();
         }
 
         public Meal Get(int id)

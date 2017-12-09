@@ -16,7 +16,7 @@ namespace MealRoulette.Domain.Factories
             var meal = new Meal(name, mealCategory);
             foreach (MealIngredient ingredient in mealIngredients)
             {
-                meal.AddIngredient(ingredient);
+                meal.AddMealIngredient(ingredient);
             }
 
             return meal;
