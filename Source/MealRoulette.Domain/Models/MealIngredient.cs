@@ -6,9 +6,9 @@ namespace MealRoulette.Domain.Models
     {
         public Ingredient Ingredient { get; set; }
 
-        public int Amount { get; set; }
+        public int Amount { get; private set; }
 
-        public string UnitOfMeasurement { get; set; }
+        public string UnitOfMeasurement { get; private set; }
 
         internal MealIngredient(Ingredient ingredient, int amount, string unitOfMeasurement)
         {
