@@ -14,27 +14,20 @@
 
 <link type="text/css" href="~/Areas/HelpPage/HelpPage.css" rel="stylesheet" />
 
-<header class="help-page">
-    <div class="content-wrapper">
-        <div class="float-left">
-            <h1>@ViewBag.Title</h1>
+<h3>@ViewBag.Title</h3>
+
+<div class="section">
+    <h3>Introduction</h3>
+    <p>
+        Meal Roulette is a concept of rolling a random mealplan for yourself and your family!
+    </p>
+</div>
+
+@foreach (var group in apiGroups)
+{
+    <div class="card">
+        <div class="card-panel">
+            @Html.DisplayFor(m => group, "ApiGroup")
         </div>
     </div>
-</header>
-<div id="body" class="help-page">
-    <div class="section">
-        <h2>Introduction</h2>
-        <p>
-            Meal Roulette is a concept of rolling a random mealplan for yourself and your family!
-        </p>
-    </div>
-
-    <ul class="collapsible">
-        @foreach (var group in apiGroups)
-        {
-            <li>
-                @Html.DisplayFor(m => group, "ApiGroup")
-            </li>
-        }
-    </ul>
-</div>
+}
