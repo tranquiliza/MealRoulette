@@ -50,11 +50,13 @@
     <Compile Include="Services\Abstractions\IHolidayService.cs" />
     <Compile Include="Services\Abstractions\IIngredientService.cs" />
     <Compile Include="Services\Abstractions\IMealCategoryService.cs" />
+    <Compile Include="Services\Abstractions\IMealRouletteService.cs" />
     <Compile Include="Services\Abstractions\IMealService.cs" />
     <Compile Include="Services\Abstractions\ISeasonService.cs" />
     <Compile Include="Services\HolidayService.cs" />
     <Compile Include="Services\IngredientService.cs" />
     <Compile Include="Services\MealCategoryService.cs" />
+    <Compile Include="Services\MealRouletteService.cs" />
     <Compile Include="Services\MealService.cs" />
     <Compile Include="Exceptions\DomainException.cs" />
     <Compile Include="Factories\MealFactory.cs" />

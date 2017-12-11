@@ -54,7 +54,9 @@
   <ItemGroup>
     <Compile Include="Services\HolidayServiceShould.cs" />
     <Compile Include="Services\IngredientServiceShould.cs" />
+    <Compile Include="Services\MealRouletteServiceShould.cs" />
     <Compile Include="Services\SeasonServiceShould.cs" />
+    <Compile Include="Services\ServiceFactories\MealRouletteServiceFactory.cs" />
     <Compile Include="Services\ServiceFactories\SeasonServiceFactory.cs" />
     <Compile Include="Services\ServiceFactories\HolidayServiceFactory.cs" />
     <Compile Include="Services\ServiceFactories\IngredientServiceFactory.cs" />
