@@ -38,3 +38,4 @@ using System.Runtime.InteropServices;
 //For Testing Purposes
 [assembly: InternalsVisibleTo("DynamicProxyGenAssembly2")]
 [assembly: InternalsVisibleTo("MealRoulette.Domain.Tests")]
+[assembly: InternalsVisibleTo("MealRoulette.WebApi.Tests")]
