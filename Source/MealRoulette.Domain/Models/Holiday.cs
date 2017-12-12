@@ -4,7 +4,7 @@ namespace MealRoulette.Domain.Models
 {
     public class Holiday : BaseEntity
     {
-        private string Name { get; set; }
+        public string Name { get; private set; }
 
         internal Holiday(string name)
         {

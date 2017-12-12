@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using MealRoulette.Domain.Models;
+﻿using MealRoulette.Domain.Models;
 using MealRoulette.Domain.Services.Abstractions;
 using MealRoulette.WebApi.Tests.Controllers.ControllerFactories;
 using Moq;
 using NUnit.Framework;
+using System.Collections.Generic;
 
 namespace MealRoulette.WebApi.Tests.Controllers
 {

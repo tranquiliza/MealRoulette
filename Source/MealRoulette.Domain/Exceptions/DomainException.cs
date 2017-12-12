@@ -4,7 +4,7 @@ namespace MealRoulette.Domain.Exceptions
 {
     public class DomainException : Exception
     {
-        private DomainException() : base()
+        public DomainException() : base()
         {
         }
 

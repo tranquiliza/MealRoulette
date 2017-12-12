@@ -3,11 +3,7 @@ using MealRoulette.Domain.Repositories.Abstractions;
 using MealRoulette.Domain.Tests.Services.ServiceFactories;
 using Moq;
 using NUnit.Framework;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MealRoulette.Domain.Tests.Services
 {
@@ -25,8 +21,11 @@ namespace MealRoulette.Domain.Tests.Services
 
             //Act
             var sut = service.RollMeal();
+            var sut2 = service.RollMeal();
 
             //Assert
+
+            Assert.AreNotEqual(sut.Name, sut2.Name);
             Assert.IsNotNull(sut);
         }
 
@@ -42,7 +41,6 @@ namespace MealRoulette.Domain.Tests.Services
         {
             var dinnerCategory = new MealCategory("Dinner");
             var desertCategory = new MealCategory("Dessert");
-
 
             var meals = new List<Meal>()
             {

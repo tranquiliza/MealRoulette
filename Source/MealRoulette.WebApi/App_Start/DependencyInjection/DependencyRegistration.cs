@@ -14,10 +14,16 @@ namespace MealRoulette.WebApi.App_Start.DependencyInjection
     {
         public static void RegisterTypesToContainer(Container container)
         {
+            //Repositories
             container.Register<IUnitOfWork, TestUnitOfWork>();
-            container.Register<IIngredientRepository, TestIngredientRespository>();
             container.Register<IMealRepository, TestMealRepository>();
+            container.Register<IIngredientRepository, TestIngredientRespository>();
             container.Register<IMealCategoryRepository, TestMealCategoryRepository>();
+            container.Register<IHolidayRepository, TestHolidayRepository>();
+            container.Register<ISeasonRepository, TestSeasonRepository>();
+
+            //Services
+            container.Register<IHolidayService, HolidayService>();
             container.Register<IMealCategoryService, MealCategoryService>();
             container.Register<IMealService, MealService>();
         }
@@ -29,12 +35,16 @@ namespace MealRoulette.WebApi.App_Start.DependencyInjection
         private readonly IIngredientRepository ingredientRepository;
         private readonly IMealRepository mealRepository;
         private readonly IMealCategoryRepository mealCategoryRepository;
+        private readonly IHolidayRepository holidayRepository;
+        private readonly ISeasonRepository seasonRepository;
 
-        public TestUnitOfWork(IIngredientRepository ingredientRepository, IMealRepository mealRepository, IMealCategoryRepository mealCategoryRepository)
+        public TestUnitOfWork(IIngredientRepository ingredientRepository, IMealRepository mealRepository, IMealCategoryRepository mealCategoryRepository, IHolidayRepository holidayRepository, ISeasonRepository seasonRepository)
         {
             this.ingredientRepository = ingredientRepository;
             this.mealRepository = mealRepository;
             this.mealCategoryRepository = mealCategoryRepository;
+            this.holidayRepository = holidayRepository;
+            this.seasonRepository = seasonRepository;
         }
 
         public IIngredientRepository IngredientRepository => ingredientRepository;
@@ -43,9 +53,9 @@ namespace MealRoulette.WebApi.App_Start.DependencyInjection
 
         public IMealCategoryRepository MealCategoryRepository => mealCategoryRepository;
 
-        public IHolidayRepository HolidayRepository => throw new System.NotImplementedException();
+        public IHolidayRepository HolidayRepository => holidayRepository;
 
-        public ISeasonRepository SeasonRepository => throw new System.NotImplementedException();
+        public ISeasonRepository SeasonRepository => seasonRepository;
 
         public void SaveChanges()
         {
@@ -152,6 +162,72 @@ namespace MealRoulette.WebApi.App_Start.DependencyInjection
         }
 
         public IPage<Ingredient> GetPage(int pageIndex, int pageSize)
+        {
+            throw new System.NotImplementedException();
+        }
+    }
+
+    internal class TestSeasonRepository : ISeasonRepository
+    {
+        void IBaseRepository<Season>.Add(Season entity)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        void IBaseRepository<Season>.Delete(int id)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        Season IBaseRepository<Season>.Get(string name)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        Season IBaseRepository<Season>.Get(int id)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        IEnumerable<Season> IBaseRepository<Season>.Get()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        IPage<Season> IBaseRepository<Season>.GetPage(int pageIndex, int pageSize)
+        {
+            throw new System.NotImplementedException();
+        }
+    }
+
+    internal class TestHolidayRepository : IHolidayRepository
+    {
+        void IBaseRepository<Holiday>.Add(Holiday entity)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        void IBaseRepository<Holiday>.Delete(int id)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        Holiday IBaseRepository<Holiday>.Get(string name)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        Holiday IBaseRepository<Holiday>.Get(int id)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        IEnumerable<Holiday> IBaseRepository<Holiday>.Get()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        IPage<Holiday> IBaseRepository<Holiday>.GetPage(int pageIndex, int pageSize)
         {
             throw new System.NotImplementedException();
         }
