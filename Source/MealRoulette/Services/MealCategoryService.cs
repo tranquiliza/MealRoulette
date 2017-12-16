@@ -22,7 +22,7 @@ namespace MealRoulette.Domain.Services
 
         public void Create(string name)
         {
-            var mealCategory = mealCategoryRepository.Find(name);
+            var mealCategory = mealCategoryRepository.Get(name);
             if (mealCategory != null) throw new DomainException($"Mealcategory named {name} already exists");
 
             mealCategory = new MealCategory(name);

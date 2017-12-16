@@ -11,6 +11,7 @@ namespace MealRoulette.DataAccess.Repository
     public class IngredientRepository : IIngredientRepository
     {
         private readonly MealRouletteContext context;
+
         private readonly DbSet<Ingredient> ingredients;
 
         public IngredientRepository(MealRouletteContext context)
@@ -26,7 +27,8 @@ namespace MealRoulette.DataAccess.Repository
 
         void IBaseRepository<Ingredient>.Delete(int id)
         {
-
+            var ingredientToDelete = ingredients.First(x => x.Id == id);
+            ingredients.Remove(ingredientToDelete);
         }
 
         Ingredient IBaseRepository<Ingredient>.Get(int id)
@@ -36,17 +38,20 @@ namespace MealRoulette.DataAccess.Repository
 
         IEnumerable<Ingredient> IBaseRepository<Ingredient>.Get()
         {
-            throw new NotImplementedException();
+            return ingredients.ToList();
         }
 
         Ingredient IIngredientRepository.Get(string name)
         {
-            throw new NotImplementedException();
+            return ingredients.FirstOrDefault(x => x.Name == name);
         }
 
         IPage<Ingredient> IBaseRepository<Ingredient>.GetPage(int pageIndex, int pageSize)
         {
-            throw new NotImplementedException();
+            var totalCount = ingredients.Count();
+            var page = ingredients.Skip(pageIndex * pageSize).Take(pageSize).ToList();
+
+            return new Page<Ingredient>(page, pageIndex, pageSize, totalCount);
         }
     }
 }

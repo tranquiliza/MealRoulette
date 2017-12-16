@@ -4,12 +4,14 @@ using MealRoulette.Domain.Repositories.Abstractions;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Linq;
 
 namespace MealRoulette.DataAccess.Repository
 {
     public class HolidayRepository : IHolidayRepository
     {
         private readonly MealRouletteContext mealRouletteContext;
+
         private readonly DbSet<Holiday> holidays;
 
         public HolidayRepository(MealRouletteContext mealRouletteContext)
@@ -20,32 +22,36 @@ namespace MealRoulette.DataAccess.Repository
 
         void IBaseRepository<Holiday>.Add(Holiday entity)
         {
-            throw new NotImplementedException();
+            holidays.Add(entity);
         }
 
         void IBaseRepository<Holiday>.Delete(int id)
         {
-            throw new NotImplementedException();
+            var holidayToDelete = holidays.First(x => x.Id == id);
+            holidays.Remove(holidayToDelete);
         }
 
         Holiday IHolidayRepository.Get(string name)
         {
-            throw new NotImplementedException();
+            return holidays.FirstOrDefault(x => x.Name == name);
         }
 
         Holiday IBaseRepository<Holiday>.Get(int id)
         {
-            throw new NotImplementedException();
+            return holidays.First(x => x.Id == id);
         }
 
         IEnumerable<Holiday> IBaseRepository<Holiday>.Get()
         {
-            throw new NotImplementedException();
+            return holidays.ToList();
         }
 
         IPage<Holiday> IBaseRepository<Holiday>.GetPage(int pageIndex, int pageSize)
         {
-            throw new NotImplementedException();
+            var totalCount = holidays.Count();
+            var page = holidays.Skip(pageIndex * pageSize).Take(pageSize).ToList();
+
+            return new Page<Holiday>(page, pageIndex, pageSize, totalCount);
         }
     }
 }

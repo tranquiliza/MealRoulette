@@ -53,7 +53,7 @@ namespace MealRoulette.Domain.Tests.Services
         private IMealCategoryRepository CreateRepositoryWithAlreadyExisting(string categoryName)
         {
             var mock = new Mock<IMealCategoryRepository>();
-            mock.Setup(x => x.Find(categoryName)).Returns(CreateMealCategory(categoryName));
+            mock.Setup(x => x.Get(categoryName)).Returns(CreateMealCategory(categoryName));
             return mock.Object;
         }
 

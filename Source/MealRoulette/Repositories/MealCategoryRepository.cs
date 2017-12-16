@@ -4,12 +4,14 @@ using MealRoulette.Domain.Repositories.Abstractions;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Linq;
 
 namespace MealRoulette.DataAccess.Repository
 {
     public class MealCategoryRepository : IMealCategoryRepository
     {
         private readonly MealRouletteContext mealRouletteContext;
+
         private readonly DbSet<MealCategory> mealCategories;
 
         public MealCategoryRepository(MealRouletteContext mealRouletteContext)
@@ -20,32 +22,36 @@ namespace MealRoulette.DataAccess.Repository
 
         void IBaseRepository<MealCategory>.Add(MealCategory entity)
         {
-            throw new NotImplementedException();
+            mealCategories.Add(entity);
         }
 
         void IBaseRepository<MealCategory>.Delete(int id)
         {
-            throw new NotImplementedException();
+            var mealCategoryToDelete = mealCategories.First(x => x.Id == id);
+            mealCategories.Remove(mealCategoryToDelete);
         }
 
-        MealCategory IMealCategoryRepository.Find(string name)
+        MealCategory IMealCategoryRepository.Get(string name)
         {
-            throw new NotImplementedException();
+            return mealCategories.FirstOrDefault(x => x.Name == name);
         }
 
         MealCategory IBaseRepository<MealCategory>.Get(int id)
         {
-            return null;
+            return mealCategories.First(x => x.Id == id);
         }
 
         IEnumerable<MealCategory> IBaseRepository<MealCategory>.Get()
         {
-            throw new NotImplementedException();
+            return mealCategories.ToList();
         }
 
         IPage<MealCategory> IBaseRepository<MealCategory>.GetPage(int pageIndex, int pageSize)
         {
-            throw new NotImplementedException();
+            var totalCount = mealCategories.Count();
+            var page = mealCategories.Skip(pageIndex * pageSize).Take(pageSize).ToList();
+
+            return new Page<MealCategory>(page, pageIndex, pageSize, totalCount);
         }
     }
 }

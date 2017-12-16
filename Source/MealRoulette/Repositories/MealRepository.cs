@@ -4,6 +4,7 @@ using MealRoulette.Domain.Repositories.Abstractions;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Linq;
 
 namespace MealRoulette.DataAccess.Repository
 {
@@ -20,32 +21,36 @@ namespace MealRoulette.DataAccess.Repository
 
         void IBaseRepository<Meal>.Add(Meal entity)
         {
-            throw new NotImplementedException();
+            meals.Add(entity);
         }
 
         void IBaseRepository<Meal>.Delete(int id)
         {
-            throw new NotImplementedException();
+            var mealToDelete = meals.First(x => x.Id == id);
+            meals.Remove(mealToDelete);
         }
 
         Meal IMealRepository.Get(string name)
         {
-            throw new NotImplementedException();
+            return meals.FirstOrDefault(x => x.Name == name);
         }
 
         Meal IBaseRepository<Meal>.Get(int id)
         {
-            throw new NotImplementedException();
+            return meals.First(x => x.Id == id);
         }
 
         IEnumerable<Meal> IBaseRepository<Meal>.Get()
         {
-            throw new NotImplementedException();
+            return meals.ToList();
         }
 
         IPage<Meal> IBaseRepository<Meal>.GetPage(int pageIndex, int pageSize)
         {
-            throw new NotImplementedException();
+            var totalCount = meals.Count();
+            var page = meals.Skip(pageIndex * pageSize).Take(pageSize).ToList();
+
+            return new Page<Meal>(page, pageIndex, pageSize, totalCount);
         }
     }
 }

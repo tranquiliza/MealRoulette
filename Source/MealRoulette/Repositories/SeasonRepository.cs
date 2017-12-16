@@ -13,42 +13,46 @@ namespace MealRoulette.DataAccess.Repository
     public class SeasonRepository : ISeasonRepository
     {
         private readonly MealRouletteContext mealRouletteContext;
-        private readonly DbSet<Season> season;
+        private readonly DbSet<Season> seasons;
 
         public SeasonRepository(MealRouletteContext mealRouletteContext)
         {
             this.mealRouletteContext = mealRouletteContext ?? throw new ArgumentNullException(nameof(mealRouletteContext));
-            season = mealRouletteContext.Seasons;
+            seasons = mealRouletteContext.Seasons;
         }
 
         void IBaseRepository<Season>.Add(Season entity)
         {
-            throw new NotImplementedException();
+            seasons.Add(entity);
         }
 
         void IBaseRepository<Season>.Delete(int id)
         {
-            throw new NotImplementedException();
+            var seasonToDelete = seasons.First(x => x.Id == id);
+            seasons.Remove(seasonToDelete);
         }
 
         Season ISeasonRepository.Get(string name)
         {
-            throw new NotImplementedException();
+            return seasons.FirstOrDefault(x => x.Name == name);
         }
 
         Season IBaseRepository<Season>.Get(int id)
         {
-            throw new NotImplementedException();
+            return seasons.First(x => x.Id == id);
         }
 
         IEnumerable<Season> IBaseRepository<Season>.Get()
         {
-            throw new NotImplementedException();
+            return seasons.ToList();
         }
 
         IPage<Season> IBaseRepository<Season>.GetPage(int pageIndex, int pageSize)
         {
-            throw new NotImplementedException();
+            var totalCount = seasons.Count();
+            var page = seasons.Skip(pageIndex * pageSize).Take(pageSize).ToList();
+
+            return new Page<Season>(page, pageIndex, pageSize, totalCount);
         }
     }
 }
