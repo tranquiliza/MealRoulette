@@ -28,6 +28,9 @@ namespace MealRoulette.Domain.Tests.Services
 
             //Assert
             Assert.IsNotNull(sut);
+            Assert.IsNotNull(sut2);
+
+            //Assert.AreNotEqual(sut.Name, sut2.Name);
         }
 
         private IMealRepository CreateMealRepositoryWithMeals()

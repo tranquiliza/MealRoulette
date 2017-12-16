@@ -15,6 +15,22 @@ namespace MealRoulette.WebApi.Tests.Controllers
     public class HolidayControllerShould
     {
         [Test]
+        public void Return_BadRequestResult_When_Posting_NullArgument()
+        {
+            //Arrange
+            var service = CreateEmptyService();
+            var controller = new HolidayControllerFactory()
+                .WithHolidayService(service)
+                .Build();
+
+            //Act
+            var sut = controller.Create(null) as BadRequestResult;
+
+            //Assert
+            Assert.IsNotNull(sut);
+        }
+
+        [Test]
         public void Return_BadRequestErrorMessageResult_When_Posting_Already_Existing_Holiday()
         {
             //Arrange

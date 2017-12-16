@@ -3,7 +3,6 @@ using MealRoulette.Domain.Exceptions;
 using MealRoulette.Domain.Models;
 using MealRoulette.Domain.Services.Abstractions;
 using MealRoulette.WebApi.Models.Ingredient;
-using System;
 using System.Collections.Generic;
 using System.Web.Http;
 

@@ -2,7 +2,6 @@
 using MealRoulette.Domain.Models;
 using MealRoulette.Domain.Services.Abstractions;
 using MealRoulette.WebApi.Models.Holiday;
-using System;
 using System.Collections.Generic;
 using System.Web.Http;
 
@@ -16,22 +15,19 @@ namespace MealRoulette.WebApi.Controllers
         {
             this.holidayService = holidayService;
         }
-
-        [HttpGet]
+        
         public IEnumerable<Holiday> Get()
         {
             var result = holidayService.Get();
             return result;
         }
-
-        [HttpGet]
+        
         public Holiday Get(int id)
         {
             var result = holidayService.Get(id);
             return result;
         }
-
-        [HttpPost]
+        
         public IHttpActionResult Create([FromBody]CreateHolidayApiRequest createHolidayRequest)
         {
             if (createHolidayRequest == null) return BadRequest();

@@ -4,6 +4,7 @@ using MealRoulette.WebApi.Tests.Controllers.ControllerFactories;
 using Moq;
 using NUnit.Framework;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace MealRoulette.WebApi.Tests.Controllers
 {
@@ -23,8 +24,7 @@ namespace MealRoulette.WebApi.Tests.Controllers
             var sut = controller.Get();
 
             //Assert
-            Assert.IsInstanceOf<IEnumerable<MealCategory>>(sut);
-            Assert.IsNotNull(sut);
+            Assert.AreEqual(4, sut.Count());
         }
 
         private IMealCategoryService CreateServiceWithAMealCategory()
@@ -38,10 +38,10 @@ namespace MealRoulette.WebApi.Tests.Controllers
         {
             var mealCategories = new List<MealCategory>()
             {
-                new MealCategory("1"),
-                new MealCategory("2"),
-                new MealCategory("3"),
-                new MealCategory("4")
+                new MealCategory("Dinner"),
+                new MealCategory("Lunch"),
+                new MealCategory("Breakfast"),
+                new MealCategory("Snack")
             };
             return mealCategories;
         }

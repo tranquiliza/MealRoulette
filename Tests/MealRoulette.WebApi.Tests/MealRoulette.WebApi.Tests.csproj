@@ -62,8 +62,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\ControllerFactories\IngredientControllerFactory.cs" />
     <Compile Include="Controllers\ControllerFactories\HolidayControllerFactory.cs" />
     <Compile Include="Controllers\HolidayControllerShould.cs" />
+    <Compile Include="Controllers\IngredientControllerShould.cs" />
     <Compile Include="Controllers\MealCategoryControllerShould.cs" />
     <Compile Include="Controllers\ControllerFactories\MealCategoryControllerFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
