@@ -47,7 +47,7 @@ namespace MealRoulette.DataAccess.Repository
             return seasons.ToList();
         }
 
-        IPage<Season> IBaseRepository<Season>.GetPage(int pageIndex, int pageSize)
+        IPage<Season> IBaseRepository<Season>.Get(int pageIndex, int pageSize)
         {
             var totalCount = seasons.Count();
             var page = seasons.Skip(pageIndex * pageSize).Take(pageSize).ToList();

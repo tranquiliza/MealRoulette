@@ -28,11 +28,15 @@ namespace MealRoulette.Domain.Services
             mealCategory = new MealCategory(name);
 
             mealCategoryRepository.Add(mealCategory);
+
+            unitOfWork.SaveChanges();
         }
 
         public void Delete(int id)
         {
             mealCategoryRepository.Delete(id);
+
+            unitOfWork.SaveChanges();
         }
 
         public MealCategory Get(int id)
@@ -47,9 +51,9 @@ namespace MealRoulette.Domain.Services
             return categories;
         }
 
-        public IPage<MealCategory> GetPage(int pageIndex, int pageSize)
+        public IPage<MealCategory> Get(int pageIndex, int pageSize)
         {
-            var page = mealCategoryRepository.GetPage(pageIndex, pageSize);
+            var page = mealCategoryRepository.Get(pageIndex, pageSize);
             return page;
         }
     }

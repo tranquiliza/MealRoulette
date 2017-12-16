@@ -175,16 +175,19 @@
     <Compile Include="Controllers\MealController.cs" />
     <Compile Include="App_Start\DependencyInjection\SimpleInjectorDependencyResolver.cs" />
     <Compile Include="App_Start\DependencyInjection\DependencyRegistration.cs" />
+    <Compile Include="Controllers\SeasonController.cs" />
     <Compile Include="Extensions\MapperExtensions.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Holiday\CreateHolidayApiRequest.cs" />
+    <Compile Include="Models\Ingredient\CreateIngredientApiRequest.cs" />
     <Compile Include="Models\Ingredient\IngredientApiModel.cs" />
     <Compile Include="Models\MealCategory\CreateMealCategoryApiRequest.cs" />
     <Compile Include="Models\MealIngredient\MealIngredientApiModel.cs" />
     <Compile Include="Models\MealCategory\MealCategoryApiModel.cs" />
     <Compile Include="Models\Meal\CreateMealApiRequest.cs" />
+    <Compile Include="Models\Season\CreateSeasonApiRequest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

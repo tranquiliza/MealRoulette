@@ -46,7 +46,7 @@ namespace MealRoulette.DataAccess.Repository
             return holidays.ToList();
         }
 
-        IPage<Holiday> IBaseRepository<Holiday>.GetPage(int pageIndex, int pageSize)
+        IPage<Holiday> IBaseRepository<Holiday>.Get(int pageIndex, int pageSize)
         {
             var totalCount = holidays.Count();
             var page = holidays.Skip(pageIndex * pageSize).Take(pageSize).ToList();

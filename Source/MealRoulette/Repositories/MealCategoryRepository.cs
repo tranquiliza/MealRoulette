@@ -46,7 +46,7 @@ namespace MealRoulette.DataAccess.Repository
             return mealCategories.ToList();
         }
 
-        IPage<MealCategory> IBaseRepository<MealCategory>.GetPage(int pageIndex, int pageSize)
+        IPage<MealCategory> IBaseRepository<MealCategory>.Get(int pageIndex, int pageSize)
         {
             var totalCount = mealCategories.Count();
             var page = mealCategories.Skip(pageIndex * pageSize).Take(pageSize).ToList();

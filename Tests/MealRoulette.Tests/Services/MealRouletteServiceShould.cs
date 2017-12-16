@@ -10,9 +10,6 @@ namespace MealRoulette.Domain.Tests.Services
     [TestFixture]
     public class MealRouletteServiceShould
     {
-        /// <summary>
-        /// This is a bad test!
-        /// </summary>
         [Test]
         public void Return_A_Random_Meal()
         {
@@ -30,10 +27,7 @@ namespace MealRoulette.Domain.Tests.Services
             var sut2 = service2.RollMeal();
 
             //Assert
-
             Assert.IsNotNull(sut);
-            Assert.IsNotNull(sut2);
-            Assert.AreNotEqual(sut.Name, sut2.Name);
         }
 
         private IMealRepository CreateMealRepositoryWithMeals()

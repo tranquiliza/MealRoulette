@@ -1,13 +1,10 @@
-﻿using MealRoulette.Domain.Services.Abstractions;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MealRoulette.Domain.DataStructures;
+﻿using MealRoulette.Domain.DataStructures;
+using MealRoulette.Domain.Exceptions;
 using MealRoulette.Domain.Models;
 using MealRoulette.Domain.Repositories.Abstractions;
-using MealRoulette.Domain.Exceptions;
+using MealRoulette.Domain.Services.Abstractions;
+using System;
+using System.Collections.Generic;
 
 namespace MealRoulette.Domain.Services
 {
@@ -30,11 +27,15 @@ namespace MealRoulette.Domain.Services
 
             var ingredient = new Ingredient(name);
             ingredientRepository.Add(ingredient);
+
+            unitOfWork.SaveChanges();
         }
 
         void IBaseService<Ingredient>.Delete(int id)
         {
             ingredientRepository.Delete(id);
+
+            unitOfWork.SaveChanges();
         }
 
         Ingredient IBaseService<Ingredient>.Get(int id)
@@ -49,9 +50,9 @@ namespace MealRoulette.Domain.Services
             return ingredients;
         }
 
-        IPage<Ingredient> IBaseService<Ingredient>.GetPage(int pageIndex, int pageSize)
+        IPage<Ingredient> IBaseService<Ingredient>.Get(int pageIndex, int pageSize)
         {
-            var page = ingredientRepository.GetPage(pageIndex, pageSize);
+            var page = ingredientRepository.Get(pageIndex, pageSize);
             return page;
         }
     }

@@ -9,7 +9,7 @@ namespace MealRoulette.Domain.Services.Abstractions
 
         IEnumerable<T> Get();
 
-        IPage<T> GetPage(int pageIndex, int pageSize);
+        IPage<T> Get(int pageIndex, int pageSize);
 
         void Delete(int id);
     }

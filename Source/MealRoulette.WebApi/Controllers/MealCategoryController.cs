@@ -3,6 +3,7 @@ using MealRoulette.Domain.Exceptions;
 using MealRoulette.Domain.Models;
 using MealRoulette.Domain.Services.Abstractions;
 using MealRoulette.WebApi.Models.MealCategory;
+using System;
 using System.Collections.Generic;
 using System.Web.Http;
 
@@ -29,11 +30,13 @@ namespace MealRoulette.WebApi.Controllers
 
         public IPage<MealCategory> GetPage(int index, int pageSize)
         {
-            return mealCategoryService.GetPage(index, pageSize);
+            return mealCategoryService.Get(index, pageSize);
         }
 
         public IHttpActionResult Post([FromBody]CreateMealCategoryApiRequest createMealCategoryRequest)
         {
+            if (createMealCategoryRequest == null) return BadRequest();
+
             try
             {
                 mealCategoryService.Create(createMealCategoryRequest.Name);
@@ -42,7 +45,7 @@ namespace MealRoulette.WebApi.Controllers
             {
                 return BadRequest(error.Message);
             }
-            
+
             return Ok();
         }
     }

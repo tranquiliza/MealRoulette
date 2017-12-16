@@ -34,6 +34,8 @@ namespace MealRoulette.WebApi.Controllers
         [HttpPost]
         public IHttpActionResult Create([FromBody]CreateHolidayApiRequest createHolidayRequest)
         {
+            if (createHolidayRequest == null) return BadRequest();
+
             try
             {
                 holidayService.Create(createHolidayRequest.Name);
@@ -41,10 +43,6 @@ namespace MealRoulette.WebApi.Controllers
             catch (DomainException e)
             {
                 return BadRequest(e.Message);
-            }
-            catch
-            {
-                return InternalServerError();
             }
 
             return Ok();

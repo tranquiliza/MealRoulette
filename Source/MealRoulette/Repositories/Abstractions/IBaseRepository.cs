@@ -11,7 +11,7 @@ namespace MealRoulette.Domain.Repositories.Abstractions
 
         void Add(T entity);
         
-        IPage<T> GetPage(int pageIndex, int pageSize);
+        IPage<T> Get(int pageIndex, int pageSize);
 
         void Delete(int id);
     }

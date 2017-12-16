@@ -1,12 +1,12 @@
-﻿using MealRoulette.Domain.Services.Abstractions;
+﻿using MealRoulette.Domain.DataContracts;
+using MealRoulette.Domain.DataStructures;
 using MealRoulette.Domain.Exceptions;
 using MealRoulette.Domain.Factories;
 using MealRoulette.Domain.Models;
 using MealRoulette.Domain.Repositories.Abstractions;
-using System.Collections.Generic;
-using MealRoulette.Domain.DataStructures;
-using MealRoulette.Domain.DataContracts;
+using MealRoulette.Domain.Services.Abstractions;
 using System;
+using System.Collections.Generic;
 
 namespace MealRoulette.Domain.Services
 {
@@ -34,6 +34,8 @@ namespace MealRoulette.Domain.Services
 
             var meal = MealFactory.Create(mealName, mealCategory);
             mealRepository.Add(meal);
+
+            unitOfWork.SaveChanges();
         }
 
         public void Create(string mealName, MealCategoryDto mealCategoryDto, IEnumerable<MealIngredientDto> mealIngredientDtos)
@@ -46,6 +48,8 @@ namespace MealRoulette.Domain.Services
 
             var meal = MealFactory.Create(mealName, mealCategory, mealIngredients);
             mealRepository.Add(meal);
+
+            unitOfWork.SaveChanges();
         }
 
         private IEnumerable<MealIngredient> RetrieveMealIngredients(IEnumerable<MealIngredientDto> mealIngredientDtos)
@@ -70,6 +74,8 @@ namespace MealRoulette.Domain.Services
             if (ingredient == null) throw new DomainException($"ingredient with id {mealIngredientDto.IngredientId}, does not exist");
 
             meal.AddMealIngredient(MealIngredientFactory.Create(ingredient, mealIngredientDto.Amount, mealIngredientDto.UnitOfMeasurement));
+
+            unitOfWork.SaveChanges();
         }
 
         public void AddMealIngredients(int mealId, IEnumerable<MealIngredientDto> mealIngredientDtos)
@@ -82,6 +88,8 @@ namespace MealRoulette.Domain.Services
 
                 meal.AddMealIngredient(MealIngredientFactory.Create(ingredient, mealIngredientdto.Amount, mealIngredientdto.UnitOfMeasurement));
             }
+
+            unitOfWork.SaveChanges();
         }
 
         private bool MealAlreadyExists(string name)
@@ -102,11 +110,13 @@ namespace MealRoulette.Domain.Services
         public void Delete(int Id)
         {
             mealRepository.Delete(Id);
+
+            unitOfWork.SaveChanges();
         }
 
-        public IPage<Meal> GetPage(int index, int pageSize)
+        public IPage<Meal> Get(int index, int pageSize)
         {
-            var page = mealRepository.GetPage(index, pageSize);
+            var page = mealRepository.Get(index, pageSize);
             return page;
         }
     }

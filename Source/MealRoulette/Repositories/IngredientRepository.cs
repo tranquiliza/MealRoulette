@@ -46,10 +46,10 @@ namespace MealRoulette.DataAccess.Repository
             return ingredients.FirstOrDefault(x => x.Name == name);
         }
 
-        IPage<Ingredient> IBaseRepository<Ingredient>.GetPage(int pageIndex, int pageSize)
+        IPage<Ingredient> IBaseRepository<Ingredient>.Get(int pageIndex, int pageSize)
         {
             var totalCount = ingredients.Count();
-            var page = ingredients.Skip(pageIndex * pageSize).Take(pageSize).ToList();
+            var page = ingredients.OrderBy(x => x.Name).Skip(pageIndex * pageSize).Take(pageSize).ToList();
 
             return new Page<Ingredient>(page, pageIndex, pageSize, totalCount);
         }

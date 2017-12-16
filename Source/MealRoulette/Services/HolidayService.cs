@@ -28,6 +28,8 @@ namespace MealRoulette.Domain.Services
             var holiday = new Holiday(name);
 
             holidayRepository.Add(holiday);
+
+            unitOfWork.SaveChanges();
         }
 
         private bool SeasonAlreadyExists(string name)
@@ -38,6 +40,8 @@ namespace MealRoulette.Domain.Services
         void IBaseService<Holiday>.Delete(int id)
         {
             holidayRepository.Delete(id);
+
+            unitOfWork.SaveChanges();
         }
 
         Holiday IBaseService<Holiday>.Get(int id)
@@ -50,9 +54,9 @@ namespace MealRoulette.Domain.Services
             return holidayRepository.Get();
         }
 
-        IPage<Holiday> IBaseService<Holiday>.GetPage(int pageIndex, int pageSize)
+        IPage<Holiday> IBaseService<Holiday>.Get(int pageIndex, int pageSize)
         {
-            return holidayRepository.GetPage(pageIndex, pageSize);
+            return holidayRepository.Get(pageIndex, pageSize);
         }
     }
 }

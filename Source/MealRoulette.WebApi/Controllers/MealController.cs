@@ -26,7 +26,7 @@ namespace MealRoulette.WebApi.Controllers
 
         public IPage<Meal> GetPage(int pageIndex, int pageSize)
         {
-            return mealService.GetPage(pageIndex, pageSize);
+            return mealService.Get(pageIndex, pageSize);
         }
 
         public IEnumerable<Meal> Get()
