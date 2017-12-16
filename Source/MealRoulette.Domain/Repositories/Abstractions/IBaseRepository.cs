@@ -5,8 +5,6 @@ namespace MealRoulette.Domain.Repositories.Abstractions
 {
     public interface IBaseRepository<T>
     {
-        T Get(string name);
-
         T Get(int id);
 
         IEnumerable<T> Get();

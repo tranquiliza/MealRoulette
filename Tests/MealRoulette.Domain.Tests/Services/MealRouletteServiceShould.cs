@@ -10,6 +10,9 @@ namespace MealRoulette.Domain.Tests.Services
     [TestFixture]
     public class MealRouletteServiceShould
     {
+        /// <summary>
+        /// This is a bad test!
+        /// </summary>
         [Test]
         public void Return_A_Random_Meal()
         {
@@ -18,15 +21,19 @@ namespace MealRoulette.Domain.Tests.Services
             var service = new MealRouletteServiceFactory()
                 .WithMealRepository(repository)
                 .Build();
+            var service2 = new MealRouletteServiceFactory()
+                 .WithMealRepository(repository)
+                 .Build();
 
             //Act
             var sut = service.RollMeal();
-            var sut2 = service.RollMeal();
+            var sut2 = service2.RollMeal();
 
             //Assert
 
-            Assert.AreNotEqual(sut.Name, sut2.Name);
             Assert.IsNotNull(sut);
+            Assert.IsNotNull(sut2);
+            Assert.AreNotEqual(sut.Name, sut2.Name);
         }
 
         private IMealRepository CreateMealRepositoryWithMeals()

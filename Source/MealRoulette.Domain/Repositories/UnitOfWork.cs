@@ -1,0 +1,30 @@
+﻿using MealRoulette.DataAccess.Repository;
+using MealRoulette.Domain.Repositories.Abstractions;
+
+namespace MealRoulette.DataAccess
+{
+    public class UnitOfWork : IUnitOfWork
+    {
+        private readonly MealRouletteContext mealRouletteContext;
+
+        public UnitOfWork(MealRouletteContext mealRouletteContext)
+        {
+            this.mealRouletteContext = mealRouletteContext;
+        }
+
+        IIngredientRepository IUnitOfWork.IngredientRepository => new IngredientRepository(mealRouletteContext);
+
+        IMealRepository IUnitOfWork.MealRepository => new MealRepository(mealRouletteContext);
+
+        IMealCategoryRepository IUnitOfWork.MealCategoryRepository => new MealCategoryRepository(mealRouletteContext);
+
+        IHolidayRepository IUnitOfWork.HolidayRepository => new HolidayRepository(mealRouletteContext);
+
+        ISeasonRepository IUnitOfWork.SeasonRepository => new SeasonRepository(mealRouletteContext);
+
+        void IUnitOfWork.SaveChanges()
+        {
+            mealRouletteContext.SaveChanges();
+        }
+    }
+}

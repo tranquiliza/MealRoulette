@@ -28,11 +28,8 @@ namespace MealRoulette.Domain.Models
 
         public List<MealIngredient> Ingredients { get; private set; }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="name">Cannot be NullOrEmpty</param>
-        /// <param name="mealCategory">Cannot be Null</param>
+        private Meal() { }
+
         internal Meal(string name, MealCategory mealCategory)
         {
             if (mealCategory == null) throw new ArgumentNullException(nameof(mealCategory));

@@ -16,14 +16,15 @@ namespace MealRoulette.Domain.Services
         {
             this.unitOfWork = unitOfWork ?? throw new ArgumentNullException(nameof(unitOfWork));
 
-            this.mealRepository = unitOfWork.MealRepository;
+            mealRepository = unitOfWork.MealRepository;
         }
 
         Meal IMealRouletteService.RollMeal()
         {
             var meals = mealRepository.Get().ToList();
-            var random = new Random();
 
+
+            var random = new Random();
             var roll = random.Next(0, meals.Count);
 
             return meals[roll];

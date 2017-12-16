@@ -11,6 +11,7 @@ namespace MealRoulette.Domain.Services
     public class HolidayService : IHolidayService
     {
         private readonly IHolidayRepository holidayRepository;
+
         private readonly IUnitOfWork unitOfWork;
 
         public HolidayService(IUnitOfWork unitOfWork)

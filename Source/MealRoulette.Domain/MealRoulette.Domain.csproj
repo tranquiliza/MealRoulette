@@ -30,7 +30,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -40,12 +47,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataAccess\IMealRouletteContext.cs" />
+    <Compile Include="DataAccess\MealRouletteContext.cs" />
+    <Compile Include="DataAccess\MealRouletteContextFactory.cs" />
     <Compile Include="DataContracts\IngredientDto.cs" />
     <Compile Include="DataContracts\MealCategoryDto.cs" />
     <Compile Include="DataContracts\MealIngredientDto.cs" />
     <Compile Include="Factories\MealIngredientFactory.cs" />
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Repositories\Abstractions\IHolidayRepository.cs" />
     <Compile Include="Repositories\Abstractions\ISeasonRepository.cs" />
+    <Compile Include="Repositories\HolidayRepository.cs" />
+    <Compile Include="Repositories\IngredientRepository.cs" />
+    <Compile Include="Repositories\MealCategoryRepository.cs" />
+    <Compile Include="Repositories\MealRepository.cs" />
+    <Compile Include="Repositories\SeasonRepository.cs" />
+    <Compile Include="Repositories\UnitOfWork.cs" />
     <Compile Include="Services\Abstractions\IBaseService.cs" />
     <Compile Include="Services\Abstractions\IHolidayService.cs" />
     <Compile Include="Services\Abstractions\IIngredientService.cs" />
@@ -80,6 +97,10 @@
   <ItemGroup>
     <Folder Include="Events\" />
     <Folder Include="Extensions\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -2,7 +2,7 @@
 
 namespace MealRoulette.Domain.Models
 {
-    public class MealIngredient
+    public class MealIngredient : BaseEntity
     {
         public Ingredient Ingredient { get; set; }
 
