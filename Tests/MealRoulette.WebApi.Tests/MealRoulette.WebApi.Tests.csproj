@@ -73,13 +73,13 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Source\MealRoulette.Domain\MealRoulette.Domain.csproj">
-      <Project>{2D848935-D1F0-4A80-AF9E-4D9B5D560E5D}</Project>
-      <Name>MealRoulette.Domain</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\Source\MealRoulette.WebApi\MealRoulette.WebApi.csproj">
       <Project>{5A22553F-F75E-4E40-8126-84B608CFD8B1}</Project>
       <Name>MealRoulette.WebApi</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Source\MealRoulette\MealRoulette.csproj">
+      <Project>{2d848935-d1f0-4a80-af9e-4d9b5d560e5d}</Project>
+      <Name>MealRoulette</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />

@@ -253,9 +253,9 @@
     <Content Include="Views\Shared\_Footer.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MealRoulette.Domain\MealRoulette.Domain.csproj">
+    <ProjectReference Include="..\MealRoulette\MealRoulette.csproj">
       <Project>{2d848935-d1f0-4a80-af9e-4d9b5d560e5d}</Project>
-      <Name>MealRoulette.Domain</Name>
+      <Name>MealRoulette</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

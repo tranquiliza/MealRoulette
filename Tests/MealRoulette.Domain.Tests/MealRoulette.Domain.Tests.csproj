@@ -72,12 +72,11 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Source\MealRoulette.Domain\MealRoulette.Domain.csproj">
+    <ProjectReference Include="..\..\Source\MealRoulette\MealRoulette.csproj">
       <Project>{2d848935-d1f0-4a80-af9e-4d9b5d560e5d}</Project>
-      <Name>MealRoulette.Domain</Name>
+      <Name>MealRoulette</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
