@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{2D848935-D1F0-4A80-AF9E-4D9B5D560E5D}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MealRoulette</RootNamespace>
+    <AssemblyName>MealRoulette</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DataAccess\IMealRouletteContext.cs" />
+    <Compile Include="DataAccess\MealRouletteContext.cs" />
+    <Compile Include="DataAccess\MealRouletteContextFactory.cs" />
+    <Compile Include="DataContracts\IngredientDto.cs" />
+    <Compile Include="DataContracts\MealCategoryDto.cs" />
+    <Compile Include="DataContracts\MealIngredientDto.cs" />
+    <Compile Include="Factories\MealIngredientFactory.cs" />
+    <Compile Include="Migrations\201712161428579_Initial.cs" />
+    <Compile Include="Migrations\201712161428579_Initial.Designer.cs">
+      <DependentUpon>201712161428579_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Repositories\Abstractions\IHolidayRepository.cs" />
+    <Compile Include="Repositories\Abstractions\ISeasonRepository.cs" />
+    <Compile Include="Repositories\HolidayRepository.cs" />
+    <Compile Include="Repositories\IngredientRepository.cs" />
+    <Compile Include="Repositories\MealCategoryRepository.cs" />
+    <Compile Include="Repositories\MealRepository.cs" />
+    <Compile Include="Repositories\SeasonRepository.cs" />
+    <Compile Include="Repositories\UnitOfWork.cs" />
+    <Compile Include="Services\Abstractions\IBaseService.cs" />
+    <Compile Include="Services\Abstractions\IHolidayService.cs" />
+    <Compile Include="Services\Abstractions\IIngredientService.cs" />
+    <Compile Include="Services\Abstractions\IMealCategoryService.cs" />
+    <Compile Include="Services\Abstractions\IMealRouletteService.cs" />
+    <Compile Include="Services\Abstractions\IMealService.cs" />
+    <Compile Include="Services\Abstractions\ISeasonService.cs" />
+    <Compile Include="Services\HolidayService.cs" />
+    <Compile Include="Services\IngredientService.cs" />
+    <Compile Include="Services\MealCategoryService.cs" />
+    <Compile Include="Services\MealRouletteService.cs" />
+    <Compile Include="Services\MealService.cs" />
+    <Compile Include="Exceptions\DomainException.cs" />
+    <Compile Include="Factories\MealFactory.cs" />
+    <Compile Include="Models\BaseEntity.cs" />
+    <Compile Include="Models\Holiday.cs" />
+    <Compile Include="Models\Meal.cs" />
+    <Compile Include="Models\Ingredient.cs" />
+    <Compile Include="Models\MealCategory.cs" />
+    <Compile Include="Models\MealIngredient.cs" />
+    <Compile Include="Models\Season.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="DataStructures\IPage.cs" />
+    <Compile Include="DataStructures\Page.cs" />
+    <Compile Include="Repositories\Abstractions\IBaseRepository.cs" />
+    <Compile Include="Repositories\Abstractions\IIngredientRepository.cs" />
+    <Compile Include="Repositories\Abstractions\IMealCategoryRepository.cs" />
+    <Compile Include="Repositories\Abstractions\IMealRepository.cs" />
+    <Compile Include="Repositories\Abstractions\IUnitOfWork.cs" />
+    <Compile Include="Services\SeasonService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Events\" />
+    <Folder Include="Extensions\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201712161428579_Initial.resx">
+      <DependentUpon>201712161428579_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

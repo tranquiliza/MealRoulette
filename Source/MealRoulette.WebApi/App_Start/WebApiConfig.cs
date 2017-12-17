@@ -1,4 +1,4 @@
-﻿using MealRoulette.WebApi.DependencyInjection;
+﻿using MealRoulette.WebApi.App_Start.DependencyInjection;
 using SimpleInjector;
 using System.Web.Http;
 
@@ -10,7 +10,7 @@ namespace MealRoulette.WebApi
         {
             // Web API configuration and services
             ConfigureDependencyInjectionForApi(config);
-
+            
             // Web API routes
             config.MapHttpAttributeRoutes();
 
@@ -30,5 +30,7 @@ namespace MealRoulette.WebApi
 
             GlobalConfiguration.Configuration.DependencyResolver = new SimpleInjectorDependencyResolver(container);
         }
+
+        
     }
 }

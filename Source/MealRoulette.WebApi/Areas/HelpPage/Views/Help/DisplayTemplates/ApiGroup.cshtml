@@ -11,41 +11,37 @@
         null;
 }
 
-<div class="collapsible-header">
-    <p>@Model.Key.ControllerName</p>
-</div>
+<h3>@Model.Key.ControllerName</h3>
 
-<div class="collapsible-body">
-    @if (!String.IsNullOrEmpty(controllerDocumentation))
-    {
-        <p class="flow-text">@controllerDocumentation</p>
-    }
-    <table class="bordered">
-        <thead>
+@if (!String.IsNullOrEmpty(controllerDocumentation))
+{
+    <p class="">@controllerDocumentation</p>
+}
+<table class="highlight">
+    <thead>
+        <tr>
+            <th>API</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var api in Model)
+        {
             <tr>
-                <th>API</th>
-                <th>Description</th>
+                <td>
+                    <a class="btn" href="@Url.Action("Api", "Help", new { apiId = api.GetFriendlyId() })">@api.HttpMethod.Method @api.RelativePath</a>
+                </td>
+                <td>
+                    @if (api.Documentation != null)
+                    {
+                        <p class="">@api.Documentation</p>
+                    }
+                    else
+                    {
+                        <p class="">No documentation available.</p>
+                    }
+                </td>
             </tr>
-        </thead>
-        <tbody>
-            @foreach (var api in Model)
-            {
-                <tr>
-                    <td>
-                        <a class="flow-text" href="@Url.Action("Api", "Help", new { apiId = api.GetFriendlyId() })">@api.HttpMethod.Method @api.RelativePath</a>
-                    </td>
-                    <td>
-                        @if (api.Documentation != null)
-                        {
-                            <p class="flow-text">@api.Documentation</p>
-                        }
-                        else
-                        {
-                            <p class="flow-text">No documentation available.</p>
-                        }
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
-</div>
+        }
+    </tbody>
+</table>
