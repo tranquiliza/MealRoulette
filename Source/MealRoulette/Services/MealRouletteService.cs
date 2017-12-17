@@ -1,4 +1,6 @@
-﻿using MealRoulette.Models;
+﻿using MealRoulette.Events;
+using MealRoulette.Exceptions;
+using MealRoulette.Models;
 using MealRoulette.Repositories.Abstractions;
 using MealRoulette.Services.Abstractions;
 using System;
@@ -12,6 +14,7 @@ namespace MealRoulette.Services
         private readonly IMealRepository mealRepository;
         private readonly Random random;
 
+        public event EventHandler<DomainEventArgs> MealSelectedEvent;
 
         public MealRouletteService(IUnitOfWork unitOfWork)
         {
@@ -26,9 +29,22 @@ namespace MealRoulette.Services
         Meal IMealRouletteService.RollMeal()
         {
             var meals = mealRepository.Get().ToList();
+            if (meals.Count == 0) throw new DomainException("There are no meals in your query");
+
             var roll = random.Next(0, meals.Count);
 
-            return meals[roll];
+            var randomMeal = meals[roll];
+
+            RaiseDomainEvent(new DomainEventArgs("Something"));
+
+            return randomMeal;
+        }
+
+        private void RaiseDomainEvent(DomainEventArgs args)
+        {
+            EventHandler<DomainEventArgs> eventHandler = MealSelectedEvent;
+            args.Message += $", event happened at {DateTime.Now.ToString()}";
+            eventHandler?.Invoke(this, args);
         }
     }
 }

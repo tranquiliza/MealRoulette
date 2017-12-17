@@ -1,4 +1,5 @@
-﻿using MealRoulette.Models;
+﻿using MealRoulette.Events;
+using MealRoulette.Models;
 using MealRoulette.Repositories.Abstractions;
 using MealRoulette.Tests.Services.ServiceFactories;
 using Moq;
@@ -10,6 +11,24 @@ namespace MealRoulette.Tests.Services
     [TestFixture]
     public class MealRouletteServiceShould
     {
+        [Test]
+        public void Cause_Meal_Selected_Event()
+        {
+            //Arrange
+            var repository = CreateMealRepositoryWithMeals();
+            var service = new MealRouletteServiceFactory()
+                .WithMealRepository(repository)
+                .Build();
+
+            var domainEventHandler = new DomainEventHandler(service);
+
+            //Act
+            var sut = service.RollMeal();
+
+            //Assert
+
+        }
+
         [Test]
         public void Return_A_Random_Meal()
         {

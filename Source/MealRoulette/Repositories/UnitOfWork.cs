@@ -5,9 +5,9 @@ namespace MealRoulette.Repositories
 {
     public class UnitOfWork : IUnitOfWork
     {
-        private readonly MealRouletteContext mealRouletteContext;
+        private readonly IMealRouletteContext mealRouletteContext;
 
-        public UnitOfWork(MealRouletteContext mealRouletteContext)
+        public UnitOfWork(IMealRouletteContext mealRouletteContext)
         {
             this.mealRouletteContext = mealRouletteContext;
         }

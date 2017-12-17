@@ -56,10 +56,13 @@
     <Compile Include="DataContracts\IngredientDto.cs" />
     <Compile Include="DataContracts\MealCategoryDto.cs" />
     <Compile Include="DataContracts\MealIngredientDto.cs" />
+    <Compile Include="Events\DomainEventArgs.cs" />
+    <Compile Include="Events\DomainEventHandler.cs" />
+    <Compile Include="Events\Abstractions\IDomainEventHandler.cs" />
     <Compile Include="Factories\MealIngredientFactory.cs" />
-    <Compile Include="Migrations\201712161428579_Initial.cs" />
-    <Compile Include="Migrations\201712161428579_Initial.Designer.cs">
-      <DependentUpon>201712161428579_Initial.cs</DependentUpon>
+    <Compile Include="Migrations\201712172304037_Initial.cs" />
+    <Compile Include="Migrations\201712172304037_Initial.Designer.cs">
+      <DependentUpon>201712172304037_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Repositories\Abstractions\IHolidayRepository.cs" />
@@ -102,7 +105,6 @@
     <Compile Include="Services\SeasonService.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Events\" />
     <Folder Include="Extensions\" />
   </ItemGroup>
   <ItemGroup>
@@ -110,8 +112,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201712161428579_Initial.resx">
-      <DependentUpon>201712161428579_Initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201712172304037_Initial.resx">
+      <DependentUpon>201712172304037_Initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

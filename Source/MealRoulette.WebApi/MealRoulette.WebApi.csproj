@@ -175,6 +175,7 @@
     <Compile Include="Controllers\MealController.cs" />
     <Compile Include="App_Start\DependencyInjection\SimpleInjectorDependencyResolver.cs" />
     <Compile Include="App_Start\DependencyInjection\DependencyRegistration.cs" />
+    <Compile Include="Controllers\MealRouletteController.cs" />
     <Compile Include="Controllers\SeasonController.cs" />
     <Compile Include="Extensions\MapperExtensions.cs" />
     <Compile Include="Global.asax.cs">

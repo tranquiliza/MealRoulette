@@ -13,10 +13,10 @@ namespace MealRoulette.Repositories
 {
     public class SeasonRepository : ISeasonRepository
     {
-        private readonly MealRouletteContext mealRouletteContext;
+        private readonly IMealRouletteContext mealRouletteContext;
         private readonly DbSet<Season> seasons;
 
-        public SeasonRepository(MealRouletteContext mealRouletteContext)
+        public SeasonRepository(IMealRouletteContext mealRouletteContext)
         {
             this.mealRouletteContext = mealRouletteContext ?? throw new ArgumentNullException(nameof(mealRouletteContext));
             seasons = mealRouletteContext.Seasons;
