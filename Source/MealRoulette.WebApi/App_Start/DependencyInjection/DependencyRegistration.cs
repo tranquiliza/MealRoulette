@@ -1,7 +1,8 @@
 ﻿using MealRoulette.DataAccess;
-using MealRoulette.Domain.Repositories.Abstractions;
-using MealRoulette.Domain.Services;
-using MealRoulette.Domain.Services.Abstractions;
+using MealRoulette.Repositories;
+using MealRoulette.Repositories.Abstractions;
+using MealRoulette.Services;
+using MealRoulette.Services.Abstractions;
 using SimpleInjector;
 
 namespace MealRoulette.WebApi.App_Start.DependencyInjection
@@ -11,9 +12,9 @@ namespace MealRoulette.WebApi.App_Start.DependencyInjection
         public static void RegisterTypesToContainer(Container container)
         {
             //DataAccess
-            var database = new MealRouletteContextFactory("DefaultConnection").Create();
-            container.RegisterSingleton(database);
-
+            var context = new MealRouletteContextFactory("DefaultConnection").Create();
+            container.RegisterSingleton<IMealRouletteContext>(context);
+            
             //Repositories
             container.Register<IUnitOfWork, UnitOfWork>();
 

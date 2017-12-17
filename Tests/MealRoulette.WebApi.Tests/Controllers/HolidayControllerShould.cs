@@ -1,6 +1,6 @@
-﻿using MealRoulette.Domain.Exceptions;
-using MealRoulette.Domain.Models;
-using MealRoulette.Domain.Services.Abstractions;
+﻿using MealRoulette.Exceptions;
+using MealRoulette.Models;
+using MealRoulette.Services.Abstractions;
 using MealRoulette.WebApi.Models.Holiday;
 using MealRoulette.WebApi.Tests.Controllers.ControllerFactories;
 using Moq;

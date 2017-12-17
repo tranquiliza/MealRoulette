@@ -1,5 +1,5 @@
-﻿using MealRoulette.Domain.Models;
-using MealRoulette.Domain.Services.Abstractions;
+﻿using MealRoulette.Models;
+using MealRoulette.Services.Abstractions;
 using MealRoulette.WebApi.Tests.Controllers.ControllerFactories;
 using Moq;
 using NUnit.Framework;

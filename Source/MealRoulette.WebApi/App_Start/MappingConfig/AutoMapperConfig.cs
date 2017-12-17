@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
-using MealRoulette.Domain.DataContracts;
-using MealRoulette.Domain.Models;
+using MealRoulette.DataContracts;
+using MealRoulette.Models;
 using MealRoulette.WebApi.Models.Ingredient;
 using MealRoulette.WebApi.Models.MealCategory;
 using MealRoulette.WebApi.Models.MealIngredient;

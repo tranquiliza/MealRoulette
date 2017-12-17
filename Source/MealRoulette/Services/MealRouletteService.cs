@@ -1,10 +1,10 @@
-﻿using MealRoulette.Domain.Models;
-using MealRoulette.Domain.Repositories.Abstractions;
-using MealRoulette.Domain.Services.Abstractions;
+﻿using MealRoulette.Models;
+using MealRoulette.Repositories.Abstractions;
+using MealRoulette.Services.Abstractions;
 using System;
 using System.Linq;
 
-namespace MealRoulette.Domain.Services
+namespace MealRoulette.Services
 {
     public class MealRouletteService : IMealRouletteService
     {

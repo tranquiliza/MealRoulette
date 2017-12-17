@@ -1,8 +1,8 @@
-﻿using MealRoulette.Domain.Models;
+﻿using MealRoulette.Models;
 using NUnit.Framework;
 using System;
 
-namespace MealRoulette.Domain.Tests.Models
+namespace MealRoulette.Tests.Models
 {
     [TestFixture]
     public class MealCategoryShould

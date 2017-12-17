@@ -1,7 +1,7 @@
-﻿using MealRoulette.Domain.DataStructures;
-using MealRoulette.Domain.Exceptions;
-using MealRoulette.Domain.Models;
-using MealRoulette.Domain.Services.Abstractions;
+﻿using MealRoulette.DataStructures;
+using MealRoulette.Exceptions;
+using MealRoulette.Models;
+using MealRoulette.Services.Abstractions;
 using MealRoulette.WebApi.Models.MealCategory;
 using System.Collections.Generic;
 using System.Web.Http;

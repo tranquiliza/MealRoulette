@@ -1,7 +1,7 @@
-﻿using MealRoulette.Domain.DataStructures;
+﻿using MealRoulette.DataStructures;
 using System.Collections.Generic;
 
-namespace MealRoulette.Domain.Services.Abstractions
+namespace MealRoulette.Services.Abstractions
 {
     public interface IBaseService<T>
     {

@@ -1,6 +1,6 @@
-﻿using MealRoulette.Domain.Models;
+﻿using MealRoulette.Models;
 
-namespace MealRoulette.Domain.Repositories.Abstractions
+namespace MealRoulette.Repositories.Abstractions
 {
     public interface IHolidayRepository : IBaseRepository<Holiday>
     {

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace MealRoulette.Domain.Exceptions
+namespace MealRoulette.Exceptions
 {
     public class DomainException : Exception
     {

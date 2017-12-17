@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace MealRoulette.Domain.Models
+namespace MealRoulette.Models
 {
     public class Ingredient : BaseEntity
     {

@@ -1,14 +1,14 @@
-﻿using MealRoulette.Domain.DataContracts;
-using MealRoulette.Domain.DataStructures;
-using MealRoulette.Domain.Exceptions;
-using MealRoulette.Domain.Factories;
-using MealRoulette.Domain.Models;
-using MealRoulette.Domain.Repositories.Abstractions;
-using MealRoulette.Domain.Services.Abstractions;
+﻿using MealRoulette.DataContracts;
+using MealRoulette.DataStructures;
+using MealRoulette.Exceptions;
+using MealRoulette.Factories;
+using MealRoulette.Models;
+using MealRoulette.Repositories.Abstractions;
+using MealRoulette.Services.Abstractions;
 using System;
 using System.Collections.Generic;
 
-namespace MealRoulette.Domain.Services
+namespace MealRoulette.Services
 {
     public class MealService : IMealService
     {
@@ -47,6 +47,7 @@ namespace MealRoulette.Domain.Services
             var mealIngredients = RetrieveMealIngredients(mealIngredientDtos);
 
             var meal = MealFactory.Create(mealName, mealCategory, mealIngredients);
+
             mealRepository.Add(meal);
 
             unitOfWork.SaveChanges();
@@ -107,17 +108,18 @@ namespace MealRoulette.Domain.Services
             return mealRepository.Get(id);
         }
 
-        public void Delete(int Id)
-        {
-            mealRepository.Delete(Id);
-
-            unitOfWork.SaveChanges();
-        }
-
         public IPage<Meal> Get(int index, int pageSize)
         {
             var page = mealRepository.Get(index, pageSize);
             return page;
         }
+
+        public void Delete(int id)
+        {
+            mealRepository.Delete(id);
+
+            unitOfWork.SaveChanges();
+        }
+
     }
 }

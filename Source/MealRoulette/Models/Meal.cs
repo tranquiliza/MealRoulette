@@ -1,8 +1,8 @@
-﻿using MealRoulette.Domain.Exceptions;
+﻿using MealRoulette.Exceptions;
 using System;
 using System.Collections.Generic;
 
-namespace MealRoulette.Domain.Models
+namespace MealRoulette.Models
 {
     public class Meal : BaseEntity
     {

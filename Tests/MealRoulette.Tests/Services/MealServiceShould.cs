@@ -1,12 +1,12 @@
-﻿using MealRoulette.Domain.DataContracts;
-using MealRoulette.Domain.Models;
-using MealRoulette.Domain.Repositories.Abstractions;
-using MealRoulette.Domain.Tests.Services.ServiceFactories;
+﻿using MealRoulette.DataContracts;
+using MealRoulette.Models;
+using MealRoulette.Repositories.Abstractions;
+using MealRoulette.Tests.Services.ServiceFactories;
 using Moq;
 using NUnit.Framework;
 using System.Collections.Generic;
 
-namespace MealRoulette.Domain.Tests.Services
+namespace MealRoulette.Tests.Services
 {
     [TestFixture]
     public class MealServiceShould

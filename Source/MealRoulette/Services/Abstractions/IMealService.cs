@@ -1,8 +1,8 @@
-﻿using MealRoulette.Domain.DataContracts;
-using MealRoulette.Domain.Models;
+﻿using MealRoulette.DataContracts;
+using MealRoulette.Models;
 using System.Collections.Generic;
 
-namespace MealRoulette.Domain.Services.Abstractions
+namespace MealRoulette.Services.Abstractions
 {
     public interface IMealService : IBaseService<Meal>
     {

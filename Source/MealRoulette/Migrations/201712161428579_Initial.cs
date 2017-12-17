@@ -1,4 +1,4 @@
-namespace MealRoulette.DataAccess.Migrations
+namespace MealRoulette.Migrations
 {
     using System;
     using System.Data.Entity.Migrations;

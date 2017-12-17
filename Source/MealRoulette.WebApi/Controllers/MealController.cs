@@ -1,7 +1,7 @@
-﻿using MealRoulette.Domain.DataStructures;
-using MealRoulette.Domain.Exceptions;
-using MealRoulette.Domain.Models;
-using MealRoulette.Domain.Services.Abstractions;
+﻿using MealRoulette.DataStructures;
+using MealRoulette.Exceptions;
+using MealRoulette.Models;
+using MealRoulette.Services.Abstractions;
 using MealRoulette.WebApi.Extensions;
 using MealRoulette.WebApi.Models.Meal;
 using System;
@@ -24,7 +24,7 @@ namespace MealRoulette.WebApi.Controllers
             return mealService.Get(id);
         }
 
-        public IPage<Meal> GetPage(int pageIndex, int pageSize)
+        public IPage<Meal> Get(int pageIndex, int pageSize)
         {
             return mealService.Get(pageIndex, pageSize);
         }

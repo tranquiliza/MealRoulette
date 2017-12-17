@@ -1,7 +1,7 @@
-﻿using MealRoulette.Domain.DataStructures;
+﻿using MealRoulette.DataStructures;
 using System.Collections.Generic;
 
-namespace MealRoulette.Domain.Repositories.Abstractions
+namespace MealRoulette.Repositories.Abstractions
 {
     public interface IBaseRepository<T>
     {

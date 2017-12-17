@@ -1,7 +1,7 @@
-﻿using MealRoulette.DataAccess.Repository;
-using MealRoulette.Domain.Repositories.Abstractions;
+﻿using MealRoulette.DataAccess;
+using MealRoulette.Repositories.Abstractions;
 
-namespace MealRoulette.DataAccess
+namespace MealRoulette.Repositories
 {
     public class UnitOfWork : IUnitOfWork
     {

@@ -1,6 +1,7 @@
-﻿using MealRoulette.Domain.DataStructures;
-using MealRoulette.Domain.Models;
-using MealRoulette.Domain.Repositories.Abstractions;
+﻿using MealRoulette.DataAccess;
+using MealRoulette.DataStructures;
+using MealRoulette.Models;
+using MealRoulette.Repositories.Abstractions;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -8,7 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MealRoulette.DataAccess.Repository
+namespace MealRoulette.Repositories
 {
     public class SeasonRepository : ISeasonRepository
     {

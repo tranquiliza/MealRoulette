@@ -1,4 +1,4 @@
-﻿using MealRoulette.Domain.Models;
+﻿using MealRoulette.Models;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
 

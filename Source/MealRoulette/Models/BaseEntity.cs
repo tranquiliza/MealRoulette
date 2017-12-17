@@ -1,4 +1,4 @@
-﻿namespace MealRoulette.Domain.Models
+﻿namespace MealRoulette.Models
 {
     public abstract class BaseEntity
     {

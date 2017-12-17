@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace MealRoulette.Domain.DataStructures
+namespace MealRoulette.DataStructures
 {
     public interface IPage<T> : IList<T>
     {

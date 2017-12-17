@@ -1,6 +1,7 @@
-﻿using System.Data.Entity.Migrations;
+﻿using MealRoulette.DataAccess;
+using System.Data.Entity.Migrations;
 
-namespace MealRoulette.DataAccess.Migrations
+namespace MealRoulette.Migrations
 {
     public class Configuration : DbMigrationsConfiguration<MealRouletteContext>
     {

@@ -1,4 +1,4 @@
-﻿namespace MealRoulette.Domain.DataContracts
+﻿namespace MealRoulette.DataContracts
 {
     public class MealCategoryDto
     {

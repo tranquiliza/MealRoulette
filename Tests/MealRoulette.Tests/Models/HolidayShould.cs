@@ -1,12 +1,8 @@
-﻿using MealRoulette.Domain.Models;
+﻿using MealRoulette.Models;
 using NUnit.Framework;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace MealRoulette.Domain.Tests.Models
+namespace MealRoulette.Tests.Models
 {
     [TestFixture]
     public class HolidayShould

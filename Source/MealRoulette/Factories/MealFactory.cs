@@ -1,7 +1,7 @@
-﻿using MealRoulette.Domain.Models;
+﻿using MealRoulette.Models;
 using System.Collections.Generic;
 
-namespace MealRoulette.Domain.Factories
+namespace MealRoulette.Factories
 {
     internal static class MealFactory
     {

@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using MealRoulette.Domain.DataContracts;
+using MealRoulette.DataContracts;
 using MealRoulette.WebApi.Models.MealCategory;
 using MealRoulette.WebApi.Models.MealIngredient;
 using System.Collections.Generic;

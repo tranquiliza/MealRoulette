@@ -1,9 +1,9 @@
 ﻿using System;
-using MealRoulette.Domain.Exceptions;
-using MealRoulette.Domain.Models;
+using MealRoulette.Exceptions;
+using MealRoulette.Models;
 using NUnit.Framework;
 
-namespace MealRoulette.Domain.Tests.Models
+namespace MealRoulette.Tests.Models
 {
     [TestFixture]
     public class MealShould
