@@ -32,9 +32,7 @@ namespace MealRoulette.WebApi.App_Start.DependencyInjection
         public static void RegisterEventHandlersToContainer(Container container)
         {
             var eventHandler = new EventHandler();
-            var anotherHandler = new WillAlsoHandleEvent();
-            var anotherHandler2 = new WillAlsoHandleEvent();
-            container.RegisterCollection<IHandle<RandomMealWasChosenEvent>>(eventHandler, anotherHandler, anotherHandler2);
+            container.RegisterCollection<IHandle<RandomMealWasChosenEvent>>(eventHandler);
         }
     }
 }

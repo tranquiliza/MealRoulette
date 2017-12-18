@@ -14,7 +14,7 @@ namespace MealRoulette.Events
             occouredOn = DateTimeOffset.Now;
         }
 
-        public Meal Meal { get; set; }
+        public Meal Meal { get; }
 
         DateTimeOffset IDomainEvent.OccouredOn => occouredOn;
     }

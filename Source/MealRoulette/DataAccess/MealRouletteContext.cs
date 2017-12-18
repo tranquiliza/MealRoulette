@@ -11,11 +11,7 @@ namespace MealRoulette.DataAccess
         public DbSet<Meal> Meals { get; set; }
         public DbSet<MealCategory> MealCategories { get; set; }
         public DbSet<Season> Seasons { get; set; }
-
-        protected MealRouletteContext() : base("name=DefaultConnection")
-        {
-        }
-
+               
         public MealRouletteContext(string connectionString) : base(connectionString)
         {
         }
