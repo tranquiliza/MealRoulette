@@ -5,7 +5,7 @@ using MealRoulette.WebApi.Models.Ingredient;
 using MealRoulette.WebApi.Models.MealCategory;
 using MealRoulette.WebApi.Models.MealIngredient;
 
-namespace MealRoulette.WebApi.App_Start.MappingConfig
+namespace MealRoulette.WebApi.App_Start
 {
     public class AutoMapperConfig
     {

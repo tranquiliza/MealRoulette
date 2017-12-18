@@ -14,8 +14,6 @@ namespace MealRoulette.Services
         private readonly IMealRepository mealRepository;
         private readonly Random random;
 
-        public event EventHandler<DomainEventArgs> MealSelectedEvent;
-
         public MealRouletteService(IUnitOfWork unitOfWork)
         {
             this.unitOfWork = unitOfWork ?? throw new ArgumentNullException(nameof(unitOfWork));
@@ -35,16 +33,9 @@ namespace MealRoulette.Services
 
             var randomMeal = meals[roll];
 
-            RaiseDomainEvent(new DomainEventArgs("Something"));
+            DomainEvents.Raise(new RandomMealWasChosenEvent(randomMeal));
 
             return randomMeal;
-        }
-
-        private void RaiseDomainEvent(DomainEventArgs args)
-        {
-            EventHandler<DomainEventArgs> eventHandler = MealSelectedEvent;
-            args.Message += $", event happened at {DateTime.Now.ToString()}";
-            eventHandler?.Invoke(this, args);
         }
     }
 }

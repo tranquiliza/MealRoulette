@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace MealRoulette.Events.Abstractions
 {
-    public interface IDomainEventHandler
+    public interface IDomainEvent
     {
-
+        DateTimeOffset OccouredOn { get; }
     }
 }

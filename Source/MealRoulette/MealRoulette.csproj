@@ -56,9 +56,12 @@
     <Compile Include="DataContracts\IngredientDto.cs" />
     <Compile Include="DataContracts\MealCategoryDto.cs" />
     <Compile Include="DataContracts\MealIngredientDto.cs" />
-    <Compile Include="Events\DomainEventArgs.cs" />
-    <Compile Include="Events\DomainEventHandler.cs" />
-    <Compile Include="Events\Abstractions\IDomainEventHandler.cs" />
+    <Compile Include="Events\Abstractions\IDomainEvent.cs" />
+    <Compile Include="Events\Abstractions\IDomainHandlerContainer.cs" />
+    <Compile Include="Events\Abstractions\IHandle.cs" />
+    <Compile Include="Events\DomainEvents.cs" />
+    <Compile Include="Events\EventHandler.cs" />
+    <Compile Include="Events\RandomMealWasChosenEvent.cs" />
     <Compile Include="Factories\MealIngredientFactory.cs" />
     <Compile Include="Migrations\201712172304037_Initial.cs" />
     <Compile Include="Migrations\201712172304037_Initial.Designer.cs">

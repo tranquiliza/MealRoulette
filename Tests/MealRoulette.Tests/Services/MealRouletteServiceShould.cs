@@ -1,5 +1,4 @@
-﻿using MealRoulette.Events;
-using MealRoulette.Models;
+﻿using MealRoulette.Models;
 using MealRoulette.Repositories.Abstractions;
 using MealRoulette.Tests.Services.ServiceFactories;
 using Moq;
@@ -19,8 +18,6 @@ namespace MealRoulette.Tests.Services
             var service = new MealRouletteServiceFactory()
                 .WithMealRepository(repository)
                 .Build();
-
-            var domainEventHandler = new DomainEventHandler(service);
 
             //Act
             var sut = service.RollMeal();

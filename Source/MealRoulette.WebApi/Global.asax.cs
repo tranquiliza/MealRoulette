@@ -1,4 +1,4 @@
-﻿using MealRoulette.WebApi.App_Start.MappingConfig;
+﻿using MealRoulette.WebApi.App_Start;
 using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;

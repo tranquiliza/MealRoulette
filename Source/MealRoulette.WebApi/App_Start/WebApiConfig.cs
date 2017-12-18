@@ -1,4 +1,6 @@
-﻿using MealRoulette.WebApi.App_Start.DependencyInjection;
+﻿using MealRoulette.Events;
+using MealRoulette.WebApi.App_Start;
+using MealRoulette.WebApi.App_Start.DependencyInjection;
 using SimpleInjector;
 using System.Web.Http;
 
@@ -25,12 +27,14 @@ namespace MealRoulette.WebApi
         {
             var container = new Container();
             DependencyRegistration.RegisterTypesToContainer(container);
+            DependencyRegistration.RegisterEventHandlersToContainer(container);
             container.RegisterWebApiControllers(config);
             container.Verify();
 
+            var domainHandlerContainer = new DomainHandlerContainer(container);
+            DomainEvents.Container = domainHandlerContainer;
+
             GlobalConfiguration.Configuration.DependencyResolver = new SimpleInjectorDependencyResolver(container);
         }
-
-        
     }
 }
