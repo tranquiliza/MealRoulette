@@ -1,8 +1,11 @@
-﻿using MealRoulette.Models;
+﻿using MealRoulette.Events;
+using MealRoulette.Events.Abstractions;
+using MealRoulette.Models;
 using MealRoulette.Repositories.Abstractions;
 using MealRoulette.Tests.Services.ServiceFactories;
 using Moq;
 using NUnit.Framework;
+using System;
 using System.Collections.Generic;
 
 namespace MealRoulette.Tests.Services
@@ -11,7 +14,7 @@ namespace MealRoulette.Tests.Services
     public class MealRouletteServiceShould
     {
         [Test]
-        public void Cause_Meal_Selected_Event()
+        public void Raise_RandomMealWasChosenEvent()
         {
             //Arrange
             var repository = CreateMealRepositoryWithMeals();
@@ -19,13 +22,35 @@ namespace MealRoulette.Tests.Services
                 .WithMealRepository(repository)
                 .Build();
 
+            var eventHappened = false;
+            var handler = CreateHandler(() => eventHappened = true);
+            DomainEvents.Container = CreateContainer(handler);
+
             //Act
             var sut = service.RollMeal();
 
             //Assert
-
+            Assert.IsTrue(eventHappened);
         }
 
+        private IHandle<RandomMealWasChosenEvent> CreateHandler(Action action)
+        {
+            var mock = new Mock<IHandle<RandomMealWasChosenEvent>>();
+            mock.Setup(x => x.Handle(It.IsAny<RandomMealWasChosenEvent>())).Callback(action);
+            return mock.Object;
+        }
+
+        private IDomainHandlerContainer CreateContainer(IHandle<RandomMealWasChosenEvent> handler)
+        {
+            var handlers = new List<IHandle<RandomMealWasChosenEvent>>()
+            {
+                handler
+            };
+            var mock = new Mock<IDomainHandlerContainer>();
+            mock.Setup(x => x.ResolveAll<RandomMealWasChosenEvent>()).Returns(handlers);
+            return mock.Object;
+        }
+        
         [Test]
         public void Return_A_Random_Meal()
         {

@@ -1,6 +1,4 @@
 ﻿using MealRoulette.Events.Abstractions;
-using System;
-using System.Collections.Generic;
 
 namespace MealRoulette.Events
 {
