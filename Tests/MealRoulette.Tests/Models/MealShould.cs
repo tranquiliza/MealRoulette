@@ -36,7 +36,7 @@ namespace MealRoulette.Tests.Models
             sut.AddMealIngredient(mealIngredient);
 
             //Assert
-            Assert.AreEqual(1, sut.Ingredients.Count);
+            Assert.AreEqual(1, sut.MealIngredients.Count);
         }
 
         private Meal CreateMealWithoutIngredients()

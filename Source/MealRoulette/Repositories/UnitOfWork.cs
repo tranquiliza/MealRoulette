@@ -5,9 +5,9 @@ namespace MealRoulette.Repositories
 {
     public class UnitOfWork : IUnitOfWork
     {
-        private readonly MealRouletteContext mealRouletteContext;
+        private readonly IMealRouletteContext mealRouletteContext;
 
-        public UnitOfWork(MealRouletteContext mealRouletteContext)
+        public UnitOfWork(IMealRouletteContext mealRouletteContext)
         {
             this.mealRouletteContext = mealRouletteContext;
         }
@@ -19,9 +19,7 @@ namespace MealRoulette.Repositories
         IMealCategoryRepository IUnitOfWork.MealCategoryRepository => new MealCategoryRepository(mealRouletteContext);
 
         IHolidayRepository IUnitOfWork.HolidayRepository => new HolidayRepository(mealRouletteContext);
-
-        ISeasonRepository IUnitOfWork.SeasonRepository => new SeasonRepository(mealRouletteContext);
-
+        
         void IUnitOfWork.SaveChanges()
         {
             mealRouletteContext.SaveChanges();

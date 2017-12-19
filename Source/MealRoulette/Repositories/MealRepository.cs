@@ -11,10 +11,10 @@ namespace MealRoulette.Repositories
 {
     public class MealRepository : IMealRepository
     {
-        private readonly MealRouletteContext mealRouletteContext;
+        private readonly IMealRouletteContext mealRouletteContext;
         private readonly DbSet<Meal> meals;
 
-        public MealRepository(MealRouletteContext mealRouletteContext)
+        public MealRepository(IMealRouletteContext mealRouletteContext)
         {
             this.mealRouletteContext = mealRouletteContext ?? throw new ArgumentNullException(nameof(mealRouletteContext));
             meals = mealRouletteContext.Meals;

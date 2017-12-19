@@ -6,14 +6,6 @@ namespace MealRoulette.DataAccess
 {
     public class MealRouletteContext : DbContext, IMealRouletteContext
     {
-        protected MealRouletteContext() : base("name=DefaultConnection")
-        {
-        }
-
-        public MealRouletteContext(string connectionString) : base(connectionString)
-        {
-        }
-
         public DbSet<Holiday> Holidays { get; set; }
 
         public DbSet<Ingredient> Ingredients { get; set; }
@@ -21,8 +13,15 @@ namespace MealRoulette.DataAccess
         public DbSet<Meal> Meals { get; set; }
 
         public DbSet<MealCategory> MealCategories { get; set; }
-
-        public DbSet<Season> Seasons { get; set; }
+        
+        public MealRouletteContext(string connectionString) : base(connectionString)
+        {
+        }
+             
+        void IMealRouletteContext.SaveChanges()
+        {
+            base.SaveChanges();
+        }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

@@ -56,19 +56,27 @@
     <Compile Include="DataContracts\IngredientDto.cs" />
     <Compile Include="DataContracts\MealCategoryDto.cs" />
     <Compile Include="DataContracts\MealIngredientDto.cs" />
+    <Compile Include="Events\Abstractions\IDomainEvent.cs" />
+    <Compile Include="Events\Abstractions\IDomainHandlerContainer.cs" />
+    <Compile Include="Events\Abstractions\IHandle.cs" />
+    <Compile Include="Events\DomainEvents.cs" />
+    <Compile Include="Events\EventHandler.cs" />
+    <Compile Include="Events\RandomMealWasChosenEvent.cs" />
     <Compile Include="Factories\MealIngredientFactory.cs" />
-    <Compile Include="Migrations\201712161428579_Initial.cs" />
-    <Compile Include="Migrations\201712161428579_Initial.Designer.cs">
-      <DependentUpon>201712161428579_Initial.cs</DependentUpon>
+    <Compile Include="Migrations\201712172304037_Initial.cs" />
+    <Compile Include="Migrations\201712172304037_Initial.Designer.cs">
+      <DependentUpon>201712172304037_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712191930163_SeasonRemoval.cs" />
+    <Compile Include="Migrations\201712191930163_SeasonRemoval.Designer.cs">
+      <DependentUpon>201712191930163_SeasonRemoval.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Repositories\Abstractions\IHolidayRepository.cs" />
-    <Compile Include="Repositories\Abstractions\ISeasonRepository.cs" />
     <Compile Include="Repositories\HolidayRepository.cs" />
     <Compile Include="Repositories\IngredientRepository.cs" />
     <Compile Include="Repositories\MealCategoryRepository.cs" />
     <Compile Include="Repositories\MealRepository.cs" />
-    <Compile Include="Repositories\SeasonRepository.cs" />
     <Compile Include="Repositories\UnitOfWork.cs" />
     <Compile Include="Services\Abstractions\IBaseService.cs" />
     <Compile Include="Services\Abstractions\IHolidayService.cs" />
@@ -76,7 +84,6 @@
     <Compile Include="Services\Abstractions\IMealCategoryService.cs" />
     <Compile Include="Services\Abstractions\IMealRouletteService.cs" />
     <Compile Include="Services\Abstractions\IMealService.cs" />
-    <Compile Include="Services\Abstractions\ISeasonService.cs" />
     <Compile Include="Services\HolidayService.cs" />
     <Compile Include="Services\IngredientService.cs" />
     <Compile Include="Services\MealCategoryService.cs" />
@@ -90,7 +97,6 @@
     <Compile Include="Models\Ingredient.cs" />
     <Compile Include="Models\MealCategory.cs" />
     <Compile Include="Models\MealIngredient.cs" />
-    <Compile Include="Models\Season.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="DataStructures\IPage.cs" />
     <Compile Include="DataStructures\Page.cs" />
@@ -99,10 +105,8 @@
     <Compile Include="Repositories\Abstractions\IMealCategoryRepository.cs" />
     <Compile Include="Repositories\Abstractions\IMealRepository.cs" />
     <Compile Include="Repositories\Abstractions\IUnitOfWork.cs" />
-    <Compile Include="Services\SeasonService.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Events\" />
     <Folder Include="Extensions\" />
   </ItemGroup>
   <ItemGroup>
@@ -110,8 +114,11 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201712161428579_Initial.resx">
-      <DependentUpon>201712161428579_Initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201712172304037_Initial.resx">
+      <DependentUpon>201712172304037_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712191930163_SeasonRemoval.resx">
+      <DependentUpon>201712191930163_SeasonRemoval.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

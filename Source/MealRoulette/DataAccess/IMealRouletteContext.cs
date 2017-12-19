@@ -5,14 +5,14 @@ namespace MealRoulette.DataAccess
 {
     public interface IMealRouletteContext
     {
-        DbSet<Holiday> Holidays { get; }
+        DbSet<Holiday> Holidays { get; set; }
 
-        DbSet<Ingredient> Ingredients { get; }
+        DbSet<Ingredient> Ingredients { get; set; }
 
-        DbSet<Meal> Meals { get; }
+        DbSet<Meal> Meals { get; set; }
 
-        DbSet<MealCategory> MealCategories { get; }
-
-        DbSet<Season> Seasons { get; }
+        DbSet<MealCategory> MealCategories { get; set; }
+        
+        void SaveChanges();
     }
 }

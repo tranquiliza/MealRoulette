@@ -11,11 +11,11 @@ namespace MealRoulette.Repositories
 {
     public class IngredientRepository : IIngredientRepository
     {
-        private readonly MealRouletteContext context;
+        private readonly IMealRouletteContext context;
 
         private readonly DbSet<Ingredient> ingredients;
 
-        public IngredientRepository(MealRouletteContext context)
+        public IngredientRepository(IMealRouletteContext context)
         {
             this.context = context ?? throw new ArgumentNullException(nameof(context));
             ingredients = context.Ingredients;

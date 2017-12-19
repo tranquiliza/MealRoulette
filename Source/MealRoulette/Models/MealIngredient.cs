@@ -10,6 +10,8 @@ namespace MealRoulette.Models
 
         public string UnitOfMeasurement { get; private set; }
 
+        private MealIngredient() { }
+
         internal MealIngredient(Ingredient ingredient, int amount, string unitOfMeasurement)
         {
             if (ingredient == null) throw new ArgumentNullException(nameof(ingredient));

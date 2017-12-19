@@ -136,8 +136,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\DomainHandlerContainer.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
-    <Compile Include="App_Start\MappingConfig\AutoMapperConfig.cs" />
+    <Compile Include="App_Start\AutoMapperConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\HelpPage\ApiDescriptionExtensions.cs" />
@@ -175,7 +176,7 @@
     <Compile Include="Controllers\MealController.cs" />
     <Compile Include="App_Start\DependencyInjection\SimpleInjectorDependencyResolver.cs" />
     <Compile Include="App_Start\DependencyInjection\DependencyRegistration.cs" />
-    <Compile Include="Controllers\SeasonController.cs" />
+    <Compile Include="Controllers\MealRouletteController.cs" />
     <Compile Include="Extensions\MapperExtensions.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
