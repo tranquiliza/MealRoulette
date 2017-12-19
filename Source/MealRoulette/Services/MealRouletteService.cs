@@ -5,6 +5,7 @@ using MealRoulette.Repositories.Abstractions;
 using MealRoulette.Services.Abstractions;
 using System;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace MealRoulette.Services
 {
@@ -24,16 +25,16 @@ namespace MealRoulette.Services
             random = new Random(randomSeed);
         }
 
-        Meal IMealRouletteService.RollMeal()
+        async Task<Meal> IMealRouletteService.RollMealAsync()
         {
-            var meals = mealRepository.Get().ToList();
-            if (meals.Count == 0) throw new DomainException("There are no meals in your query");
+            var meals = await mealRepository.GetAsync();
+            if (meals.Count() == 0) throw new DomainException("There are no meals in your query");
 
-            var roll = random.Next(0, meals.Count);
+            var roll = random.Next(0, meals.Count());
 
-            var randomMeal = meals[roll];
+            var randomMeal = meals.ElementAt(roll);
 
-            DomainEvents.Raise(new RandomMealWasChosenEvent(randomMeal));
+            await DomainEvents.Raise(new RandomMealWasChosenEvent(randomMeal));
 
             return randomMeal;
         }

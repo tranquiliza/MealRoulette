@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace MealRoulette.Repositories
 {
@@ -53,6 +54,11 @@ namespace MealRoulette.Repositories
             var page = ingredients.OrderBy(x => x.Name).Skip(pageIndex * pageSize).Take(pageSize).ToList();
 
             return new Page<Ingredient>(page, pageIndex, pageSize, totalCount);
+        }
+
+        async Task<IEnumerable<Ingredient>> IBaseRepository<Ingredient>.GetAsync()
+        {
+            return await ingredients.ToListAsync();
         }
     }
 }

@@ -6,16 +6,16 @@ namespace MealRoulette.Events
 {
     public class RandomMealWasChosenEvent : IDomainEvent
     {
-        private readonly DateTimeOffset occouredOn;
+        public DateTimeOffset OccouredOn { get; private set; }
 
         public RandomMealWasChosenEvent(Meal meal)
         {
             Meal = meal;
-            occouredOn = DateTimeOffset.Now;
+            OccouredOn = DateTimeOffset.Now;
         }
 
         public Meal Meal { get; }
 
-        DateTimeOffset IDomainEvent.OccouredOn => occouredOn;
+        DateTimeOffset IDomainEvent.OccouredOn => OccouredOn;
     }
 }

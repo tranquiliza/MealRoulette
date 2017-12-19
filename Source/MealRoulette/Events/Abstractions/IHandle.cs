@@ -1,7 +1,9 @@
-﻿namespace MealRoulette.Events.Abstractions
+﻿using System.Threading.Tasks;
+
+namespace MealRoulette.Events.Abstractions
 {
     public interface IHandle<T> where T : IDomainEvent
     {
-        void Handle(T args);
+        Task Handle(T args);
     }
 }

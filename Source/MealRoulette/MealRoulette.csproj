@@ -39,6 +39,9 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -59,6 +62,7 @@
     <Compile Include="Events\Abstractions\IDomainEvent.cs" />
     <Compile Include="Events\Abstractions\IDomainHandlerContainer.cs" />
     <Compile Include="Events\Abstractions\IHandle.cs" />
+    <Compile Include="Events\EventData.cs" />
     <Compile Include="Events\DomainEvents.cs" />
     <Compile Include="Events\EventHandler.cs" />
     <Compile Include="Events\RandomMealWasChosenEvent.cs" />
@@ -70,6 +74,10 @@
     <Compile Include="Migrations\201712191930163_SeasonRemoval.cs" />
     <Compile Include="Migrations\201712191930163_SeasonRemoval.Designer.cs">
       <DependentUpon>201712191930163_SeasonRemoval.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712192019294_EventStore.cs" />
+    <Compile Include="Migrations\201712192019294_EventStore.Designer.cs">
+      <DependentUpon>201712192019294_EventStore.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Repositories\Abstractions\IHolidayRepository.cs" />
@@ -111,7 +119,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201712172304037_Initial.resx">
@@ -119,6 +129,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201712191930163_SeasonRemoval.resx">
       <DependentUpon>201712191930163_SeasonRemoval.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712192019294_EventStore.resx">
+      <DependentUpon>201712192019294_EventStore.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

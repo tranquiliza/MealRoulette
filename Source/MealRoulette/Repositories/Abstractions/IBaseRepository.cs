@@ -1,5 +1,6 @@
 ﻿using MealRoulette.DataStructures;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace MealRoulette.Repositories.Abstractions
 {
@@ -8,6 +9,8 @@ namespace MealRoulette.Repositories.Abstractions
         T Get(int id);
 
         IEnumerable<T> Get();
+
+        Task<IEnumerable<T>> GetAsync();
 
         void Add(T entity);
         

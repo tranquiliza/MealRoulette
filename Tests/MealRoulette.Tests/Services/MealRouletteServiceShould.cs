@@ -7,6 +7,7 @@ using Moq;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace MealRoulette.Tests.Services
 {
@@ -14,10 +15,10 @@ namespace MealRoulette.Tests.Services
     public class MealRouletteServiceShould
     {
         [Test]
-        public void Raise_RandomMealWasChosenEvent()
+        public async Task Raise_RandomMealWasChosenEvent()
         {
             //Arrange
-            var repository = CreateMealRepositoryWithMeals();
+            var repository = CreateAsyncMealRepositoryWithMeals();
             var service = new MealRouletteServiceFactory()
                 .WithMealRepository(repository)
                 .Build();
@@ -27,12 +28,35 @@ namespace MealRoulette.Tests.Services
             DomainEvents.Container = CreateContainer(handler);
 
             //Act
-            var sut = service.RollMeal();
+            var sut = await service.RollMealAsync();
 
             //Assert
             Assert.IsTrue(eventHappened);
         }
 
+        private IMealRepository CreateAsyncMealRepositoryWithMeals()
+        {
+            var meals = CreateMealsAsync();
+            var mock = new Mock<IMealRepository>();
+            mock.Setup(x => x.GetAsync()).Returns(meals);
+            return mock.Object;
+        }
+
+        private async Task<IEnumerable<Meal>> CreateMealsAsync()
+        {
+            var dinnerCategory = new MealCategory("Dinner");
+            var desertCategory = new MealCategory("Dessert");
+
+            var meals = new List<Meal>()
+            {
+                new Meal("Pizza", dinnerCategory),
+                new Meal("IceCream", desertCategory),
+                new Meal("Pasta", dinnerCategory),
+                new Meal("Apple Pie", desertCategory)
+            };
+
+            return await Task.FromResult<IEnumerable<Meal>>(meals);
+        }
         private IHandle<RandomMealWasChosenEvent> CreateHandler(Action action)
         {
             var mock = new Mock<IHandle<RandomMealWasChosenEvent>>();
@@ -50,7 +74,7 @@ namespace MealRoulette.Tests.Services
             mock.Setup(x => x.ResolveAll<RandomMealWasChosenEvent>()).Returns(handlers);
             return mock.Object;
         }
-        
+
         [Test]
         public void Return_A_Random_Meal()
         {
@@ -64,8 +88,8 @@ namespace MealRoulette.Tests.Services
                  .Build();
 
             //Act
-            var sut = service.RollMeal();
-            var sut2 = service2.RollMeal();
+            var sut = service.RollMealAsync();
+            var sut2 = service2.RollMealAsync();
 
             //Assert
             Assert.IsNotNull(sut);

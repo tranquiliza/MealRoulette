@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace MealRoulette.Repositories
 {
@@ -45,6 +46,11 @@ namespace MealRoulette.Repositories
         IEnumerable<MealCategory> IBaseRepository<MealCategory>.Get()
         {
             return mealCategories.ToList();
+        }
+
+        async Task<IEnumerable<MealCategory>> IBaseRepository<MealCategory>.GetAsync()
+        {
+            return await mealCategories.ToListAsync();
         }
 
         IPage<MealCategory> IBaseRepository<MealCategory>.Get(int pageIndex, int pageSize)
