@@ -22,7 +22,6 @@ namespace MealRoulette.WebApi.App_Start.DependencyInjection
 
             //Services
             container.Register<IHolidayService, HolidayService>();
-            container.Register<ISeasonService, SeasonService>();
             container.Register<IIngredientService, IngredientService>();
             container.Register<IMealCategoryService, MealCategoryService>();
             container.Register<IMealService, MealService>();

@@ -12,9 +12,7 @@ namespace MealRoulette.DataAccess
         DbSet<Meal> Meals { get; set; }
 
         DbSet<MealCategory> MealCategories { get; set; }
-
-        DbSet<Season> Seasons { get; set; }
-
+        
         void SaveChanges();
     }
 }

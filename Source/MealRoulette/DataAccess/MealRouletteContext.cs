@@ -7,11 +7,13 @@ namespace MealRoulette.DataAccess
     public class MealRouletteContext : DbContext, IMealRouletteContext
     {
         public DbSet<Holiday> Holidays { get; set; }
+
         public DbSet<Ingredient> Ingredients { get; set; }
+
         public DbSet<Meal> Meals { get; set; }
+
         public DbSet<MealCategory> MealCategories { get; set; }
-        public DbSet<Season> Seasons { get; set; }
-               
+        
         public MealRouletteContext(string connectionString) : base(connectionString)
         {
         }

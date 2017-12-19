@@ -9,9 +9,7 @@
         IMealCategoryRepository MealCategoryRepository { get; }
 
         IHolidayRepository HolidayRepository { get; }
-
-        ISeasonRepository SeasonRepository { get; }
-
+        
         void SaveChanges();
     }
 }

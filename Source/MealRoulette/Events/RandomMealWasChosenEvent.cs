@@ -1,6 +1,6 @@
-﻿using System;
-using MealRoulette.Events.Abstractions;
+﻿using MealRoulette.Events.Abstractions;
 using MealRoulette.Models;
+using System;
 
 namespace MealRoulette.Events
 {
