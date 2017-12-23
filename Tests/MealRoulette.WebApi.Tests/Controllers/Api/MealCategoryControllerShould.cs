@@ -6,7 +6,7 @@ using NUnit.Framework;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace MealRoulette.WebApi.Tests.Controllers
+namespace MealRoulette.WebApi.Tests.Controllers.Api
 {
     [TestFixture]
     internal class MealCategoryControllerShould

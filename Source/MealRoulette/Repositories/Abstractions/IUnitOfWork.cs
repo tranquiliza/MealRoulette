@@ -9,6 +9,8 @@
         IMealCategoryRepository MealCategoryRepository { get; }
 
         IHolidayRepository HolidayRepository { get; }
+
+        IUnitOfMeasurementRepository UnitOfMeasurementRepository { get; }
         
         void SaveChanges();
     }

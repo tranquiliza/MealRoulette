@@ -11,12 +11,14 @@ namespace MealRoulette.DataAccess
 
         DbSet<Ingredient> Ingredients { get; set; }
 
+        DbSet<UnitOfMeasurement> UnitsOfMeasurement { get; set; }
+
         DbSet<Meal> Meals { get; set; }
 
         DbSet<MealCategory> MealCategories { get; set; }
 
         DbSet<EventData> DomainEvents { get; set; }
-        
+
         void SaveChanges();
 
         Task SaveChangesAsync();

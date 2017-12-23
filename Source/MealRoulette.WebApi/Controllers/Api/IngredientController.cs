@@ -6,7 +6,7 @@ using MealRoulette.WebApi.Models.Ingredient;
 using System.Collections.Generic;
 using System.Web.Http;
 
-namespace MealRoulette.WebApi.Controllers
+namespace MealRoulette.WebApi.Controllers.Api
 {
     public class IngredientController : ApiController
     {

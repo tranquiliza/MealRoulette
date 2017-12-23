@@ -8,7 +8,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
 
-namespace MealRoulette.WebApi.Controllers
+namespace MealRoulette.WebApi.Controllers.Api
 {
     public class MealRouletteController : ApiController
     {

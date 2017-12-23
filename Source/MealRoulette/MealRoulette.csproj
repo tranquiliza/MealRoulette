@@ -59,6 +59,7 @@
     <Compile Include="DataContracts\IngredientDto.cs" />
     <Compile Include="DataContracts\MealCategoryDto.cs" />
     <Compile Include="DataContracts\MealIngredientDto.cs" />
+    <Compile Include="DataContracts\UnitDto.cs" />
     <Compile Include="Events\Abstractions\IDomainEvent.cs" />
     <Compile Include="Events\Abstractions\IDomainHandlerContainer.cs" />
     <Compile Include="Events\Abstractions\IHandle.cs" />
@@ -80,18 +81,22 @@
       <DependentUpon>201712192019294_EventStore.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Unit.cs" />
     <Compile Include="Repositories\Abstractions\IHolidayRepository.cs" />
+    <Compile Include="Repositories\Abstractions\IUnitRepository.cs" />
     <Compile Include="Repositories\HolidayRepository.cs" />
     <Compile Include="Repositories\IngredientRepository.cs" />
     <Compile Include="Repositories\MealCategoryRepository.cs" />
     <Compile Include="Repositories\MealRepository.cs" />
     <Compile Include="Repositories\UnitOfWork.cs" />
+    <Compile Include="Repositories\UnitRepository.cs" />
     <Compile Include="Services\Abstractions\IBaseService.cs" />
     <Compile Include="Services\Abstractions\IHolidayService.cs" />
     <Compile Include="Services\Abstractions\IIngredientService.cs" />
     <Compile Include="Services\Abstractions\IMealCategoryService.cs" />
     <Compile Include="Services\Abstractions\IMealRouletteService.cs" />
     <Compile Include="Services\Abstractions\IMealService.cs" />
+    <Compile Include="Services\Abstractions\IUnitOfMeasurementService.cs" />
     <Compile Include="Services\HolidayService.cs" />
     <Compile Include="Services\IngredientService.cs" />
     <Compile Include="Services\MealCategoryService.cs" />
@@ -113,6 +118,7 @@
     <Compile Include="Repositories\Abstractions\IMealCategoryRepository.cs" />
     <Compile Include="Repositories\Abstractions\IMealRepository.cs" />
     <Compile Include="Repositories\Abstractions\IUnitOfWork.cs" />
+    <Compile Include="Services\UnitOfMeasurementService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Extensions\" />

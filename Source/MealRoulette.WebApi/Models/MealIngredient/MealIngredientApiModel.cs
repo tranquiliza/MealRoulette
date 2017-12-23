@@ -1,4 +1,5 @@
 ﻿using MealRoulette.WebApi.Models.Ingredient;
+using MealRoulette.WebApi.Models.UnitOfMeasurement;
 
 namespace MealRoulette.WebApi.Models.MealIngredient
 {
@@ -6,7 +7,7 @@ namespace MealRoulette.WebApi.Models.MealIngredient
     {
         public int Amount { get; set; }
 
-        public string UnitOfMeasurement { get; set; }
+        public UnitOfMeasurementApiModel UnitOfMeasurement { get; set; }
 
         public int IngredientId { get; set; }
     }

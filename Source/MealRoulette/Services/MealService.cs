@@ -16,6 +16,7 @@ namespace MealRoulette.Services
         private readonly IMealRepository mealRepository;
         private readonly IMealCategoryRepository mealCategoryRepository;
         private readonly IIngredientRepository ingredientRepository;
+        private readonly IUnitOfMeasurementRepository unitOfMeasurementRepository;
 
         public MealService(IUnitOfWork unitOfWork)
         {
@@ -24,6 +25,7 @@ namespace MealRoulette.Services
             mealRepository = unitOfWork.MealRepository;
             mealCategoryRepository = unitOfWork.MealCategoryRepository;
             ingredientRepository = unitOfWork.IngredientRepository;
+            unitOfMeasurementRepository = unitOfWork.UnitOfMeasurementRepository;
         }
 
         public void Create(string mealName, MealCategoryDto mealCategoryDto)
@@ -59,8 +61,9 @@ namespace MealRoulette.Services
             foreach (var mealIngredientDto in mealIngredientDtos)
             {
                 var ingredient = ingredientRepository.Get(mealIngredientDto.IngredientId);
+                var unitOfMeasurement = unitOfMeasurementRepository.Get(mealIngredientDto.UnitOfMeasurement.Id);
 
-                mealIngredients.Add(MealIngredientFactory.Create(ingredient, mealIngredientDto.Amount, mealIngredientDto.UnitOfMeasurement));
+                mealIngredients.Add(MealIngredientFactory.Create(ingredient, mealIngredientDto.Amount, unitOfMeasurement));
             }
 
             return mealIngredients;
@@ -72,9 +75,9 @@ namespace MealRoulette.Services
             if (meal == null) throw new DomainException($"Meal with id {mealId}, does not exist");
 
             var ingredient = ingredientRepository.Get(mealIngredientDto.IngredientId);
-            if (ingredient == null) throw new DomainException($"ingredient with id {mealIngredientDto.IngredientId}, does not exist");
+            var unitOfMeasurement = unitOfMeasurementRepository.Get(mealIngredientDto.UnitOfMeasurement.Id);
 
-            meal.AddMealIngredient(MealIngredientFactory.Create(ingredient, mealIngredientDto.Amount, mealIngredientDto.UnitOfMeasurement));
+            meal.AddMealIngredient(MealIngredientFactory.Create(ingredient, mealIngredientDto.Amount, unitOfMeasurement));
 
             unitOfWork.SaveChanges();
         }
@@ -83,11 +86,12 @@ namespace MealRoulette.Services
         {
             var meal = mealRepository.Get(mealId);
 
-            foreach (var mealIngredientdto in mealIngredientDtos)
+            foreach (var mealIngredientDto in mealIngredientDtos)
             {
-                var ingredient = ingredientRepository.Get(mealIngredientdto.IngredientId);
+                var ingredient = ingredientRepository.Get(mealIngredientDto.IngredientId);
+                var unitOfMeasurement = unitOfMeasurementRepository.Get(mealIngredientDto.UnitOfMeasurement.Id);
 
-                meal.AddMealIngredient(MealIngredientFactory.Create(ingredient, mealIngredientdto.Amount, mealIngredientdto.UnitOfMeasurement));
+                meal.AddMealIngredient(MealIngredientFactory.Create(ingredient, mealIngredientDto.Amount, unitOfMeasurement));
             }
 
             unitOfWork.SaveChanges();

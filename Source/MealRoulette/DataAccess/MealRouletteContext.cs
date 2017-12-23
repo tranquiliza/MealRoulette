@@ -18,6 +18,8 @@ namespace MealRoulette.DataAccess
 
         public DbSet<EventData> DomainEvents { get; set; }
 
+        public DbSet<UnitOfMeasurement> UnitsOfMeasurement { get; set; }
+
         public MealRouletteContext(string connectionString) : base(connectionString)
         {
         }

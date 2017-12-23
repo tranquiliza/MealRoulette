@@ -64,6 +64,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\Api\UnitOfMeasurementControllerShould.cs" />
+    <Compile Include="Controllers\ControllerFactories\UnitOfMeasurementControllerFactory.cs" />
     <Compile Include="Controllers\ControllerFactories\MealControllerFactory.cs" />
     <Compile Include="Controllers\ControllerFactories\IngredientControllerFactory.cs" />
     <Compile Include="Controllers\ControllerFactories\HolidayControllerFactory.cs" />

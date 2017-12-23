@@ -1,6 +1,6 @@
 ﻿using MealRoulette.Services.Abstractions;
 using MealRoulette.WebApi.App_Start;
-using MealRoulette.WebApi.Controllers;
+using MealRoulette.WebApi.Controllers.Api;
 
 namespace MealRoulette.WebApi.Tests.Controllers.ControllerFactories
 {

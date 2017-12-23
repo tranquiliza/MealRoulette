@@ -4,6 +4,7 @@ using MealRoulette.Services.Abstractions;
 using MealRoulette.WebApi.Models.Meal;
 using MealRoulette.WebApi.Models.MealCategory;
 using MealRoulette.WebApi.Models.MealIngredient;
+using MealRoulette.WebApi.Models.UnitOfMeasurement;
 using MealRoulette.WebApi.Tests.Controllers.ControllerFactories;
 using Moq;
 using NUnit.Framework;
@@ -11,7 +12,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http.Results;
 
-namespace MealRoulette.WebApi.Tests.Controllers
+namespace MealRoulette.WebApi.Tests.Controllers.Api
 {
     [TestFixture]
     public class MealControllerShould
@@ -36,9 +37,14 @@ namespace MealRoulette.WebApi.Tests.Controllers
 
         private static List<MealIngredientApiModel> CreateIngredientsForRequest()
         {
+            var UnitOfMeasurementModel = new UnitOfMeasurementApiModel()
+            {
+                Id = 1,
+                Name = "Gram"
+            };
             return new List<MealIngredientApiModel>()
             {
-                new MealIngredientApiModel() { IngredientId = 1, Amount = 20, UnitOfMeasurement = "Gram" }
+                new MealIngredientApiModel() { IngredientId = 1, Amount = 20, UnitOfMeasurement = UnitOfMeasurementModel }
             };
         }
 

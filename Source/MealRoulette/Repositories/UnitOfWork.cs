@@ -19,7 +19,9 @@ namespace MealRoulette.Repositories
         IMealCategoryRepository IUnitOfWork.MealCategoryRepository => new MealCategoryRepository(mealRouletteContext);
 
         IHolidayRepository IUnitOfWork.HolidayRepository => new HolidayRepository(mealRouletteContext);
-        
+
+        IUnitOfMeasurementRepository IUnitOfWork.UnitOfMeasurementRepository => new UnitOfMeasurementRepository(mealRouletteContext);
+
         void IUnitOfWork.SaveChanges()
         {
             mealRouletteContext.SaveChanges();

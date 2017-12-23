@@ -9,7 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http.Results;
 
-namespace MealRoulette.WebApi.Tests.Controllers
+namespace MealRoulette.WebApi.Tests.Controllers.Api
 {
     [TestFixture]
     public class HolidayControllerShould

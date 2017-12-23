@@ -16,7 +16,8 @@ namespace MealRoulette.WebApi.App_Start
                 cfg.CreateMap<IngredientApiModel, IngredientDto>();
                 cfg.CreateMap<MealIngredientApiModel, MealIngredientDto>();
                 cfg.CreateMap<MealCategoryApiModel, MealCategoryDto>();
-                cfg.CreateMap<MealIngredientDto, MealIngredient>();
+                //cfg.CreateMap<MealIngredientDto, MealIngredient>();
+                //cfg.CreateMap<UnitOfMeasurementDto, UnitOfMeasurement>();
             });
 
         }
