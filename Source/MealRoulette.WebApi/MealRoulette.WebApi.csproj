@@ -257,6 +257,7 @@
     <None Include="packages.config" />
     <Content Include="Views\Shared\_Navigation.cshtml" />
     <Content Include="Views\Shared\_Footer.cshtml" />
+    <None Include="Properties\PublishProfiles\mealroulette - Web Deploy.pubxml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MealRoulette\MealRoulette.csproj">

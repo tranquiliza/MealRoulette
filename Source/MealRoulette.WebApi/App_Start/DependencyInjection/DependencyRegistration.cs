@@ -26,6 +26,7 @@ namespace MealRoulette.WebApi.App_Start.DependencyInjection
             container.Register<IMealCategoryService, MealCategoryService>();
             container.Register<IMealService, MealService>();
             container.Register<IMealRouletteService, MealRouletteService>();
+            container.Register<IUnitOfMeasurementService, UnitOfMeasurementService>();
         }
 
         public static void RegisterEventHandlersToContainer(Container container)
