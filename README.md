@@ -1,5 +1,10 @@
-MealRoulette
+# MealRoulette
 
+## Build
+[![Build status](https://ci.appveyor.com/api/projects/status/o12o9yji25x06g93?svg=true)](https://ci.appveyor.com/project/tranquiliza/mealroulette)
 
-[![Build status](https://ci.appveyor.com/api/projects/status/o12o9yji25x06g93/branch/master?svg=true)](https://ci.appveyor.com/project/tranquiliza/mealroulette/branch/master)
-[![Build status](https://ci.appveyor.com/api/projects/status/o12o9yji25x06g93/branch/development?svg=true)](https://ci.appveyor.com/project/tranquiliza/mealroulette/branch/development)
+## Description
+
+## Documentation
+
+Currently the only Documentation for the API available is accessible by running the application and inspecting the website. 
