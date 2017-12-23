@@ -10,8 +10,8 @@
 
         IHolidayRepository HolidayRepository { get; }
 
-        ISeasonRepository SeasonRepository { get; }
-
+        IUnitOfMeasurementRepository UnitOfMeasurementRepository { get; }
+        
         void SaveChanges();
     }
 }

@@ -1,19 +1,13 @@
-﻿using MealRoulette.Models;
+﻿using MealRoulette.Events;
+using MealRoulette.Models;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
+using System.Threading.Tasks;
 
 namespace MealRoulette.DataAccess
 {
     public class MealRouletteContext : DbContext, IMealRouletteContext
     {
-        protected MealRouletteContext() : base("name=DefaultConnection")
-        {
-        }
-
-        public MealRouletteContext(string connectionString) : base(connectionString)
-        {
-        }
-
         public DbSet<Holiday> Holidays { get; set; }
 
         public DbSet<Ingredient> Ingredients { get; set; }
@@ -22,7 +16,23 @@ namespace MealRoulette.DataAccess
 
         public DbSet<MealCategory> MealCategories { get; set; }
 
-        public DbSet<Season> Seasons { get; set; }
+        public DbSet<EventData> DomainEvents { get; set; }
+
+        public DbSet<UnitOfMeasurement> UnitsOfMeasurement { get; set; }
+
+        public MealRouletteContext(string connectionString) : base(connectionString)
+        {
+        }
+
+        void IMealRouletteContext.SaveChanges()
+        {
+            base.SaveChanges();
+        }
+
+        async Task IMealRouletteContext.SaveChangesAsync()
+        {
+            await base.SaveChangesAsync();
+        }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -30,5 +40,7 @@ namespace MealRoulette.DataAccess
 
             base.OnModelCreating(modelBuilder);
         }
+
+
     }
 }

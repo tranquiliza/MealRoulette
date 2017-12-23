@@ -136,8 +136,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\DomainHandlerContainer.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
-    <Compile Include="App_Start\MappingConfig\AutoMapperConfig.cs" />
+    <Compile Include="App_Start\AutoMapperConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\HelpPage\ApiDescriptionExtensions.cs" />
@@ -168,14 +169,15 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
-    <Compile Include="Controllers\HolidayController.cs" />
+    <Compile Include="Controllers\Api\HolidayController.cs" />
+    <Compile Include="Controllers\Api\UnitOfMeasurementController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\IngredientController.cs" />
-    <Compile Include="Controllers\MealCategoryController.cs" />
-    <Compile Include="Controllers\MealController.cs" />
+    <Compile Include="Controllers\Api\IngredientController.cs" />
+    <Compile Include="Controllers\Api\MealCategoryController.cs" />
+    <Compile Include="Controllers\Api\MealController.cs" />
     <Compile Include="App_Start\DependencyInjection\SimpleInjectorDependencyResolver.cs" />
     <Compile Include="App_Start\DependencyInjection\DependencyRegistration.cs" />
-    <Compile Include="Controllers\SeasonController.cs" />
+    <Compile Include="Controllers\Api\MealRouletteController.cs" />
     <Compile Include="Extensions\MapperExtensions.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -188,6 +190,7 @@
     <Compile Include="Models\MealCategory\MealCategoryApiModel.cs" />
     <Compile Include="Models\Meal\CreateMealApiRequest.cs" />
     <Compile Include="Models\Season\CreateSeasonApiRequest.cs" />
+    <Compile Include="Models\UnitOfMeasurement\UnitOfMeasurementApiModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

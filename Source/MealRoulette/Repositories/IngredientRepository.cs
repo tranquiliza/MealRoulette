@@ -6,16 +6,17 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace MealRoulette.Repositories
 {
     public class IngredientRepository : IIngredientRepository
     {
-        private readonly MealRouletteContext context;
+        private readonly IMealRouletteContext context;
 
         private readonly DbSet<Ingredient> ingredients;
 
-        public IngredientRepository(MealRouletteContext context)
+        public IngredientRepository(IMealRouletteContext context)
         {
             this.context = context ?? throw new ArgumentNullException(nameof(context));
             ingredients = context.Ingredients;
@@ -53,6 +54,11 @@ namespace MealRoulette.Repositories
             var page = ingredients.OrderBy(x => x.Name).Skip(pageIndex * pageSize).Take(pageSize).ToList();
 
             return new Page<Ingredient>(page, pageIndex, pageSize, totalCount);
+        }
+
+        async Task<IEnumerable<Ingredient>> IBaseRepository<Ingredient>.GetAsync()
+        {
+            return await ingredients.ToListAsync();
         }
     }
 }

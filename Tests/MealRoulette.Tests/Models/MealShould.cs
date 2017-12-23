@@ -30,13 +30,14 @@ namespace MealRoulette.Tests.Models
             //Arrange
             var sut = CreateMealWithoutIngredients();
             var ingredient = new Ingredient("Chicken");
-            var mealIngredient = new MealIngredient(ingredient, 10, "Grams");
+            var unitOfMasurement = new UnitOfMeasurement("Grams");
+            var mealIngredient = new MealIngredient(ingredient, 10, unitOfMasurement);
 
             //Act
             sut.AddMealIngredient(mealIngredient);
 
             //Assert
-            Assert.AreEqual(1, sut.Ingredients.Count);
+            Assert.AreEqual(1, sut.MealIngredients.Count);
         }
 
         private Meal CreateMealWithoutIngredients()
@@ -51,7 +52,8 @@ namespace MealRoulette.Tests.Models
             //Arrange
             var meal = CreateMealWithChicken();
             var duplicateIngredient = new Ingredient("Chicken");
-            var mealIngredient = new MealIngredient(duplicateIngredient, 10, "Gram");
+            var unitOfMasurement = new UnitOfMeasurement("Grams");
+            var mealIngredient = new MealIngredient(duplicateIngredient, 10, unitOfMasurement);
 
             //Act
             TestDelegate sut = delegate { meal.AddMealIngredient(mealIngredient); };
@@ -63,7 +65,9 @@ namespace MealRoulette.Tests.Models
         private Meal CreateMealWithChicken()
         {
             var ingredient = new Ingredient("Chicken");
-            var mealIngredient = new MealIngredient(ingredient, 10, "Gram");
+            var unitOfMasurement = new UnitOfMeasurement("Grams");
+            var mealIngredient = new MealIngredient(ingredient, 10, unitOfMasurement);
+
             var meal = new Meal("ThisHasChicken", new MealCategory("Dinner"));
 
             meal.AddMealIngredient(mealIngredient);

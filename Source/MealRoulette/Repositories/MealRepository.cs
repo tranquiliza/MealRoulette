@@ -6,15 +6,16 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace MealRoulette.Repositories
 {
     public class MealRepository : IMealRepository
     {
-        private readonly MealRouletteContext mealRouletteContext;
+        private readonly IMealRouletteContext mealRouletteContext;
         private readonly DbSet<Meal> meals;
 
-        public MealRepository(MealRouletteContext mealRouletteContext)
+        public MealRepository(IMealRouletteContext mealRouletteContext)
         {
             this.mealRouletteContext = mealRouletteContext ?? throw new ArgumentNullException(nameof(mealRouletteContext));
             meals = mealRouletteContext.Meals;
@@ -44,6 +45,15 @@ namespace MealRoulette.Repositories
         IEnumerable<Meal> IBaseRepository<Meal>.Get()
         {
             return meals.ToList();
+        }
+
+        async Task<IEnumerable<Meal>> IBaseRepository<Meal>.GetAsync()
+        {
+            var query = meals
+                .Include(x => x.MealIngredients)
+                .Include(x => x.MealCategory)
+                .Include(x => x.Holiday);
+            return await query.ToListAsync();
         }
 
         IPage<Meal> IBaseRepository<Meal>.Get(int pageIndex, int pageSize)

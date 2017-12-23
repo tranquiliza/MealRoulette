@@ -1,9 +1,10 @@
 ﻿using MealRoulette.Models;
+using System.Threading.Tasks;
 
 namespace MealRoulette.Services.Abstractions
 {
     public interface IMealRouletteService
     {
-        Meal RollMeal();
+        Task<Meal> RollMealAsync();
     }
 }

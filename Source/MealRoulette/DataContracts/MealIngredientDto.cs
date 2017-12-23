@@ -4,7 +4,7 @@
     {
         public int Amount { get; set; }
 
-        public string UnitOfMeasurement { get; set; }
+        public UnitOfMeasurementDto UnitOfMeasurement { get; set; }
 
         public int IngredientId { get; set; }
     }

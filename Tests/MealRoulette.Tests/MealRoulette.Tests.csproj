@@ -7,8 +7,8 @@
     <ProjectGuid>{83D61684-FE97-4065-A069-3CDC281E095D}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MealRoulette.Domain.Tests</RootNamespace>
-    <AssemblyName>MealRoulette.Domain.Tests</AssemblyName>
+    <RootNamespace>MealRoulette.Tests</RootNamespace>
+    <AssemblyName>MealRoulette.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -52,12 +52,12 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\UnitOfMeasurementShould.cs" />
     <Compile Include="Services\HolidayServiceShould.cs" />
     <Compile Include="Services\IngredientServiceShould.cs" />
     <Compile Include="Services\MealRouletteServiceShould.cs" />
-    <Compile Include="Services\SeasonServiceShould.cs" />
+    <Compile Include="Services\ServiceFactories\UnitOfMeasurementServiceFactory.cs" />
     <Compile Include="Services\ServiceFactories\MealRouletteServiceFactory.cs" />
-    <Compile Include="Services\ServiceFactories\SeasonServiceFactory.cs" />
     <Compile Include="Services\ServiceFactories\HolidayServiceFactory.cs" />
     <Compile Include="Services\ServiceFactories\IngredientServiceFactory.cs" />
     <Compile Include="Services\ServiceFactories\MealCategoryServiceFactory.cs" />
@@ -68,8 +68,8 @@
     <Compile Include="Models\IngredientShould.cs" />
     <Compile Include="Models\MealCategoryShould.cs" />
     <Compile Include="Models\MealShould.cs" />
-    <Compile Include="Models\SeasonShould.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\UnitOfMeasurementServiceShould.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Source\MealRoulette\MealRoulette.csproj">

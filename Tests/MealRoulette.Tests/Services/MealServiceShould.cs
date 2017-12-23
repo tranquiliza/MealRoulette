@@ -18,11 +18,13 @@ namespace MealRoulette.Tests.Services
             var mealRepo = CreateMealRepo();
             var mealCategoryRepo = CreateMealCategoryRepo();
             var ingredientRepo = CreateIngredientRepo();
+            var unitOfMeasurementRepo = CreateUnitOfMeasurementRepository();
 
             var mealService = new MealServiceFactory()
                 .WithIngredientRepository(ingredientRepo)
                 .WithMealCategoryRepository(mealCategoryRepo)
                 .WithMealRepository(mealRepo)
+                .WithUnitOfMeasurementRepository(unitOfMeasurementRepo)
                 .Build();
                         
             var mealName = "Pepperoni Pizza";
@@ -42,29 +44,42 @@ namespace MealRoulette.Tests.Services
 
         private IEnumerable<MealIngredientDto> CreateMealIngredientDtos()
         {
+            var unitOfMeasurement = new UnitOfMeasurementDto()
+            {
+                Id = 1,
+                Name = "Gram"
+            };
             var ingredients = new List<MealIngredientDto>()
             {
                 new MealIngredientDto()
                 {
                     IngredientId = 1,
                     Amount = 100,
-                    UnitOfMeasurement = "Gram"
+                    UnitOfMeasurement = unitOfMeasurement
                 },
                 new MealIngredientDto()
                 {
                     IngredientId = 2,
                     Amount = 500,
-                    UnitOfMeasurement = "Gram"
+                    UnitOfMeasurement = unitOfMeasurement
                 },
                 new MealIngredientDto()
                 {
                     IngredientId = 3,
                     Amount = 500,
-                    UnitOfMeasurement = "Gram"
+                    UnitOfMeasurement = unitOfMeasurement
                 }
             };
 
             return ingredients;
+        }
+
+        private IUnitOfMeasurementRepository CreateUnitOfMeasurementRepository()
+        {
+            var unitOfMeasurement = new UnitOfMeasurement("Gram");
+            var mock = new Mock<IUnitOfMeasurementRepository>();
+            mock.Setup(x => x.Get(It.IsAny<int>())).Returns(unitOfMeasurement);
+            return mock.Object;
         }
                       
         private IIngredientRepository CreateIngredientRepo()

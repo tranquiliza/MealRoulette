@@ -18,15 +18,13 @@ namespace MealRoulette.Models
 
         public string HardwareCategory { get; private set; }
 
-        public Season Season { get; private set; } //Could one dish potentially be more Seasons?
-
         public Holiday Holiday { get; private set; }
 
         public string Recipe { get; private set; }
 
         public MealCategory MealCategory { get; private set; }
 
-        public List<MealIngredient> Ingredients { get; private set; }
+        public List<MealIngredient> MealIngredients { get; private set; }
 
         private Meal() { }
 
@@ -35,7 +33,7 @@ namespace MealRoulette.Models
             if (mealCategory == null) throw new ArgumentNullException(nameof(mealCategory));
             if (string.IsNullOrEmpty(name)) throw new ArgumentException(nameof(name));
 
-            Ingredients = new List<MealIngredient>();
+            MealIngredients = new List<MealIngredient>();
             Name = name;
             MealCategory = mealCategory;
             HardwareCategory = DefaultHardwareCategory;
@@ -46,12 +44,12 @@ namespace MealRoulette.Models
             if (mealIngredient == null) throw new ArgumentNullException(nameof(mealIngredient));
             if (MealAlreadyHas(mealIngredient)) throw new DomainException($"This meal already contains {mealIngredient.Ingredient.Name}");
 
-            Ingredients.Add(mealIngredient);
+            MealIngredients.Add(mealIngredient);
         }
 
         private bool MealAlreadyHas(MealIngredient mealIngredient)
         {
-            return Ingredients.FindAll(m => m.Ingredient.Id == mealIngredient.Ingredient.Id).Count > 0;
+            return MealIngredients.FindAll(m => m.Ingredient.Id == mealIngredient.Ingredient.Id).Count > 0;
         }
 
         internal void SetRecipe(string recipe)
