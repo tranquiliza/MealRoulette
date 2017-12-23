@@ -6,6 +6,7 @@ namespace MealRoulette.WebApi
     {
         public static void RegisterBundles(BundleCollection bundles)
         {
+            BundleTable.EnableOptimizations = false;
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
                 "~/Content/js/modernizr-*"));
 

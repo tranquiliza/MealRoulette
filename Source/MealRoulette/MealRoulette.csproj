@@ -83,6 +83,10 @@
     <Compile Include="Migrations\201712192019294_EventStore.Designer.cs">
       <DependentUpon>201712192019294_EventStore.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201712232336449_UnitOfMeasurementRework.cs" />
+    <Compile Include="Migrations\201712232336449_UnitOfMeasurementRework.Designer.cs">
+      <DependentUpon>201712232336449_UnitOfMeasurementRework.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Unit.cs" />
     <Compile Include="Repositories\Abstractions\IHolidayRepository.cs" />
@@ -141,6 +145,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201712192019294_EventStore.resx">
       <DependentUpon>201712192019294_EventStore.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712232336449_UnitOfMeasurementRework.resx">
+      <DependentUpon>201712232336449_UnitOfMeasurementRework.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
