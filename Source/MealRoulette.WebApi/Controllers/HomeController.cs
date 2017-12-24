@@ -10,5 +10,17 @@ namespace MealRoulette.WebApi.Controllers
 
             return View();
         }
+
+        public ActionResult About()
+        {
+            ViewBag.Title = "About Us";
+            return View();
+        }
+
+        public ActionResult Meals()
+        {
+            ViewBag.Title = "Meals";
+            return View();
+        }
     }
 }

@@ -88,7 +88,7 @@
       <DependentUpon>201712232336449_UnitOfMeasurementRework.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\Unit.cs" />
+    <Compile Include="Models\UnitOfMeasurement.cs" />
     <Compile Include="Repositories\Abstractions\IHolidayRepository.cs" />
     <Compile Include="Repositories\Abstractions\IUnitRepository.cs" />
     <Compile Include="Repositories\HolidayRepository.cs" />
