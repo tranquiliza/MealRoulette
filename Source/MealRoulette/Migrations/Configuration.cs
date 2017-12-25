@@ -16,29 +16,15 @@ namespace MealRoulette.Migrations
 
         protected override void Seed(MealRouletteContext context)
         {
-            if (DatabaseContainsNoUnitsOfMeasurement(context))
+            if (true)
             {
-                CreateUnitsOfMeasurement(context);
+                InitialDatabaseCreation.CreateTestData(context);
             }
 
+          
             base.Seed(context);
         }
 
-        private static bool DatabaseContainsNoUnitsOfMeasurement(MealRouletteContext context)
-        {
-            return context.UnitsOfMeasurement.ToList().Any() == false;
-        }
-
-        private void CreateUnitsOfMeasurement(MealRouletteContext context)
-        {
-            var unitsOfMeasurement = new List<UnitOfMeasurement>()
-            {
-                new UnitOfMeasurement("Gram"),
-                new UnitOfMeasurement("Millilitre")
-            };
-
-            context.UnitsOfMeasurement.AddRange(unitsOfMeasurement);
-            context.SaveChanges();
-        }
+       
     }
 }

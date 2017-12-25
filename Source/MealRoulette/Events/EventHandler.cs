@@ -1,7 +1,8 @@
-﻿using System.Threading.Tasks;
-using MealRoulette.DataAccess;
+﻿using MealRoulette.DataAccess;
+using MealRoulette.DataAccess.Abstractions;
 using MealRoulette.Events.Abstractions;
 using Newtonsoft.Json;
+using System.Threading.Tasks;
 
 namespace MealRoulette.Events
 {

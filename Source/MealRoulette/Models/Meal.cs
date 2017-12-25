@@ -14,6 +14,13 @@ namespace MealRoulette.Models
 
         public bool IsFastFood { get; set; }
 
+        internal void SetCountryOfOrigin(string countryOfOrigin)
+        {
+            if (string.IsNullOrWhiteSpace(countryOfOrigin)) throw new ArgumentException("Country cannot be empty!", nameof(countryOfOrigin));
+
+            CountryOfOrigin = countryOfOrigin;
+        }
+
         public bool IsVegetarianFriendly { get; private set; } //How do we check ?
 
         public string HardwareCategory { get; private set; }

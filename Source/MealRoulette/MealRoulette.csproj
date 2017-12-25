@@ -56,9 +56,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DataAccess\IMealRouletteContext.cs" />
+    <Compile Include="DataAccess\Abstractions\IMealRouletteContext.cs" />
     <Compile Include="DataAccess\MealRouletteContext.cs" />
     <Compile Include="DataAccess\MealRouletteContextFactory.cs" />
+    <Compile Include="DataAccess\Configuration\EventDataConfiguration.cs" />
+    <Compile Include="DataAccess\Configuration\MealCategoryConfiguration.cs" />
+    <Compile Include="DataAccess\Configuration\IngredientConfiguration.cs" />
+    <Compile Include="DataAccess\Configuration\MealConfiguration.cs" />
+    <Compile Include="DataAccess\Configuration\HolidayConfiguration.cs" />
+    <Compile Include="DataAccess\Configuration\UnitOfMeasurementConfiguration.cs" />
+    <Compile Include="DataAccess\Configuration\MealIngredientConfiguration.cs" />
     <Compile Include="DataContracts\IngredientDto.cs" />
     <Compile Include="DataContracts\MealCategoryDto.cs" />
     <Compile Include="DataContracts\MealIngredientDto.cs" />
@@ -71,23 +78,12 @@
     <Compile Include="Events\EventHandler.cs" />
     <Compile Include="Events\RandomMealWasChosenEvent.cs" />
     <Compile Include="Factories\MealIngredientFactory.cs" />
-    <Compile Include="Migrations\201712172304037_Initial.cs" />
-    <Compile Include="Migrations\201712172304037_Initial.Designer.cs">
-      <DependentUpon>201712172304037_Initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201712191930163_SeasonRemoval.cs" />
-    <Compile Include="Migrations\201712191930163_SeasonRemoval.Designer.cs">
-      <DependentUpon>201712191930163_SeasonRemoval.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201712192019294_EventStore.cs" />
-    <Compile Include="Migrations\201712192019294_EventStore.Designer.cs">
-      <DependentUpon>201712192019294_EventStore.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201712232336449_UnitOfMeasurementRework.cs" />
-    <Compile Include="Migrations\201712232336449_UnitOfMeasurementRework.Designer.cs">
-      <DependentUpon>201712232336449_UnitOfMeasurementRework.cs</DependentUpon>
+    <Compile Include="Migrations\201712251848131_Initial.cs" />
+    <Compile Include="Migrations\201712251848131_Initial.Designer.cs">
+      <DependentUpon>201712251848131_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Migrations\InitialDatabaseCreation.cs" />
     <Compile Include="Models\UnitOfMeasurement.cs" />
     <Compile Include="Repositories\Abstractions\IHolidayRepository.cs" />
     <Compile Include="Repositories\Abstractions\IUnitRepository.cs" />
@@ -137,17 +133,8 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201712172304037_Initial.resx">
-      <DependentUpon>201712172304037_Initial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201712191930163_SeasonRemoval.resx">
-      <DependentUpon>201712191930163_SeasonRemoval.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201712192019294_EventStore.resx">
-      <DependentUpon>201712192019294_EventStore.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201712232336449_UnitOfMeasurementRework.resx">
-      <DependentUpon>201712232336449_UnitOfMeasurementRework.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201712251848131_Initial.resx">
+      <DependentUpon>201712251848131_Initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

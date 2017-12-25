@@ -1,11 +1,10 @@
-﻿using MealRoulette.DataAccess;
+﻿using MealRoulette.DataAccess.Abstractions;
 using MealRoulette.DataStructures;
 using MealRoulette.Models;
 using MealRoulette.Repositories.Abstractions;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
-using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Threading.Tasks;
 

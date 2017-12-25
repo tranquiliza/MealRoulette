@@ -1,4 +1,4 @@
-﻿using MealRoulette.DataAccess;
+﻿using MealRoulette.DataAccess.Abstractions;
 using MealRoulette.DataStructures;
 using MealRoulette.Models;
 using MealRoulette.Repositories.Abstractions;

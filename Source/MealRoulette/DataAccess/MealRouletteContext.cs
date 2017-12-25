@@ -1,4 +1,6 @@
-﻿using MealRoulette.Events;
+﻿using MealRoulette.DataAccess.Abstractions;
+using MealRoulette.DataAccess.Configuration;
+using MealRoulette.Events;
 using MealRoulette.Models;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
@@ -37,10 +39,15 @@ namespace MealRoulette.DataAccess
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+            modelBuilder.Configurations.Add(new EventDataConfiguration());
+            modelBuilder.Configurations.Add(new HolidayConfiguration());
+            modelBuilder.Configurations.Add(new IngredientConfiguration());
+            modelBuilder.Configurations.Add(new MealCategoryConfiguration());
+            modelBuilder.Configurations.Add(new MealConfiguration());
+            modelBuilder.Configurations.Add(new MealIngredientConfiguration());
+            modelBuilder.Configurations.Add(new UnitOfMeasurementConfiguration());
 
             base.OnModelCreating(modelBuilder);
         }
-
-
     }
 }

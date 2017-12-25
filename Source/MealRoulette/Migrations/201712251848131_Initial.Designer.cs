@@ -13,7 +13,7 @@ namespace MealRoulette.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201712172304037_Initial"; }
+            get { return "201712251848131_Initial"; }
         }
         
         string IMigrationMetadata.Source
