@@ -17,14 +17,16 @@ namespace MealRoulette.WebApi.Controllers.Api
             this.ingredientService = ingredientService;
         }
 
-        public IEnumerable<Ingredient> Get()
+        public IHttpActionResult Get()
         {
-            return ingredientService.Get();
+            var result = ingredientService.Get();
+            return Ok(result);
         }
 
-        public IPage<Ingredient> Get(int pageIndex, int pageSize)
+        public IHttpActionResult Get(int pageIndex, int pageSize)
         {
-            return ingredientService.Get(pageIndex, pageSize);
+            var result = ingredientService.Get(pageIndex, pageSize);
+            return Ok(result);
         }
 
         public IHttpActionResult Post([FromBody]CreateIngredientApiRequest createIngredientApiRequest)

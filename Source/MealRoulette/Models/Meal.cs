@@ -10,7 +10,7 @@ namespace MealRoulette.Models
 
         public string Name { get; private set; }
 
-        public string Country { get; private set; } //Better name for "Italian Food"?
+        public string CountryOfOrigin { get; private set; } //Better name for "Italian Food"?
 
         public bool IsFastFood { get; set; }
 

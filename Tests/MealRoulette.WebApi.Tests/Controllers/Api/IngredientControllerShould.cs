@@ -26,15 +26,15 @@ namespace MealRoulette.WebApi.Tests.Controllers.Api
                 .Build();
 
             //Act
-            var sut = controller.Get(0, 3);
+            var sut = controller.Get(0, 3) as OkNegotiatedContentResult<IPage<Ingredient>>;
 
             //Assert
-            Assert.AreEqual(0, sut.PageIndex);
-            Assert.AreEqual(3, sut.PageSize);
-            Assert.AreEqual(sut.PageSize, sut.Count);
-            Assert.AreEqual(6, sut.TotalCount);
-            Assert.AreEqual(2, sut.TotalPageCount);
-            Assert.IsTrue(sut.HasNextPage);
+            Assert.AreEqual(0, sut.Content.PageIndex);
+            Assert.AreEqual(3, sut.Content.PageSize);
+            Assert.AreEqual(sut.Content.PageSize, sut.Content.Count);
+            Assert.AreEqual(6, sut.Content.TotalCount);
+            Assert.AreEqual(2, sut.Content.TotalPageCount);
+            Assert.IsTrue(sut.Content.HasNextPage);
         }
 
         [Test]
@@ -47,10 +47,10 @@ namespace MealRoulette.WebApi.Tests.Controllers.Api
                 .Build();
 
             //Act
-            var sut = controller.Get();
+            var sut = controller.Get() as OkNegotiatedContentResult<IEnumerable<Ingredient>>;
 
             //Assert
-            Assert.AreEqual(6, sut.Count());
+            Assert.AreEqual(6, sut.Content.Count());
         }
 
         private IIngredientService CreateServiceWithIngredients()

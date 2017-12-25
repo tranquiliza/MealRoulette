@@ -47,7 +47,8 @@ namespace MealRoulette.Repositories
 
         IEnumerable<Meal> IBaseRepository<Meal>.Get()
         {
-            return meals.ToList();
+            var query = CreateBaseMealQuery();
+            return query.ToList();
         }
 
         async Task<IEnumerable<Meal>> IBaseRepository<Meal>.GetAsync()
@@ -60,6 +61,8 @@ namespace MealRoulette.Repositories
         {
             return meals
                 .Include(x => x.MealIngredients)
+                .Include(x => x.MealIngredients.Select(c => c.UnitOfMeasurement))
+                .Include(x => x.MealIngredients.Select(c => c.Ingredient))
                 .Include(x => x.MealCategory)
                 .Include(x => x.Holiday);
         }

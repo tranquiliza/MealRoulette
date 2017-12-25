@@ -1,7 +1,4 @@
-﻿using MealRoulette.Models;
-using MealRoulette.Services.Abstractions;
-using System;
-using System.Collections.Generic;
+﻿using MealRoulette.Services.Abstractions;
 using System.Web.Http;
 
 namespace MealRoulette.WebApi.Controllers.Api
@@ -15,10 +12,10 @@ namespace MealRoulette.WebApi.Controllers.Api
             this.unitOfMeasurementService = unitOfMeasurementService;
         }
 
-        public IEnumerable<UnitOfMeasurement> Get()
+        public IHttpActionResult Get()
         {
             var result = unitOfMeasurementService.Get();
-            return result;
+            return Ok(result);
         }
     }
 }

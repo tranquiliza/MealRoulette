@@ -34,8 +34,6 @@ namespace MealRoulette.Migrations
             var unitsOfMeasurement = new List<UnitOfMeasurement>()
             {
                 new UnitOfMeasurement("Gram"),
-                new UnitOfMeasurement("Litre"),
-                new UnitOfMeasurement("Kilo"),
                 new UnitOfMeasurement("Millilitre")
             };
 
