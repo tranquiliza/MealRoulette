@@ -19,9 +19,17 @@ namespace MealRoulette.WebApi.Controllers.Api
             this.mealRouletteService = mealRouletteService;
         }
 
-        public async Task<Meal> Get()
+        public async Task<IHttpActionResult> Get()
         {
-            return await mealRouletteService.RollMealAsync();
+            try
+            {
+                var result = await mealRouletteService.RollMealAsync();
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
     }
 }

@@ -19,19 +19,22 @@ namespace MealRoulette.WebApi.Controllers.Api
             this.mealService = mealService ?? throw new ArgumentNullException(nameof(mealService));
         }
 
-        public Meal Get(int id)
+        public IHttpActionResult Get(int id)
         {
-            return mealService.Get(id);
+            var result = mealService.Get(id);
+            return Ok(result);
         }
 
-        public IPage<Meal> Get(int pageIndex, int pageSize)
+        public IHttpActionResult Get(int pageIndex, int pageSize)
         {
-            return mealService.Get(pageIndex, pageSize);
+            var result = mealService.Get(pageIndex, pageSize);
+            return Ok(result);
         }
 
-        public IEnumerable<Meal> Get()
+        public IHttpActionResult Get()
         {
-            return mealService.Get();
+            var result = mealService.Get();
+            return Ok(result);
         }
 
         public IHttpActionResult Post([FromBody]CreateMealApiRequest meal)

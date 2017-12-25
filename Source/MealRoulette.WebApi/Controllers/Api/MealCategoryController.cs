@@ -17,19 +17,22 @@ namespace MealRoulette.WebApi.Controllers.Api
             this.mealCategoryService = mealCategoryService;
         }
 
-        public MealCategory Get(int id)
+        public IHttpActionResult Get(int id)
         {
-            return mealCategoryService.Get(id);
+            var result = mealCategoryService.Get(id);
+            return Ok(result);
         }
 
-        public IEnumerable<MealCategory> Get()
+        public IHttpActionResult Get()
         {
-            return mealCategoryService.Get();
+            var result = mealCategoryService.Get();
+            return Ok(result);
         }
 
-        public IPage<MealCategory> GetPage(int index, int pageSize)
+        public IHttpActionResult GetPage(int index, int pageSize)
         {
-            return mealCategoryService.Get(index, pageSize);
+            var result = mealCategoryService.Get(index, pageSize);
+            return Ok(result);
         }
 
         public IHttpActionResult Post([FromBody]CreateMealCategoryApiRequest createMealCategoryRequest)

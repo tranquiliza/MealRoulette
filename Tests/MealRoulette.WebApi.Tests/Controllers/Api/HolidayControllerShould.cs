@@ -93,11 +93,11 @@ namespace MealRoulette.WebApi.Tests.Controllers.Api
                 .Build();
 
             //Act
-            var sut = controller.Get() as IEnumerable<Holiday>;
+            var sut = controller.Get() as OkNegotiatedContentResult<IEnumerable<Holiday>>;
 
             //Assert
             Assert.IsNotNull(sut);
-            Assert.AreEqual(5, sut.ToList().Count);
+            Assert.AreEqual(5, sut.Content.Count());
         }
 
         [Test]
@@ -110,11 +110,11 @@ namespace MealRoulette.WebApi.Tests.Controllers.Api
                 .Build();
 
             //Act
-            var sut = controller.Get(2) as Holiday;
+            var sut = controller.Get(2) as OkNegotiatedContentResult<Holiday>;
 
             //Assert 
             Assert.IsNotNull(sut);
-            Assert.AreEqual(2, sut.Id);
+            Assert.AreEqual(2, sut.Content.Id);
         }
 
         private IHolidayService CreateHolidayServiceWithFiveHolidays()

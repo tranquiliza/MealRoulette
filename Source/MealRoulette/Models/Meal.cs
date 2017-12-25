@@ -10,9 +10,16 @@ namespace MealRoulette.Models
 
         public string Name { get; private set; }
 
-        public string Country { get; private set; } //Better name for "Italian Food"?
+        public string CountryOfOrigin { get; private set; } //Better name for "Italian Food"?
 
         public bool IsFastFood { get; set; }
+
+        internal void SetCountryOfOrigin(string countryOfOrigin)
+        {
+            if (string.IsNullOrWhiteSpace(countryOfOrigin)) throw new ArgumentException("Country cannot be empty!", nameof(countryOfOrigin));
+
+            CountryOfOrigin = countryOfOrigin;
+        }
 
         public bool IsVegetarianFriendly { get; private set; } //How do we check ?
 

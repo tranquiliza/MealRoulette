@@ -1,4 +1,4 @@
-﻿using MealRoulette.DataAccess;
+﻿using MealRoulette.DataAccess.Abstractions;
 using MealRoulette.DataStructures;
 using MealRoulette.Models;
 using MealRoulette.Repositories.Abstractions;
@@ -34,26 +34,36 @@ namespace MealRoulette.Repositories
 
         Meal IMealRepository.Get(string name)
         {
-            return meals.FirstOrDefault(x => x.Name == name);
+            var query = CreateBaseMealQuery();
+            return query.FirstOrDefault(x => x.Name == name);
         }
 
         Meal IBaseRepository<Meal>.Get(int id)
         {
-            return meals.First(x => x.Id == id);
+            var query = CreateBaseMealQuery();
+            return query.First(x => x.Id == id);
         }
 
         IEnumerable<Meal> IBaseRepository<Meal>.Get()
         {
-            return meals.ToList();
+            var query = CreateBaseMealQuery();
+            return query.ToList();
         }
 
         async Task<IEnumerable<Meal>> IBaseRepository<Meal>.GetAsync()
         {
-            var query = meals
+            var query = CreateBaseMealQuery();
+            return await query.ToListAsync();
+        }
+
+        private IQueryable<Meal> CreateBaseMealQuery()
+        {
+            return meals
                 .Include(x => x.MealIngredients)
+                .Include(x => x.MealIngredients.Select(c => c.UnitOfMeasurement))
+                .Include(x => x.MealIngredients.Select(c => c.Ingredient))
                 .Include(x => x.MealCategory)
                 .Include(x => x.Holiday);
-            return await query.ToListAsync();
         }
 
         IPage<Meal> IBaseRepository<Meal>.Get(int pageIndex, int pageSize)

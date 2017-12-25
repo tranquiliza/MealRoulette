@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Http.Results;
 
 namespace MealRoulette.WebApi.Tests.Controllers.Api
 {
@@ -24,10 +25,10 @@ namespace MealRoulette.WebApi.Tests.Controllers.Api
                 .Build();
 
             //Act
-            var sut = controller.Get();
+            var sut = controller.Get() as OkNegotiatedContentResult<IEnumerable<UnitOfMeasurement>>;
 
             //Assert 
-            Assert.AreEqual(4, sut.Count());
+            Assert.AreEqual(4, sut.Content.Count());
         }
 
         private IUnitOfMeasurementService CreateServiceWithUnits()

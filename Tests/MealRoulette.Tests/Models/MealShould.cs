@@ -8,6 +8,33 @@ namespace MealRoulette.Tests.Models
     [TestFixture]
     public class MealShould
     {
+        [Test]
+        public void Throw_ArgumentException_If_Giving_Null_Parameter()
+        {
+            //Arrange
+            var meal = CreateMealWithChicken();
+
+            //Act
+            var sut = new TestDelegate(() => meal.SetCountryOfOrigin(""));
+
+            //Assert 
+            Assert.Throws<ArgumentException>(sut);
+        }
+
+        [Test]
+        public void Set_Country_Of_Origin()
+        {
+            //Arrange
+            var sut = CreateMealWithChicken();
+            var country = "Italy";
+
+            //Act
+            sut.SetCountryOfOrigin(country);
+
+            //Assert 
+            Assert.AreEqual(country, sut.CountryOfOrigin);
+        }
+
         private const string DefaultHardwareCategory = "None";
 
         [Test]

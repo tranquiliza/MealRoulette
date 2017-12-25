@@ -16,16 +16,16 @@ namespace MealRoulette.WebApi.Controllers.Api
             this.holidayService = holidayService;
         }
         
-        public IEnumerable<Holiday> Get()
+        public IHttpActionResult Get()
         {
             var result = holidayService.Get();
-            return result;
+            return Ok(result);
         }
         
-        public Holiday Get(int id)
+        public IHttpActionResult Get(int id)
         {
             var result = holidayService.Get(id);
-            return result;
+            return Ok(result);
         }
         
         public IHttpActionResult Create([FromBody]CreateHolidayApiRequest createHolidayRequest)

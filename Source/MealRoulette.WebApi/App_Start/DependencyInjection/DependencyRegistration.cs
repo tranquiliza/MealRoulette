@@ -1,4 +1,5 @@
 ﻿using MealRoulette.DataAccess;
+using MealRoulette.DataAccess.Abstractions;
 using MealRoulette.Events;
 using MealRoulette.Events.Abstractions;
 using MealRoulette.Repositories;

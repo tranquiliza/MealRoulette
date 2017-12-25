@@ -5,6 +5,7 @@ using Moq;
 using NUnit.Framework;
 using System.Collections.Generic;
 using System.Linq;
+using System.Web.Http.Results;
 
 namespace MealRoulette.WebApi.Tests.Controllers.Api
 {
@@ -21,10 +22,10 @@ namespace MealRoulette.WebApi.Tests.Controllers.Api
                 .Build();
 
             //Act
-            var sut = controller.Get();
+            var sut = controller.Get() as OkNegotiatedContentResult<IEnumerable<MealCategory>>;
 
             //Assert
-            Assert.AreEqual(4, sut.Count());
+            Assert.AreEqual(4, sut.Content.Count());
         }
 
         private IMealCategoryService CreateServiceWithAMealCategory()

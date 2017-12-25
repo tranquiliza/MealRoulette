@@ -3,7 +3,7 @@ using MealRoulette.Models;
 using System.Data.Entity;
 using System.Threading.Tasks;
 
-namespace MealRoulette.DataAccess
+namespace MealRoulette.DataAccess.Abstractions
 {
     public interface IMealRouletteContext
     {
