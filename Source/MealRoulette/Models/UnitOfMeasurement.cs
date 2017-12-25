@@ -5,7 +5,7 @@ namespace MealRoulette.Models
 {
     public class UnitOfMeasurement : BaseEntity
     {
-        public string Name { get; set; }
+        public string Name { get; private set; }
 
         private UnitOfMeasurement() { }
 

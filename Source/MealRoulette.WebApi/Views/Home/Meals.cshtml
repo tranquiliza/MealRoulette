@@ -1,3 +1,15 @@
 ﻿<div class="section">
     <h1>Meals!</h1>
 </div>
+
+@section scripts{
+    <script>
+        $(function () {
+            $.ajax({
+                url: "http://localhost:24171/api/unitofmeasurement"
+            }).done(function (result) {
+                console.log(result)
+            })
+        });
+    </script>
+}

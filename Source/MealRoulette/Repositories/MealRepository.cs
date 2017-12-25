@@ -5,6 +5,7 @@ using MealRoulette.Repositories.Abstractions;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -34,12 +35,14 @@ namespace MealRoulette.Repositories
 
         Meal IMealRepository.Get(string name)
         {
-            return meals.FirstOrDefault(x => x.Name == name);
+            var query = CreateBaseMealQuery();
+            return query.FirstOrDefault(x => x.Name == name);
         }
 
         Meal IBaseRepository<Meal>.Get(int id)
         {
-            return meals.First(x => x.Id == id);
+            var query = CreateBaseMealQuery();
+            return query.First(x => x.Id == id);
         }
 
         IEnumerable<Meal> IBaseRepository<Meal>.Get()
@@ -49,11 +52,16 @@ namespace MealRoulette.Repositories
 
         async Task<IEnumerable<Meal>> IBaseRepository<Meal>.GetAsync()
         {
-            var query = meals
+            var query = CreateBaseMealQuery();
+            return await query.ToListAsync();
+        }
+
+        private IQueryable<Meal> CreateBaseMealQuery()
+        {
+            return meals
                 .Include(x => x.MealIngredients)
                 .Include(x => x.MealCategory)
                 .Include(x => x.Holiday);
-            return await query.ToListAsync();
         }
 
         IPage<Meal> IBaseRepository<Meal>.Get(int pageIndex, int pageSize)

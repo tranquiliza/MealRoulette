@@ -16,12 +16,10 @@ namespace MealRoulette.Migrations
 
         protected override void Seed(MealRouletteContext context)
         {
-
             if (DatabaseContainsNoUnitsOfMeasurement(context))
             {
                 CreateUnitsOfMeasurement(context);
             }
-
 
             base.Seed(context);
         }

@@ -17,7 +17,8 @@ namespace MealRoulette.WebApi.Controllers.Api
 
         public IEnumerable<UnitOfMeasurement> Get()
         {
-            return unitOfMeasurementService.Get();
+            var result = unitOfMeasurementService.Get();
+            return result;
         }
     }
 }
