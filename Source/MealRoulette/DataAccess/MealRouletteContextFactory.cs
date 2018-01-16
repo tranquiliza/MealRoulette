@@ -1,4 +1,5 @@
-﻿using System.Data.Entity.Infrastructure;
+﻿using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
 
 namespace MealRoulette.DataAccess
 {
@@ -18,7 +19,11 @@ namespace MealRoulette.DataAccess
 
         public MealRouletteContext Create()
         {
-            return new MealRouletteContext(connectionStringName);
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<MealRouletteContext, Migrations.Configuration>());
+            var context = new MealRouletteContext(connectionStringName);
+            context.Database.Initialize(false);
+
+            return context;
         }
     }
 }
