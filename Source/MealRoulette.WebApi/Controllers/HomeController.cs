@@ -2,24 +2,19 @@
 
 namespace MealRoulette.WebApi.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
         public ActionResult Index()
         {
-            ViewBag.Title = "Home Page";
+            SetPageTitle("Home Page");
 
             return View();
         }
 
-        public ActionResult About()
+        public ActionResult Contact()
         {
-            ViewBag.Title = "About Us";
-            return View();
-        }
+            SetPageTitle("Contact");
 
-        public ActionResult Meals()
-        {
-            ViewBag.Title = "Meals";
             return View();
         }
     }

@@ -9,21 +9,26 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
+    <header></header>
+    <main>
+        <div class="container valign-wrapper" id="loader">
+            <div class="progress center-align">
+                <div class="indeterminate"></div>
+            </div>
+        </div>
 
-    @Html.Partial("_Navigation")
-
-
-    <div class="container">
-        @RenderBody()
-    </div>
+        <div id="contentWrapper" style="display:none">
+            @Html.Partial("_Navigation")
+            <div class="container">
+                @RenderBody()
+            </div>
+        </div>
+    </main>
 
     @Html.Partial("_Footer")
-
     @Scripts.Render("~/content/js/jquery")
     @Scripts.Render("~/Content/js")
-
     <script src="~/Content/js/InitializeMaterializeComponents.js"></script>
-
     @RenderSection("scripts", required: false)
 </body>
 </html>

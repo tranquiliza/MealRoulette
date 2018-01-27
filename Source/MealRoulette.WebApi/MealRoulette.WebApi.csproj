@@ -177,6 +177,7 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\Api\HolidayController.cs" />
     <Compile Include="Controllers\Api\UnitOfMeasurementController.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\Api\IngredientController.cs" />
     <Compile Include="Controllers\Api\MealCategoryController.cs" />
@@ -184,6 +185,8 @@
     <Compile Include="App_Start\DependencyInjection\SimpleInjectorDependencyResolver.cs" />
     <Compile Include="App_Start\DependencyInjection\DependencyRegistration.cs" />
     <Compile Include="Controllers\Api\MealRouletteController.cs" />
+    <Compile Include="Controllers\MealController.cs" />
+    <Compile Include="Controllers\MealRouletteController.cs" />
     <Compile Include="Extensions\MapperExtensions.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -205,6 +208,7 @@
     <Content Include="Content\js\InitializeMaterializeComponents.js" />
     <Content Include="Content\js\jquery-3.2.1.js" />
     <Content Include="Content\js\materialize.js" />
+    <Content Include="Content\js\mealroulette.js" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Areas\HelpPage\Views\Web.config" />
@@ -265,8 +269,11 @@
     <Content Include="Views\Shared\_Footer.cshtml" />
     <None Include="Properties\PublishProfiles\mealroulette - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\ReleaseProfile.pubxml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Meals.cshtml" />
+    <Content Include="Views\MealRoulette\Index.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Meal\Index.cshtml" />
+    <Content Include="Views\Meal\Create.cshtml" />
+    <Content Include="Views\Meal\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MealRoulette\MealRoulette.csproj">
