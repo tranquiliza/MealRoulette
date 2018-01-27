@@ -3,6 +3,7 @@ using MealRoulette.WebApi.App_Start;
 using MealRoulette.WebApi.App_Start.DependencyInjection;
 using SimpleInjector;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace MealRoulette.WebApi
 {
@@ -15,6 +16,9 @@ namespace MealRoulette.WebApi
             
             // Web API routes
             config.MapHttpAttributeRoutes();
+
+            var corsRule = new EnableCorsAttribute("*", "*", "*");
+            config.EnableCors(corsRule);
 
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
