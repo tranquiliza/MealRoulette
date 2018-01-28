@@ -205,10 +205,11 @@
   <ItemGroup>
     <Content Include="Areas\HelpPage\HelpPage.css" />
     <Content Include="Content\css\materialize.css" />
-    <Content Include="Content\js\InitializeMaterializeComponents.js" />
+    <Content Include="Content\js\site.js" />
     <Content Include="Content\js\jquery-3.2.1.js" />
     <Content Include="Content\js\materialize.js" />
-    <Content Include="Content\js\mealroulette.js" />
+    <Content Include="Content\js\MealRoulette\mealroulette.js" />
+    <Content Include="Content\js\Meal\details.js" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Areas\HelpPage\Views\Web.config" />

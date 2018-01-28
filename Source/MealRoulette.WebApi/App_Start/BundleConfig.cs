@@ -14,7 +14,8 @@ namespace MealRoulette.WebApi
                 "~/Content/js/jquery-3.2.1.js"));
 
             bundles.Add(new ScriptBundle("~/Content/js").Include(
-                "~/Content/js/materialize.js"));
+                "~/Content/js/materialize.js",
+                "~/Content/js/site.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                 "~/Content/css/materialize.css",
