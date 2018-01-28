@@ -1,8 +1,13 @@
 ﻿<footer class="page-footer light-blue">
     <div class="footer-copyright">
         <div class="container">
-            © 2018 Meal Roulette
-            @Html.ActionLink("Contact", "Contact", "Home", new { area = "" }, new { @class = "grey-text text-lighten-4 right waves-effect waves-light" })
+            <div class="row">
+                © 2018 Meal Roulette
+                <ul class="right">
+                    <li>@Html.ActionLink("Contact", "Contact", "Home", new { area = "" }, new { @class = "grey-text text-lighten-4" })</li>
+                    <li>@Html.ActionLink("API", "Index", "Help", new { area = "" }, new { @class = "grey-text text-lighten-4" })</li>
+                </ul>
+            </div>
         </div>
     </div>
 </footer>

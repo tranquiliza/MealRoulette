@@ -24,7 +24,6 @@ async function Roll() {
 function RequestDataFromAPI() {
     return $.ajax({
         url: settings.apiUrl + "mealroulette",
-        context: document.body
     }).done(function (result) {
         return result;
     }).fail(function () {
@@ -36,7 +35,7 @@ function RequestDataFromAPI() {
 function ClearDomAndAppendHtml(mealData) {
     let cardImage = CreateCardImage("https://picsum.photos/205/300/?random", mealData.Name);
     let cardContent = CreateCardContent(mealData.CountryOfOrigin, mealData.MealCategory.Name);
-    let cardActions = CreateCardActions(settings.ownUrl + "meal/details/" + mealData.Id);
+    let cardActions = CreateCardActions(settings.ownUrl + "Meal/Details/" + mealData.Id);
 
     let card = CreateCard(cardImage, cardContent, cardActions);
     let row = CreateRow(card);
