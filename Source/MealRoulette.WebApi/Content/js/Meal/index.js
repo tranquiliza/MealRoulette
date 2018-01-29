@@ -15,6 +15,7 @@ function SetPageSize(size) {
 }
 
 async function FetchAndRenderMeals(pageIndex, pageSize) {
+    //Meal Page is 0Indexed.
     let response = await FetchMealPageFromApi(pageIndex, pageSize);
     MealViewSettings.currentPageIndex = response.PageIndex;
     AppendResponseToPage(response);
@@ -85,16 +86,15 @@ function CreatePreviousChevron(hasPreviousPage, pageIndex, buttonFunction) {
 }
 
 function CreatePaginationButtonFor(buttonIndex, currentPageIndex) {
+    let isCurrentPageIndex = buttonIndex === currentPageIndex;
+    
+    let li = document.createElement("li");
+    li.className = isCurrentPageIndex ? "active" : "waves-effect";
+
     let a = document.createElement("a");
     a.innerHTML = buttonIndex + 1;
+    a.onclick = isCurrentPageIndex ? null : () => FetchAndRenderMeals(buttonIndex, MealViewSettings.pageSize);
 
-    let li = document.createElement("li");
-    if (buttonIndex === currentPageIndex) {
-        li.className = "active";
-    } else {
-        li.className = "waves-effect";
-        a.onclick = () => FetchAndRenderMeals(buttonIndex, MealViewSettings.pageSize);
-    }
     li.appendChild(a);
     return li;
 }
