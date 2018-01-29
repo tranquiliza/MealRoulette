@@ -22,7 +22,7 @@ namespace MealRoulette.DataStructures
         {
             get
             {
-                return (PageIndex < TotalPageCount);
+                return (PageIndex < (TotalPageCount - 1));
             }
         }
 

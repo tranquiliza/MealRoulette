@@ -69,7 +69,7 @@ namespace MealRoulette.Repositories
         IPage<Meal> IBaseRepository<Meal>.Get(int pageIndex, int pageSize)
         {
             var totalCount = meals.Count();
-            var page = meals.Skip(pageIndex * pageSize).Take(pageSize).ToList();
+            var page = CreateBaseMealQuery().OrderBy(meal => meal.Name).Skip(pageIndex * pageSize).Take(pageSize).ToList();
 
             return new Page<Meal>(page, pageIndex, pageSize, totalCount);
         }

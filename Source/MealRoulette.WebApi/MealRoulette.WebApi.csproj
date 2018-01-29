@@ -198,6 +198,7 @@
     <Compile Include="Models\MealIngredient\MealIngredientApiModel.cs" />
     <Compile Include="Models\MealCategory\MealCategoryApiModel.cs" />
     <Compile Include="Models\Meal\CreateMealApiRequest.cs" />
+    <Compile Include="Models\Meal\MealPageResponse.cs" />
     <Compile Include="Models\Season\CreateSeasonApiRequest.cs" />
     <Compile Include="Models\UnitOfMeasurement\UnitOfMeasurementApiModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -205,6 +206,8 @@
   <ItemGroup>
     <Content Include="Areas\HelpPage\HelpPage.css" />
     <Content Include="Content\css\materialize.css" />
+    <Content Include="Content\js\Meal\create.js" />
+    <Content Include="Content\js\Meal\index.js" />
     <Content Include="Content\js\site.js" />
     <Content Include="Content\js\jquery-3.2.1.js" />
     <Content Include="Content\js\materialize.js" />

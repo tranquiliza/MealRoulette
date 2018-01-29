@@ -22,7 +22,7 @@ function RequestDataFromAPI() {
     }).done(function (result) {
         return result;
     }).fail(function () {
-        window.alert("The API did not respond " + settings.apiUrl);
+        window.alert("The API did not respond " + MealRouletteSettings.apiUrl);
         ShowRollFunction();
     });
 }
