@@ -7,7 +7,17 @@ $(document).ready(() => {
     //Add logic to load something from cookies or localstorage?
     //To provide a better user experience we could save the preferences the user puts.
     FetchAndRenderMeals(MealViewSettings.currentPageIndex, MealViewSettings.pageSize);
+    SetupPageSizeInput();
 })
+
+function SetupPageSizeInput() {
+    let $input = $("#inputPageSize");
+    $input.val(MealViewSettings.pageSize);
+    $input.change(() => {
+        SetPageSize($input.val());
+    })
+    M.updateTextFields();
+}
 
 function SetPageSize(size) {
     MealViewSettings.pageSize = size;
@@ -15,8 +25,12 @@ function SetPageSize(size) {
 }
 
 async function FetchAndRenderMeals(pageIndex, pageSize) {
-    //Meal Page is 0Indexed.
+    //Meal Page is 0 Indexed.
     let response = await FetchMealPageFromApi(pageIndex, pageSize);
+    if (response.Meals.length === 0) {
+        //User has recieved a page with nothing on it, go backwards until we hit a page with meals on it?
+        FetchAndRenderMeals(MealViewSettings.currentPageIndex - 1, MealViewSettings.pageSize);
+    }
     MealViewSettings.currentPageIndex = response.PageIndex;
     AppendResponseToPage(response);
 }
@@ -87,7 +101,7 @@ function CreatePreviousChevron(hasPreviousPage, pageIndex, buttonFunction) {
 
 function CreatePaginationButtonFor(buttonIndex, currentPageIndex) {
     let isCurrentPageIndex = buttonIndex === currentPageIndex;
-    
+
     let li = document.createElement("li");
     li.className = isCurrentPageIndex ? "active" : "waves-effect";
 
@@ -126,7 +140,7 @@ function BuildHTMLFor(meal) {
 
 function CreateListElement(image, title, description, secondaryContent) {
     let li = document.createElement("li");
-    li.className = "collection-item avatar dismissable";
+    li.className = "collection-item avatar hoverable";
     li.appendChild(image);
     li.appendChild(title);
     li.appendChild(description);
@@ -162,10 +176,13 @@ function BuildIconForRow(meal) {
     let icon = document.createElement("i");
     icon.className = "material-icons";
     icon.innerHTML = "more";
+    let span = document.createElement("span");
+    span.innerHTML = "20000 likes! ";
 
     let anchor = document.createElement("a");
     anchor.href = MealRouletteSettings.ownUrl + "Meal/Details/" + meal.Id;
     anchor.className = "secondary-content";
+    anchor.appendChild(span);
     anchor.appendChild(icon);
     return anchor;
 }
