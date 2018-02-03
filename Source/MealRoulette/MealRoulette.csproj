@@ -82,6 +82,10 @@
     <Compile Include="Migrations\201712251848131_Initial.Designer.cs">
       <DependentUpon>201712251848131_Initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201802030555203_MealDescription.cs" />
+    <Compile Include="Migrations\201802030555203_MealDescription.Designer.cs">
+      <DependentUpon>201802030555203_MealDescription.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Migrations\InitialDatabaseCreation.cs" />
     <Compile Include="Models\UnitOfMeasurement.cs" />
@@ -135,6 +139,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201712251848131_Initial.resx">
       <DependentUpon>201712251848131_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802030555203_MealDescription.resx">
+      <DependentUpon>201802030555203_MealDescription.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
