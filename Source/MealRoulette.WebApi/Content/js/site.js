@@ -11,6 +11,19 @@
 
     $('#sideNav').sidenav();
 
+    let $languageSelector = $('#language-selector');
+    let languageOptions = {
+        dropdownOptions: {
+            "1": "1",
+            2: "2",
+            3: "3",
+            4: "4",
+            5: "5"
+        }
+    }
+
+    let languageSelectorInstance = M.Select.init($languageSelector, languageOptions);
+    
     HideLoader();
 });
 

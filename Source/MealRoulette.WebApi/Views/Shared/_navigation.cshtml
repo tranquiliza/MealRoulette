@@ -30,10 +30,15 @@
                 <label class="label-icon" for="search"><i class="material-icons">search</i></label>
                 <i class="material-icons">close</i>
             </div>
+            <div class="input-field">
+                <select id="language-selector">
+                    <option value="" selected>Language</option>
+                    <option value="da-DK">Dansk</option>
+                    <option value="en-GB">Engelsk</option>
+                </select>
+                <label>Choose Language</label>
+            </div>
+
         </form>
     </div>
 </nav>
-
-@section scripts{
-    <script src="~/Content/js/InitializeMaterializeComponents.js"></script>
-}
