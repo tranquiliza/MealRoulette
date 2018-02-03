@@ -29,7 +29,7 @@ function RequestDataFromAPI() {
 
 function ClearDomAndAppendHtml(mealData) {
     let cardImage = CreateCardImage("https://picsum.photos/205/300/?random", mealData.Name);
-    let cardContent = CreateCardContent(mealData.CountryOfOrigin, mealData.MealCategory.Name);
+    let cardContent = CreateCardContent(mealData.Description, mealData.MealCategory.Name, mealData.CountryOfOrigin);
     let cardActions = CreateCardActions(MealRouletteSettings.ownUrl + "Meal/Details/" + mealData.Id);
 
     let card = CreateCard(cardImage, cardContent, cardActions);
@@ -55,7 +55,7 @@ function CreateCardImage(imageSource, mealName) {
     return cardImage;
 }
 
-function CreateCardContent(mealDescription, mealCategory) {
+function CreateCardContent(mealDescription, mealCategory, mealCountryOfOrigin) {
     let cardContent = document.createElement("div");
     cardContent.className = "card-content";
 
@@ -66,9 +66,13 @@ function CreateCardContent(mealDescription, mealCategory) {
 
     if (mealCategory !== undefined) {
         let somethingAdditional = document.createElement("p");
-        somethingAdditional.className = ""
-        //somethingAdditional.className = "flow-text";
-        somethingAdditional.innerHTML = "Category: " + mealCategory;
+        somethingAdditional.innerHTML = "<b>Category:</b> " + mealCategory;
+        cardContent.appendChild(somethingAdditional);
+    }
+
+    if (mealCountryOfOrigin !== undefined) {
+        let somethingAdditional = document.createElement("p");
+        somethingAdditional.innerHTML = "<b>Country:</b> " + mealCountryOfOrigin;
         cardContent.appendChild(somethingAdditional);
     }
 

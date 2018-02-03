@@ -1,5 +1,5 @@
 ﻿var MealViewSettings = {
-    pageSize: 10,
+    pageSize: 5,
     currentPageIndex: 0,
 }
 
@@ -50,7 +50,6 @@ function AppendResponseToPage(response) {
     let mealsHTML = [];
 
     response.Meals.forEach(function (meal) {
-        meal.Description = "TEMP DESC";
         let mealHTML = BuildHTMLFor(meal);
         mealsHTML.push(mealHTML);
     })
@@ -166,9 +165,11 @@ function BuildTitleSpan(meal) {
 function BuildDescription(meal) {
     let DescriptionParagraph = document.createElement("p");
 
-    DescriptionParagraph.innerHTML = meal.Description + "<br>"
-        + meal.CountryOfOrigin;
-
+    let descriptionInnerHtml = meal.CountryOfOrigin + "<br>";
+    if (meal.Description !== null) {
+        descriptionInnerHtml += meal.Description;
+    }
+    DescriptionParagraph.innerHTML = descriptionInnerHtml;
     return DescriptionParagraph;
 }
 
@@ -176,13 +177,10 @@ function BuildIconForRow(meal) {
     let icon = document.createElement("i");
     icon.className = "material-icons";
     icon.innerHTML = "more";
-    let span = document.createElement("span");
-    span.innerHTML = "20000 likes! ";
 
     let anchor = document.createElement("a");
     anchor.href = MealRouletteSettings.ownUrl + "Meal/Details/" + meal.Id;
     anchor.className = "secondary-content";
-    anchor.appendChild(span);
     anchor.appendChild(icon);
     return anchor;
 }
