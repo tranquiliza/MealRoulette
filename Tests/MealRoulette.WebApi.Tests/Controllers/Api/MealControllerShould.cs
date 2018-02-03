@@ -113,12 +113,12 @@ namespace MealRoulette.WebApi.Tests.Controllers.Api
                 .Build();
 
             //Act
-            var sut = controller.Get(0, 3) as OkNegotiatedContentResult<IPage<Meal>>;
+            var sut = controller.Get(0, 3) as OkNegotiatedContentResult<MealPageResponse>;
 
             //Assert
             Assert.AreEqual(0, sut.Content.PageIndex);
             Assert.AreEqual(3, sut.Content.PageSize);
-            Assert.AreEqual(sut.Content.PageSize, sut.Content.Count);
+            Assert.AreEqual(sut.Content.PageSize, sut.Content.Meals.Count);
             Assert.AreEqual(6, sut.Content.TotalCount);
             Assert.AreEqual(2, sut.Content.TotalPageCount);
             Assert.IsTrue(sut.Content.HasNextPage);

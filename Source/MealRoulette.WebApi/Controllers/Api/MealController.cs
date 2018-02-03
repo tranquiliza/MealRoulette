@@ -1,11 +1,8 @@
-﻿using MealRoulette.DataStructures;
-using MealRoulette.Exceptions;
-using MealRoulette.Models;
+﻿using MealRoulette.Exceptions;
 using MealRoulette.Services.Abstractions;
 using MealRoulette.WebApi.Extensions;
 using MealRoulette.WebApi.Models.Meal;
 using System;
-using System.Collections.Generic;
 using System.Web.Http;
 
 namespace MealRoulette.WebApi.Controllers.Api

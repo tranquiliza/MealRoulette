@@ -9,6 +9,33 @@ namespace MealRoulette.Tests.Models
     public class MealShould
     {
         [Test]
+        public void Add_Description_To_Meal()
+        {
+            //Arrange
+            var meal = CreateMealWithChicken();
+
+            //Act
+            var sut = new TestDelegate(() => meal.SetDescription("Description goes here!"));
+
+            //Assert 
+            Assert.DoesNotThrow(sut);
+            Assert.AreEqual("Description goes here!", meal.Description);
+        }
+
+        [Test]
+        public void Set_Description_Null_When_Setting_Empty_Description()
+        {
+            //Arrange
+            var meal = CreateMealWithChicken();
+
+            //Act
+            var sut = new TestDelegate(() => meal.SetDescription(""));
+
+            //Assert 
+            Assert.AreEqual(null, meal.Description);
+        }
+
+        [Test]
         public void Throw_ArgumentException_If_Giving_Null_Parameter()
         {
             //Arrange

@@ -10,24 +10,19 @@ namespace MealRoulette.Models
 
         public string Name { get; private set; }
 
-        public string CountryOfOrigin { get; private set; } //Better name for "Italian Food"?
+        public string CountryOfOrigin { get; private set; }
 
         public bool IsFastFood { get; set; }
 
-        internal void SetCountryOfOrigin(string countryOfOrigin)
-        {
-            if (string.IsNullOrWhiteSpace(countryOfOrigin)) throw new ArgumentException("Country cannot be empty!", nameof(countryOfOrigin));
-
-            CountryOfOrigin = countryOfOrigin;
-        }
-
-        public bool IsVegetarianFriendly { get; private set; } //How do we check ?
+        public bool IsVegetarianFriendly { get; private set; }
 
         public string HardwareCategory { get; private set; }
 
         public Holiday Holiday { get; private set; }
 
         public string Recipe { get; private set; }
+
+        public string Description { get; private set; }
 
         public MealCategory MealCategory { get; private set; }
 
@@ -44,6 +39,18 @@ namespace MealRoulette.Models
             Name = name;
             MealCategory = mealCategory;
             HardwareCategory = DefaultHardwareCategory;
+        }
+
+        internal void SetCountryOfOrigin(string countryOfOrigin)
+        {
+            if (string.IsNullOrWhiteSpace(countryOfOrigin)) throw new ArgumentException("Country cannot be empty!", nameof(countryOfOrigin));
+
+            CountryOfOrigin = countryOfOrigin;
+        }
+
+        internal void SetDescription(string description)
+        {
+            Description = description;
         }
 
         internal void AddMealIngredient(MealIngredient mealIngredient)

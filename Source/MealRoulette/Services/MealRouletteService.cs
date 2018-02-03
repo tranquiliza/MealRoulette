@@ -28,7 +28,7 @@ namespace MealRoulette.Services
         async Task<Meal> IMealRouletteService.RollMealAsync()
         {
             var meals = await mealRepository.GetAsync();
-            if (meals.Count() == 0) throw new DomainException("There are no meals in your query");
+            if (meals.Count() == 0) throw new DomainException("There are no meals in the system");
 
             var roll = random.Next(0, meals.Count());
 
