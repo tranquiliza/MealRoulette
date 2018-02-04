@@ -269,7 +269,7 @@
     <Content Include="Content\fonts\roboto\Roboto-Thin.woff" />
     <Content Include="Content\fonts\roboto\Roboto-Thin.woff2" />
     <Content Include="Content\languages\da-DK.json" />
-    <Content Include="Content\languages\dev-DEV.json" />
+    <Content Include="Content\languages\dev.json" />
     <None Include="packages.config" />
     <Content Include="Views\Shared\_Navigation.cshtml" />
     <Content Include="Views\Shared\_Footer.cshtml" />
