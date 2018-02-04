@@ -4,8 +4,17 @@
 }
 
 $(document).ready(() => {
-    //Add logic to load something from cookies or localstorage?
-    //To provide a better user experience we could save the preferences the user puts.
+    function LoadSettingsFromLocalStorage() {
+        let savedPageSize = localStorage.getItem("MealViewSettings.pageSize");
+        if (savedPageSize !== null) {
+            MealViewSettings.pageSize = savedPageSize;
+        }
+        let savedPageIndex = localStorage.getItem("MealViewSettings.currentPageIndex");
+        if (savedPageIndex !== null) {
+            MealViewSettings.currentPageIndex = savedPageIndex;
+        }
+    }
+    LoadSettingsFromLocalStorage();
     FetchAndRenderMeals(MealViewSettings.currentPageIndex, MealViewSettings.pageSize);
     SetupPageSizeInput();
 })
@@ -13,34 +22,24 @@ $(document).ready(() => {
 function SetupPageSizeInput() {
 
     function SetPageSize(size) {
+        localStorage.setItem("MealViewSettings.pageSize", size);
         MealViewSettings.pageSize = size;
         FetchAndRenderMeals(MealViewSettings.currentPageIndex, MealViewSettings.pageSize);
     }
 
-    let $input = $("#inputPageSize");
-    $input.val(MealViewSettings.pageSize);
-    $input.change(() => {
-        SetPageSize($input.val());
-    })
+    function SetupPageSizeInputField() {
+        let $input = $("#inputPageSize");
+        $input.val(MealViewSettings.pageSize);
+        $input.change(() => {
+            SetPageSize($input.val());
+        })
+        M.updateTextFields();
+    }
+
+    SetupPageSizeInputField();
 }
 
 async function FetchAndRenderMeals(pageIndex, pageSize) {
-
-    function AppendResponseToPage(response) {
-        let mealsHTML = [];
-
-        response.Meals.forEach(function (meal) {
-            let mealHTML = BuildHTMLFor(meal);
-            mealsHTML.push(mealHTML);
-        })
-
-        let $CollectionsElement = $("#MealsCollection");
-        $CollectionsElement.html(mealsHTML);
-
-        let pagination = CreatePaginationElement(response);
-        let $container = $("#pagination");
-        $container.html(pagination);
-    }
 
     function FetchMealPageFromApi(pageIndex, pageSize) {
         let queryString = "?pageIndex=" + pageIndex + "&pageSize=" + pageSize;
@@ -59,7 +58,28 @@ async function FetchAndRenderMeals(pageIndex, pageSize) {
         //User has recieved a page with nothing on it, go backwards until we hit a page with meals on it?
         FetchAndRenderMeals(MealViewSettings.currentPageIndex - 1, MealViewSettings.pageSize);
     }
-    MealViewSettings.currentPageIndex = response.PageIndex;
+
+    function SetAndSavePageIndex(pageIndex) {
+        localStorage.setItem("MealViewSettings.currentPageIndex", pageIndex);
+        MealViewSettings.currentPageIndex = pageIndex;
+    }
+    SetAndSavePageIndex(response.PageIndex);
+
+    function AppendResponseToPage(response) {
+        let mealsHTML = [];
+
+        response.Meals.forEach(function (meal) {
+            let mealHTML = BuildHTMLFor(meal);
+            mealsHTML.push(mealHTML);
+        })
+
+        let $CollectionsElement = $("#MealsCollection");
+        $CollectionsElement.html(mealsHTML);
+
+        let pagination = CreatePaginationElement(response);
+        let $container = $("#pagination");
+        $container.html(pagination);
+    }
     AppendResponseToPage(response);
 }
 

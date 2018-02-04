@@ -22,7 +22,6 @@ $(document).ready(function () {
     }
     InitNavigation();
 
-
     function InitLanguageSelector() {
         let $languageSelector = $("#language-selector");
 
@@ -73,11 +72,13 @@ function SetPrefferedLanguage(isoCode) {
 }
 
 function GetPrefferedLanguage() {
+    let language = window.navigator.userLanguage || window.navigator.language;
+    //console.log(language);
     return localStorage.getItem("mealRoulleteLanguage");
 }
 
 async function RequestAndReplaceLabelsFor(isoLanguageCode) {
-    console.log("Change language request for code: " + isoLanguageCode);
+    //console.log("Change language request for code: " + isoLanguageCode);
     function RequestLabelsForLanguageCode(isoCode) {
         return $.ajax({
             url: "/content/languages/" + isoCode + ".json",
