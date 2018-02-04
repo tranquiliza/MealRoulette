@@ -4,5 +4,17 @@
   "lblGoToMeals": "lblGoToMeals",
   "lblMenuMeals": "lblMenuMeals",
   "lblCreateMeals": "lblCreateMeals",
-  "lblMealRoulette": "lblMealRoulette"
+  "lblMealRoulette": "lblMealRoulette",
+  "lblRoll": "lblRoll",
+  "lblReroll": "lblReroll",
+  "lblMealRouletteMealCategory": "lblMealRouletteMealCategory",
+  "lblMealRoulleteCountryOfOrigin": "lblMealRoulleteCountryOfOrigin",
+  "lblMealRoulleteClickHereToSeeMore": "lblMealRoulleteClickHereToSeeMore",
+  "lblApiDidNotRespondError": "lblApiDidNotRespondError",
+  "lblLanguageDanish": "lblLanguageDanish",
+  "lblLanguageEnglish": "lblLanguageEnglish",
+  "lblContact": "lblContact",
+  "lblApi": "lblApi",
+  "lblPageSize": "lblPageSize",
+  "lblChooseLanguage": "lblChooseLanguage"
 }

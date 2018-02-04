@@ -1,7 +1,6 @@
 ﻿var MealRouletteSettings = {
     apiUrl: "http://localhost:24171/api/",
-    ownUrl: "http://localhost:24171/",
-    selectedLanguage: null,
+    ownUrl: "http://localhost:24171/"
 }
 
 var Labels = {}
@@ -23,6 +22,7 @@ $(document).ready(function () {
     }
     InitNavigation();
 
+
     function InitLanguageSelector() {
         let $languageSelector = $("#language-selector");
 
@@ -31,68 +31,83 @@ $(document).ready(function () {
             function CreateLanguageOptionElementForLanguage(isoCode, readableText) {
                 let option = document.createElement("option");
                 option.setAttribute("value", isoCode);
+                if (isoCode === GetPrefferedLanguage()) {
+                    option.setAttribute("selected", "selected");
+                }
                 option.text = readableText;
                 return option;
             }
 
             let elements = [
                 CreateLanguageOptionElementForLanguage("dev", "Development"),
-                CreateLanguageOptionElementForLanguage("da-DK", "Danish"),
-                //CreateLanguageOptionElementForLanguage("en-GB", "English"),
+                CreateLanguageOptionElementForLanguage("da-DK", "{{lblLanguageDanish}}"),
+                CreateLanguageOptionElementForLanguage("en-GB", "{{lblLanguageEnglish}}"),
             ];
 
             return elements;
         }
 
+        function SetLanguageSettingAndReload(isoLanguageCode) {
+            SetPrefferedLanguage(isoLanguageCode);
+            location.reload();
+        }
+
         let options = CreateAndSetLanguageSelectElements();
         $languageSelector.html(options);
         $languageSelector.select();
-        $languageSelector.change(() => RequestAndReplaceLabelsFor($languageSelector.val()));
+        $languageSelector.change(() => SetLanguageSettingAndReload($languageSelector.val()));
 
-        if (MealRouletteSettings.selectedLanguage === null) {
+        if (GetPrefferedLanguage() === null) {
             RequestAndReplaceLabelsFor("dev");
+        }
+        else {
+            RequestAndReplaceLabelsFor(GetPrefferedLanguage());
         }
     }
     InitLanguageSelector();
     HideLoader();
 });
 
-async function RequestAndReplaceLabelsFor(isoLanguageCode) {
-    Labels = await RequestLabelsForLanguageCode(isoLanguageCode);
+function SetPrefferedLanguage(isoCode) {
+    localStorage.setItem("mealRoulleteLanguage", isoCode);
+}
 
-    for (var i = 0; i < 20000; i++) {
-        Labels[i] = i;
+function GetPrefferedLanguage() {
+    return localStorage.getItem("mealRoulleteLanguage");
+}
+
+async function RequestAndReplaceLabelsFor(isoLanguageCode) {
+    console.log("Change language request for code: " + isoLanguageCode);
+    function RequestLabelsForLanguageCode(isoCode) {
+        return $.ajax({
+            url: "/content/languages/" + isoCode + ".json",
+        }).done(function (result) {
+            return result;
+        }).fail(function () {
+            window.alert("Unable to retrieve labels from server");
+        });
     }
+    Labels = await RequestLabelsForLanguageCode(isoLanguageCode);
 
     function FindAndReplaceLabels() {
         let regex = /{{(\w+)}}/g;
 
         function FetchLabel(matchedElement, labelKey) {
-            return Labels[labelKey];
+            if (Labels[labelKey] !== undefined) {
+                return Labels[labelKey];
+            }
+
+            return matchedElement;
         }
 
-        let count = 0;
         $("body *").each(function () {
             let $this = $(this);
             if (!$this.children().length) {
-                count++;
                 $this.text($this.text().replace(regex, FetchLabel));
             }
         })
-        console.log(count);
     }
-
     FindAndReplaceLabels();
-}
-
-function RequestLabelsForLanguageCode(isoCode) {
-    return $.ajax({
-        url: "/content/languages/" + isoCode + ".json",
-    }).done(function (result) {
-        return result;
-    }).fail(function () {
-        window.alert("Unable to retrieve labels from server");
-    });
 }
 
 function HideLoader() {
