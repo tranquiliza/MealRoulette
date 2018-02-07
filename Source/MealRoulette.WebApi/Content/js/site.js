@@ -1,12 +1,76 @@
-﻿var MealRouletteSettings = {
-    apiUrl: "http://localhost:24171/api/",
-    ownUrl: "http://localhost:24171/"
-}
-
-var Labels = {}
+﻿var mealRoulette = new MealRoulette();
 
 $(document).ready(function () {
     $('.collapsible').collapsible();
+
+    mealRoulette.HideLoader();
+});
+
+function MealRoulette() {
+    async function Construct() {
+        let prefferedLanguage = GetPrefferedOrDefaultLanguage();
+
+        let labels = await FetchLabelsFor(prefferedLanguage);
+
+        this.MealRouletteLabels = Object.assign({}, labels);
+
+        InitLanguageSelector(prefferedLanguage);
+
+        InitNavigation();
+
+        ReplaceLabelKeysWithValues(labels);
+    }
+
+    async function FetchLabelsFor(isoCode) {
+        const promise = $.ajax({
+            url: "/content/languages/" + isoCode + ".json"
+        }).done((result) => { return result; });
+
+        return promise;
+    }
+
+    this.Settings = {
+        apiUrl: "http://localhost:24171/api/",
+        ownUrl: "http://localhost:24171/"
+    }
+
+    function ClearLocalStorage() {
+        localStorage.clear();
+    }
+
+    function SetPrefferedLanguage(isoCode) {
+        localStorage.setItem("mealRoulletteLanguage", isoCode);
+    }
+
+    function GetPrefferedOrDefaultLanguage() {
+        let preferedLanguage = localStorage.getItem("mealRoulletteLanguage");
+        if (preferedLanguage !== null) {
+            return preferedLanguage;
+        }
+
+        let language = window.navigator.userLanguage || window.navigator.language;
+        if (IsSupportedLanguage(language)) {
+            return language;
+        }
+
+        // For now we just return Dev code.
+        return "dev";
+    }
+
+    function IsSupportedLanguage(isoCode) {
+        for (var i = 0; i < this.SupportedLanguageIsoCodes; i++) {
+            if (this.SupportedLanguageIsoCodes[i] === isoCode) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    this.SupportedLanguageIsoCodes = [
+        "dev",
+        "da-DK",
+        "en-GB"
+    ]
 
     function InitNavigation() {
         $("#desktopMealNavDropdown").dropdown({
@@ -20,82 +84,42 @@ $(document).ready(function () {
             edge: "right"
         });
     }
-    InitNavigation();
 
-    function InitLanguageSelector() {
+    function InitLanguageSelector(prefferedLanguage) {
         let $languageSelector = $("#language-selector");
 
-        function CreateAndSetLanguageSelectElements() {
-
-            function CreateLanguageOptionElementForLanguage(isoCode, readableText) {
-                let option = document.createElement("option");
-                option.setAttribute("value", isoCode);
-                if (isoCode === GetPrefferedLanguage()) {
-                    option.setAttribute("selected", "selected");
-                }
-                option.text = readableText;
-                return option;
+        function CreateLanguageOptionElementForLanguage(isoCode, readableText) {
+            let option = document.createElement("option");
+            option.setAttribute("value", isoCode);
+            if (isoCode === prefferedLanguage) {
+                option.setAttribute("selected", "selected");
             }
-
-            let elements = [
-                CreateLanguageOptionElementForLanguage("dev", "Development"),
-                CreateLanguageOptionElementForLanguage("da-DK", "{{lblLanguageDanish}}"),
-                CreateLanguageOptionElementForLanguage("en-GB", "{{lblLanguageEnglish}}"),
-            ];
-
-            return elements;
+            option.text = readableText;
+            return option;
         }
+
+        let options = [
+            CreateLanguageOptionElementForLanguage("dev", "Development"),
+            CreateLanguageOptionElementForLanguage("da-DK", "{{lblLanguageDanish}}"),
+            CreateLanguageOptionElementForLanguage("en-GB", "{{lblLanguageEnglish}}"),
+        ];
+
+        $languageSelector.html(options);
+        $languageSelector.select();
 
         function SetLanguageSettingAndReload(isoLanguageCode) {
             SetPrefferedLanguage(isoLanguageCode);
             location.reload();
         }
-
-        let options = CreateAndSetLanguageSelectElements();
-        $languageSelector.html(options);
-        $languageSelector.select();
         $languageSelector.change(() => SetLanguageSettingAndReload($languageSelector.val()));
-
-        if (GetPrefferedLanguage() === null) {
-            RequestAndReplaceLabelsFor("dev");
-        }
-        else {
-            RequestAndReplaceLabelsFor(GetPrefferedLanguage());
-        }
     }
-    InitLanguageSelector();
-    HideLoader();
-});
 
-function SetPrefferedLanguage(isoCode) {
-    localStorage.setItem("mealRoulleteLanguage", isoCode);
-}
+    function ReplaceLabelKeysWithValues(labels) {
 
-function GetPrefferedLanguage() {
-    let language = window.navigator.userLanguage || window.navigator.language;
-    //console.log(language);
-    return localStorage.getItem("mealRoulleteLanguage");
-}
-
-async function RequestAndReplaceLabelsFor(isoLanguageCode) {
-    //console.log("Change language request for code: " + isoLanguageCode);
-    function RequestLabelsForLanguageCode(isoCode) {
-        return $.ajax({
-            url: "/content/languages/" + isoCode + ".json",
-        }).done(function (result) {
-            return result;
-        }).fail(function () {
-            window.alert("Unable to retrieve labels from server");
-        });
-    }
-    Labels = await RequestLabelsForLanguageCode(isoLanguageCode);
-
-    function FindAndReplaceLabels() {
         let regex = /{{(\w+)}}/g;
-
         function FetchLabel(matchedElement, labelKey) {
-            if (Labels[labelKey] !== undefined) {
-                return Labels[labelKey];
+            if (labels[labelKey] !== undefined) {
+                return labels[labelKey];
             }
 
             return matchedElement;
@@ -108,15 +132,17 @@ async function RequestAndReplaceLabelsFor(isoLanguageCode) {
             }
         })
     }
-    FindAndReplaceLabels();
+
+    //Call our own constructer cause cool kids do strange things.
+    Construct();
 }
 
-function HideLoader() {
+MealRoulette.prototype.HideLoader = function () {
     $("#loader").attr("style", "display:none");
     $("#contentWrapper").attr("style", "");
 }
 
-function ShowLoader() {
+MealRoulette.prototype.ShowLoader = function () {
     $("#loader").attr("style", "");
     $("#contentWrapper").attr("style", "display:none");
 }

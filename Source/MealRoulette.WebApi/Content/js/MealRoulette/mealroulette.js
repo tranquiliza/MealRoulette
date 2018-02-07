@@ -23,11 +23,11 @@ async function Roll() {
 
     function RequestDataFromAPI() {
         return $.ajax({
-            url: MealRouletteSettings.apiUrl + "mealroulette",
+            url: mealRoulette.Settings.apiUrl + "mealroulette",
         }).done(function (result) {
             return result;
         }).fail(function () {
-            window.alert(Labels.lblApiDidNotRespondError + MealRouletteSettings.apiUrl);
+            window.alert(MealRouletteLabels.lblApiDidNotRespondError + mealRoulette.Settings.apiUrl);
             ShowRollFunction();
         });
     }
@@ -62,13 +62,13 @@ async function Roll() {
 
             if (mealCategory !== undefined) {
                 let somethingAdditional = document.createElement("p");
-                somethingAdditional.innerHTML = "<b>" + Labels.lblMealRouletteMealCategory + ":</b> " + mealCategory;
+                somethingAdditional.innerHTML = "<b>" + MealRouletteLabels.lblMealRouletteMealCategory + ":</b> " + mealCategory;
                 cardContent.appendChild(somethingAdditional);
             }
 
             if (mealCountryOfOrigin !== undefined) {
                 let somethingAdditional = document.createElement("p");
-                somethingAdditional.innerHTML = "<b>" + Labels.lblMealRoulleteCountryOfOrigin + ":</b> " + mealCountryOfOrigin;
+                somethingAdditional.innerHTML = "<b>" + MealRouletteLabels.lblMealRoulleteCountryOfOrigin + ":</b> " + mealCountryOfOrigin;
                 cardContent.appendChild(somethingAdditional);
             }
 
@@ -82,12 +82,12 @@ async function Roll() {
 
             let cardLink = document.createElement("a");
             cardLink.href = mealLink;
-            cardLink.innerHTML = Labels.lblMealRoulleteClickHereToSeeMore;
+            cardLink.innerHTML = MealRouletteLabels.lblMealRoulleteClickHereToSeeMore;
             cardActions.appendChild(cardLink);
 
             return cardActions;
         }
-        let cardActions = CreateCardActions(MealRouletteSettings.ownUrl + "Meal/Details/" + mealData.Id);
+        let cardActions = CreateCardActions(mealRoulette.Settings.ownUrl + "Meal/Details/" + mealData.Id);
 
         function CreateCard(cardImage, cardContent, cardActions) {
             let card = document.createElement("div");
