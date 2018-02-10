@@ -30,8 +30,7 @@ function MealRoulette() {
     }
 
     this.Settings = {
-        apiUrl: "http://localhost:24171/api/",
-        ownUrl: "http://localhost:24171/"
+        mealRouletteApiUrl: "http://localhost:24171"
     }
 
     function ClearLocalStorage() {
@@ -132,8 +131,7 @@ function MealRoulette() {
             }
         })
     }
-
-    //Call our own constructer cause cool kids do strange things.
+    
     Construct();
 }
 

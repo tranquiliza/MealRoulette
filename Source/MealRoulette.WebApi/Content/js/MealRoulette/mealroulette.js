@@ -23,11 +23,11 @@ async function Roll() {
 
     function RequestDataFromAPI() {
         return $.ajax({
-            url: mealRoulette.Settings.apiUrl + "mealroulette",
+            url: mealRoulette.Settings.mealRouletteApiUrl + "/api/mealroulette",
         }).done(function (result) {
             return result;
         }).fail(function () {
-            window.alert(MealRouletteLabels.lblApiDidNotRespondError + mealRoulette.Settings.apiUrl);
+            window.alert(MealRouletteLabels.lblApiDidNotRespondError + mealRoulette.Settings.mealRouletteApiUrl);
             ShowRollFunction();
         });
     }
@@ -87,7 +87,7 @@ async function Roll() {
 
             return cardActions;
         }
-        let cardActions = CreateCardActions(mealRoulette.Settings.ownUrl + "Meal/Details/" + mealData.Id);
+        let cardActions = CreateCardActions(mealRoulette.Settings.mealRouletteApiUrl + "Meal/Details/" + mealData.Id);
 
         function CreateCard(cardImage, cardContent, cardActions) {
             let card = document.createElement("div");

@@ -43,7 +43,7 @@ async function FetchAndRenderMeals(pageIndex, pageSize) {
 
     function FetchMealPageFromApi(pageIndex, pageSize) {
         let queryString = "?pageIndex=" + pageIndex + "&pageSize=" + pageSize;
-        let UrlWithQuery = mealRoulette.Settings.apiUrl + "meal" + queryString;
+        let UrlWithQuery = mealRoulette.Settings.mealRouletteApiUrl + "/api/meal" + queryString;
         return $.ajax({
             url: UrlWithQuery,
         }).done(function (result) { return result; })
@@ -179,7 +179,7 @@ function BuildHTMLFor(meal) {
         icon.innerHTML = "more";
 
         let anchor = document.createElement("a");
-        anchor.href = mealRoulette.Settings.ownUrl + "Meal/Details/" + meal.Id;
+        anchor.href = mealRoulette.Settings.mealRouletteApiUrl + "Meal/Details/" + meal.Id;
         anchor.className = "secondary-content";
         anchor.appendChild(icon);
         return anchor;
