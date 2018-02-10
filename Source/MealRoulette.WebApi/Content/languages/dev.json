@@ -16,5 +16,8 @@
   "lblContact": "lblContact",
   "lblApi": "lblApi",
   "lblPageSize": "lblPageSize",
-  "lblChooseLanguage": "lblChooseLanguage"
+  "lblChooseLanguage": "lblChooseLanguage",
+  "lblCookiesDisclaimerHeader": "lblCookiesDisclaimerHeader",
+  "lblCookiesDisclaimerDescription": "lblCookiesDisclaimerDescription",
+  "lblCookiesDisclaimerAccept": "lblCookiesDisclaimerAccept"
 }

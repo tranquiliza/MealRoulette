@@ -9,7 +9,9 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
-    <header></header>
+    <header>
+        @Html.Partial("_Navigation")
+    </header>
     <main>
         <div class="container valign-wrapper" id="loader">
             <div class="progress center-align">
@@ -17,7 +19,6 @@
             </div>
         </div>
         <div id="contentWrapper" style="display:none">
-            @Html.Partial("_Navigation")
             <div class="container">
                 @RenderBody()
             </div>
@@ -25,6 +26,17 @@
     </main>
 
     @Html.Partial("_Footer")
+
+    <div class="modal" id="CookiePopup">
+        <div class="modal-content">
+            <h4>{{lblCookiesDisclaimerHeader}}</h4>
+            <p>{{lblCookiesDisclaimerDescription}}</p>
+        </div>
+        <div class="modal-footer">
+            <a id="btnAcceptCookies" class="modal-action waves-effect waves-green btn-flat">{{lblCookiesDisclaimerAccept}}</a>
+        </div>
+    </div>
+
     @Scripts.Render("~/content/js/jquery")
     @Scripts.Render("~/Content/js")
     @RenderSection("scripts", required: false)

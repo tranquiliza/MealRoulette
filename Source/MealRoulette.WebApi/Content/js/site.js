@@ -1,11 +1,11 @@
-﻿var mealRoulette = new MealRoulette();
+﻿var mealRouletteController = new MealRoulette();
 
 $(document).ready(function () {
     $('.collapsible').collapsible();
 
-    mealRoulette.ShowCookiesDisclaimer();
+    mealRouletteController.ShowCookiesDisclaimer();
 
-    mealRoulette.HideLoader();
+    mealRouletteController.HideLoader();
 });
 
 function MealRoulette() {
@@ -21,10 +21,15 @@ function MealRoulette() {
 
     this.ShowCookiesDisclaimer = function () {
         if (UserAcceptsCookies() === false) {
-            let userAccepts = window.confirm("We use cookies!");
-            if (userAccepts) {
+            let cookieModal = document.querySelector("#CookiePopup");
+            let cookieModalInstance = M.Modal.init(cookieModal, { dismissible: false });
+
+            $("#btnAcceptCookies").click(() => {
                 SaveUserAcceptCookies();
-            }
+                cookieModalInstance.close();
+            })
+
+            cookieModalInstance.open();
         }
     }
 
@@ -40,7 +45,6 @@ function MealRoulette() {
 
         return savedValue;
     }
-
 
     async function Construct() {
         let prefferedLanguage = GetPreferedOrDefaultLanguage();
@@ -140,7 +144,6 @@ function MealRoulette() {
 
     function ReplaceLabelKeysWithValues(labels) {
 
-        let regex = /{{(\w+)}}/g;
         function FetchLabel(matchedElement, labelKey) {
             if (labels[labelKey] !== undefined) {
                 return labels[labelKey];
@@ -149,6 +152,7 @@ function MealRoulette() {
             return matchedElement;
         }
 
+        let regex = /{{(\w+)}}/g;
         $("body *").each(function () {
             let $this = $(this);
             if (!$this.children().length) {

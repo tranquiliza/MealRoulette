@@ -206,6 +206,7 @@
   <ItemGroup>
     <Content Include="Areas\HelpPage\HelpPage.css" />
     <Content Include="Content\css\materialize.css" />
+    <Content Include="Content\images\burger.jpg" />
     <Content Include="Content\js\Meal\create.js" />
     <Content Include="Content\js\Meal\index.js" />
     <Content Include="Content\js\site.js" />

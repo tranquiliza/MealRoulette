@@ -33,11 +33,11 @@ function Roulette() {
 
     function RequestDataFromAPI() {
         return $.ajax({
-            url: mealRoulette.Settings.mealRouletteUrl + "/api/mealroulette",
+            url: mealRouletteController.Settings.mealRouletteUrl + "/api/mealroulette",
         }).done(function (result) {
             return result;
         }).fail(function () {
-            window.alert(MealRouletteLabels.lblApiDidNotRespondError + mealRoulette.Settings.mealRouletteUrl);
+            window.alert(MealRouletteLabels.lblApiDidNotRespondError + mealRouletteController.Settings.mealRouletteUrl);
             ShowRollFunction();
         });
     }
@@ -47,7 +47,7 @@ function Roulette() {
 
         let cardContent = CreateCardContent(mealData.Description, mealData.MealCategory.Name, mealData.CountryOfOrigin);
 
-        let cardActions = CreateCardActions(mealRoulette.Settings.mealRouletteUrl + "Meal/Details/" + mealData.Id);
+        let cardActions = CreateCardActions(mealRouletteController.Settings.mealRouletteUrl + "/Meal/Details/" + mealData.Id);
 
         let card = CreateCard(cardImage, cardContent, cardActions);
 
