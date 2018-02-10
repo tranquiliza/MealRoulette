@@ -7,8 +7,18 @@ $(document).ready(function () {
 });
 
 function MealRoulette() {
+    this.Settings = {
+        mealRouletteApiUrl: "http://localhost:24171"
+    }
+
+    this.SupportedLanguageIsoCodes = [
+        "dev",
+        "da-DK",
+        "en-GB"
+    ]
+
     async function Construct() {
-        let prefferedLanguage = GetPrefferedOrDefaultLanguage();
+        let prefferedLanguage = GetPreferedOrDefaultLanguage();
 
         let labels = await FetchLabelsFor(prefferedLanguage);
 
@@ -29,19 +39,15 @@ function MealRoulette() {
         return promise;
     }
 
-    this.Settings = {
-        mealRouletteApiUrl: "http://localhost:24171"
-    }
-
     function ClearLocalStorage() {
         localStorage.clear();
     }
 
-    function SetPrefferedLanguage(isoCode) {
+    function SetPreferedLanguage(isoCode) {
         localStorage.setItem("mealRoulletteLanguage", isoCode);
     }
 
-    function GetPrefferedOrDefaultLanguage() {
+    function GetPreferedOrDefaultLanguage() {
         let preferedLanguage = localStorage.getItem("mealRoulletteLanguage");
         if (preferedLanguage !== null) {
             return preferedLanguage;
@@ -52,7 +58,7 @@ function MealRoulette() {
             return language;
         }
 
-        // For now we just return Dev code.
+        // For now we just return Dev code. In future this will probably be english.
         return "dev";
     }
 
@@ -64,12 +70,6 @@ function MealRoulette() {
         }
         return false;
     }
-
-    this.SupportedLanguageIsoCodes = [
-        "dev",
-        "da-DK",
-        "en-GB"
-    ]
 
     function InitNavigation() {
         $("#desktopMealNavDropdown").dropdown({
@@ -107,7 +107,7 @@ function MealRoulette() {
         $languageSelector.select();
 
         function SetLanguageSettingAndReload(isoLanguageCode) {
-            SetPrefferedLanguage(isoLanguageCode);
+            SetPreferedLanguage(isoLanguageCode);
             location.reload();
         }
         $languageSelector.change(() => SetLanguageSettingAndReload($languageSelector.val()));
