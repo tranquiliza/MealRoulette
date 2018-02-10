@@ -26,7 +26,7 @@ MealRoulette.prototype.LoadSettingsFromLocalStorage = function () {
 
 MealRoulette.prototype.FetchMealPageFromApi = function (pageIndex, pageSize) {
     let queryString = "?pageIndex=" + pageIndex + "&pageSize=" + pageSize;
-    let UrlWithQuery = mealRoulette.Settings.mealRouletteApiUrl + "/api/meal" + queryString;
+    let UrlWithQuery = mealRoulette.Settings.mealRouletteUrl + "/api/meal" + queryString;
 
     return $.ajax({
         url: UrlWithQuery,
@@ -39,7 +39,7 @@ MealRoulette.prototype.FetchMealPageFromApi = function (pageIndex, pageSize) {
 MealRoulette.prototype.SetupPageSizeInput = function (pageIndex, pageSize) {
     SetPageSize = function (pageSize) {
         mealRoulette.SavePageSizeSetting(pageSize);
-        FetchAndRenderMeals(MealViewSettings.currentPageIndex, pageSize);
+        mealRoulette.FetchAndRenderMeals(MealViewSettings.currentPageIndex, pageSize);
     }
 
     let $input = $("#inputPageSize");
@@ -138,7 +138,7 @@ function HtmlBuilder() {
         icon.innerHTML = "more";
 
         let anchor = document.createElement("a");
-        anchor.href = mealRoulette.Settings.mealRouletteApiUrl + "Meal/Details/" + meal.Id;
+        anchor.href = mealRoulette.Settings.mealRouletteUrl + "/Meal/Details/" + meal.Id;
         anchor.className = "secondary-content";
         anchor.appendChild(icon);
         return anchor;

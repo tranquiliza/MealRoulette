@@ -3,12 +3,14 @@
 $(document).ready(function () {
     $('.collapsible').collapsible();
 
+    mealRoulette.ShowCookiesDisclaimer();
+
     mealRoulette.HideLoader();
 });
 
 function MealRoulette() {
     this.Settings = {
-        mealRouletteApiUrl: "http://localhost:24171"
+        mealRouletteUrl: "http://localhost:24171"
     }
 
     this.SupportedLanguageIsoCodes = [
@@ -16,6 +18,29 @@ function MealRoulette() {
         "da-DK",
         "en-GB"
     ]
+
+    this.ShowCookiesDisclaimer = function () {
+        if (UserAcceptsCookies() === false) {
+            let userAccepts = window.confirm("We use cookies!");
+            if (userAccepts) {
+                SaveUserAcceptCookies();
+            }
+        }
+    }
+
+    function SaveUserAcceptCookies() {
+        localStorage.setItem("UserAcceptCookies", true);
+    }
+
+    function UserAcceptsCookies() {
+        let savedValue = localStorage.getItem("UserAcceptCookies");
+        if (savedValue === null) {
+            return false;
+        }
+
+        return savedValue;
+    }
+
 
     async function Construct() {
         let prefferedLanguage = GetPreferedOrDefaultLanguage();
@@ -131,7 +156,7 @@ function MealRoulette() {
             }
         })
     }
-    
+
     Construct();
 }
 
