@@ -1,5 +1,7 @@
 ﻿using AutoMapper;
 using MealRoulette.DataContracts;
+using MealRoulette.Models;
+using MealRoulette.WebApi.Models.Meal;
 using MealRoulette.WebApi.Models.MealCategory;
 using MealRoulette.WebApi.Models.MealIngredient;
 using System.Collections.Generic;
@@ -28,6 +30,11 @@ namespace MealRoulette.WebApi.Extensions
             }
 
             return result;
+        }
+
+        internal static MealApiModel Map(this Meal meal)
+        {
+            return Mapper.Map<MealApiModel>(meal);
         }
     }
 }

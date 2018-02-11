@@ -192,6 +192,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Holiday\CreateHolidayApiRequest.cs" />
+    <Compile Include="Models\Holiday\HolidayApiModel.cs" />
     <Compile Include="Models\Ingredient\CreateIngredientApiRequest.cs" />
     <Compile Include="Models\Ingredient\IngredientApiModel.cs" />
     <Compile Include="Models\MealCategory\CreateMealCategoryApiRequest.cs" />
@@ -199,6 +200,7 @@
     <Compile Include="Models\MealCategory\MealCategoryApiModel.cs" />
     <Compile Include="Models\Meal\CreateMealApiRequest.cs" />
     <Compile Include="Models\Meal\MealPageResponse.cs" />
+    <Compile Include="Models\Meal\MealApiModel.cs" />
     <Compile Include="Models\Season\CreateSeasonApiRequest.cs" />
     <Compile Include="Models\UnitOfMeasurement\UnitOfMeasurementApiModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

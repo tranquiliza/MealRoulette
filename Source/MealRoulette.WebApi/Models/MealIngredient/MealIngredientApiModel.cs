@@ -9,6 +9,6 @@ namespace MealRoulette.WebApi.Models.MealIngredient
 
         public UnitOfMeasurementApiModel UnitOfMeasurement { get; set; }
 
-        public int IngredientId { get; set; }
+        public IngredientApiModel Ingredient { get; set; }
     }
 }

@@ -1,6 +1,6 @@
-﻿namespace MealRoulette.WebApi.Models.Ingredient
+﻿namespace MealRoulette.WebApi.Models.Holiday
 {
-    public class IngredientApiModel
+    public class HolidayApiModel
     {
         public int Id { get; set; }
 

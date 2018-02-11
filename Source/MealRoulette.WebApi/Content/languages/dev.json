@@ -19,5 +19,19 @@
   "lblChooseLanguage": "lblChooseLanguage",
   "lblCookiesDisclaimerHeader": "lblCookiesDisclaimerHeader",
   "lblCookiesDisclaimerDescription": "lblCookiesDisclaimerDescription",
-  "lblCookiesDisclaimerAccept": "lblCookiesDisclaimerAccept"
+  "lblCookiesDisclaimerAccept": "lblCookiesDisclaimerAccept",
+  "lblMealDetailsTabsDescription": "lblMealDetailsTabsDescription",
+  "lblMealDetailsTabsIngredients": "lblMealDetailsTabsIngredients",
+  "lblMealDetailsTabsRecipe": "lblMealDetailsTabsRecipe",
+  "lblMealDetailsDescription": "lblMealDetailsDescription",
+  "lblMealDetailsCountryOfOrigin": "lblMealDetailsCountryOfOrigin",
+  "lblMealDetailsHardwareCategory": "lblMealDetailsHardwareCategory",
+  "lblMealDetailsMealCategory": "lblMealDetailsMealCategory",
+  "lblMealDetailsIsFastFood": "lblMealDetailsIsFastFood",
+  "lblMealDetailsIsVegetarianFriendly": "lblMealDetailsIsVegetarianFriendly",
+  "lblMealDetailsRecipe": "lblMealDetailsRecipe",
+  "lblMealDetailsIngredients": "lblMealDetailsIngredients",
+  "lblMealDetailsPeople": "lblMealDetailsPeople",
+  "lblMealDetailsHeaderSeveralPeople": "lblMealDetailsHeaderSeveralPeople",
+  "lblMealDetailsPerson": "lblMealDetailsPerson"
 }

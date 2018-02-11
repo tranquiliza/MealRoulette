@@ -42,9 +42,10 @@ namespace MealRoulette.WebApi.Tests.Controllers.Api
                 Id = 1,
                 Name = "Gram"
             };
+            var ingredientApiModel = new Models.Ingredient.IngredientApiModel() { Id = 1, Name = "Test Ingredient" };
             return new List<MealIngredientApiModel>()
             {
-                new MealIngredientApiModel() { IngredientId = 1, Amount = 20, UnitOfMeasurement = UnitOfMeasurementModel }
+                new MealIngredientApiModel() { Ingredient = ingredientApiModel, Amount = 20, UnitOfMeasurement = UnitOfMeasurementModel }
             };
         }
 
@@ -157,10 +158,11 @@ namespace MealRoulette.WebApi.Tests.Controllers.Api
             var service = CreateServiceWithMeal();
             var controller = new MealControllerFactory()
                 .WithMealService(service)
+                .WithMapper()
                 .Build();
 
             //Act
-            var sut = controller.Get(1) as OkNegotiatedContentResult<Meal>;
+            var sut = controller.Get(1) as OkNegotiatedContentResult<MealApiModel>;
 
             //Assert 
             Assert.AreEqual(1, sut.Content.Id);

@@ -18,8 +18,9 @@ namespace MealRoulette.WebApi.Controllers.Api
 
         public IHttpActionResult Get(int id)
         {
-            var result = mealService.Get(id);
-            return Ok(result);
+            var meal = mealService.Get(id);
+            var response = meal.Map();
+            return Ok(response);
         }
 
         public IHttpActionResult Get(int pageIndex, int pageSize)
