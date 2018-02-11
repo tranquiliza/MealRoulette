@@ -12,12 +12,6 @@ namespace MealRoulette.WebApi.Tests.Controllers.ControllerFactories
         {
             mealService = null;
         }
-
-        internal MealControllerFactory WithMapper()
-        {
-            AutoMapperConfig.RegisterMappings();
-            return this;
-        }
                 
         internal MealControllerFactory WithMealService(IMealService service)
         {

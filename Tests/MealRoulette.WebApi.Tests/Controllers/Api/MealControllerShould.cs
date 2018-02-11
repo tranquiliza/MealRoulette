@@ -1,6 +1,7 @@
 ﻿using MealRoulette.DataStructures;
 using MealRoulette.Models;
 using MealRoulette.Services.Abstractions;
+using MealRoulette.WebApi.App_Start;
 using MealRoulette.WebApi.Models.Meal;
 using MealRoulette.WebApi.Models.MealCategory;
 using MealRoulette.WebApi.Models.MealIngredient;
@@ -17,6 +18,12 @@ namespace MealRoulette.WebApi.Tests.Controllers.Api
     [TestFixture]
     public class MealControllerShould
     {
+        [OneTimeSetUp]
+        public void Setup()
+        {
+            AutoMapperConfig.RegisterMappings();
+        }
+
         [Test]
         public void Post_CreateMeal_Request()
         {
@@ -24,7 +31,6 @@ namespace MealRoulette.WebApi.Tests.Controllers.Api
             var service = CreateEmptyService();
             var controller = new MealControllerFactory()
                 .WithMealService(service)
-                .WithMapper()
                 .Build();
             var request = NewCreateMealRequest(CreateIngredientsForRequest());
 
@@ -158,7 +164,6 @@ namespace MealRoulette.WebApi.Tests.Controllers.Api
             var service = CreateServiceWithMeal();
             var controller = new MealControllerFactory()
                 .WithMealService(service)
-                .WithMapper()
                 .Build();
 
             //Act
