@@ -13,7 +13,7 @@ MealRoulette.prototype.FetchMealDetailsFromApi = function (mealId) {
     })
         .done(function (result) { return result; })
         .fail(() => {
-            window.alert(Labels.lblApiDidNotRespondError + url)
+            window.alert(MealRouletteLabels.lblApiDidNotRespondError + url)
         })
 }
 

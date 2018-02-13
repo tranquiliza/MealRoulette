@@ -9,6 +9,7 @@ $(document).ready(function () {
 });
 
 function MealRoulette() {
+
     this.Settings = {
         mealRouletteUrl: "http://localhost:24171"
     }
