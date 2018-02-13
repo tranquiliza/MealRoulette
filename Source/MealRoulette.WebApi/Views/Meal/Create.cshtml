@@ -1,7 +1,104 @@
-﻿
-@{
-    ViewBag.Title = "Create";
+﻿<div class="section">
+    <div class="row">
+        <form id="CreateMealForm" class="col s12">
+
+            <div class="row">
+
+                <!--MealName Input-->
+                <div class="input-field col s6">
+                    <input id="txtMealName" type="text" class="validate">
+                    <label for="txtMealName">{{lblCreateMealNameOfMealInputLabel}}</label>
+                </div>
+
+                <!--MealCategory Input-->
+                <div class="input-field col s6">
+                    <select id="mealCategorySelect" class="validate">
+                        <option value="" disabled selected>{{lblCreateMealSelectMealCategoryDefaultText}}</option>
+                    </select>
+                    <label>{{lblCreateMealSelectMealCategoryLabel}}</label>
+                </div>
+            </div>
+
+            <div class="row">
+
+                <!--HardwareCategory Input-->
+                <div class="input-field col s6">
+                    <input id="txtHardwareCategory" type="text" class="validate">
+                    <label for="txtHardwareCategory">{{lblCreateMealHardwareCategoryLabel}}</label>
+                </div>
+
+                <!--CountryOfOrigin Input-->
+                <div class="input-field col s6">
+                    <input id="txtCountryOfOrigin" type="text" class="validate">
+                    <label for="txtCountryOfOrigin">{{lblCreateMealCountryOfOriginLabel}}</label>
+                </div>
+            </div>
+
+            <!--Description Input-->
+            <div class="row">
+                <div class="input-field col s12">
+                    <textarea id="txtMealDescription" class="materialize-textarea" data-length="3000"></textarea>
+                    <label for="txtMealDescription">{{lblCreateMealDescriptionLabel}}</label>
+                </div>
+            </div>
+
+            <!--SOME COLLECTION GOES HERE FOR INGREDIENTS OR WHAT?!-->
+            <div class="row col s12">
+                <ul class="collection">
+                    <li class="collection-item"><div>Beef x 200 gram<a href="#!" class="secondary-content"><i class="material-icons red-text">delete</i></a></div></li>
+                    <li class="collection-item"><div>Mozzerella x 200 gram<a href="#!" class="secondary-content"><i class="material-icons red-text">delete</i></a></div></li>
+                    <li class="collection-item"><div>Milk x 1000 mililitre<a href="#!" class="secondary-content"><i class="material-icons red-text">delete</i></a></div></li>
+                    <li class="collection-item"><div>Flour x 500g<a href="#!" class="secondary-content"><i class="material-icons red-text">delete</i></a></div></li>
+                </ul>
+            </div>
+
+            <!--Ingredients Input-->
+            <div class="row">
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">search</i>
+                    <input type="text" id="ingredientsSearchBar" class="autocomplete">
+                    <label for="autocomplete-input">{{lblCreateMealIngredientSearchBarLabel}}</label>
+                </div>
+                <div class="input-field col s2">
+                    <label for="txtMealIngredientAmount">{{lblCreateMealIngredientAmountLabel}}</label>
+                    <input id="txtMealIngredientAmount" type="number" min="1" class="validate">
+                </div>
+                <div class="input-field col s4">
+                    <select id="mealIngredientUnitOfMeasurementSelect" class="validate">
+                        <option value="" disabled selected>{{lblCreateMealSelectIngredientUnitOfMeasurement}}</option>
+                    </select>
+                    <label>{{lblCreateMealSelectIngredientUnitOfMeasurementLabel}}</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s12 center-align">
+                    <button class="btn ultraWideButton">{{lblCreateMealAddIngredient}}</button>
+                </div>
+            </div>
+
+
+
+            <div class="row">
+                <p>
+                    <label>
+                        <input type="checkbox" />
+                        <span>{{lblCreateMealIsFastFood}}</span>
+                    </label>
+                </p>
+                <p>
+                    <label>
+                        <input type="checkbox" />
+                        <span>{{lblCreateMealIsVegetarianFriendly}}</span>
+                    </label>
+                </p>
+            </div>
+
+
+            <button class="btn">{{lblCreateMealSubmit}}</button>
+        </form>
+    </div>
+</div>
+
+@section scripts{
+    <script src="~/Content/js/Meal/create.js"></script>
 }
-
-<h2>Create</h2>
-
