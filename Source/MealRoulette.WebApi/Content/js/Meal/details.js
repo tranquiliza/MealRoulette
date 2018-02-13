@@ -30,12 +30,12 @@ function MealDetailsController() {
 
     async function LoadDetailsForMeal(mealId) {
         let response = await mealRouletteController.FetchMealDetailsFromApi(mealId);
-        console.log(response);
 
         AppendMealDetailsToPage(response);
 
         AppendMealIngredientsToPage(response.MealIngredients);
         CalculateIngredientsForPeople(response.MealIngredients, 10);
+
         AppendRecipeToPage(response.Recipe);
     }
 

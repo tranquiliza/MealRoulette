@@ -7,7 +7,7 @@
     <li>@Html.ActionLink("{{lblCreateMeals}}", "Create", "Meal", new { area = "" }, new { @class = "waves-effect waves-light" })</li>
 </ul>
 
-<nav class="light-blue">
+<nav>
     <div class="nav-wrapper">
         @Html.ActionLink("{{lblLogo}}", "Index", "Home", new { area = "" }, new { @class = "center brand-logo" })
         <a data-target="sideNav" class="sidenav-trigger">
@@ -24,7 +24,7 @@
         </a>
 
         <ul class="sidenav" id="sideNav">
-            <li>@Html.ActionLink("{{lblMeals}}", "Index", "Meal", new { area = "" }, new { @class = "waves-effect waves-light dropdown-button", @id = "mobileNavDropdown", @data_target = "mobileMealsDropdown" })</li>
+            <li>@Html.ActionLink("{{lblMenuMeals}}", "Index", "Meal", new { area = "" }, new { @class = "waves-effect waves-light dropdown-button", @id = "mobileNavDropdown", @data_target = "mobileMealsDropdown" })</li>
             <li>@Html.ActionLink("{{lblMealRoulette}}", "Index", "MealRoulette", new { area = "" }, new { @class = "waves-effect waves-light" })</li>
         </ul>
 
