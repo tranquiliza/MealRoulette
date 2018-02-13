@@ -5,6 +5,9 @@
 .wideButton {
     width: 30%;
 }
+.ultraWideButton {
+    width: 60%;
+}
 
 body {
     display: flex;
