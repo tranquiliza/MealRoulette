@@ -17,5 +17,11 @@ namespace MealRoulette.WebApi.Controllers.Api
             var result = unitOfMeasurementService.Get();
             return Ok(result);
         }
+
+        public IHttpActionResult Get(int id)
+        {
+            var result = unitOfMeasurementService.Get(id);
+            return Ok(result);
+        }
     }
 }
