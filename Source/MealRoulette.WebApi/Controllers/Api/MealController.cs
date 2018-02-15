@@ -40,10 +40,10 @@ namespace MealRoulette.WebApi.Controllers.Api
         {
             try
             {
-                var mealCategoryDto = meal.MealCategory.Map();
-                var mealIngredientsDto = meal.Ingredients.Map();
+                //var mealCategoryDto = meal.MealCategory.Map();
+                //var mealIngredientsDto = meal.MealIngredients.Map();
 
-                mealService.Create(meal.Name, mealCategoryDto, mealIngredientsDto);
+                //mealService.Create(meal.Name, mealCategoryDto, mealIngredientsDto);
             }
             catch (DomainException error)
             {

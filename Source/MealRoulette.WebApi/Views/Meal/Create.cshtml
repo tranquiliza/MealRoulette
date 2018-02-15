@@ -43,21 +43,17 @@
             </div>
 
             <!--SOME COLLECTION GOES HERE FOR INGREDIENTS OR WHAT?!-->
-            <div class="row col s12">
-                <ul class="collection" id="mealIngredientsCollection">
-                    <li class="collection-item"><div>Beef x 200 gram<a href="#" class="secondary-content"><i class="material-icons red-text">delete</i></a></div></li>
-                    <li class="collection-item"><div>Mozzerella x 200 gram<a href="#" class="secondary-content"><i class="material-icons red-text">delete</i></a></div></li>
-                    <li class="collection-item"><div>Milk x 1000 mililitre<a href="#" class="secondary-content"><i class="material-icons red-text">delete</i></a></div></li>
-                    <li class="collection-item"><div>Flour x 500g<a href="#" class="secondary-content"><i class="material-icons red-text">delete</i></a></div></li>
-                </ul>
+            <div id="mealIngredientsCollection" class="row col s12">
+                <label>{{lblIngredientsCollection}}</label>
+                <ul class="collection"></ul>
             </div>
 
             <!--Ingredients Input-->
             <div class="row">
                 <div class="input-field col s6">
                     <i class="material-icons prefix">search</i>
-                    <input type="text" id="ingredientsSearchBar" class="autocomplete">
-                    <label for="autocomplete-input">{{lblCreateMealIngredientSearchBarLabel}}</label>
+                    <input type="text" id="txtIngredientsSearchBar" class="autocomplete">
+                    <label for="txtIngredientsSearchBar">{{lblCreateMealIngredientSearchBarLabel}}</label>
                 </div>
                 <div class="input-field col s2">
                     <label for="txtMealIngredientAmount">{{lblCreateMealIngredientAmountLabel}}</label>
@@ -72,7 +68,7 @@
             </div>
             <div class="row">
                 <div class="col s12 center-align">
-                    <button type="button" class="btn waves-effect ultraWideButton">{{lblCreateMealAddIngredient}}</button>
+                    <button id="btnMealIngredientAddToMeal" type="button" class="btn waves-effect ultraWideButton">{{lblCreateMealAddIngredient}}</button>
                 </div>
             </div>
 
@@ -83,21 +79,21 @@
                 </div>
             </div>
 
-            <div class="row">
-                <p>
-                    <label>
-                        <input type="checkbox" />
-                        <span>{{lblCreateMealIsFastFood}}</span>
-                    </label>
-                </p>
-                <p>
-                    <label>
-                        <input type="checkbox" />
-                        <span>{{lblCreateMealIsVegetarianFriendly}}</span>
-                    </label>
-                </p>
-            </div>
-            <button type="button" class="btn waves-effect">{{lblCreateMealSubmit}}</button>
+            @*<div class="row">
+                    <p>
+                        <label>
+                            <input type="checkbox" />
+                            <span>{{lblCreateMealIsFastFood}}</span>
+                        </label>
+                    </p>
+                    <p>
+                        <label>
+                            <input type="checkbox" />
+                            <span>{{lblCreateMealIsVegetarianFriendly}}</span>
+                        </label>
+                    </p>
+                </div>*@
+            <button type="button" id="btnSubmitMeal" class="btn waves-effect">{{lblCreateMealSubmit}}</button>
         </form>
     </div>
 </div>

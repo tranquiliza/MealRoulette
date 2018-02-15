@@ -27,6 +27,6 @@ namespace MealRoulette.WebApi.Models.Meal
 
         public MealCategoryApiModel MealCategory { get; set; }
 
-        public List<MealIngredientApiModel> MealIngredients { get; set; }
+        public IEnumerable<MealIngredientApiModel> MealIngredients { get; set; }
     }
 }
