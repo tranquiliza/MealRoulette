@@ -44,11 +44,11 @@
 
             <!--SOME COLLECTION GOES HERE FOR INGREDIENTS OR WHAT?!-->
             <div class="row col s12">
-                <ul class="collection">
-                    <li class="collection-item"><div>Beef x 200 gram<a href="#!" class="secondary-content"><i class="material-icons red-text">delete</i></a></div></li>
-                    <li class="collection-item"><div>Mozzerella x 200 gram<a href="#!" class="secondary-content"><i class="material-icons red-text">delete</i></a></div></li>
-                    <li class="collection-item"><div>Milk x 1000 mililitre<a href="#!" class="secondary-content"><i class="material-icons red-text">delete</i></a></div></li>
-                    <li class="collection-item"><div>Flour x 500g<a href="#!" class="secondary-content"><i class="material-icons red-text">delete</i></a></div></li>
+                <ul class="collection" id="mealIngredientsCollection">
+                    <li class="collection-item"><div>Beef x 200 gram<a href="#" class="secondary-content"><i class="material-icons red-text">delete</i></a></div></li>
+                    <li class="collection-item"><div>Mozzerella x 200 gram<a href="#" class="secondary-content"><i class="material-icons red-text">delete</i></a></div></li>
+                    <li class="collection-item"><div>Milk x 1000 mililitre<a href="#" class="secondary-content"><i class="material-icons red-text">delete</i></a></div></li>
+                    <li class="collection-item"><div>Flour x 500g<a href="#" class="secondary-content"><i class="material-icons red-text">delete</i></a></div></li>
                 </ul>
             </div>
 
@@ -72,11 +72,16 @@
             </div>
             <div class="row">
                 <div class="col s12 center-align">
-                    <button class="btn ultraWideButton">{{lblCreateMealAddIngredient}}</button>
+                    <button type="button" class="btn waves-effect ultraWideButton">{{lblCreateMealAddIngredient}}</button>
                 </div>
             </div>
 
-
+            <div class="row">
+                <div class="col s12">
+                    <h6 for="txtMealIngredientAmount">{{lblCreateMealRecipeInputLabel}}</h6>
+                    <textarea id="mealRecipeInput"></textarea>
+                </div>
+            </div>
 
             <div class="row">
                 <p>
@@ -92,13 +97,12 @@
                     </label>
                 </p>
             </div>
-
-
-            <button class="btn">{{lblCreateMealSubmit}}</button>
+            <button type="button" class="btn waves-effect">{{lblCreateMealSubmit}}</button>
         </form>
     </div>
 </div>
 
 @section scripts{
+    <script src="~/Content/js/tinymce/tinymce.js"></script>
     <script src="~/Content/js/Meal/create.js"></script>
 }

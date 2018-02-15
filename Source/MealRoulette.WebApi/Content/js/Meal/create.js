@@ -11,6 +11,7 @@ function MealCreateController() {
         InitializeMealsCategoryInputField();
         InitializeIngredientUnitOfMeasurementInputField();
         InitializeIngredientsSearchField();
+        InitializeRecipeField();
     }
 
     function InitializeCharacterCounterFields() {
@@ -65,6 +66,12 @@ function MealCreateController() {
 
         $("#ingredientsSearchBar").autocomplete({
             data: myData
+        });
+    }
+
+    function InitializeRecipeField() {
+        tinymce.init({
+            selector: "#mealRecipeInput"
         });
     }
 }
