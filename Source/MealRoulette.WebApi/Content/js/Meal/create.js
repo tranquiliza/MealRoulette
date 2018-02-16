@@ -8,14 +8,14 @@ function MealCreateController() {
 
     //MealApiModel
     function Meal() {
-        this.Name;
-        this.CountryOfOrigin;
-        this.HardwareCategory;
-        this.Holiday;
-        this.Recipe;
-        this.Description;
-        this.MealCategory;
-        this.MealIngredients;
+        this.Name = null;
+        this.CountryOfOrigin = null;
+        this.HardwareCategory = null;
+        this.Holiday = null;
+        this.Recipe = null;
+        this.Description = null;
+        this.MealCategory = null;
+        this.MealIngredients = null;
     }
 
     //HolidayApiModel
@@ -71,8 +71,8 @@ function MealCreateController() {
     }
 
     async function AddIngredientToMeal() {
-        if (meal.Ingredients === undefined || meal.Ingredients === null) {
-            meal.Ingredients = [];
+        if (meal.MealIngredients === undefined || meal.MealIngredients === null) {
+            meal.MealIngredients = [];
         }
 
         let $selectedIngredient = $("#txtIngredientsSearchBar");
@@ -94,7 +94,7 @@ function MealCreateController() {
 
         let notAdded = true;
 
-        meal.Ingredients.forEach((ingredientApiModel) => {
+        meal.MealIngredients.forEach((ingredientApiModel) => {
             if (ingredientApiModel.Ingredient.Id === ingredientToAdd.Id) {
 
                 if (ingredientApiModel.UnitOfMeasurement.Id !== unit.Id) {
@@ -109,7 +109,7 @@ function MealCreateController() {
         });
 
         if (notAdded) {
-            meal.Ingredients.push(mealIngredient);
+            meal.MealIngredients.push(mealIngredient);
         }
 
         RenderChosenMealIngredients();
@@ -126,7 +126,7 @@ function MealCreateController() {
         let ul = document.createElement("ul");
         ul.className = "collection";
 
-        meal.Ingredients.forEach((ingredientApiModel) => {
+        meal.MealIngredients.forEach((ingredientApiModel) => {
             let icon = document.createElement("i");
             icon.className = "material-icons red-text";
             icon.innerHTML = "delete";
@@ -152,10 +152,10 @@ function MealCreateController() {
     }
 
     function RemoveMealIngredient(id) {
-        for (var i = 0; i < meal.Ingredients.length; i++) {
+        for (var i = 0; i < meal.MealIngredients.length; i++) {
 
-            if (meal.Ingredients[i].Ingredient.Id === id) {
-                meal.Ingredients.splice(i, 1);
+            if (meal.MealIngredients[i].Ingredient.Id === id) {
+                meal.MealIngredients.splice(i, 1);
             }
         }
         RenderChosenMealIngredients();
@@ -220,7 +220,15 @@ function MealCreateController() {
 
     function InitializeRecipeField() {
         tinymce.init({
-            selector: "#mealRecipeInput"
+            selector: "#mealRecipeInput",
+            height: 500,
+            menubar: false,
+            plugins: [
+                'advlist autolink lists link image charmap print preview anchor textcolor',
+                'searchreplace visualblocks code fullscreen',
+                'insertdatetime media table contextmenu paste code help wordcount'
+            ],
+            toolbar: 'insert | undo redo |  formatselect | bold italic backcolor  | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | removeformat | help'
         });
     }
 
@@ -228,24 +236,36 @@ function MealCreateController() {
         mealRouletteController.ShowLoader();
 
         //All the inputs.
+        let txtMealName = $("#txtMealName");
+        let selectMealCategory = $("#mealCategorySelect");
+        let txtHardwareCategory = $("#txtHardwareCategory");
+        let txtCountryOfOrigin = $("#txtCountryOfOrigin");
+        let txtDescription = $("#txtMealDescription");
+        let txtRecipe = tinyMCE.activeEditor.getContent();
 
+        let mealHoliday = "";
 
+        meal.Name = txtMealName.val();
+        meal.MealCategory = await FetchCategoryFromId(selectMealCategory.val());
+        meal.HardwareCategory = txtHardwareCategory.val();
+        meal.CountryOfOrigin = txtCountryOfOrigin.val();
+        meal.Description = txtDescription.val();
+        meal.Recipe = txtRecipe;
 
+        console.log(meal);
 
+        //let result = await PostMealToApi(meal);
+    }
 
-        let meal = new Meal();
+    async function FetchCategoryFromId(id) {
+        let response = await $.ajax({
+            url: mealRouletteController.Settings.mealRouletteUrl + "/api/mealcategory/" + "?Id=" + id
+        }).fail(() => { window.alert(MealRouletteLabels.lblApiDidNotRespondError + mealRouletteController.Settings.mealRouletteUrl); });
 
-        let result = await PostMealToApi(meal);
-
-
-        mealRouletteController.HideLoader();
+        return response;
     }
 
     async function PostMealToApi(meal) {
-        console.log("POSTING");
-        console.log(meal);
-
-
         $.ajax({
             type: "POST",
             url: mealRouletteController.Settings.mealRouletteUrl + "/api/meal",
