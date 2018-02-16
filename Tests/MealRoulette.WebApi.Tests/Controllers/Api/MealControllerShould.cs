@@ -55,13 +55,13 @@ namespace MealRoulette.WebApi.Tests.Controllers.Api
             };
         }
 
-        private static CreateMealApiRequest NewCreateMealRequest(List<MealIngredientApiModel> ingredients)
+        private static CreateMealApiRequest NewCreateMealRequest(IEnumerable<MealIngredientApiModel> ingredients)
         {
             return new CreateMealApiRequest()
             {
                 Name = "My Meal!",
                 MealCategory = new MealCategoryApiModel { Id = 1, Name = "SomeNameWeDontUseAnyways????" },
-                Ingredients = ingredients
+                MealIngredients = ingredients
             };
         }
 
