@@ -33,5 +33,6 @@
   "lblMealDetailsIngredients": "lblMealDetailsIngredients",
   "lblMealDetailsPeople": "lblMealDetailsPeople",
   "lblMealDetailsHeaderSeveralPeople": "lblMealDetailsHeaderSeveralPeople",
-  "lblMealDetailsPerson": "lblMealDetailsPerson"
+  "lblMealDetailsPerson": "lblMealDetailsPerson",
+  "lblGithub": "lblGithub"
 }
