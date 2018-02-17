@@ -11,7 +11,7 @@ $(document).ready(function () {
 function MealRoulette() {
 
     this.Settings = {
-        mealRouletteUrl: "http://localhost:24171"
+        mealRouletteUrl: "http://tranquilizaadm-001-site1.itempurl.com/"
     }
 
     this.SupportedLanguageIsoCodes = [
