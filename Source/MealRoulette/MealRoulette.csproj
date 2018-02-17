@@ -90,6 +90,10 @@
     <Compile Include="Migrations\201802172201233_EventIds.Designer.cs">
       <DependentUpon>201802172201233_EventIds.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201802172339074_DataNormalizations.cs" />
+    <Compile Include="Migrations\201802172339074_DataNormalizations.Designer.cs">
+      <DependentUpon>201802172339074_DataNormalizations.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Migrations\InitialDatabaseCreation.cs" />
     <Compile Include="Models\Country.cs" />
@@ -155,6 +159,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201802172201233_EventIds.resx">
       <DependentUpon>201802172201233_EventIds.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802172339074_DataNormalizations.resx">
+      <DependentUpon>201802172339074_DataNormalizations.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
