@@ -1,5 +1,4 @@
-﻿var mealRouletteController = new MealRoulette();
-
+﻿// var mealRoulette is intantiated in layout.cshtml.
 $(document).ready(function () {
     $('.collapsible').collapsible();
 
@@ -8,10 +7,10 @@ $(document).ready(function () {
     mealRouletteController.HideLoader();
 });
 
-function MealRoulette() {
+function MealRoulette(applicationUrl) {
 
     this.Settings = {
-        mealRouletteUrl: "http://tranquilizaadm-001-site1.itempurl.com/"
+        mealRouletteUrl: applicationUrl
     }
 
     this.SupportedLanguageIsoCodes = [

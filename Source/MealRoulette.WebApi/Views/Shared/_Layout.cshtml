@@ -50,6 +50,11 @@
 
     @Scripts.Render("~/content/js/jquery")
     @Scripts.Render("~/Content/js")
+
+    <script>
+        var mealRouletteController = new MealRoulette("@(ViewBag.ApiBindingUrl)");
+    </script>
+
     @RenderSection("scripts", required: false)
 </body>
 </html>
