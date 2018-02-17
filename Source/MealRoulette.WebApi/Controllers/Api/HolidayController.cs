@@ -1,8 +1,6 @@
 ﻿using MealRoulette.Exceptions;
-using MealRoulette.Models;
 using MealRoulette.Services.Abstractions;
 using MealRoulette.WebApi.Models.Holiday;
-using System.Collections.Generic;
 using System.Web.Http;
 
 namespace MealRoulette.WebApi.Controllers.Api
