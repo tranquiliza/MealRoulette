@@ -92,13 +92,16 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Migrations\InitialDatabaseCreation.cs" />
+    <Compile Include="Models\Country.cs" />
     <Compile Include="Models\HardwareCategory.cs" />
     <Compile Include="Models\UnitOfMeasurement.cs" />
+    <Compile Include="Repositories\Abstractions\ICountryRepository.cs" />
     <Compile Include="Repositories\Abstractions\IHardwareCategoryRepository.cs" />
     <Compile Include="Repositories\Abstractions\IHolidayRepository.cs" />
     <Compile Include="Repositories\Abstractions\IUnitRepository.cs" />
     <Compile Include="Repositories\HardwareCategoryRepository.cs" />
     <Compile Include="Repositories\HolidayRepository.cs" />
+    <Compile Include="Repositories\CountryRepository.cs" />
     <Compile Include="Repositories\IngredientRepository.cs" />
     <Compile Include="Repositories\MealCategoryRepository.cs" />
     <Compile Include="Repositories\MealRepository.cs" />

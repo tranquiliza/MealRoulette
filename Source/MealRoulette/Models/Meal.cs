@@ -8,7 +8,7 @@ namespace MealRoulette.Models
     {
         public string Name { get; private set; }
 
-        public string CountryOfOrigin { get; private set; }
+        public Country CountryOfOrigin { get; private set; }
 
         public bool IsFastFood { get; set; }
 
@@ -40,9 +40,9 @@ namespace MealRoulette.Models
             HardwareCategory = hardwareCategory;
         }
 
-        internal void SetCountryOfOrigin(string countryOfOrigin)
+        internal void SetCountryOfOrigin(Country countryOfOrigin)
         {
-            if (string.IsNullOrWhiteSpace(countryOfOrigin)) throw new ArgumentException("Country cannot be empty!", nameof(countryOfOrigin));
+            if (countryOfOrigin == null) throw new ArgumentNullException("Country cannot be empty!", nameof(countryOfOrigin));
 
             CountryOfOrigin = countryOfOrigin;
         }

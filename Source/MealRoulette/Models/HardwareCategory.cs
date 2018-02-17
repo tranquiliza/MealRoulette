@@ -8,7 +8,7 @@ namespace MealRoulette.Models
 
         public HardwareCategory(string name)
         {
-            Name = name;
+            SetName(name);
         }
 
         public void SetName(string name)

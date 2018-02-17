@@ -21,6 +21,8 @@ namespace MealRoulette.DataAccess.Abstractions
 
         DbSet<EventData> DomainEvents { get; set; }
 
+        DbSet<Country> Countries { get; set; }
+
         void SaveChanges();
 
         Task SaveChangesAsync();

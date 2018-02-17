@@ -24,6 +24,8 @@ namespace MealRoulette.DataAccess
 
         public DbSet<HardwareCategory> HardwareCategories { get; set; }
 
+        public DbSet<Country> Countries { get; set; }
+
         public MealRouletteContext(string connectionString) : base(connectionString)
         {
         }

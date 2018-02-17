@@ -36,16 +36,16 @@ namespace MealRoulette.Tests.Models
         }
 
         [Test]
-        public void Throw_ArgumentException_If_Giving_Null_Parameter()
+        public void Throw_ArgumentNullException_If_Giving_Null_Parameter()
         {
             //Arrange
             var meal = CreateMealWithChicken();
 
             //Act
-            var sut = new TestDelegate(() => meal.SetCountryOfOrigin(""));
+            var sut = new TestDelegate(() => meal.SetCountryOfOrigin(null));
 
             //Assert 
-            Assert.Throws<ArgumentException>(sut);
+            Assert.Throws<ArgumentNullException>(sut);
         }
 
         [Test]
@@ -53,7 +53,7 @@ namespace MealRoulette.Tests.Models
         {
             //Arrange
             var sut = CreateMealWithChicken();
-            var country = "Italy";
+            var country = new Country("Italy");
 
             //Act
             sut.SetCountryOfOrigin(country);
