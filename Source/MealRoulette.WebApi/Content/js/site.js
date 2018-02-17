@@ -88,7 +88,7 @@ function MealRoulette(applicationUrl) {
         }
 
         // For now we just return Dev code. In future this will probably be english.
-        return "dev";
+        return "en-GB";
     }
 
     function IsSupportedLanguage(isoCode) {
@@ -127,9 +127,9 @@ function MealRoulette(applicationUrl) {
         }
 
         let options = [
-            CreateLanguageOptionElementForLanguage("dev", "Development"),
             CreateLanguageOptionElementForLanguage("da-DK", "{{lblLanguageDanish}}"),
             CreateLanguageOptionElementForLanguage("en-GB", "{{lblLanguageEnglish}}"),
+            CreateLanguageOptionElementForLanguage("dev", "Development"),
         ];
 
         $languageSelector.html(options);
