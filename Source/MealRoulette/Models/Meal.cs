@@ -6,8 +6,6 @@ namespace MealRoulette.Models
 {
     public class Meal : BaseEntity
     {
-        private const string DefaultHardwareCategory = "None";
-
         public string Name { get; private set; }
 
         public string CountryOfOrigin { get; private set; }
@@ -16,7 +14,7 @@ namespace MealRoulette.Models
 
         public bool IsVegetarianFriendly { get; private set; }
 
-        public string HardwareCategory { get; private set; }
+        public HardwareCategory HardwareCategory { get; private set; }
 
         public Holiday Holiday { get; private set; }
 
@@ -30,15 +28,16 @@ namespace MealRoulette.Models
 
         private Meal() { }
 
-        internal Meal(string name, MealCategory mealCategory)
+        internal Meal(string name, MealCategory mealCategory, HardwareCategory hardwareCategory)
         {
-            if (mealCategory == null) throw new ArgumentNullException(nameof(mealCategory));
             if (string.IsNullOrEmpty(name)) throw new ArgumentException(nameof(name));
+            if (mealCategory == null) throw new ArgumentNullException(nameof(mealCategory));
+            if (hardwareCategory == null) throw new ArgumentNullException(nameof(hardwareCategory));
 
             MealIngredients = new List<MealIngredient>();
             Name = name;
             MealCategory = mealCategory;
-            HardwareCategory = DefaultHardwareCategory;
+            HardwareCategory = hardwareCategory;
         }
 
         internal void SetCountryOfOrigin(string countryOfOrigin)
@@ -80,16 +79,11 @@ namespace MealRoulette.Models
             Holiday = holiday;
         }
 
-        internal void SetHardwareCategory(string hardwareCategory)
+        internal void SetHardwareCategory(HardwareCategory hardwareCategory)
         {
-            if (string.IsNullOrWhiteSpace(hardwareCategory))
-            {
-                HardwareCategory = DefaultHardwareCategory;
-            }
-            else
-            {
-                HardwareCategory = hardwareCategory;
-            }
+            if (hardwareCategory == null) throw new DomainException("Hardware Category cannot be empty");
+
+            HardwareCategory = hardwareCategory;
         }
     }
 }

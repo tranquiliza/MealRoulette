@@ -11,6 +11,7 @@ namespace MealRoulette.Tests.Services.ServiceFactories
         private IMealCategoryRepository _MealCategoryRepository;
         private IMealRepository _MealRepository;
         private IUnitOfMeasurementRepository _UnitOfMeasurementRepository;
+        private IHardwareCategoryRepository _HardwareCategoryRepository;
 
         internal MealServiceFactory()
         {
@@ -18,11 +19,18 @@ namespace MealRoulette.Tests.Services.ServiceFactories
             _MealCategoryRepository = null;
             _MealRepository = null;
             _UnitOfMeasurementRepository = null;
+            _HardwareCategoryRepository = null;
         }
 
         internal MealServiceFactory WithIngredientRepository(IIngredientRepository ingredientRepository)
         {
             _IngredientRepository = ingredientRepository;
+            return this;
+        }
+
+        internal MealServiceFactory WithHardwareCategoryRepository(IHardwareCategoryRepository hardwareCategoryRepository)
+        {
+            _HardwareCategoryRepository = hardwareCategoryRepository;
             return this;
         }
 
@@ -51,6 +59,7 @@ namespace MealRoulette.Tests.Services.ServiceFactories
             unitOfWork.Setup(m => m.MealCategoryRepository).Returns(_MealCategoryRepository);
             unitOfWork.Setup(m => m.MealRepository).Returns(_MealRepository);
             unitOfWork.Setup(m => m.UnitOfMeasurementRepository).Returns(_UnitOfMeasurementRepository);
+            unitOfWork.Setup(m => m.HardwareRepository).Returns(_HardwareCategoryRepository);
             return new MealService(unitOfWork.Object);
         }
     }

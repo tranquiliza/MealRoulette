@@ -98,14 +98,15 @@ namespace MealRoulette.WebApi.Tests.Controllers.Api
         private IEnumerable<Meal> CreateMeals()
         {
             var mealCategory = new MealCategory("Dinner");
+            var defaultHardwareCategory = new HardwareCategory("None");
             var meals = new List<Meal>()
             {
-                new Meal("Pizza With Pepperoni", mealCategory),
-                new Meal("Pizza With Chicken", mealCategory),
-                new Meal("Pizza With Ham", mealCategory),
-                new Meal("Chicken Soup", mealCategory),
-                new Meal("Pork", mealCategory),
-                new Meal("Cheese Burger", mealCategory),
+                new Meal("Pizza With Pepperoni", mealCategory, defaultHardwareCategory),
+                new Meal("Pizza With Chicken", mealCategory, defaultHardwareCategory),
+                new Meal("Pizza With Ham", mealCategory, defaultHardwareCategory),
+                new Meal("Chicken Soup", mealCategory, defaultHardwareCategory),
+                new Meal("Pork", mealCategory, defaultHardwareCategory),
+                new Meal("Cheese Burger", mealCategory, defaultHardwareCategory),
             };
             return meals;
         }
@@ -142,14 +143,15 @@ namespace MealRoulette.WebApi.Tests.Controllers.Api
         private IPage<Meal> CreatePageWithMeals()
         {
             var mealCategory = new MealCategory("Dinner");
+            var defaultHardwareCategory = new HardwareCategory("None");
             var meals = new List<Meal>()
             {
-                new Meal("Pizza With Pepperoni", mealCategory),
-                new Meal("Pizza With Chicken", mealCategory),
-                new Meal("Pizza With Ham", mealCategory),
-                new Meal("Chicken Soup", mealCategory),
-                new Meal("Pork", mealCategory),
-                new Meal("Cheese Burger", mealCategory),
+                new Meal("Pizza With Pepperoni", mealCategory,defaultHardwareCategory),
+                new Meal("Pizza With Chicken", mealCategory,defaultHardwareCategory),
+                new Meal("Pizza With Ham", mealCategory,defaultHardwareCategory),
+                new Meal("Chicken Soup", mealCategory,defaultHardwareCategory),
+                new Meal("Pork", mealCategory,defaultHardwareCategory),
+                new Meal("Cheese Burger", mealCategory,defaultHardwareCategory),
             };
 
             var source = meals.OrderBy(x => x.Id).Skip(0 * 3).Take(3);
@@ -183,7 +185,7 @@ namespace MealRoulette.WebApi.Tests.Controllers.Api
 
         private Meal CreateTestMeal()
         {
-            var meal = new Meal("TestMeal", new MealCategory("SomeCategory"));
+            var meal = new Meal("TestMeal", new MealCategory("SomeCategory"), new HardwareCategory("None"));
             typeof(BaseEntity).GetProperty("Id").SetValue(meal, 1);
             return meal;
         }

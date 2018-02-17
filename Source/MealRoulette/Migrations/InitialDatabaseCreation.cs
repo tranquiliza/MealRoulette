@@ -1,6 +1,7 @@
 ﻿using MealRoulette.DataAccess;
 using MealRoulette.Factories;
 using MealRoulette.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -12,6 +13,8 @@ namespace MealRoulette.Migrations
         {
             CreateUnitsOfMeasurement(context);
 
+            CreateHardwareCategories(context);
+
             CreateHolidays(context);
 
             CreateIngredients(context);
@@ -21,6 +24,21 @@ namespace MealRoulette.Migrations
             CreateMeals(context);
         }
 
+        private static void CreateHardwareCategories(MealRouletteContext context)
+        {
+            if (DatabaseContainsHardwareCatagories(context)) return;
+
+            const string DefaultHardwareCategoryName = "None";
+            var hardwareCategory = new HardwareCategory(DefaultHardwareCategoryName);
+            context.HardwareCategories.Add(hardwareCategory);
+            context.SaveChanges();
+        }
+
+        private static bool DatabaseContainsHardwareCatagories(MealRouletteContext context)
+        {
+            return context.HardwareCategories.Any();
+        }
+
         private static void CreateMeals(MealRouletteContext context)
         {
             if (DatabaseContainsMeals(context)) return;
@@ -28,11 +46,13 @@ namespace MealRoulette.Migrations
             var mealCategories = context.MealCategories.ToList();
             var ingredients = context.Ingredients.ToList();
             var unitsOfMeasurement = context.UnitsOfMeasurement.ToList();
+            var defaultHardwareCategory = context.HardwareCategories.FirstOrDefault(x => x.Name == "None");
 
-            var danielsPizza = CreatePizza(mealCategories, ingredients, unitsOfMeasurement);
+
+            var danielsPizza = CreatePizza(mealCategories, defaultHardwareCategory, ingredients, unitsOfMeasurement);
             danielsPizza.SetCountryOfOrigin("Italy");
 
-            var danielsPasta = CreatePasta(mealCategories, ingredients, unitsOfMeasurement);
+            var danielsPasta = CreatePasta(mealCategories, ingredients, defaultHardwareCategory, unitsOfMeasurement);
             danielsPasta.SetCountryOfOrigin("Italy");
 
             var meals = new List<Meal>()
@@ -45,7 +65,7 @@ namespace MealRoulette.Migrations
             context.SaveChanges();
         }
 
-        private static Meal CreatePasta(List<MealCategory> mealCategories, List<Ingredient> ingredients, List<UnitOfMeasurement> unitsOfMeasurement)
+        private static Meal CreatePasta(List<MealCategory> mealCategories, List<Ingredient> ingredients, HardwareCategory hardwareCategory, List<UnitOfMeasurement> unitsOfMeasurement)
         {
             var gram = unitsOfMeasurement.First(x => x.Name == "Gram");
             var mililitre = unitsOfMeasurement.First(x => x.Name == "Millilitre");
@@ -63,10 +83,10 @@ namespace MealRoulette.Migrations
             var oregano = ingredients.First(x => x.Name == "Oregano");
             pastaIngredients.Add(new MealIngredient(oregano, 10, gram));
 
-            return MealFactory.Create("Daniel's Pasta", dinnerCategory, pastaIngredients);
+            return MealFactory.Create("Daniel's Pasta", dinnerCategory, hardwareCategory, pastaIngredients);
         }
 
-        private static Meal CreatePizza(ICollection<MealCategory> mealCategories, ICollection<Ingredient> ingredients, ICollection<UnitOfMeasurement> unitsOfMeasurement)
+        private static Meal CreatePizza(ICollection<MealCategory> mealCategories, HardwareCategory hardwareCategory, ICollection<Ingredient> ingredients, ICollection<UnitOfMeasurement> unitsOfMeasurement)
         {
             var gram = unitsOfMeasurement.First(x => x.Name == "Gram");
             var dinnerCategory = mealCategories.First(x => x.Name == "Dinner");
@@ -86,7 +106,7 @@ namespace MealRoulette.Migrations
             pizzaIngredients.Add(new MealIngredient(oregano, 10, gram));
 
 
-            return MealFactory.Create("Daniel's Pizza", dinnerCategory, pizzaIngredients);
+            return MealFactory.Create("Daniel's Pizza", dinnerCategory, hardwareCategory, pizzaIngredients);
         }
 
         private static bool DatabaseContainsMeals(MealRouletteContext context)

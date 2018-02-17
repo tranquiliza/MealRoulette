@@ -19,14 +19,16 @@ namespace MealRoulette.Tests.Services
             var mealCategoryRepo = CreateMealCategoryRepo();
             var ingredientRepo = CreateIngredientRepo();
             var unitOfMeasurementRepo = CreateUnitOfMeasurementRepository();
+            var hardwareCategoryRepository = CreateHardwareCategoryRepositoryWithDefaultCategory();
 
             var mealService = new MealServiceFactory()
                 .WithIngredientRepository(ingredientRepo)
                 .WithMealCategoryRepository(mealCategoryRepo)
                 .WithMealRepository(mealRepo)
                 .WithUnitOfMeasurementRepository(unitOfMeasurementRepo)
+                .WithHardwareCategoryRepository(hardwareCategoryRepository)
                 .Build();
-                        
+
             var mealName = "Pepperoni Pizza";
             var mealCategory = new MealCategoryDto()
             {
@@ -81,7 +83,7 @@ namespace MealRoulette.Tests.Services
             mock.Setup(x => x.Get(It.IsAny<int>())).Returns(unitOfMeasurement);
             return mock.Object;
         }
-                      
+
         private IIngredientRepository CreateIngredientRepo()
         {
             var ingredients = new List<Ingredient>()
@@ -97,7 +99,7 @@ namespace MealRoulette.Tests.Services
                 typeof(BaseEntity).GetProperty("Id").SetValue(ingredient, idCounter);
                 idCounter++;
             }
-            
+
             var mock = new Mock<IIngredientRepository>();
             mock.Setup(x => x.Get(1)).Returns(ingredients.Find(x => x.Id == 1));
             mock.Setup(x => x.Get(2)).Returns(ingredients.Find(x => x.Id == 2));
@@ -111,9 +113,11 @@ namespace MealRoulette.Tests.Services
             //Arrange
             var mealRepo = CreateMealRepo();
             var mealCategoryRepo = CreateMealCategoryRepo();
+            var hardwareCategoryRepository = CreateHardwareCategoryRepositoryWithDefaultCategory();
 
             var mealServiceFactory = new MealServiceFactory()
                 .WithMealCategoryRepository(mealCategoryRepo)
+                .WithHardwareCategoryRepository(hardwareCategoryRepository)
                 .WithMealRepository(mealRepo);
 
             var mealService = mealServiceFactory.Build();
@@ -143,6 +147,14 @@ namespace MealRoulette.Tests.Services
         private IMealRepository CreateMealRepo()
         {
             var mock = new Mock<IMealRepository>();
+            return mock.Object;
+        }
+
+        private IHardwareCategoryRepository CreateHardwareCategoryRepositoryWithDefaultCategory()
+        {
+            var mock = new Mock<IHardwareCategoryRepository>();
+            var defaultCategory = new HardwareCategory("None");
+            mock.Setup(m => m.Get("None")).Returns(defaultCategory);
             return mock.Object;
         }
     }

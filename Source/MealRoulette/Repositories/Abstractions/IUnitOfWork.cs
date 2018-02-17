@@ -5,13 +5,15 @@
         IIngredientRepository IngredientRepository { get; }
 
         IMealRepository MealRepository { get; }
-        
+
         IMealCategoryRepository MealCategoryRepository { get; }
 
         IHolidayRepository HolidayRepository { get; }
 
         IUnitOfMeasurementRepository UnitOfMeasurementRepository { get; }
-        
+
+        IHardwareCategoryRepository HardwareRepository { get; }
+
         void SaveChanges();
     }
 }
