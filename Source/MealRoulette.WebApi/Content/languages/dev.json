@@ -34,5 +34,22 @@
   "lblMealDetailsPeople": "lblMealDetailsPeople",
   "lblMealDetailsHeaderSeveralPeople": "lblMealDetailsHeaderSeveralPeople",
   "lblMealDetailsPerson": "lblMealDetailsPerson",
-  "lblGithub": "lblGithub"
+  "lblGithub": "lblGithub",
+  "lblCreateMealNameOfMealInputLabel": "lblCreateMealNameOfMealInputLabel",
+  "lblCreateMealSelectMealCategoryDefaultText": "lblCreateMealSelectMealCategoryDefaultText",
+  "lblCreateMealSelectMealCategoryLabel": "lblCreateMealSelectMealCategoryLabel",
+  "lblCreateMealHardwareCategoryLabel": "lblCreateMealHardwareCategoryLabel",
+  "lblCreateMealCountryOfOriginDefaultValueLabel": "lblCreateMealCountryOfOriginDefaultValueLabel",
+  "lblCreateMealCountryOfOriginLabel": "lblCreateMealCountryOfOriginLabel",
+  "lblCreateMealHolidayDefaultValueLabel": "lblCreateMealHolidayDefaultValueLabel",
+  "lblCreateMealHolidayLabel": "lblCreateMealHolidayLabel",
+  "lblCreateMealDescriptionLabel": "lblCreateMealDescriptionLabel",
+  "lblIngredientsCollection": "lblIngredientsCollection",
+  "lblCreateMealIngredientSearchBarLabel": "lblCreateMealIngredientSearchBarLabel",
+  "lblCreateMealIngredientAmountLabel": "lblCreateMealIngredientAmountLabel",
+  "lblCreateMealSelectIngredientUnitOfMeasurement": "lblCreateMealSelectIngredientUnitOfMeasurement",
+  "lblCreateMealSelectIngredientUnitOfMeasurementLabel": "lblCreateMealSelectIngredientUnitOfMeasurementLabel",
+  "lblCreateMealAddIngredient": "lblCreateMealAddIngredient",
+  "lblCreateMealRecipeInputLabel": "lblCreateMealRecipeInputLabel",
+  "lblCreateMealSubmit": "lblCreateMealSubmit"
 }

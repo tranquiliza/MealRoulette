@@ -23,21 +23,26 @@
 
                 <!--HardwareCategory Input-->
                 <div class="input-field col s4">
-                    <input id="txtHardwareCategory" type="text" class="validate">
-                    <label for="txtHardwareCategory">{{lblCreateMealHardwareCategoryLabel}}</label>
+                    <select id="hardwareCategorySelect" class="validate"></select>
+                    <label>{{lblCreateMealHardwareCategoryLabel}}</label>
                 </div>
 
                 <!--CountryOfOrigin Input-->
                 <div class="input-field col s4">
-                    <input id="txtCountryOfOrigin" type="text" class="validate">
-                    <label for="txtCountryOfOrigin">{{lblCreateMealCountryOfOriginLabel}}</label>
+                    <select id="countryOfOriginSelect" class="validate">
+                        <option value="" selected>{{lblCreateMealCountryOfOriginDefaultValueLabel}}</option>
+                    </select>
+                    <label>{{lblCreateMealCountryOfOriginLabel}}</label>
                 </div>
 
-                <!--CountryOfOrigin Input-->
+                <!--Holiday Input-->
                 <div class="input-field col s4">
-                    <input id="txtHoliday" type="text" class="validate">
-                    <label for="txtHoliday">{{lblCreateMealHolidayLabel}}</label>
+                    <select id="holidaySelect" class="validate">
+                        <option value="" selected>{{lblCreateMealHolidayDefaultValueLabel}}</option>
+                    </select>
+                    <label>{{lblCreateMealHolidayLabel}}</label>
                 </div>
+
             </div>
 
             <!--Description Input-->
@@ -48,7 +53,7 @@
                 </div>
             </div>
 
-            <!--SOME COLLECTION GOES HERE FOR INGREDIENTS OR WHAT?!-->
+            <!--Ingredients-->
             <div id="mealIngredientsCollection" class="row col s12">
                 <label>{{lblIngredientsCollection}}</label>
                 <ul class="collection"></ul>
@@ -78,27 +83,13 @@
                 </div>
             </div>
 
+            <!--Recipe Input-->
             <div class="row">
                 <div class="col s12">
                     <h6 for="mealRecipeInput">{{lblCreateMealRecipeInputLabel}}</h6>
                     <textarea id="mealRecipeInput"></textarea>
                 </div>
             </div>
-
-            @*<div class="row">
-                    <p>
-                        <label>
-                            <input type="checkbox" />
-                            <span>{{lblCreateMealIsFastFood}}</span>
-                        </label>
-                    </p>
-                    <p>
-                        <label>
-                            <input type="checkbox" />
-                            <span>{{lblCreateMealIsVegetarianFriendly}}</span>
-                        </label>
-                    </p>
-                </div>*@
             <button type="button" id="btnSubmitMeal" class="btn waves-effect">{{lblCreateMealSubmit}}</button>
         </form>
     </div>

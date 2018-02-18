@@ -44,20 +44,20 @@ namespace MealRoulette.Repositories
 
         IEnumerable<Country> IBaseRepository<Country>.Get()
         {
-            return _Countries.ToList();
+            return _Countries.OrderBy(x => x.Name).ToList();
         }
 
         IPage<Country> IBaseRepository<Country>.Get(int pageIndex, int pageSize)
         {
             var totalCount = _Countries.Count();
-            var page = _Countries.Skip(pageIndex * pageSize).Take(pageSize).ToList();
+            var page = _Countries.OrderBy(x => x.Name).Skip(pageIndex * pageSize).Take(pageSize).ToList();
 
             return new Page<Country>(page, pageIndex, pageSize, totalCount);
         }
 
         async Task<IEnumerable<Country>> IBaseRepository<Country>.GetAsync()
         {
-            return await _Countries.ToListAsync();
+            return await _Countries.OrderBy(x => x.Name).ToListAsync();
         }
     }
 }

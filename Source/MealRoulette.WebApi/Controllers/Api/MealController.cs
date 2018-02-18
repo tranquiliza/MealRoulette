@@ -19,8 +19,8 @@ namespace MealRoulette.WebApi.Controllers.Api
         public IHttpActionResult Get(int id)
         {
             var meal = mealService.Get(id);
-            var response = meal.Map();
-            return Ok(response);
+            var result = meal.Map();
+            return Ok(result);
         }
 
         public IHttpActionResult Get(int pageIndex, int pageSize)
@@ -38,19 +38,15 @@ namespace MealRoulette.WebApi.Controllers.Api
 
         public IHttpActionResult Post([FromBody]CreateMealApiRequest meal)
         {
+            return StatusCode(System.Net.HttpStatusCode.NotImplemented);
             try
             {
-                //var mealCategoryDto = meal.MealCategory.Map();
-                //var mealIngredientsDto = meal.MealIngredients.Map();
 
-                //mealService.Create(meal.Name, mealCategoryDto, mealIngredientsDto);
             }
             catch (DomainException error)
             {
                 return BadRequest(error.Message);
             }
-
-            return Ok();
         }
     }
 }
