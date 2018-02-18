@@ -24,8 +24,25 @@ namespace MealRoulette.WebApi.Tests.Controllers.Api
             AutoMapperConfig.RegisterMappings();
         }
 
+        //[Test]
+        //public void Post_CreateMeal_Request_Return_OK()
+        //{
+        //    //Arrange
+        //    var service = CreateEmptyService();
+        //    var controller = new MealControllerFactory()
+        //        .WithMealService(service)
+        //        .Build();
+        //    var request = NewCreateMealRequest(CreateIngredientsForRequest());
+
+        //    //Act
+        //    var sut = controller.Post(request) as OkResult;
+
+        //    //Assert 
+        //    Assert.IsNotNull(sut);
+        //}
+
         [Test]
-        public void Post_CreateMeal_Request()
+        public void Post_CreateMeal_Request_Return_NotImplemented()
         {
             //Arrange
             var service = CreateEmptyService();
@@ -35,7 +52,7 @@ namespace MealRoulette.WebApi.Tests.Controllers.Api
             var request = NewCreateMealRequest(CreateIngredientsForRequest());
 
             //Act
-            var sut = controller.Post(request) as OkResult;
+            var sut = controller.Post(request) as StatusCodeResult;
 
             //Assert 
             Assert.IsNotNull(sut);
