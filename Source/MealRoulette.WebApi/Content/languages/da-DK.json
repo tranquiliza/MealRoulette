@@ -1,0 +1,20 @@
+﻿{
+  "lblHome": "Start",
+  "lblLogo": "Måltids Roulette",
+  "lblGoToMeals": "Gå til opskrifter",
+  "lblMenuMeals": "Opskrifter",
+  "lblCreateMeals": "Opret Opskrift",
+  "lblMealRoulette": "Måltids Rouletten",
+  "lblRoll": "Rul tilfældigt måltid!",
+  "lblReroll": "Rul igen!",
+  "lblMealRouletteMealCategory": "Katagori",
+  "lblMealRoulleteCountryOfOrigin": "Land",
+  "lblMealRoulleteClickHereToSeeMore": "Klik her for mere information",
+  "lblApiDidNotRespondError": "Fejl: Api Svarede ikke",
+  "lblLanguageDanish": "Dansk",
+  "lblLanguageEnglish": "Engelsk",
+  "lblContact": "Kontakt",
+  "lblApi": "Api",
+  "lblPageSize": "Antal Opskrifter",
+  "lblChooseLanguage": "Vælg Sprog"
+}

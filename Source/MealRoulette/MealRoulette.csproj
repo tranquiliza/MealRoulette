@@ -82,17 +82,37 @@
     <Compile Include="Migrations\201712251848131_Initial.Designer.cs">
       <DependentUpon>201712251848131_Initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201802030555203_MealDescription.cs" />
+    <Compile Include="Migrations\201802030555203_MealDescription.Designer.cs">
+      <DependentUpon>201802030555203_MealDescription.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201802172201233_EventIds.cs" />
+    <Compile Include="Migrations\201802172201233_EventIds.Designer.cs">
+      <DependentUpon>201802172201233_EventIds.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201802172339074_DataNormalizations.cs" />
+    <Compile Include="Migrations\201802172339074_DataNormalizations.Designer.cs">
+      <DependentUpon>201802172339074_DataNormalizations.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Migrations\InitialDatabaseCreation.cs" />
+    <Compile Include="Models\Country.cs" />
+    <Compile Include="Models\HardwareCategory.cs" />
     <Compile Include="Models\UnitOfMeasurement.cs" />
+    <Compile Include="Repositories\Abstractions\ICountryRepository.cs" />
+    <Compile Include="Repositories\Abstractions\IHardwareCategoryRepository.cs" />
     <Compile Include="Repositories\Abstractions\IHolidayRepository.cs" />
     <Compile Include="Repositories\Abstractions\IUnitRepository.cs" />
+    <Compile Include="Repositories\HardwareCategoryRepository.cs" />
     <Compile Include="Repositories\HolidayRepository.cs" />
+    <Compile Include="Repositories\CountryRepository.cs" />
     <Compile Include="Repositories\IngredientRepository.cs" />
     <Compile Include="Repositories\MealCategoryRepository.cs" />
     <Compile Include="Repositories\MealRepository.cs" />
     <Compile Include="Repositories\UnitOfWork.cs" />
     <Compile Include="Repositories\UnitRepository.cs" />
+    <Compile Include="Services\Abstractions\ICountryService.cs" />
+    <Compile Include="Services\Abstractions\IHardwareCategoryService.cs" />
     <Compile Include="Services\Abstractions\IBaseService.cs" />
     <Compile Include="Services\Abstractions\IHolidayService.cs" />
     <Compile Include="Services\Abstractions\IIngredientService.cs" />
@@ -101,6 +121,8 @@
     <Compile Include="Services\Abstractions\IMealService.cs" />
     <Compile Include="Services\Abstractions\IUnitOfMeasurementService.cs" />
     <Compile Include="Services\HolidayService.cs" />
+    <Compile Include="Services\CountryService.cs" />
+    <Compile Include="Services\HardwareCategoryService.cs" />
     <Compile Include="Services\IngredientService.cs" />
     <Compile Include="Services\MealCategoryService.cs" />
     <Compile Include="Services\MealRouletteService.cs" />
@@ -135,6 +157,15 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201712251848131_Initial.resx">
       <DependentUpon>201712251848131_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802030555203_MealDescription.resx">
+      <DependentUpon>201802030555203_MealDescription.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802172201233_EventIds.resx">
+      <DependentUpon>201802172201233_EventIds.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802172339074_DataNormalizations.resx">
+      <DependentUpon>201802172339074_DataNormalizations.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

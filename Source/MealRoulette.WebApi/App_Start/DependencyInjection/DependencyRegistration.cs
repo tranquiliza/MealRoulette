@@ -16,12 +16,17 @@ namespace MealRoulette.WebApi.App_Start.DependencyInjection
         {
             //DataAccess
             var context = new MealRouletteContextFactory("DefaultConnection").Create();
-            container.RegisterSingleton<IMealRouletteContext>(context);
+            container.Register<IMealRouletteContext>(() =>
+            {
+                return new MealRouletteContextFactory().Create();
+            });
 
             //Repositories
             container.Register<IUnitOfWork, UnitOfWork>();
 
             //Services
+            container.Register<ICountryService, CountryService>();
+            container.Register<IHardwareCategoryService, HardwareCategoryService>();
             container.Register<IHolidayService, HolidayService>();
             container.Register<IIngredientService, IngredientService>();
             container.Register<IMealCategoryService, MealCategoryService>();

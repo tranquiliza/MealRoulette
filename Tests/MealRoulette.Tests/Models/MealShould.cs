@@ -9,16 +9,43 @@ namespace MealRoulette.Tests.Models
     public class MealShould
     {
         [Test]
-        public void Throw_ArgumentException_If_Giving_Null_Parameter()
+        public void Add_Description_To_Meal()
         {
             //Arrange
             var meal = CreateMealWithChicken();
 
             //Act
-            var sut = new TestDelegate(() => meal.SetCountryOfOrigin(""));
+            var sut = new TestDelegate(() => meal.SetDescription("Description goes here!"));
 
             //Assert 
-            Assert.Throws<ArgumentException>(sut);
+            Assert.DoesNotThrow(sut);
+            Assert.AreEqual("Description goes here!", meal.Description);
+        }
+
+        [Test]
+        public void Set_Description_Null_When_Setting_Empty_Description()
+        {
+            //Arrange
+            var meal = CreateMealWithChicken();
+
+            //Act
+            var sut = new TestDelegate(() => meal.SetDescription(""));
+
+            //Assert 
+            Assert.AreEqual(null, meal.Description);
+        }
+
+        [Test]
+        public void Throw_ArgumentNullException_If_Giving_Null_Parameter()
+        {
+            //Arrange
+            var meal = CreateMealWithChicken();
+
+            //Act
+            var sut = new TestDelegate(() => meal.SetCountryOfOrigin(null));
+
+            //Assert 
+            Assert.Throws<ArgumentNullException>(sut);
         }
 
         [Test]
@@ -26,7 +53,7 @@ namespace MealRoulette.Tests.Models
         {
             //Arrange
             var sut = CreateMealWithChicken();
-            var country = "Italy";
+            var country = new Country("Italy");
 
             //Act
             sut.SetCountryOfOrigin(country);
@@ -35,8 +62,6 @@ namespace MealRoulette.Tests.Models
             Assert.AreEqual(country, sut.CountryOfOrigin);
         }
 
-        private const string DefaultHardwareCategory = "None";
-
         [Test]
         public void Create_With_Default_Values()
         {
@@ -44,11 +69,11 @@ namespace MealRoulette.Tests.Models
             const string mealName = "MyFirstMeal";
 
             //Act
-            var sut = new Meal(mealName, new MealCategory("Snack"));
+            var sut = new Meal(mealName, new MealCategory("Snack"), new HardwareCategory("None"));
 
             //Assert
             Assert.AreEqual(mealName, sut.Name);
-            Assert.AreEqual(DefaultHardwareCategory, sut.HardwareCategory);
+            Assert.AreEqual("None", sut.HardwareCategory.Name);
         }
 
         [Test]
@@ -69,7 +94,7 @@ namespace MealRoulette.Tests.Models
 
         private Meal CreateMealWithoutIngredients()
         {
-            var meal = new Meal("MyFirstMeal", new MealCategory("Snack"));
+            var meal = new Meal("MyFirstMeal", new MealCategory("Snack"), new HardwareCategory("None"));
             return meal;
         }
 
@@ -95,7 +120,7 @@ namespace MealRoulette.Tests.Models
             var unitOfMasurement = new UnitOfMeasurement("Grams");
             var mealIngredient = new MealIngredient(ingredient, 10, unitOfMasurement);
 
-            var meal = new Meal("ThisHasChicken", new MealCategory("Dinner"));
+            var meal = new Meal("ThisHasChicken", new MealCategory("Dinner"), new HardwareCategory("None"));
 
             meal.AddMealIngredient(mealIngredient);
 
@@ -161,26 +186,26 @@ namespace MealRoulette.Tests.Models
         {
             //Arrange
             var sut = CreateMealWithoutIngredients();
-            const string HardwareCategory = "Grill";
+            var HardwareCategory = new HardwareCategory("Grill");
 
             //Act
             sut.SetHardwareCategory(HardwareCategory);
 
             //Assert 
-            Assert.AreEqual(HardwareCategory, sut.HardwareCategory);
+            Assert.AreEqual(HardwareCategory.Name, sut.HardwareCategory.Name);
         }
 
         [Test]
-        public void Set_Hardware_Category_To_Default_If_Empty_String_Is_Given()
+        public void Throw_Domain_Exception_If_Setting_Hardware_Category_To_Null()
         {
             //Arrange
             var sut = CreateMealWithoutIngredients();
 
             //Act
-            sut.SetHardwareCategory("");
+            var testDelegate = new TestDelegate(() => sut.SetHardwareCategory(null));
 
             //Assert 
-            Assert.AreEqual(DefaultHardwareCategory, sut.HardwareCategory);
+            Assert.Throws<DomainException>(testDelegate);
         }
     }
 }

@@ -6,28 +6,21 @@ namespace MealRoulette.Models
 {
     public class Meal : BaseEntity
     {
-        private const string DefaultHardwareCategory = "None";
-
         public string Name { get; private set; }
 
-        public string CountryOfOrigin { get; private set; } //Better name for "Italian Food"?
+        public Country CountryOfOrigin { get; private set; }
 
         public bool IsFastFood { get; set; }
 
-        internal void SetCountryOfOrigin(string countryOfOrigin)
-        {
-            if (string.IsNullOrWhiteSpace(countryOfOrigin)) throw new ArgumentException("Country cannot be empty!", nameof(countryOfOrigin));
+        public bool IsVegetarianFriendly { get; private set; }
 
-            CountryOfOrigin = countryOfOrigin;
-        }
-
-        public bool IsVegetarianFriendly { get; private set; } //How do we check ?
-
-        public string HardwareCategory { get; private set; }
+        public HardwareCategory HardwareCategory { get; private set; }
 
         public Holiday Holiday { get; private set; }
 
         public string Recipe { get; private set; }
+
+        public string Description { get; private set; }
 
         public MealCategory MealCategory { get; private set; }
 
@@ -35,15 +28,28 @@ namespace MealRoulette.Models
 
         private Meal() { }
 
-        internal Meal(string name, MealCategory mealCategory)
+        internal Meal(string name, MealCategory mealCategory, HardwareCategory hardwareCategory)
         {
-            if (mealCategory == null) throw new ArgumentNullException(nameof(mealCategory));
             if (string.IsNullOrEmpty(name)) throw new ArgumentException(nameof(name));
+            if (mealCategory == null) throw new ArgumentNullException(nameof(mealCategory));
+            if (hardwareCategory == null) throw new ArgumentNullException(nameof(hardwareCategory));
 
             MealIngredients = new List<MealIngredient>();
             Name = name;
             MealCategory = mealCategory;
-            HardwareCategory = DefaultHardwareCategory;
+            HardwareCategory = hardwareCategory;
+        }
+
+        internal void SetCountryOfOrigin(Country countryOfOrigin)
+        {
+            if (countryOfOrigin == null) throw new ArgumentNullException("Country cannot be empty!", nameof(countryOfOrigin));
+
+            CountryOfOrigin = countryOfOrigin;
+        }
+
+        internal void SetDescription(string description)
+        {
+            Description = description;
         }
 
         internal void AddMealIngredient(MealIngredient mealIngredient)
@@ -73,16 +79,11 @@ namespace MealRoulette.Models
             Holiday = holiday;
         }
 
-        internal void SetHardwareCategory(string hardwareCategory)
+        internal void SetHardwareCategory(HardwareCategory hardwareCategory)
         {
-            if (string.IsNullOrWhiteSpace(hardwareCategory))
-            {
-                HardwareCategory = DefaultHardwareCategory;
-            }
-            else
-            {
-                HardwareCategory = hardwareCategory;
-            }
+            if (hardwareCategory == null) throw new DomainException("Hardware Category cannot be empty");
+
+            HardwareCategory = hardwareCategory;
         }
     }
 }

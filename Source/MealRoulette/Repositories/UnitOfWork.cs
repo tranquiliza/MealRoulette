@@ -22,6 +22,10 @@ namespace MealRoulette.Repositories
 
         IUnitOfMeasurementRepository IUnitOfWork.UnitOfMeasurementRepository => new UnitOfMeasurementRepository(mealRouletteContext);
 
+        IHardwareCategoryRepository IUnitOfWork.HardwareRepository => new HardwareCategoryRepository(mealRouletteContext);
+
+        ICountryRepository IUnitOfWork.CountryRepository => new CountryRepository(mealRouletteContext);
+
         void IUnitOfWork.SaveChanges()
         {
             mealRouletteContext.SaveChanges();

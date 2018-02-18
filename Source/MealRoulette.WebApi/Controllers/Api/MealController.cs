@@ -1,11 +1,8 @@
-﻿using MealRoulette.DataStructures;
-using MealRoulette.Exceptions;
-using MealRoulette.Models;
+﻿using MealRoulette.Exceptions;
 using MealRoulette.Services.Abstractions;
 using MealRoulette.WebApi.Extensions;
 using MealRoulette.WebApi.Models.Meal;
 using System;
-using System.Collections.Generic;
 using System.Web.Http;
 
 namespace MealRoulette.WebApi.Controllers.Api
@@ -21,13 +18,15 @@ namespace MealRoulette.WebApi.Controllers.Api
 
         public IHttpActionResult Get(int id)
         {
-            var result = mealService.Get(id);
+            var meal = mealService.Get(id);
+            var result = meal.Map();
             return Ok(result);
         }
 
         public IHttpActionResult Get(int pageIndex, int pageSize)
         {
-            var result = mealService.Get(pageIndex, pageSize);
+            var meals = mealService.Get(pageIndex, pageSize);
+            var result = new MealPageResponse(meals.Map());
             return Ok(result);
         }
 
@@ -39,19 +38,15 @@ namespace MealRoulette.WebApi.Controllers.Api
 
         public IHttpActionResult Post([FromBody]CreateMealApiRequest meal)
         {
+            return StatusCode(System.Net.HttpStatusCode.NotImplemented);
             try
             {
-                var mealCategoryDto = meal.MealCategory.Map();
-                var mealIngredientsDto = meal.Ingredients.Map();
 
-                mealService.Create(meal.Name, mealCategoryDto, mealIngredientsDto);
             }
             catch (DomainException error)
             {
                 return BadRequest(error.Message);
             }
-
-            return Ok();
         }
     }
 }

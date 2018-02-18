@@ -1,11 +1,40 @@
-﻿<nav class="light-blue" role="navigation">
-    <div class="nav-wrapper container">
-        @Html.ActionLink("Meal Roulette", "Index", "Home", new { area = "" }, new { @class = "brand-logo right waves-effect waves-light" })
-        <ul>
-            <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "waves-effect waves-light" })</li>
-            <li>@Html.ActionLink("About", "About", "Home", new { area = "" }, new { @class = "waves-effect waves-light" })</li>
-            <li>@Html.ActionLink("Meals", "Meals", "Home", new { area = "" }, new { @class = "waves-effect waves-light" })</li>
-            <li>@Html.ActionLink("API", "Index", "Help", new { area = "" }, new { @class = "waves-effect waves-light" })</li>
+﻿<ul id="mealsDropdown" class="dropdown-content">
+    <li>@Html.ActionLink("{{lblGoToMeals}}", "Index", "Meal", new { area = "" }, new { @class = "waves-effect waves-light" })</li>
+    <li>@Html.ActionLink("{{lblCreateMeals}}", "Create", "Meal", new { area = "" }, new { @class = "waves-effect waves-light" })</li>
+</ul>
+<ul id="mobileMealsDropdown" class="dropdown-content">
+    <li>@Html.ActionLink("{{lblGoToMeals}}", "Index", "Meal", new { area = "" }, new { @class = "waves-effect waves-light" })</li>
+    <li>@Html.ActionLink("{{lblCreateMeals}}", "Create", "Meal", new { area = "" }, new { @class = "waves-effect waves-light" })</li>
+</ul>
+
+<nav>
+    <div class="nav-wrapper">
+        @Html.ActionLink("{{lblLogo}}", "Index", "Home", new { area = "" }, new { @class = "center brand-logo" })
+        <a data-target="sideNav" class="sidenav-trigger">
+            <i class="material-icons">menu</i>
+        </a>
+        <ul class="hide-on-med-and-down">
+            <li>@Html.ActionLink("{{lblHome}}", "Index", "Home", new { area = "" }, new { @class = "waves-effect waves-light" })</li>
+            <li>@Html.ActionLink("{{lblMenuMeals}}", "Index", "Meal", new { area = "" }, new { @class = "waves-effect waves-light dropdown-button", @id = "desktopMealNavDropdown", @data_target = "mealsDropdown" })</li>
+            <li>@Html.ActionLink("{{lblMealRoulette}}", "Index", "MealRoulette", new { area = "" }, new { @class = "waves-effect waves-light" })</li>
+        </ul>
+
+        <a href="#" data-target="settingsNav" class="sidenav-trigger right show-on-large">
+            <i class="material-icons">settings</i>
+        </a>
+
+        <ul class="sidenav" id="sideNav">
+            <li>@Html.ActionLink("{{lblMenuMeals}}", "Index", "Meal", new { area = "" }, new { @class = "waves-effect waves-light dropdown-button", @id = "mobileNavDropdown", @data_target = "mobileMealsDropdown" })</li>
+            <li>@Html.ActionLink("{{lblMealRoulette}}", "Index", "MealRoulette", new { area = "" }, new { @class = "waves-effect waves-light" })</li>
+        </ul>
+
+        <ul class="sidenav" id="settingsNav">
+            <li>
+                <div class="input-field">
+                    <select id="language-selector"></select>
+                    <label>{{lblChooseLanguage}}</label>
+                </div>
+            </li>
         </ul>
     </div>
 </nav>

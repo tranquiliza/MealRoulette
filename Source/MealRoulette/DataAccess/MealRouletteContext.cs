@@ -22,6 +22,10 @@ namespace MealRoulette.DataAccess
 
         public DbSet<UnitOfMeasurement> UnitsOfMeasurement { get; set; }
 
+        public DbSet<HardwareCategory> HardwareCategories { get; set; }
+
+        public DbSet<Country> Countries { get; set; }
+
         public MealRouletteContext(string connectionString) : base(connectionString)
         {
         }

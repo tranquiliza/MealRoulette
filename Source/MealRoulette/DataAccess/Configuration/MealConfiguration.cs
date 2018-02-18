@@ -8,8 +8,6 @@ namespace MealRoulette.DataAccess.Configuration
         public MealConfiguration()
         {
             Property(x => x.Name).HasMaxLength(200);
-            Property(x => x.CountryOfOrigin).HasMaxLength(200);
-            Property(x => x.HardwareCategory).HasMaxLength(200);
             Property(x => x.Recipe).HasMaxLength(3000);
         }
     }

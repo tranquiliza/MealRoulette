@@ -45,14 +45,16 @@ namespace MealRoulette.Tests.Services
         private async Task<IEnumerable<Meal>> CreateMealsAsync()
         {
             var dinnerCategory = new MealCategory("Dinner");
-            var desertCategory = new MealCategory("Dessert");
+            var dessertCategory = new MealCategory("Dessert");
+            var defaultHardwareCategory = new HardwareCategory("None");
+
 
             var meals = new List<Meal>()
             {
-                new Meal("Pizza", dinnerCategory),
-                new Meal("IceCream", desertCategory),
-                new Meal("Pasta", dinnerCategory),
-                new Meal("Apple Pie", desertCategory)
+                new Meal("Pizza", dinnerCategory,defaultHardwareCategory),
+                new Meal("IceCream", dessertCategory,defaultHardwareCategory),
+                new Meal("Pasta", dinnerCategory,defaultHardwareCategory),
+                new Meal("Apple Pie", dessertCategory,defaultHardwareCategory)
             };
 
             return await Task.FromResult<IEnumerable<Meal>>(meals);
@@ -107,14 +109,15 @@ namespace MealRoulette.Tests.Services
         private IEnumerable<Meal> CreateMeals()
         {
             var dinnerCategory = new MealCategory("Dinner");
-            var desertCategory = new MealCategory("Dessert");
+            var dessertCategory = new MealCategory("Dessert");
+            var defaultHardwareCategory = new HardwareCategory("None");
 
             var meals = new List<Meal>()
             {
-                new Meal("Pizza", dinnerCategory),
-                new Meal("IceCream", desertCategory),
-                new Meal("Pasta", dinnerCategory),
-                new Meal("Apple Pie", desertCategory)
+                new Meal("Pizza", dinnerCategory,defaultHardwareCategory),
+                new Meal("IceCream", dessertCategory,defaultHardwareCategory),
+                new Meal("Pasta", dinnerCategory,defaultHardwareCategory),
+                new Meal("Apple Pie", dessertCategory,defaultHardwareCategory)
             };
 
             return meals;

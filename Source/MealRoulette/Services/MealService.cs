@@ -17,6 +17,7 @@ namespace MealRoulette.Services
         private readonly IMealCategoryRepository mealCategoryRepository;
         private readonly IIngredientRepository ingredientRepository;
         private readonly IUnitOfMeasurementRepository unitOfMeasurementRepository;
+        private readonly IHardwareCategoryRepository hardwareCategoryRepository;
 
         public MealService(IUnitOfWork unitOfWork)
         {
@@ -26,6 +27,7 @@ namespace MealRoulette.Services
             mealCategoryRepository = unitOfWork.MealCategoryRepository;
             ingredientRepository = unitOfWork.IngredientRepository;
             unitOfMeasurementRepository = unitOfWork.UnitOfMeasurementRepository;
+            hardwareCategoryRepository = unitOfWork.HardwareRepository;
         }
 
         public void Create(string mealName, MealCategoryDto mealCategoryDto)
@@ -33,8 +35,9 @@ namespace MealRoulette.Services
             if (mealCategoryDto == null) throw new ArgumentNullException(nameof(mealCategoryDto));
 
             var mealCategory = mealCategoryRepository.Get(mealCategoryDto.Id);
+            var defaultHardwareCategory = hardwareCategoryRepository.Get("None");
 
-            var meal = MealFactory.Create(mealName, mealCategory);
+            var meal = MealFactory.Create(mealName, mealCategory, defaultHardwareCategory);
             mealRepository.Add(meal);
 
             unitOfWork.SaveChanges();
@@ -47,8 +50,9 @@ namespace MealRoulette.Services
 
             var mealCategory = mealCategoryRepository.Get(mealCategoryDto.Id);
             var mealIngredients = RetrieveMealIngredients(mealIngredientDtos);
+            var defaultHardwareCategory = hardwareCategoryRepository.Get("None");
 
-            var meal = MealFactory.Create(mealName, mealCategory, mealIngredients);
+            var meal = MealFactory.Create(mealName, mealCategory, defaultHardwareCategory, mealIngredients);
 
             mealRepository.Add(meal);
 

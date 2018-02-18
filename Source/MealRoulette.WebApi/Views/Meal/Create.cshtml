@@ -1,0 +1,101 @@
+﻿<div class="section">
+    <div class="row">
+        <form id="CreateMealForm" class="col s12">
+
+            <div class="row">
+
+                <!--MealName Input-->
+                <div class="input-field col s6">
+                    <input id="txtMealName" type="text" class="validate">
+                    <label for="txtMealName">{{lblCreateMealNameOfMealInputLabel}}</label>
+                </div>
+
+                <!--MealCategory Input-->
+                <div class="input-field col s6">
+                    <select id="mealCategorySelect" class="validate">
+                        <option value="" disabled selected>{{lblCreateMealSelectMealCategoryDefaultText}}</option>
+                    </select>
+                    <label>{{lblCreateMealSelectMealCategoryLabel}}</label>
+                </div>
+            </div>
+
+            <div class="row">
+
+                <!--HardwareCategory Input-->
+                <div class="input-field col s4">
+                    <select id="hardwareCategorySelect" class="validate"></select>
+                    <label>{{lblCreateMealHardwareCategoryLabel}}</label>
+                </div>
+
+                <!--CountryOfOrigin Input-->
+                <div class="input-field col s4">
+                    <select id="countryOfOriginSelect" class="validate">
+                        <option value="" selected>{{lblCreateMealCountryOfOriginDefaultValueLabel}}</option>
+                    </select>
+                    <label>{{lblCreateMealCountryOfOriginLabel}}</label>
+                </div>
+
+                <!--Holiday Input-->
+                <div class="input-field col s4">
+                    <select id="holidaySelect" class="validate">
+                        <option value="" selected>{{lblCreateMealHolidayDefaultValueLabel}}</option>
+                    </select>
+                    <label>{{lblCreateMealHolidayLabel}}</label>
+                </div>
+
+            </div>
+
+            <!--Description Input-->
+            <div class="row">
+                <div class="input-field col s12">
+                    <textarea id="txtMealDescription" class="materialize-textarea" data-length="3000"></textarea>
+                    <label for="txtMealDescription">{{lblCreateMealDescriptionLabel}}</label>
+                </div>
+            </div>
+
+            <!--Ingredients-->
+            <div id="mealIngredientsCollection" class="row col s12">
+                <label>{{lblIngredientsCollection}}</label>
+                <ul class="collection"></ul>
+            </div>
+
+            <!--Ingredients Input-->
+            <div class="row">
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">search</i>
+                    <input type="text" id="txtIngredientsSearchBar" class="autocomplete">
+                    <label for="txtIngredientsSearchBar">{{lblCreateMealIngredientSearchBarLabel}}</label>
+                </div>
+                <div class="input-field col s2">
+                    <label for="txtMealIngredientAmount">{{lblCreateMealIngredientAmountLabel}}</label>
+                    <input id="txtMealIngredientAmount" type="number" min="1" class="validate">
+                </div>
+                <div class="input-field col s4">
+                    <select id="mealIngredientUnitOfMeasurementSelect" class="validate">
+                        <option value="" disabled selected>{{lblCreateMealSelectIngredientUnitOfMeasurement}}</option>
+                    </select>
+                    <label>{{lblCreateMealSelectIngredientUnitOfMeasurementLabel}}</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s12 center-align">
+                    <button id="btnMealIngredientAddToMeal" type="button" class="btn waves-effect ultraWideButton">{{lblCreateMealAddIngredient}}</button>
+                </div>
+            </div>
+
+            <!--Recipe Input-->
+            <div class="row">
+                <div class="col s12">
+                    <h6 for="mealRecipeInput">{{lblCreateMealRecipeInputLabel}}</h6>
+                    <textarea id="mealRecipeInput"></textarea>
+                </div>
+            </div>
+            <button type="button" id="btnSubmitMeal" class="btn waves-effect">{{lblCreateMealSubmit}}</button>
+        </form>
+    </div>
+</div>
+
+@section scripts{
+    <script src="~/Content/js/tinymce/tinymce.js"></script>
+    <script src="~/Content/js/Meal/create.js"></script>
+}

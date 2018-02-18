@@ -1,6 +1,7 @@
 ﻿using MealRoulette.DataStructures;
 using MealRoulette.Models;
 using MealRoulette.Services.Abstractions;
+using MealRoulette.WebApi.App_Start;
 using MealRoulette.WebApi.Models.Meal;
 using MealRoulette.WebApi.Models.MealCategory;
 using MealRoulette.WebApi.Models.MealIngredient;
@@ -17,19 +18,41 @@ namespace MealRoulette.WebApi.Tests.Controllers.Api
     [TestFixture]
     public class MealControllerShould
     {
+        [OneTimeSetUp]
+        public void Setup()
+        {
+            AutoMapperConfig.RegisterMappings();
+        }
+
+        //[Test]
+        //public void Post_CreateMeal_Request_Return_OK()
+        //{
+        //    //Arrange
+        //    var service = CreateEmptyService();
+        //    var controller = new MealControllerFactory()
+        //        .WithMealService(service)
+        //        .Build();
+        //    var request = NewCreateMealRequest(CreateIngredientsForRequest());
+
+        //    //Act
+        //    var sut = controller.Post(request) as OkResult;
+
+        //    //Assert 
+        //    Assert.IsNotNull(sut);
+        //}
+
         [Test]
-        public void Post_CreateMeal_Request()
+        public void Post_CreateMeal_Request_Return_NotImplemented()
         {
             //Arrange
             var service = CreateEmptyService();
             var controller = new MealControllerFactory()
                 .WithMealService(service)
-                .WithMapper()
                 .Build();
             var request = NewCreateMealRequest(CreateIngredientsForRequest());
 
             //Act
-            var sut = controller.Post(request) as OkResult;
+            var sut = controller.Post(request) as StatusCodeResult;
 
             //Assert 
             Assert.IsNotNull(sut);
@@ -42,19 +65,20 @@ namespace MealRoulette.WebApi.Tests.Controllers.Api
                 Id = 1,
                 Name = "Gram"
             };
+            var ingredientApiModel = new Models.Ingredient.IngredientApiModel() { Id = 1, Name = "Test Ingredient" };
             return new List<MealIngredientApiModel>()
             {
-                new MealIngredientApiModel() { IngredientId = 1, Amount = 20, UnitOfMeasurement = UnitOfMeasurementModel }
+                new MealIngredientApiModel() { Ingredient = ingredientApiModel, Amount = 20, UnitOfMeasurement = UnitOfMeasurementModel }
             };
         }
 
-        private static CreateMealApiRequest NewCreateMealRequest(List<MealIngredientApiModel> ingredients)
+        private static CreateMealApiRequest NewCreateMealRequest(IEnumerable<MealIngredientApiModel> ingredients)
         {
             return new CreateMealApiRequest()
             {
                 Name = "My Meal!",
                 MealCategory = new MealCategoryApiModel { Id = 1, Name = "SomeNameWeDontUseAnyways????" },
-                Ingredients = ingredients
+                MealIngredients = ingredients
             };
         }
 
@@ -91,14 +115,15 @@ namespace MealRoulette.WebApi.Tests.Controllers.Api
         private IEnumerable<Meal> CreateMeals()
         {
             var mealCategory = new MealCategory("Dinner");
+            var defaultHardwareCategory = new HardwareCategory("None");
             var meals = new List<Meal>()
             {
-                new Meal("Pizza With Pepperoni", mealCategory),
-                new Meal("Pizza With Chicken", mealCategory),
-                new Meal("Pizza With Ham", mealCategory),
-                new Meal("Chicken Soup", mealCategory),
-                new Meal("Pork", mealCategory),
-                new Meal("Cheese Burger", mealCategory),
+                new Meal("Pizza With Pepperoni", mealCategory, defaultHardwareCategory),
+                new Meal("Pizza With Chicken", mealCategory, defaultHardwareCategory),
+                new Meal("Pizza With Ham", mealCategory, defaultHardwareCategory),
+                new Meal("Chicken Soup", mealCategory, defaultHardwareCategory),
+                new Meal("Pork", mealCategory, defaultHardwareCategory),
+                new Meal("Cheese Burger", mealCategory, defaultHardwareCategory),
             };
             return meals;
         }
@@ -113,12 +138,12 @@ namespace MealRoulette.WebApi.Tests.Controllers.Api
                 .Build();
 
             //Act
-            var sut = controller.Get(0, 3) as OkNegotiatedContentResult<IPage<Meal>>;
+            var sut = controller.Get(0, 3) as OkNegotiatedContentResult<MealPageResponse>;
 
             //Assert
             Assert.AreEqual(0, sut.Content.PageIndex);
             Assert.AreEqual(3, sut.Content.PageSize);
-            Assert.AreEqual(sut.Content.PageSize, sut.Content.Count);
+            Assert.AreEqual(sut.Content.PageSize, sut.Content.Meals.Count);
             Assert.AreEqual(6, sut.Content.TotalCount);
             Assert.AreEqual(2, sut.Content.TotalPageCount);
             Assert.IsTrue(sut.Content.HasNextPage);
@@ -135,14 +160,15 @@ namespace MealRoulette.WebApi.Tests.Controllers.Api
         private IPage<Meal> CreatePageWithMeals()
         {
             var mealCategory = new MealCategory("Dinner");
+            var defaultHardwareCategory = new HardwareCategory("None");
             var meals = new List<Meal>()
             {
-                new Meal("Pizza With Pepperoni", mealCategory),
-                new Meal("Pizza With Chicken", mealCategory),
-                new Meal("Pizza With Ham", mealCategory),
-                new Meal("Chicken Soup", mealCategory),
-                new Meal("Pork", mealCategory),
-                new Meal("Cheese Burger", mealCategory),
+                new Meal("Pizza With Pepperoni", mealCategory,defaultHardwareCategory),
+                new Meal("Pizza With Chicken", mealCategory,defaultHardwareCategory),
+                new Meal("Pizza With Ham", mealCategory,defaultHardwareCategory),
+                new Meal("Chicken Soup", mealCategory,defaultHardwareCategory),
+                new Meal("Pork", mealCategory,defaultHardwareCategory),
+                new Meal("Cheese Burger", mealCategory,defaultHardwareCategory),
             };
 
             var source = meals.OrderBy(x => x.Id).Skip(0 * 3).Take(3);
@@ -160,7 +186,7 @@ namespace MealRoulette.WebApi.Tests.Controllers.Api
                 .Build();
 
             //Act
-            var sut = controller.Get(1) as OkNegotiatedContentResult<Meal>;
+            var sut = controller.Get(1) as OkNegotiatedContentResult<MealApiModel>;
 
             //Assert 
             Assert.AreEqual(1, sut.Content.Id);
@@ -176,7 +202,7 @@ namespace MealRoulette.WebApi.Tests.Controllers.Api
 
         private Meal CreateTestMeal()
         {
-            var meal = new Meal("TestMeal", new MealCategory("SomeCategory"));
+            var meal = new Meal("TestMeal", new MealCategory("SomeCategory"), new HardwareCategory("None"));
             typeof(BaseEntity).GetProperty("Id").SetValue(meal, 1);
             return meal;
         }
