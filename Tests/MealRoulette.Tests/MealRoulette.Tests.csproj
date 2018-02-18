@@ -65,9 +65,11 @@
     <Compile Include="Services\HolidayServiceShould.cs" />
     <Compile Include="Services\IngredientServiceShould.cs" />
     <Compile Include="Services\MealRouletteServiceShould.cs" />
+    <Compile Include="Services\ServiceFactories\HolidayServiceFactory.cs" />
+    <Compile Include="Services\ServiceFactories\HardwareCategoryServiceFactory.cs" />
     <Compile Include="Services\ServiceFactories\UnitOfMeasurementServiceFactory.cs" />
     <Compile Include="Services\ServiceFactories\MealRouletteServiceFactory.cs" />
-    <Compile Include="Services\ServiceFactories\HolidayServiceFactory.cs" />
+    <Compile Include="Services\ServiceFactories\CountryServiceFactory.cs" />
     <Compile Include="Services\ServiceFactories\IngredientServiceFactory.cs" />
     <Compile Include="Services\ServiceFactories\MealCategoryServiceFactory.cs" />
     <Compile Include="Services\MealCategoryServiceShould.cs" />

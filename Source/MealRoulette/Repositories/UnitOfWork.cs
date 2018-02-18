@@ -24,6 +24,8 @@ namespace MealRoulette.Repositories
 
         IHardwareCategoryRepository IUnitOfWork.HardwareRepository => new HardwareCategoryRepository(mealRouletteContext);
 
+        ICountryRepository IUnitOfWork.CountryRepository => new CountryRepository(mealRouletteContext);
+
         void IUnitOfWork.SaveChanges()
         {
             mealRouletteContext.SaveChanges();

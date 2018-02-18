@@ -14,6 +14,8 @@
 
         IHardwareCategoryRepository HardwareRepository { get; }
 
+        ICountryRepository CountryRepository { get; }
+
         void SaveChanges();
     }
 }

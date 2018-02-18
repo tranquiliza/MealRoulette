@@ -111,6 +111,8 @@
     <Compile Include="Repositories\MealRepository.cs" />
     <Compile Include="Repositories\UnitOfWork.cs" />
     <Compile Include="Repositories\UnitRepository.cs" />
+    <Compile Include="Services\Abstractions\ICountryService.cs" />
+    <Compile Include="Services\Abstractions\IHardwareCategoryService.cs" />
     <Compile Include="Services\Abstractions\IBaseService.cs" />
     <Compile Include="Services\Abstractions\IHolidayService.cs" />
     <Compile Include="Services\Abstractions\IIngredientService.cs" />
@@ -119,6 +121,8 @@
     <Compile Include="Services\Abstractions\IMealService.cs" />
     <Compile Include="Services\Abstractions\IUnitOfMeasurementService.cs" />
     <Compile Include="Services\HolidayService.cs" />
+    <Compile Include="Services\CountryService.cs" />
+    <Compile Include="Services\HardwareCategoryService.cs" />
     <Compile Include="Services\IngredientService.cs" />
     <Compile Include="Services\MealCategoryService.cs" />
     <Compile Include="Services\MealRouletteService.cs" />
