@@ -168,8 +168,8 @@
     <Compile Include="Controllers\Api\HolidayController.cs" />
     <Compile Include="Controllers\Api\UnitOfMeasurementController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
-    <Compile Include="Controllers\CountryController.cs" />
-    <Compile Include="Controllers\HardwareCategoryController.cs" />
+    <Compile Include="Controllers\Api\CountryController.cs" />
+    <Compile Include="Controllers\Api\HardwareCategoryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\Api\IngredientController.cs" />
     <Compile Include="Controllers\Api\MealCategoryController.cs" />

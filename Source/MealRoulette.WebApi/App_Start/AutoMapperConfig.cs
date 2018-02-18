@@ -1,7 +1,8 @@
 ﻿using AutoMapper;
 using MealRoulette.DataContracts;
-using MealRoulette.DataStructures;
 using MealRoulette.Models;
+using MealRoulette.WebApi.Models.Country;
+using MealRoulette.WebApi.Models.HardwareCategory;
 using MealRoulette.WebApi.Models.Ingredient;
 using MealRoulette.WebApi.Models.Meal;
 using MealRoulette.WebApi.Models.MealCategory;
@@ -18,6 +19,8 @@ namespace MealRoulette.WebApi.App_Start
                 cfg.CreateMap<IngredientApiModel, IngredientDto>();
                 cfg.CreateMap<MealIngredientApiModel, MealIngredientDto>();
                 cfg.CreateMap<MealCategoryApiModel, MealCategoryDto>();
+                cfg.CreateMap<Country, CountryApiModel>();
+                cfg.CreateMap<HardwareCategory, HardwareCategoryApiModel>();
 
                 cfg.CreateMap<Meal, MealApiModel>()
                 .ForMember(d => d.Id, opts => opts.MapFrom(src => src.Id))
