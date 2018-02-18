@@ -4,7 +4,7 @@ namespace MealRoulette.WebApi.Models.Meal
 {
     public class MealPageResponse
     {
-        public IPage<MealRoulette.Models.Meal> Meals { get; set; }
+        public IPage<MealApiModel> Meals { get; set; }
 
         public int PageIndex { get; private set; }
         public int PageSize { get; private set; }
@@ -13,7 +13,7 @@ namespace MealRoulette.WebApi.Models.Meal
         public bool HasPreviousPage { get; set; }
         public bool HasNextPage { get; set; }
 
-        public MealPageResponse(IPage<MealRoulette.Models.Meal> meals)
+        public MealPageResponse(IPage<MealApiModel> meals)
         {
             Meals = meals;
             PageIndex = meals.PageIndex;

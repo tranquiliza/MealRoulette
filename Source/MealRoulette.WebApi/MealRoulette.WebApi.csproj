@@ -168,6 +168,8 @@
     <Compile Include="Controllers\Api\HolidayController.cs" />
     <Compile Include="Controllers\Api\UnitOfMeasurementController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\CountryController.cs" />
+    <Compile Include="Controllers\HardwareCategoryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\Api\IngredientController.cs" />
     <Compile Include="Controllers\Api\MealCategoryController.cs" />
@@ -181,6 +183,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Country\CountryApiModel.cs" />
+    <Compile Include="Models\HardwareCategory\HardwareCategoryApiModel.cs" />
     <Compile Include="Models\Holiday\CreateHolidayApiRequest.cs" />
     <Compile Include="Models\Holiday\HolidayApiModel.cs" />
     <Compile Include="Models\Ingredient\CreateIngredientApiRequest.cs" />

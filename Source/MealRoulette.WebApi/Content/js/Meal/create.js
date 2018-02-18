@@ -5,7 +5,7 @@ $(document).ready(() => {
 });
 
 function MealCreateController() {
-
+    "use strict";
     //MealApiModel
     function Meal() {
         this.Name = null;
@@ -47,6 +47,7 @@ function MealCreateController() {
 
     let meal = new Meal();
 
+    let Ingredients;
 
     this.Initialize = function () {
         InitializeCharacterCounterFields();
@@ -58,7 +59,6 @@ function MealCreateController() {
         $("#btnSubmitMeal").click(() => SubmitMeal());
         $("#btnMealIngredientAddToMeal").click(() => AddIngredientToMeal());
     }
-
 
     function GetUnitOfMeasurementBy(id) {
         let response = $.ajax({
@@ -207,7 +207,7 @@ function MealCreateController() {
 
         let myData = [];
 
-        this.Ingredients = response;
+        Ingredients = response;
 
         response.forEach((ingredient) => {
             myData[ingredient.Name] = null;

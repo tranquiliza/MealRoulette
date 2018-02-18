@@ -6,6 +6,8 @@ namespace MealRoulette.Models
     {
         public string Name { get; set; }
 
+        private Country() { }
+
         public Country(string name)
         {
             SetName(name);

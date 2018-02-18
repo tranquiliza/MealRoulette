@@ -60,6 +60,8 @@ namespace MealRoulette.Repositories
         {
             return meals
                 .Include(x => x.MealIngredients)
+                .Include(x => x.CountryOfOrigin)
+                .Include(x => x.HardwareCategory)
                 .Include(x => x.MealIngredients.Select(c => c.UnitOfMeasurement))
                 .Include(x => x.MealIngredients.Select(c => c.Ingredient))
                 .Include(x => x.MealCategory)

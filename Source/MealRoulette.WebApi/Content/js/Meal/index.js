@@ -82,7 +82,7 @@ MealRoulette.prototype.FetchAndRenderMeals = async function (pageIndex, pageSize
 }
 
 function MealsIndexController() {
-
+    "use strict";
     this.MealHtmlBuilder = function (meals) {
         let result = [];
         meals.forEach(function (meal) {
@@ -125,7 +125,7 @@ function MealsIndexController() {
     function BuildDescription(meal) {
         let DescriptionParagraph = document.createElement("p");
 
-        let descriptionInnerHtml = meal.CountryOfOrigin + "<br>";
+        let descriptionInnerHtml = meal.CountryOfOrigin.Name + "<br>";
         if (meal.Description !== null) {
             descriptionInnerHtml += meal.Description;
         }

@@ -6,6 +6,8 @@ namespace MealRoulette.Models
     {
         public string Name { get; private set; }
 
+        private HardwareCategory() { }
+
         public HardwareCategory(string name)
         {
             SetName(name);

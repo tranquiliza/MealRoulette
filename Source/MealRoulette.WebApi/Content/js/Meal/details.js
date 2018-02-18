@@ -18,6 +18,7 @@ MealRoulette.prototype.FetchMealDetailsFromApi = function (mealId) {
 }
 
 function MealDetailsController() {
+    "use strict";
     this.Initialize = function () {
         let id = GetMealIdFromUrl();
         LoadDetailsForMeal(id);
@@ -68,8 +69,8 @@ function MealDetailsController() {
     function AppendMealDetailsToPage(response) {
         $("#mealName").html(response.Name);
         $("#mealDescription").html(response.Description);
-        $("#mealCountryOfOrigin").html(response.CountryOfOrigin);
-        $("#mealHardwareCategory").html(response.HardwareCategory);
+        $("#mealCountryOfOrigin").html(response.CountryOfOrigin.Name);
+        $("#mealHardwareCategory").html(response.HardwareCategory.Name);
         $("#mealCategory").html(response.MealCategory.Name);
 
         $("#checkboxMealIsFastFood").attr("checked", response.IsFastFood ? "checked" : undefined);

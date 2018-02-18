@@ -1,5 +1,6 @@
 ﻿// var mealRoulette is intantiated in layout.cshtml.
 $(document).ready(function () {
+    "use strict";
     $('.collapsible').collapsible();
 
     mealRouletteController.ShowCookiesDisclaimer();
@@ -8,7 +9,6 @@ $(document).ready(function () {
 });
 
 function MealRoulette(applicationUrl) {
-
     this.Settings = {
         mealRouletteUrl: applicationUrl
     }
@@ -51,6 +51,9 @@ function MealRoulette(applicationUrl) {
 
         let labels = await FetchLabelsFor(prefferedLanguage);
 
+        // Currently abusing that this create a global variable that is accessible later. 
+        // I'd like to rewrite this to be a strict JavaScript code, so this is not plausible.
+        // HACK, TODO
         this.MealRouletteLabels = Object.assign({}, labels);
 
         InitLanguageSelector(prefferedLanguage);

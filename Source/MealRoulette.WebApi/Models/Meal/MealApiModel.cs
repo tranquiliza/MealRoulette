@@ -1,4 +1,6 @@
-﻿using MealRoulette.WebApi.Models.Holiday;
+﻿using MealRoulette.WebApi.Models.Country;
+using MealRoulette.WebApi.Models.HardwareCategory;
+using MealRoulette.WebApi.Models.Holiday;
 using MealRoulette.WebApi.Models.MealCategory;
 using MealRoulette.WebApi.Models.MealIngredient;
 using System.Collections.Generic;
@@ -11,13 +13,13 @@ namespace MealRoulette.WebApi.Models.Meal
 
         public string Name { get; set; }
 
-        public string CountryOfOrigin { get; set; }
+        public CountryApiModel CountryOfOrigin { get; set; }
 
         public bool IsFastFood { get; set; }
 
         public bool IsVegetarianFriendly { get; set; }
 
-        public string HardwareCategory { get; set; }
+        public HardwareCategoryApiModel HardwareCategory { get; set; }
 
         public HolidayApiModel Holiday { get; set; }
 
