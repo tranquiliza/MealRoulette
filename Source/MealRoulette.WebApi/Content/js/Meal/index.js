@@ -125,7 +125,10 @@ function MealsIndexController() {
     function BuildDescription(meal) {
         let DescriptionParagraph = document.createElement("p");
 
-        let descriptionInnerHtml = meal.CountryOfOrigin.Name + "<br>";
+        let descriptionInnerHtml = "";
+        if (meal.CountryOfOrigin !== null) {
+            descriptionInnerHtml += meal.CountryOfOrigin.Name + "<br>";
+        }
         if (meal.Description !== null) {
             descriptionInnerHtml += meal.Description;
         }

@@ -69,10 +69,22 @@ function MealDetailsController() {
     function AppendMealDetailsToPage(response) {
         $("#mealName").html(response.Name);
         $("#mealDescription").html(response.Description);
-        $("#mealCountryOfOrigin").html(response.CountryOfOrigin.Name);
-        $("#mealHardwareCategory").html(response.HardwareCategory.Name);
-        $("#mealCategory").html(response.MealCategory.Name);
 
+        if (response.CountryOfOrigin !== null) {
+            $("#mealCountryOfOrigin").html(response.CountryOfOrigin.Name);
+        }
+        else {
+            $("#mealCountryOfOriginElement").hide();
+        }
+
+        if (response.HardwareCategory !== null) {
+            $("#mealHardwareCategory").html(response.HardwareCategory.Name);
+        }
+        else {
+            $("#mealHardwareCategoryElement").hide();
+        }
+
+        $("#mealCategory").html(response.MealCategory.Name);
         $("#checkboxMealIsFastFood").attr("checked", response.IsFastFood ? "checked" : undefined);
         $("#checkboxMealIsVegetarionFriendly").attr("checked", response.IsVegetarianFriendly ? "checked" : undefined);
     }

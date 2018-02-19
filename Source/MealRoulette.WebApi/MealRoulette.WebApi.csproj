@@ -422,6 +422,8 @@
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\CollectionModelDescription.cshtml" />
     <None Include="packages.config" />
     <Content Include="Views\Shared\_Navigation.cshtml" />
+    <None Include="Properties\PublishProfiles\Default Settings.pubxml" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Properties\PublishProfiles\mealroulette - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\ReleaseProfile.pubxml" />
     <Content Include="Views\MealRoulette\Index.cshtml" />

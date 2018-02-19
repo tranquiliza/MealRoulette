@@ -45,7 +45,7 @@ function Roulette() {
     function ClearDomAndAppendHtml(mealData) {
         let cardImage = CreateCardImage("https://picsum.photos/205/300/?random", mealData.Name);
 
-        let cardContent = CreateCardContent(mealData.Description, mealData.MealCategory.Name, mealData.CountryOfOrigin.Name);
+        let cardContent = CreateCardContent(mealData.Description, mealData.MealCategory.Name, mealData.CountryOfOrigin ? mealData.CountryOfOrigin.Name : null);
 
         let cardActions = CreateCardActions(mealRouletteController.Settings.mealRouletteUrl + "/Meal/Details/" + mealData.Id);
 
